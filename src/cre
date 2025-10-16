@@ -1,0 +1,23 @@
+  const val = [
+    { sno: "1", name: "K R ashwathy",Id:"18051988",passport:"passport",loaction:"India",email: " ash@gmail.com " ,phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "2", name: "Michael",Id:"18051988",passport:"passport",loaction:"India",email:"mick@gmail.com",phone:"9775647536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "3", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "4", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "5", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "6", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "7", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+
+  ];
+
+  const headers = [
+    "S.No",
+    "Seafarer Info",
+    "Id Info",
+    "Ship Name/Type",
+    "Role",
+    "Documents",
+    "Credentials",
+    "Password",
+    "Status",
+    "Actions",
+  ];
