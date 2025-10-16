@@ -266,11 +266,24 @@ function SeafarerCredentials({ seafarer }) {
         </TableCell>
         <TableCell>
           <Stack direction="row" spacing={1}>
-            <IconButton onClick={() => handleOpenDialog(index)}>
+            <IconButton sx={{ border: "2px solid #6fa9e2ff",
+    borderRadius: "8px",
+    p: 1,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",}} onClick={() => handleOpenDialog(index)}>
               <Edit />
             </IconButton>
-            <IconButton onClick={() => handleDelete(index)} color="error">
-              <Delete />
+            <IconButton 
+            sx={{ 
+              border: "2px solid, #f71000ff",
+            color:" #e03a2eff",
+           borderRadius: "8px",
+    p: 1,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",}} onClick={() => handleDelete(index)} color="error">
+              <Delete color= "#1976d2" />
             </IconButton>
           </Stack>
         </TableCell>
@@ -322,25 +335,25 @@ function SeafarerCredentials({ seafarer }) {
               value={newEntry.name}
               onChange={handleChange}
               
-            /><Typography fontFamily="poppins"  mb={0.5} >Flag State <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+            /><Typography fontFamily="poppins"  mb={0.5} required >Flag State <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
             <TextField
-            
+            required
               name="flagState"
               fullWidth
               value={newEntry.flagState}
               onChange={handleChange}
-            /><Typography fontFamily="poppins"  mb={0.5} >Date Issued<Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+            /><Typography fontFamily="poppins"  mb={0.5} required>Date Issued<Typography  display="inline" color="#f80505ff">*</Typography></Typography>
             <TextField
-            
+            required
               name="dateIssued"
               type="date"
               InputLabelProps={{ shrink: true }}
               fullWidth
               value={newEntry.dateIssued}
               onChange={handleChange}
-            /><Typography fontFamily="poppins"  mb={0.5} > Valid Until <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+            /><Typography fontFamily="poppins"  mb={0.5}> Valid Until <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
             <TextField
-             
+              required
               name="validUntil"
               type="date"
               InputLabelProps={{ shrink: true }}
@@ -348,7 +361,7 @@ function SeafarerCredentials({ seafarer }) {
               value={newEntry.validUntil}
               onChange={handleChange}
             />
-      <Typography fontFamily="Poppins" fontWeight={500}>
+      <Typography fontFamily="Poppins" fontWeight={500} >
   Upload Document<Typography  display="inline" color="#f80505ff">*</Typography>
 </Typography>
 
@@ -365,7 +378,7 @@ function SeafarerCredentials({ seafarer }) {
                   transition: "0.2s",
                 }}
               >
-                <input
+                <input required
                   type="file"
                   accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                   hidden
