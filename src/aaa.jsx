@@ -8,7 +8,6 @@ import {
   Add,
   Save,
   Close,
-  DriveFolderUploadRounded,
 } from "@mui/icons-material";
 import {
   Box,
@@ -34,16 +33,7 @@ import {
 } from "@mui/material";
 import { Delete, Edit, AttachFile } from "@mui/icons-material";
 
-function SeafarerCredentials({ seafarer }) {
-   if (!seafarer)
-     return null; 
-   const credentials = [
-     { icon: <Person />, label: "Name", value: seafarer.name },
-     { icon: <Email />, label: "Email ID", value: seafarer.email }, 
-     { icon: <Phone />, label: "Mobile Number", value: seafarer.phone }, 
-     { icon: <DirectionsBoat />, label: "Ship Name/Type", value: `${seafarer.ship} ${seafarer.ship1}` },
-      { icon: <Work />, label: "Role", value: seafarer.role },
-     ]; 
+function SeafarerCredentials() {
   const [selectedTab, setSelectedTab] = useState("coc");
 
   const [cocTable, setCocTable] = useState([
@@ -167,7 +157,14 @@ function SeafarerCredentials({ seafarer }) {
     alert("Data saved! Check console.");
   };
 
-  
+  const credentials = [
+    { icon: <Person />, label: "Name", value: "Ashwathy K R" },
+    { icon: <Email />, label: "Email ID", value: "ashwathykr@gmail.com" },
+    { icon: <Phone />, label: "Mobile Number", value: "9791971536" },
+    { icon: <DirectionsBoat />, label: "Ship Name/Type", value: "M/S Training Ship 1 (Oil Tanker)" },
+    { icon: <Work />, label: "Role", value: "Deck Rating" },
+  ];
+
   return (
     <Box sx={{ p: 2, maxWidth: "1200px", mx: "auto" }}>
     
@@ -239,9 +236,8 @@ function SeafarerCredentials({ seafarer }) {
               <TableCell sx={{color: "#fff", fontWeight: 600 }}>Actions</TableCell>
             </TableRow>
           </TableHead>
-       <TableBody>
+        <TableBody>
   {getCurrentTable().map((row, index) => {
-
     const formatDate = (dateString) => {
       if (!dateString) return "";
       const date = new Date(dateString);
@@ -262,7 +258,7 @@ function SeafarerCredentials({ seafarer }) {
           <IconButton>
             <AttachFile sx={{ transform: "rotate(45deg)" }} />
           </IconButton>
-          {row.documentName || "viewAttachement"}
+          {row.documentName || "No File"}
         </TableCell>
         <TableCell>
           <Stack direction="row" spacing={1}>
@@ -279,9 +275,6 @@ function SeafarerCredentials({ seafarer }) {
   })}
 </TableBody>
 
-             
-              
-            
         </Table>
       </TableContainer>
 
@@ -295,9 +288,9 @@ function SeafarerCredentials({ seafarer }) {
 
       <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="sm"   PaperProps={{
           sx: {
-            borderRadius:"3px",
-            boxShadow: "0px 4px 20px rgba(0,0,0,0.15)",
-            backgroundColor: "#ffffffff",
+            
+        
+            backgroundColor: "#f9fbfc",
             overflow: "hidden",
           },
         }}>
@@ -307,29 +300,27 @@ function SeafarerCredentials({ seafarer }) {
             alignItems: "center",
             fontWeight: "700",
             color:" #064575",
-              fontFamily: "Poppins, sans-serif",
-      fontSize: "1.25rem",
-            pb: 0,
+            pb: 1,
             pt:0,
             mt:0,
           }}>{editIndex !== null ? "Edit" : "Add"}  seafarer Credentials<IconButton ><Close onClick={handleCloseDialog}/></IconButton></DialogTitle>
         <Divider/><DialogContent>
           <Stack spacing={2} mt={1}>
-               <Typography fontFamily="poppins"  mb={0.5} >{selectedTab === "coc" ? "COC Name" : "Course Name"}<Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+               <Typography fontFamily="poppins"  mb={0.5} >{selectedTab === "coc" ? "COC Name" : "Course Name"}</Typography>
             <TextField required
               name="name"
               fullWidth
               value={newEntry.name}
               onChange={handleChange}
               
-            /><Typography fontFamily="poppins"  mb={0.5} >Flag State <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+            /><Typography fontFamily="poppins"  mb={0.5} >Flag State</Typography>
             <TextField
             
               name="flagState"
               fullWidth
               value={newEntry.flagState}
               onChange={handleChange}
-            /><Typography fontFamily="poppins"  mb={0.5} >Date Issued<Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+            /><Typography fontFamily="poppins"  mb={0.5} >Date Issued</Typography>
             <TextField
             
               name="dateIssued"
@@ -338,7 +329,7 @@ function SeafarerCredentials({ seafarer }) {
               fullWidth
               value={newEntry.dateIssued}
               onChange={handleChange}
-            /><Typography fontFamily="poppins"  mb={0.5} > Valid Until <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+            /><Typography fontFamily="poppins"  mb={0.5} > Valid Until</Typography>
             <TextField
              
               name="validUntil"
@@ -347,135 +338,22 @@ function SeafarerCredentials({ seafarer }) {
               fullWidth
               value={newEntry.validUntil}
               onChange={handleChange}
-            />
-      <Typography fontFamily="Poppins" fontWeight={500}>
-  Upload Document<Typography  display="inline" color="#f80505ff">*</Typography>
-</Typography>
-
-
-{!newEntry.documentName ? (
-  <><Box
-                sx={{
-                  border: "2px dashed #B0BEC5",
-                  borderRadius: 2,
-                  p: 3,
-                  textAlign: "center",
-                  backgroundColor: "#F9FBFC",
-                  "&:hover": { backgroundColor: "#F1F5F9" },
-                  transition: "0.2s",
-                }}
-              >
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                  hidden
-                  id="file-upload"
-                  onChange={handleFileChange} />
-                <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
-                  <DriveFolderUploadRounded
-                    sx={{
-                    
-                      color: "#064575"
-                      
-                    }} />
-                  <Typography variant="body2" color="text.secondary" mt={1}>
-                    Drag your file(s) to start uploading
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{py:1}}>OR</Typography>
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      borderColor: "#064575",
-                      color: "#064575",
-                      mt: 1,
-                      textTransform: "none",
-                      fontWeight: 600,
-                    }}
-                    component="span"
-                  >
-                    Browse files
-                  </Button>
-
-                </label>
-              </Box><Box> <Typography variant="caption" display="block" mt={1} color="gray">
-        Support .docs, .docx, .pdf, .jpg, .png
-      </Typography></Box></>
-) : (
-  <Box
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      border: "1px solid #064575",
-      borderRadius: 2,
-      px: 2,
-      py: 1.5,
-      mt: 1,
-      backgroundColor: "#E8F0FE",
-    }}
-  >
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-     
-      {newEntry.documentName.endsWith(".pdf") ? (
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
-          alt="pdf"
-          width={26}
-          height={26}
-        />
-      ) : newEntry.documentName.match(/\.(doc|docx)$/) ? (
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/337/337932.png"
-          alt="doc"
-          width={26}
-          height={26}
-        />
-      ) : (
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/136/136524.png"
-          alt="img"
-          width={26}
-          height={26}
-        />
-      )}
-
-     
-      <Box>
-        <Typography
-          fontWeight={600}
-       
-          fontFamily="Poppins"
-          sx={{ wordBreak: "break-all" }}
-        >
-          {newEntry.documentName}
-        </Typography>
-        {newEntry.document && (
-          <Typography variant="caption" color="gray">
-            {(newEntry.document.size / 1024 / 1024).toFixed(2)} MB
-          </Typography>
-        )}
-      </Box>
-    </Box>
-
-
-    <IconButton
-      onClick={() =>
-        setNewEntry((prev) => ({
-          ...prev,
-          document: null,
-          documentName: "",
-        }))
-      }
-      color="error"
-    >
-      <Close />
-    </IconButton>
-  </Box>
-)}
-
-    </Stack>
-  </DialogContent>
-
+            /><Typography fontFamily="poppins"  mb={0.5} >Upload Documents</Typography>
+            <Button
+              variant="outlined"
+              component="label"
+              startIcon={<AttachFile />}
+            >
+              {newEntry.documentName || "Upload Document"}
+              <input
+                type="file"
+                hidden
+                onChange={handleFileChange}
+                accept=".pdf,.txt,.doc,.docx,.jpg,.svg,.png"
+              />
+            </Button>
+          </Stack>
+        </DialogContent>
         <DialogActions>
           <Button variant="contained" onClick={handleAddOrEditEntry}>
                    {editIndex !== null ? "Update" : "Add"}

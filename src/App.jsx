@@ -1,15 +1,15 @@
+import React from "react";
 
-import MyBoard from './myBoard';
-import './App.css'
-import MyDialog from './des';
-import SeafarerCredentials from './cred';
+import SeafarerBoard from "./myBoard"; 
+
+
 
 function App() {
- 
-
   return (
-      <SeafarerCredentials/>
-  )
+   
+      <SeafarerBoard/>
+   
+  );
 }
 
-export default App
+export default App;
