@@ -1,367 +1,270 @@
-import React, { useState } from "react";
+import React, { useState } from "react";  
 import {
-  Email,
-  Person,
-  Phone,
-  DirectionsBoat,
-  Work,
-  Add,
-  Save,
+  Delete,
+  Edit,
+  RemoveRedEyeOutlined,
+  AttachFile,
+  Password,
   Close,
+  DriveFolderUploadRounded,
+  Search,
 } from "@mui/icons-material";
 import {
   Box,
-  Typography,
-  Paper,
-  Button,
   Table,
-  TableHead,
+  InputBase,
+  Paper,
   TableBody,
-  TableRow,
   TableCell,
   TableContainer,
-  Stack,
-  ToggleButtonGroup,
-  ToggleButton,
+  TableHead,
+  TableRow,
+  IconButton,
+  Typography,
+  Button,
+  useMediaQuery,
+  useTheme,
+  Pagination,
+  Breadcrumbs,
+  Link,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
   TextField,
-  IconButton,
   Divider,
+  Grid,
 } from "@mui/material";
-import { Delete, Edit, AttachFile } from "@mui/icons-material";
+import SeafarerCredentials from "./cred";
 
-function SeafarerCredentials() {
-  const [selectedTab, setSelectedTab] = useState("coc");
+function MyBoard() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); 
 
-  const [cocTable, setCocTable] = useState([
-    {
-      id: 1,
-      name: "Master National Certificate of Competence",
-      flagState: "Poland",
-      dateIssued: "2024-11-10",
-      validUntil: "2025-11-12",
-      document: null,
-      documentName: "",
-    },
+  const [seafarers, setSeafarers] = useState([
+    { sno: "1", name: "K R Ashwathy", Id:"18051988", passport:"passport", location:"India", email: "ash@gmail.com", phone:"9791917536", ship: "Ms Training Ship1", ship1:"(oilTanker)", role: "Deck Rating", status: "Active" },
+    { sno: "2", name: "Michael", Id:"18051988", passport:"passport", location:"India", email:"mick@gmail.com", phone:"9775647536", ship: "Ms Training Ship1", ship1:"(oilTanker)", role: "Deck Rating", status: "Inactive" },
+    // ... other seafarers
   ]);
 
-  const [stcwTable, setStcwTable] = useState([
-    {
-      id: 1,
-      name: "Basic Safety Training",
-      flagState: "Poland",
-      dateIssued: "2023-01-10",
-      validUntil: "2024-01-10",
-      document: null,
-      documentName: "",
-    },
-  ]);
+  const [showCredentials, setShowCredentials] = useState(false);
+  const [selectedSeafarer, setSelectedSeafarer] = useState(null);
 
-  const [openDialog, setOpenDialog] = useState(false);
-  const [editIndex, setEditIndex] = useState(null);
-  const [newEntry, setNewEntry] = useState({
-    name: "",
-    flagState: "",
-    dateIssued: "",
-    validUntil: "",
-    document: null,
-    documentName: "",
-  });
+  const [openEdit, setOpenEdit] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openAdd, setOpenAdd] = useState(false);
+  const [openBulkUpload, setOpenBulkUpload] = useState(false);
+  const [openPassword, setOpenPassword] = useState(false);
 
-  const handleTabChange = (event, newValue) => {
-    if (newValue !== null) setSelectedTab(newValue);
-  };
+  // Status dialog state
+  const [openStatusDialog, setOpenStatusDialog] = useState(false);
+  const [selectedStatusSeafarer, setSelectedStatusSeafarer] = useState(null);
+  const [tempStatus, setTempStatus] = useState("Active");
 
-  const getCurrentTable = () => (selectedTab === "coc" ? cocTable : stcwTable);
-  const setCurrentTable = (data) =>
-    selectedTab === "coc" ? setCocTable(data) : setStcwTable(data);
-
-  const handleOpenDialog = (index = null) => {
-    const table = getCurrentTable();
-    if (index !== null) {
-      setEditIndex(index);
-      setNewEntry(table[index]);
-    } else {
-      setEditIndex(null);
-      setNewEntry({
-        name: "",
-        flagState: "",
-        dateIssued: "",
-        validUntil: "",
-        document: null,
-        documentName: "",
-      });
-    }
-    setOpenDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
-    setEditIndex(null);
-    setNewEntry({
-      name: "",
-      flagState: "",
-      dateIssued: "",
-      validUntil: "",
-      document: null,
-      documentName: "",
-    });
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewEntry((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setNewEntry((prev) => ({ ...prev, document: file, documentName: file.name }));
-    }
-  };
-
-  const handleAddOrEditEntry = () => {
-    if (!newEntry.name || !newEntry.flagState || !newEntry.dateIssued || !newEntry.validUntil) {
-      alert("Please fill all fields");
-      return;
-    }
-    if (new Date(newEntry.validUntil) < new Date(newEntry.dateIssued)) {
-      alert("Valid Until date cannot be before Date Issued");
-      return;
-    }
-
-    const table = getCurrentTable();
-    if (editIndex !== null) {
-      const updated = [...table];
-      updated[editIndex] = newEntry;
-      setCurrentTable(updated);
-    } else {
-      setCurrentTable([...table, { id: table.length + 1, ...newEntry }]);
-    }
-
-    handleCloseDialog();
-  };
-
-  const handleDelete = (index) => {
-    const table = getCurrentTable();
-    const updated = table.filter((_, i) => i !== index);
-    setCurrentTable(updated);
-  };
-
-  const handleSave = () => {
-    console.log("COC Data:", cocTable);
-    console.log("STCW Data:", stcwTable);
-    alert("Data saved! Check console.");
-  };
-
-  const credentials = [
-    { icon: <Person />, label: "Name", value: "Ashwathy K R" },
-    { icon: <Email />, label: "Email ID", value: "ashwathykr@gmail.com" },
-    { icon: <Phone />, label: "Mobile Number", value: "9791971536" },
-    { icon: <DirectionsBoat />, label: "Ship Name/Type", value: "M/S Training Ship 1 (Oil Tanker)" },
-    { icon: <Work />, label: "Role", value: "Deck Rating" },
+  const headers = [
+    "S.No", "Seafarer Info", "Id Info", "Ship Name/Type", "Role", "Documents",
+    "Credentials", "Password", "Status", "Actions"
   ];
 
+  const handleViewCredentials = (seafarer) => {
+    setSelectedSeafarer(seafarer);
+    setShowCredentials(true);
+  };
+
+  const handleBackToList = () => {
+    setShowCredentials(false);
+    setSelectedSeafarer(null);
+  };
+
+  const handleEdit = (seafarer) => {
+    setSelectedSeafarer(seafarer);
+    setOpenEdit(true);
+  };
+
+  const handleDelete = (seafarer) => {
+    setSelectedSeafarer(seafarer);
+    setOpenDelete(true);
+  };
+
+  const handleAdd = () => setOpenAdd(true);
+  const handleBulkUpload = () => setOpenBulkUpload(true);
+  const handlePassword = (seafarer) => {
+    setSelectedSeafarer(seafarer);
+    setOpenPassword(true);
+  };
+
+  const closeDialogs = () => {
+    setOpenEdit(false);
+    setOpenDelete(false);
+    setOpenAdd(false);
+    setOpenBulkUpload(false);
+    setOpenPassword(false);
+    setOpenStatusDialog(false);
+    setSelectedSeafarer(null);
+    setSelectedStatusSeafarer(null);
+  };
+
+  const saveEdit = (updatedSeafarer) => {
+    setSeafarers(seafarers.map(s => s.sno === updatedSeafarer.sno ? updatedSeafarer : s));
+    closeDialogs();
+  };
+
+  const addSeafarer = (newSeafarer) => {
+    setSeafarers([...seafarers, { ...newSeafarer, sno: (seafarers.length + 1).toString() }]);
+    closeDialogs();
+  };
+
   return (
-    <Box sx={{ p: 2, maxWidth: "1200px", mx: "auto" }}>
-    
-      <Paper elevation={4} sx={{ p: 3, borderRadius: 2, backgroundColor: "#F8FAFF", mb: 4 }}>
-        <Typography variant="h6" sx={{ fontWeight: 700, color: "#1E3A8A", mb: 2, textAlign:"left"}}>
-          Credentials
-        </Typography>
-        <Stack direction={{ xs: "column", sm: "row" }} spacing={2} justifyContent="space-between" >
-          {credentials.map((item) => (
-            <Box key={item.label} sx={{ display: "flex", gap: 1, minWidth: 200 }}>
-              {item.icon}
-              <Box  textAlign= "left" >
-                <Typography variant="body2" color="textSecondary" fontWeight={500}>
-                  {item.label}
-                </Typography>
-                <Typography variant="body1" fontWeight={600}>
-                  {item.value}
-                </Typography>
-              </Box>
+    <Box sx={{ p: 2, width: "100%" }}>
+      <Breadcrumbs sx={{ mb: 2 }}>
+        <Link underline="hover" color="inherit" onClick={handleBackToList} sx={{ cursor: "pointer" }}>
+          Seafarer List
+        </Link>
+        {showCredentials && <Typography color="text.primary">Credentials</Typography>}
+      </Breadcrumbs>
+
+      {!showCredentials ? (
+        <>
+          {/* Header */}
+          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2, flexWrap: "wrap" }}>
+            <Typography variant="h6" fontWeight="600">Seafarer Information</Typography>
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <Button variant="contained" onClick={handleAdd}>Add</Button>
+              <Button variant="contained" onClick={handleBulkUpload}>Bulk Upload</Button>
             </Box>
-          ))}
-        </Stack>
-      </Paper>
+          </Box>
 
+          {/* Search */}
+          <Paper sx={{ mb: 2, p: 1, display: "flex", alignItems: "center", borderRadius: "8px", width: "100%" }}>
+            <IconButton><Search/></IconButton>
+            <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search or filter..." />
+          </Paper>
+
+          {/* Table */}
+          <TableContainer component={Paper} elevation={0} sx={{ borderRadius: "10px", width: "100%", overflowX: "auto" }}>
+            <Table size="small" sx={{ borderSpacing: "0px 14px", borderCollapse: "separate" }}>
+              <TableHead>
+                <TableRow sx={{ backgroundColor: "#baa9a9ff" }}>
+                  {headers.map((header, idx) => (
+                    <TableCell key={idx} sx={{ fontWeight: 600, minWidth: 120 }}>{header}</TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {seafarers.map((row, index) => (
+                  <TableRow key={index} sx={{ backgroundColor: "#f5f5f5" }}>
+                    <TableCell>{row.sno}</TableCell>
+                    <TableCell>
+                      <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+                        <Typography variant="body2">{row.name}</Typography>
+                        <Typography variant="body2">{row.email}</Typography>
+                        <Typography variant="body2">{row.phone}</Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell>
+                      <Typography sx={{ pt:"9px" }}>{row.Id}</Typography>
+                      <Typography variant="body2">{row.passport}</Typography>
+                      <Typography variant="body2">{row.location}</Typography>
+                    </TableCell>
+                    <TableCell>{row.ship}<Typography color="text.secondary">{row.ship1}</Typography></TableCell>
+                    <TableCell>{row.role}</TableCell>
+                    <TableCell>
+                      <IconButton><AttachFile sx={{ transform: "rotate(45deg)" }} /></IconButton>
+                      {row.documentName || "viewAttachment"}
+                    </TableCell>
+                    <TableCell>
+                      <IconButton color="secondary" onClick={() => handleViewCredentials(row)}><RemoveRedEyeOutlined /></IconButton>
+                    </TableCell>
+                    <TableCell>
+                      <IconButton color="warning" onClick={() => handlePassword(row)}><Password /></IconButton>
+                    </TableCell>
+
+                    {/* Status as colored pill */}
+                    <TableCell>
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => {
+                          setSelectedStatusSeafarer(row);
+                          setTempStatus(row.status || "Active");
+                          setOpenStatusDialog(true);
+                        }}
+                        sx={{
+                          textTransform: "none",
+                          borderColor:row.status === "Active" ? "#259800" : "#EB0101",
+                          borderRadius: "20px",
+                          color: row.status === "Active" ? "#259800" : "#EB0101",
     
-      <ToggleButtonGroup
-        value={selectedTab}
-        exclusive
-        onChange={handleTabChange}
-        sx={{ width: "100%", borderRadius: "32px", mb: 3, overflow: "hidden" }}
-      >
-        <ToggleButton
-          value="coc"
-          sx={{
-            flex: 1,
-            borderRadius: 32,
-            backgroundColor: selectedTab === "coc" ? "#1E3A8A" : "transparent",
-            color: selectedTab === "coc" ? "#fff" : "#1E3A8A",
-            "&:hover": { backgroundColor: "#0B2357", color: "#fff" },
-          }}
-        >
-          Certificate of Competence
-        </ToggleButton>
-        <ToggleButton
-          value="stcw"
-          sx={{
-            flex: 1,
-            borderRadius: 32,
-            borderColor: "#1E3A8A",
-            color: selectedTab === "stcw" ? "#fff" : "#1E3A8A",
-            backgroundColor: selectedTab === "stcw" ? "#1E3A8A" : "transparent",
-            "&:hover": { backgroundColor: "#0B2357", color: "#fff" },
-          }}
-        >
-          STCW Modular Courses
-        </ToggleButton>
-      </ToggleButtonGroup>
+  
+                          minWidth: "80px",
+                        }}
+                      >
+                        {row.status || "Active"}
+                      </Button>
+                    </TableCell>
 
-      <TableContainer component={Paper} sx={{ borderRadius: 2, maxHeight: 400 }}>
-        <Table >
-          <TableHead sx={{  backgroundColor: "#5C5C5C",border: "1.06px solid", borderCollapse:"separate" }}>
-            <TableRow>
-              <TableCell sx={{color: "#fff", fontWeight: 600 }}>S. No</TableCell>
-              <TableCell sx={{color: "#fff", fontWeight: 600 }}>{selectedTab === "coc" ? "COC Name" : "Course Name"}</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Flag State</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Date Issued</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Valid Until</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Documents</TableCell>
-              <TableCell sx={{color: "#fff", fontWeight: 600 }}>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-        <TableBody>
-  {getCurrentTable().map((row, index) => {
-    const formatDate = (dateString) => {
-      if (!dateString) return "";
-      const date = new Date(dateString);
-      const day = date.getDate().toString().padStart(2, "0");
-      const month = (date.getMonth() + 1).toString().padStart(2, "0"); 
-      const year = date.getFullYear();
-      return `${day}-${month}-${year}`;
-    };
+                    <TableCell>
+                      <IconButton color="success" onClick={() => handleEdit(row)}><Edit /></IconButton>
+                      <IconButton color="error" onClick={() => handleDelete(row)}><Delete /></IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
 
-    return (
-      <TableRow key={row.id}>
-        <TableCell>{row.id}</TableCell>
-        <TableCell>{row.name}</TableCell>
-        <TableCell>{row.flagState}</TableCell>
-        <TableCell>{formatDate(row.dateIssued)}</TableCell>
-        <TableCell>{formatDate(row.validUntil)}</TableCell>
-        <TableCell sx={{ color: "#1E3A8A", fontWeight: 600 }}>
-          <IconButton>
-            <AttachFile sx={{ transform: "rotate(45deg)" }} />
-          </IconButton>
-          {row.documentName || "No File"}
-        </TableCell>
-        <TableCell>
-          <Stack direction="row" spacing={1}>
-            <IconButton onClick={() => handleOpenDialog(index)}>
-              <Edit />
-            </IconButton>
-            <IconButton onClick={() => handleDelete(index)} color="error">
-              <Delete />
-            </IconButton>
-          </Stack>
-        </TableCell>
-      </TableRow>
-    );
-  })}
-</TableBody>
+          <Box sx={{ mt: 2, display: "flex", justifyContent: "flex-start" }}>
+            <Pagination count={10}/>
+          </Box>
 
-        </Table>
-      </TableContainer>
-
-    
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-        <Button variant="outlined" onClick={() => handleOpenDialog()}sx={{border: "1px solid #064575"}}><IconButton color="#FFFFFF"><Add/></IconButton>Add</Button>
-        <Button variant="contained" backgroundColor=" #259BC1"
- onClick={handleSave}><IconButton><Save/></IconButton>Save</Button>
-      </Box>
-
-
-      <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="sm"   PaperProps={{
-          sx: {
-            
-        
-            backgroundColor: "#f9fbfc",
-            overflow: "hidden",
-          },
-        }}>
-        <DialogTitle  sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            fontWeight: "700",
-            color:" #064575",
-            pb: 1,
-            pt:0,
-            mt:0,
-          }}>{editIndex !== null ? "Edit" : "Add"}  seafarer Credentials<IconButton ><Close onClick={handleCloseDialog}/></IconButton></DialogTitle>
-        <Divider/><DialogContent>
-          <Stack spacing={2} mt={1}>
-               <Typography fontFamily="poppins"  mb={0.5} >{selectedTab === "coc" ? "COC Name" : "Course Name"}</Typography>
-            <TextField required
-              name="name"
-              fullWidth
-              value={newEntry.name}
-              onChange={handleChange}
+          {/* Status Dialog */}
+          <Dialog
+            open={openStatusDialog}
+            onClose={() => setOpenStatusDialog(false)}
+            fullWidth
+            maxWidth="xs"
+          >
+            <DialogTitle> Status<IconButton  onClick={() => setOpenStatusDialog(false)}><Close /></IconButton></DialogTitle><Divider/>
+            <DialogContent sx={{ mt: 1 }}>
+              <TextField
+                select
+                label="Status"
+                value={tempStatus}
+                onChange={(e) => setTempStatus(e.target.value)}
+                SelectProps={{ native: true }}
+                fullWidth
+                variant="outlined"
+              >
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </TextField>
+            </DialogContent>
+            <DialogActions>
               
-            /><Typography fontFamily="poppins"  mb={0.5} >Flag State</Typography>
-            <TextField
-            
-              name="flagState"
-              fullWidth
-              value={newEntry.flagState}
-              onChange={handleChange}
-            /><Typography fontFamily="poppins"  mb={0.5} >Date Issued</Typography>
-            <TextField
-            
-              name="dateIssued"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-              value={newEntry.dateIssued}
-              onChange={handleChange}
-            /><Typography fontFamily="poppins"  mb={0.5} > Valid Until</Typography>
-            <TextField
-             
-              name="validUntil"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-              value={newEntry.validUntil}
-              onChange={handleChange}
-            /><Typography fontFamily="poppins"  mb={0.5} >Upload Documents</Typography>
-            <Button
-              variant="outlined"
-              component="label"
-              startIcon={<AttachFile />}
-            >
-              {newEntry.documentName || "Upload Document"}
-              <input
-                type="file"
-                hidden
-                onChange={handleFileChange}
-                accept=".pdf,.txt,.doc,.docx,.jpg,.svg,.png"
-              />
-            </Button>
-          </Stack>
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={handleAddOrEditEntry}>
-                   {editIndex !== null ? "Update" : "Add"}
-                 </Button>
-        </DialogActions>
-      </Dialog>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setSeafarers((prev) =>
+                    prev.map((s) =>
+                      s.sno === selectedStatusSeafarer.sno
+                        ? { ...s, status: tempStatus }
+                        : s
+                    )
+                  );
+                  setOpenStatusDialog(false);
+                }}
+              >
+                Save
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+        </>
+      ) : (
+        <SeafarerCredentials seafarer={selectedSeafarer}/>
+      )}
     </Box>
   );
 }
 
-export default SeafarerCredentials;
+export default MyBoard;

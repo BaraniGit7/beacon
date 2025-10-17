@@ -169,21 +169,21 @@ function SeafarerCredentials({ seafarer }) {
 
   
   return (
-    <Box sx={{ p: 2, maxWidth: "1200px", mx: "auto" }}>
+    <Box sx={{ p: 2, maxWidth: "lg", mx: "auto", backgroundColor:" #D9D9D99C"}}>
     
       <Paper elevation={4} sx={{ p: 3, borderRadius: 2, backgroundColor: "#F8FAFF", mb: 4 }}>
-        <Typography variant="h6" sx={{ fontWeight: 700, color: "#1E3A8A", mb: 2, textAlign:"left"}}>
+        <Typography variant="h6" sx={{ fontWeight: 700, color: "#064575", mb: 2, textAlign:"left"}}>
           Credentials
         </Typography>
         <Stack direction={{ xs: "column", sm: "row" }} spacing={2} justifyContent="space-between" >
           {credentials.map((item) => (
-            <Box key={item.label} sx={{ display: "flex", gap: 1, minWidth: 200 }}>
-              {item.icon}
-              <Box  textAlign= "left" >
-                <Typography variant="body2" color="textSecondary" fontWeight={500}>
+            <Box key={item.label} sx={{ display: "flex", gap: 1, minWidth: 200, }}>
+             <Stack color="#0c79c2ff">{item.icon}</Stack> 
+              <Box textAlign= "left" >
+                <Typography   fontWeight={500}>
                   {item.label}
                 </Typography>
-                <Typography variant="body1" fontWeight={600}>
+                <Typography  fontWeight={600}>
                   {item.value}
                 </Typography>
               </Box>
@@ -203,10 +203,9 @@ function SeafarerCredentials({ seafarer }) {
           value="coc"
           sx={{
             flex: 1,
+             textTransform: "none",
             borderRadius: 32,
-            backgroundColor: selectedTab === "coc" ? "#1E3A8A" : "transparent",
-            color: selectedTab === "coc" ? "#fff" : "#1E3A8A",
-            "&:hover": { backgroundColor: "#0B2357", color: "#fff" },
+           
           }}
         >
           Certificate of Competence
@@ -215,19 +214,18 @@ function SeafarerCredentials({ seafarer }) {
           value="stcw"
           sx={{
             flex: 1,
+             textTransform: "none",
             borderRadius: 32,
             borderColor: "#1E3A8A",
-            color: selectedTab === "stcw" ? "#fff" : "#1E3A8A",
-            backgroundColor: selectedTab === "stcw" ? "#1E3A8A" : "transparent",
-            "&:hover": { backgroundColor: "#0B2357", color: "#fff" },
+            
           }}
         >
           STCW Modular Courses
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <TableContainer component={Paper} sx={{ borderRadius: 2, maxHeight: 400 }}>
-        <Table >
+      
+        <Table sx={{ borderSpacing: "0px 14px", borderCollapse: "separate"}} >
           <TableHead sx={{  backgroundColor: "#5C5C5C",border: "1.06px solid", borderCollapse:"separate" }}>
             <TableRow>
               <TableCell sx={{color: "#fff", fontWeight: 600 }}>S. No</TableCell>
@@ -239,7 +237,7 @@ function SeafarerCredentials({ seafarer }) {
               <TableCell sx={{color: "#fff", fontWeight: 600 }}>Actions</TableCell>
             </TableRow>
           </TableHead>
-       <TableBody>
+       <TableBody sx={{ backgroundColor: "#ffffff"}}>
   {getCurrentTable().map((row, index) => {
 
     const formatDate = (dateString) => {
@@ -252,20 +250,20 @@ function SeafarerCredentials({ seafarer }) {
     };
 
     return (
-      <TableRow key={row.id}>
+      <TableRow key={row.id} backgroundColor="#ffffff">
         <TableCell>{row.id}</TableCell>
         <TableCell>{row.name}</TableCell>
         <TableCell>{row.flagState}</TableCell>
         <TableCell>{formatDate(row.dateIssued)}</TableCell>
         <TableCell>{formatDate(row.validUntil)}</TableCell>
-        <TableCell sx={{ color: "#1E3A8A", fontWeight: 600 }}>
+        <TableCell sx={{ color: "#064575", fontWeight: 600, textDecoration:"underline", textDecorationLine:"solid", textDecorationSkipInk:"true", textDecorationThickness:"0%"}}>
           <IconButton>
-            <AttachFile sx={{ transform: "rotate(45deg)" }} />
+            <AttachFile sx={{ transform: "rotate(45deg)", color:"#064575"}} />
           </IconButton>
-          {row.documentName || "viewAttachement"}
+          {row.documentName || "viewAttachment"}
         </TableCell>
         <TableCell>
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={2}>
             <IconButton sx={{ border: "2px solid #6fa9e2ff",
     borderRadius: "8px",
     p: 1,
@@ -296,7 +294,7 @@ function SeafarerCredentials({ seafarer }) {
               
             
         </Table>
-      </TableContainer>
+     
 
     
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
@@ -308,7 +306,7 @@ function SeafarerCredentials({ seafarer }) {
 
       <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="sm"   PaperProps={{
           sx: {
-            borderRadius:"3px",
+            border:"2px solid #006D90",
             boxShadow: "0px 4px 20px rgba(0,0,0,0.15)",
             backgroundColor: "#ffffffff",
             overflow: "hidden",
@@ -319,17 +317,25 @@ function SeafarerCredentials({ seafarer }) {
             justifyContent: "space-between",
             alignItems: "center",
             fontWeight: "700",
-            color:" #064575",
+            color:" #006D90",
               fontFamily: "Poppins, sans-serif",
       fontSize: "1.25rem",
-            pb: 0,
+            pb: 1,
             pt:0,
-            mt:0,
-          }}>{editIndex !== null ? "Edit" : "Add"}  seafarer Credentials<IconButton ><Close onClick={handleCloseDialog}/></IconButton></DialogTitle>
-        <Divider/><DialogContent>
-          <Stack spacing={2} mt={1}>
-               <Typography fontFamily="poppins"  mb={0.5} >{selectedTab === "coc" ? "COC Name" : "Course Name"}<Typography  display="inline" color="#f80505ff">*</Typography></Typography>
-            <TextField required
+            mt:1,
+          }}>{editIndex !== null ? "Edit" : "Add"}  seafarer Credentials
+          <IconButton ><Close sx={{color:"#006D90"}} onClick={handleCloseDialog}/></IconButton></DialogTitle>
+        <Divider/><DialogContent  sx={{
+                    
+    px: 4,               
+    overflowY: { xs: "auto", sm: "visible" }, 
+  }}
+>
+          <Stack spacing={1} >
+               <Typography fontFamily="poppins"  mb={0.5} >{selectedTab === "coc" ? "COC Name" : "Course Name"}
+                <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
+            <TextField size="small"  required
+            
               name="name"
               fullWidth
               value={newEntry.name}
@@ -338,6 +344,7 @@ function SeafarerCredentials({ seafarer }) {
             /><Typography fontFamily="poppins"  mb={0.5} required >Flag State <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
             <TextField
             required
+            size="small" 
               name="flagState"
               fullWidth
               value={newEntry.flagState}
@@ -345,6 +352,7 @@ function SeafarerCredentials({ seafarer }) {
             /><Typography fontFamily="poppins"  mb={0.5} required>Date Issued<Typography  display="inline" color="#f80505ff">*</Typography></Typography>
             <TextField
             required
+            size="small" 
               name="dateIssued"
               type="date"
               InputLabelProps={{ shrink: true }}
@@ -354,6 +362,7 @@ function SeafarerCredentials({ seafarer }) {
             /><Typography fontFamily="poppins"  mb={0.5}> Valid Until <Typography  display="inline" color="#f80505ff">*</Typography></Typography>
             <TextField
               required
+              size="small" 
               name="validUntil"
               type="date"
               InputLabelProps={{ shrink: true }}
@@ -362,16 +371,18 @@ function SeafarerCredentials({ seafarer }) {
               onChange={handleChange}
             />
       <Typography fontFamily="Poppins" fontWeight={500} >
-  Upload Document<Typography  display="inline" color="#f80505ff">*</Typography>
+  Upload Document
 </Typography>
 
 
 {!newEntry.documentName ? (
   <><Box
                 sx={{
-                  border: "2px dashed #B0BEC5",
+                
+                  border: "2px dashed #006D90",
+                  gap:"9px",
                   borderRadius: 2,
-                  p: 3,
+                  p: 1,
                   textAlign: "center",
                   backgroundColor: "#F9FBFC",
                   "&:hover": { backgroundColor: "#F1F5F9" },
@@ -388,7 +399,7 @@ function SeafarerCredentials({ seafarer }) {
                   <DriveFolderUploadRounded
                     sx={{
                     
-                      color: "#064575"
+                      color: "#006D90"
                       
                     }} />
                   <Typography variant="body2" color="text.secondary" mt={1}>
@@ -398,8 +409,8 @@ function SeafarerCredentials({ seafarer }) {
                   <Button
                     variant="outlined"
                     sx={{
-                      borderColor: "#064575",
-                      color: "#064575",
+                      borderColor: "#006D90",
+                      color: "#006D90",
                       mt: 1,
                       textTransform: "none",
                       fontWeight: 600,
@@ -419,12 +430,12 @@ function SeafarerCredentials({ seafarer }) {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      border: "1px solid #064575",
+      border: "1px solid #E7E7E7",
       borderRadius: 2,
       px: 2,
       py: 1.5,
       mt: 1,
-      backgroundColor: "#E8F0FE",
+      backgroundColor: "#F3F3F3",
     }}
   >
     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -479,7 +490,7 @@ function SeafarerCredentials({ seafarer }) {
           documentName: "",
         }))
       }
-      color="error"
+   
     >
       <Close />
     </IconButton>
@@ -490,7 +501,7 @@ function SeafarerCredentials({ seafarer }) {
   </DialogContent>
 
         <DialogActions>
-          <Button variant="contained" onClick={handleAddOrEditEntry}>
+          <Button sx={{backgroundColor:"#006D90", px:"14px",py:"8px"}} variant="contained"  onClick={handleAddOrEditEntry}>
                    {editIndex !== null ? "Update" : "Add"}
                  </Button>
         </DialogActions>
