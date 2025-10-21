@@ -49,13 +49,13 @@ function MyBoard() {
 
   const [files, setFiles] = useState({});
   const [seafarers, setSeafarers] = useState([
-    { sno: "1", name: "K R Ashwathy", idNumber:"18051988", IdType:"passport", location:"India", email: "ash@gmail.com", phone:"9791917536", ship: "Ms Training Ship1", ship1:"(oilTanker)", role: "Deck Rating" },
-    { sno: "2", name: "Michael",idNumber:"18051988", IdType:"passport", location:"India", email:"mick@gmail.com", phone:"9775647536", ship: "Ms Training Ship1", ship1:"(oilTanker)", role: "Deck Rating" },
-    { sno: "3", name: "Ramachandran Anath",idNumber:"18051988",IdType:"passport",location:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
-    { sno: "4", name: "Ramachandran Anath",idNumber:"18051988",IdType:"passport",location:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
-    { sno: "5", name: "Ramachandran Anath",idNumber:"18051988",IdType:"passport",location:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
-    { sno: "6", name: "Ramachandran Anath",idNumber:"18051988",IdType:"passport",location:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
-    { sno: "7", name: "Ramachandran Anath",idNumber:"18051988",IdType:"passport",location:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "1", name: "K R Ashwathy", Id:"18051988", passport:"passport", loaction:"India", email: "ash@gmail.com", phone:"9791917536", ship: "Ms Training Ship1", ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "2", name: "Michael", Id:"18051988", passport:"passport", loaction:"India", email:"mick@gmail.com", phone:"9775647536", ship: "Ms Training Ship1", ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "3", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "4", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "5", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "6", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
+    { sno: "7", name: "Ramachandran Anath",Id:"18051988",passport:"passport",loaction:"India",email:"ramacha@gmail.com",phone:"9791917536", ship: "Ms Training Ship1" ,ship1:"(oilTanker)", role: "Deck Rating" },
   ]);
 
   const [showCredentials, setShowCredentials] = useState(false);
@@ -71,17 +71,16 @@ function MyBoard() {
     "Credentials", "Password", "Status", "Actions"
   ];
    const [newSeafarer, setNewSeafarer] = useState({
-      name: "",
-      phone: "",
+      seafarerName: "",
+      mobileNumber: "",
       email: "",
       role: "",
       shouldEmail: "",
       vesselAdmin: "",
-      ship: "",
-      ship1:"",
-      IdType: "",
+      shipName: "",
+      idType: "",
       idNumber: "",
-      location: "",
+      country: "",
     });
   
    const [editSeafarer, setEditSeafarer] = useState({});
@@ -95,14 +94,8 @@ function MyBoard() {
     };
 
   const handleFileChange = (e) => {
- const file = e.target.files[0];
-   if (file) {
-    if (openAdd) {
-      setNewSeafarer(prev => ({ ...prev, document: file, documentName: file.name }));
-    } else if (openEdit) {
-      setEditSeafarer(prev => ({ ...prev, document: file, documentName: file.name }));
-    }
-  }
+    const selectFile = e.target.files[0];
+    console.log("File uploaded:", selectFile);
    
   };
 
@@ -132,7 +125,7 @@ function MyBoard() {
 
 
   const handleEdit = (seafarer) => {
-    setEditSeafarer(seafarer);
+    setSelectedSeafarer(seafarer);
     setOpenEdit(true);
   };
 
@@ -143,16 +136,16 @@ function MyBoard() {
 
   const handleAdd = () =>  {
     setNewSeafarer({
-      name: "",
-      phone: "",
+      seafarerName: "",
+      mobileNumber: "",
       email: "",
       role: "",
       shouldEmail: "",
       vesselAdmin: "",
-      ship: "",
-      IdType: "",
+      shipName: "",
+      idType: "",
       idNumber: "",
-      location: "",
+      country: "",
     });
     setOpenAdd(true);
   };
@@ -231,15 +224,15 @@ function MyBoard() {
                       </Box>
                     </TableCell>
                     <TableCell>
-                      <Typography sx={{ pt:"9px" }}>{row.idNumber}</Typography>
-                      <Typography variant="body2">{row.IdType}</Typography>
-                      <Typography variant="body2">{row.location}</Typography>
+                      <Typography sx={{ pt:"9px" }}>{row.Id}</Typography>
+                      <Typography variant="body2">{row.passport}</Typography>
+                      <Typography variant="body2">{row.loaction}</Typography>
                     </TableCell>
                     <TableCell>{row.ship}<Typography color="text.secondary">{row.ship1}</Typography></TableCell>
                     <TableCell>{row.role}</TableCell>
                     <TableCell>
                       <IconButton color="primary" component="label">
-                                          <AttachFile /><Typography sx={{textDecoration:"underline"}}>viewAttachment</Typography>
+                                          <AttachFile />
                                           <input type="file" hidden />
                                         </IconButton>
                     </TableCell>
@@ -276,118 +269,48 @@ function MyBoard() {
             </Table>
           </TableContainer>
 
-          <Box sx={{ 
-            width: 772,
-height: 749,
-opacity: 1,top: "105px",
-left: "626px",
-borderRadius: "20px",
-borderWidth: "1.5px",borderColor:"#006D90",
-mt: 2, display: "flex", justifyContent: "center" }}>
+          <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
             <Pagination count={10}/>
           </Box>
 
 <Dialog
         open={openAdd || openEdit}
         onClose={closeDialogs}
-      
-         maxWidth={false}
-  PaperProps={{
-    sx: {
-      width: 772,
-      height: 812,
-      borderRadius: "20px",
-      border: "1.5px solid #D9D9D9",
-     // overflowY: isMobile ? "hidden":"visible",
-      boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
-      p: 0,
-      "@media (max-width:900px)": {
-        width: "90%",
-        height: "auto",
-      },
-    },
-  }}
+        maxWidth="md"
+        fullWidth
       >
         <DialogTitle
-        sx={{
-      fontFamily: "Poppins, sans-serif",
-      fontWeight: 600,
-      fontSize: "1.25rem",
-      color: "#006D90",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      px: 3,
-      py: 2,
-      borderBottom: "1px solid #E0E0E0",
-    }}
+          sx={{
+            fontWeight: 600,
+            color: "#064575",
+            fontFamily: "Poppins, sans-serif",
+          }}
         >
-          {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}<IconButton  onClick={closeDialogs}><Close sx={{  backgroundColor:" #006D90" ,color:"#fae9e9ff"}}/></IconButton>
+          {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}<IconButton  onClick={closeDialogs}><CloseOutlined/></IconButton>
         </DialogTitle>
-          <Divider/>
-        <DialogContent sx={{
-      px: 4,
-      py: 3,
-      fontFamily: "Poppins, sans-serif",
-      backgroundColor: "#FFFFFF",
-      height: "100%",
-    }}>
-         <Grid container spacing={2}>
+
+        <DialogContent sx={{ px: 4, py: 3, fontFamily: "Poppins, sans-serif" }}>
+       <Box sx={{p:2}}>   <Grid container spacing={2}>
             {[
-              { label: "Seafarer Name", name: "name" },
-              { label: "Mobile Number", name: "phone" },
+              { label: "Seafarer Name", name: "seafarerName" },
+              { label: "Mobile Number", name: "mobileNumber" },
               { label: "Email ID", name: "email" },
-              { label: "Role", name: "role", type: "select", options: ["Deck Rating","Captain", "Engineer", "Crew"] },
+              { label: "Role", name: "role", type: "select", options: ["Captain", "Engineer", "Crew"] },
               { label: "Should we email seafarer?", name: "shouldEmail", type: "select", options: ["Yes", "No"] },
               { label: "Vessel Admin?", name: "vesselAdmin", type: "select", options: ["Yes", "No"] },
-              { label: "Ship Name & Type*", name: "ship" },
-              { label: "ID Type*", name: "IdType", type: "select", options: ["Passport", "Seafarer ID"] },
+              { label: "Ship Name & Type*", name: "shipName" },
+              { label: "ID Type*", name: "idType", type: "select", options: ["Passport", "Seafarer ID"] },
               { label: "ID Number*", name: "idNumber" },
-              { label: "Associated Country*", name: "location", type: "select", options: ["India", "USA", "UK"] },
+              { label: "Associated Country*", name: "country", type: "select", options: ["India", "USA", "UK"] },
             ].map((field) => (
               <Grid  size={6}item xs={12} sm={6} md={6} key={field.name}>
                 <Typography  variant="body2" 
-             sx={{
-   
-    height: 27,
-    fontFamily: "Poppins, sans-serif",
-    fontWeight: 400,
-
-    
-   
-  
-  
-  }}>{field.label}<Typography sx={{color:"#ff0000ff",display:"inline"}}>*</Typography></Typography>
+              sx={{ mb: 0.5, fontWeight: 400, fontFamily: "Poppins" }}>{field.label}</Typography>
                 {field.type === "select" ? (
                   <TextField
-                sx={{
-    width: 314,
-    height: 30,
-    borderRadius: "10px",
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "10px",
-      height: 30,
-      paddingLeft: "10px",
-      "& fieldset": {
-        borderWidth: "1px",
-        borderColor: "#B0BEC5",
-      },
-      "&:hover fieldset": {
-        borderColor: "#064575", 
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#064575", 
-      },
-    },
-    "& .MuiInputBase-input": {
-      padding: "8px 10px",
-      fontSize: "0.85rem",
-    },
-  }}
                     select
                     fullWidth
                     size="small"
-                    
                     name={field.name}
                     value={
                       openAdd
@@ -397,38 +320,13 @@ mt: 2, display: "flex", justifyContent: "center" }}>
                     onChange={handleInputChange}
                   >
                     {field.options.map((opt) => (
-                      <MenuItem  key={opt} value={opt}>
+                      <MenuItem key={opt} value={opt}>
                         {opt}
                       </MenuItem>
                     ))}
                   </TextField>
                 ) : (
-                  <TextField 
-                    sx={{
-    width: 314,
-    height: 27,
-    borderRadius: "10px",
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "10px",
-      height: 27,
-      paddingLeft: "10px",
-      "& fieldset": {
-        borderWidth: "1px",
-        borderColor: "#B0BEC5", 
-      },
-      "&:hover fieldset": {
-        borderColor: "#064575",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#064575", 
-      },
-    },
-    "& .MuiInputBase-input": {
-      padding: "8px 10px",
-      fontSize: "0.85rem",
-    },
-  }}
-                    
+                  <TextField
                     fullWidth
                     size="small"
                     name={field.name}
@@ -441,126 +339,54 @@ mt: 2, display: "flex", justifyContent: "center" }}>
                   />
                 )}
               </Grid>
-            ))} </Grid>
+            ))}
 
-       
-           {/* Upload Section */}
-<Box >
-  
-  <Typography sx={{
-    width:"164px",
-    height:"27px",
-      fontFamily: "Poppins",
-      fontWeight: 400,
-      mt:"4px",
-     // fontSize: "18px",
-    
-   
-    }}>Upload Documents</Typography>
-  {(!openAdd ? editSeafarer.documentName : newSeafarer.documentName) ? (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        border: "1px solid #E7E7E7",
-        borderRadius: 2,
-       width:"673px",
-       height:"130px",
-        backgroundColor: "#F3F3F3",
-      }}
-    >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        {((openAdd ? newSeafarer.documentName : editSeafarer.documentName).endsWith(".pdf")) ? (
-          <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="pdf" width={26} />
-        ) : ((openAdd ? newSeafarer.documentName : editSeafarer.documentName).match(/\.(doc|docx)$/)) ? (
-          <img src="https://cdn-icons-png.flaticon.com/512/337/337932.png" alt="doc" width={26} />
-        ) : (
-          <img src="https://cdn-icons-png.flaticon.com/512/136/136524.png" alt="img" width={26} />
-        )}
-
-        <Box>
-          <Typography fontWeight={400} sx={{ wordBreak: "break-all" }}>
-            {openAdd ? newSeafarer.documentName : editSeafarer.documentName}
-          </Typography>
-          {(openAdd ? newSeafarer.document : editSeafarer.document) && (
-            <Typography variant="caption" color="gray">
-              {((openAdd ? newSeafarer.document : editSeafarer.document).size / 1024 / 1024).toFixed(2)} MB
-            </Typography>
-          )}
-        </Box>
-      </Box>
-
-      <IconButton
-        onClick={() => {
-          if (openAdd) setNewSeafarer(prev => ({ ...prev, document: null, documentName: "" }));
-          else setEditSeafarer(prev => ({ ...prev, document: null, documentName: "" }));
-        }}
-      >
-        <Close />
-      </IconButton>
-    </Box>
-  ) : (
-    <>
-      <Box
-        sx={{
-          border: "2px dashed #006D90",
-          gap: "9px",
-          borderRadius: 2,
-         width:"674px",
-         height:"133px",
-          textAlign: "center",
-          backgroundColor: "#F9FBFC",
-          "&:hover": { backgroundColor: "#F1F5F9" },
-          transition: "0.2s",
-          cursor: "pointer",
-        }}
-      >
-        <input
-          type="file"
-          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-          hidden
-          id="file-upload"
-          onChange={handleFileChange}
-        />
-        <label htmlFor="file-upload">
-          <DriveFolderUploadRounded sx={{ color: "#006D90",width:"30px",height:"30px"}} />
-          <Typography variant="body2" color="text.secondary" >
-            Drag your file(s) to start uploading
-          </Typography>
-          <Typography variant="body2" color="text.secondary" >
-            OR
-          </Typography>
-          <Button
-            variant="outlined"
-            sx={{ borderColor: "#006D90", color: "#006D90", textTransform: "none", }}
-            component="span"
-          >
-            Browse files
-          </Button>
-        </label>
-      </Box>
-      <Typography variant="caption" display="block" mt="2px" height="20px" color="gray">
-        Support .docs, .docx, .pdf, .jpg, .png
-      </Typography>
-    </>
-  )}
-</Box>
-
-         
-
-
-       
+            {/* Upload Section */}
+            <Grid item xs={12}>
+              <Typography>Upload Document</Typography>
+              <Box
+                sx={{
+                  border: "2px dashed #c3cfd9",
+                  borderRadius: "12px",
+                  p: 3,
+                  textAlign: "center",
+                  color: "#6b7280",
+                  backgroundColor: "#f9fbfc",
+                }}
+              >
+                <Typography variant="body2">
+                  Drag your files to start uploading
+                </Typography>
+                <Button
+                  variant="outlined"
+                  component="label"
+                  sx={{ mt: 1, borderColor: "#064575", color: "#064575" }}
+                >
+                  Browse File
+                  <input type="file" hidden onChange={handleFileChange} />
+                </Button>
+                <Typography
+                  variant="caption"
+                  display="block"
+                  sx={{ mt: 1, color: "#9ca3af" }}
+                >
+                  Support .docs, .docx, .pdf, .jpg, .png
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid></Box>
         </DialogContent>
 
         <DialogActions sx={{ px: 4, pb: 3 }}>
-
+          <Button variant="outlined">
+            Cancel
+          </Button>
           {openAdd ? (
-            <Button  sx={{backgroundColor: "#006D90"}} variant="contained" onClick={handleAddSeafarer}>
+            <Button variant="contained" onClick={handleAddSeafarer}>
               + Add
             </Button>
           ) : (
-            <Button sx={{backgroundColor: "#006D90"}} variant="contained" onClick={handleEditSeafarer}>
+            <Button variant="contained" onClick={handleEditSeafarer}>
               Save Changes
             </Button>
           )}

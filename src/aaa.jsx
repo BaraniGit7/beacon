@@ -173,7 +173,7 @@ function MyBoard() {
                       {row.documentName || "viewAttachment"}
                     </TableCell>
                     <TableCell>
-                      <IconButton color="secondary" onClick={() => handleViewCredentials(row)}><RemoveRedEyeOutlined /></IconButton>
+                      <IconButton color="secondary" oanClick={() => handleViewCredentials(row)}><RemoveRedEyeOutlined /></IconButton>
                     </TableCell>
                     <TableCell>
                       <IconButton color="warning" onClick={() => handlePassword(row)}><Password /></IconButton>
