@@ -22,6 +22,7 @@ import {
   Upload,
   CloudUpload,
   CloudUploadOutlined,
+  LockReset,
 } from "@mui/icons-material";
 import {
   Box,
@@ -295,7 +296,7 @@ const handleFileAdd = (newFiles) => {
     closeDialogs();
   };
   const [page, setPage] = useState(1);
-const rowsPerPage = 7;
+const rowsPerPage = 4;
 
 // Slice seafarers for the current page
 const paginatedSeafarers = seafarers.slice(
@@ -310,532 +311,542 @@ const handlePageChange = (event, value) => {
 
 
   return (
-    <Box sx={{ p: 2, width: "100%" , backgroundColor: "#F4FCFF",minHeight: "100vh"}}>
-      <Breadcrumbs sx={{ mb: 2 }}>
-        <Link underline="hover" color="inherit" onClick={handleBackToList} sx={{ cursor: "pointer" }}>
+    <Box sx={{ p: 2,width: "100%" , backgroundColor: "#F4FCFF",minHeight: "100vh"}}>
+      <Breadcrumbs separator=">" sx={{ mb: 2 , '& .MuiBreadcrumbs-separator': {
+      mx: 1,   color:"#000",              // Increase space between items
+      fontSize: '20px',},  }}>
+        <Link underline="hover" color="inherit" onClick={handleBackToList} sx={{ cursor: "pointer", 
+        fontFamily: 'Inter, sans-serif',
+  fontWeight: 600, // Semi Bold
+  fontStyle: 'Bold',
+  fontSize: '20px',
+        color:"#000000ff"
+   }}>
           Seafarer List
         </Link>
-        {showCredentials && <Typography color="text.primary">Credentials</Typography>}
+        {showCredentials && <Typography color="text.primary" sx={{
+  fontFamily: 'Inter, sans-serif',
+  fontWeight: 600, // Semi Bold
+  fontStyle: 'normal',
+  fontSize: '20px',
+  lineHeight: '100%',
+
+}}
+>Seafarer Credentials</Typography>}
       </Breadcrumbs>
 
       {!showCredentials ? (
         <>
-          {/* Header */}
-         
           {/* Search */}
           <Box
-  sx={{
-    mb: 2,
-    p: 1,
-    display: "flex",
-    flexDirection: { xs: "column", sm: "row" }, // Column on mobile, row on desktop
-    alignItems: { xs: "stretch", sm: "center" },
-    borderRadius: "8px",
-    width: "100%",
-    gap: 1, // Space between search and buttons on mobile
-    justifyContent: "space-between",
-  }}
->
-  {/* Search */}
-  <Paper
-    sx={{
-      p: 1,
-      display: "flex",
-      alignItems: "center",
-      borderRadius: "8px",
-      width: { xs: "100%", sm: "70%" }, // Full width on mobile
-    }}
-  >
-    <IconButton><Search /></IconButton>
-    <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search or filter..." />
-  </Paper>
+              sx={{
+                mb: 2,
+                p: 1,
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" }, // Column on mobile, row on desktop
+                alignItems: { xs: "stretch", sm: "center" },
+                borderRadius: "8px",
+                width: "100%",
+                gap: 1, // Space between search and buttons on mobile
+                justifyContent: "space-between",
+              }}>
+                {/* Search */}
+                <Paper
+                  sx={{
+                    p: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    borderRadius: "8px",
+                    width: { xs: "100%", sm: "70%" }, // Full width on mobile
+                  }}
+                >
+                  <IconButton><Search /></IconButton>
+                  <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search or filter..." />
+                </Paper>
 
-  {/* Buttons on the right (desktop) or below (mobile) */}
-  <Box
-    sx={{
-      display: "flex",
-      gap: 1,
-      mt: { xs: 1, sm: 0 }, // Add top margin on mobile
-      justifyContent: { xs: "flex-start", sm: "flex-end" },
-    }}
-  >
-    <Button variant="contained" sx={{fontFamily:"poppins",fontWeight:"600",backgroundColor:"#006D90",fontStyle:"semiBold",border:"1px"}} onClick={handleAdd}><IconButton  sx={{color:"#fffefeff"}}><Add sx={{color:"#ffffffff"}} /></IconButton>Add Seafarer</Button>
-    <Button variant="outlined" sx={{fontFamily:"poppins",fontWeight:"600",backgroundColor:"#ffffffff",color:"#006D90",fontStyle:"semiBold",borderColor:"#006D90"}} onClick={handleBulkUpload}><IconButton  sx={{color:"#006D90"}}><CloudUploadOutlined sx={{color:"#006D90"}}/></IconButton> Bulk Upload</Button>
-  </Box>
-</Box>
-
-
-          {/* Table */}
-        <TableContainer
-
-  component={Paper}
-  elevation={0}
-  sx={{
-  backgroundColor:"#F4FCFF",
-    borderRadius: "10px",
-    width: "100%",
-    overflowX: "auto",
-  }}
->
-  <Table
-    size="small"
-    sx={{
-        backgroundColor:"#F4FCFF",
-      borderSpacing: "0px 14px",
-      borderCollapse: "separate",
-      minWidth: 650, // ensures horizontal scroll on small screens
-    }}
-  >
-    <TableHead>
-      <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
-        {headers.map((header, idx) => (
-          <TableCell
-            key={idx}
-            sx={{
-              color:"#E4E4E4",
-             
-               fontFamily: "Inter, sans-serif",
-    fontWeight: 700,           // bold
-    fontStyle: "normal",       // MUI uses "normal" instead of "Bold"
-    fontSize: "14.9px",
-    
-              minWidth: 120,
-              px: { xs: 0.5, sm: 1 }, // smaller padding on mobile
-              py: { xs: 0.5, sm: 1 },
-            }}
-          >
-            {header}
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-    <TableBody  sx={{
-   
-    borderRadius: "20.2px",
-    border: "1.06px solid #E4E4E4",
-   
-  
-  }}>
-      {paginatedSeafarers.map((row, index) => (
-        <TableRow
-          key={index}
-          sx={{
-            
-
-            backgroundColor: "#fff",
-            "& td": { px: { xs: 0.5, sm: 1 }, py: { xs: 0.5, sm: 1 } },
-          }}
-        >
-          <TableCell>{row.sno}</TableCell>
-
-          {/* Name / Email / Phone stacked */}
-          <TableCell 
- 
->
-
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 0.3,
-   
-    // leading-trim is not standard CSS, so we ignore it
-  }}>
-              <Typography variant="body2" >{row.name}</Typography>
-              <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.email}</Typography>
-              <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.phone}</Typography>
-            </Box>
-          </TableCell>
-
-          {/* ID Info */}
-          <TableCell>
-            <Typography sx={{ pt: "4px", fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.idNumber}</Typography>
-            <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.IdType}</Typography>
-            <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.location}</Typography>
-          </TableCell>
-
-          <TableCell>
-            {row.ship}
-            <Typography color="text.secondary" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.ship1}</Typography>
-          </TableCell>
-
-          <TableCell sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.role}</TableCell>
-
-          {/* Attachment */}
-          <TableCell>
-            <IconButton color="primary" component="label" sx={{ p: 0.5 }}>
-              <AttachFile fontSize="small" />
-              <Typography sx={{ textDecoration: "underline", fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>viewAttachment</Typography>
-            </IconButton>
-          </TableCell>
-
-          {/* View / Password / Status / Edit/Delete */}
-          <TableCell>
-            <IconButton color="secondary" onClick={() => handleViewCredentials(row)} sx={{ p: 0.5 }}>
-              <RemoveRedEyeOutlined fontSize="small" />
-            </IconButton>
-          </TableCell>
-          <TableCell>
-            <IconButton color="warning" onClick={() => handlePassword(row)} sx={{ p: 0.5 }}>
-              <Password fontSize="small" />
-            </IconButton>
-          </TableCell>
-
-   {/* ✅ Status Box inside Table Cell */}
-      <TableCell align="center">
-        <Box
-          sx={{
-           
-            
-  fontFamily: 'Inter, sans-serif',
-  fontWeight: 500,       // Medium
-  fontStyle: 'normal',   // Corrected from 'Medium'
-  fontSize: '12.77px',
-  lineHeight: '140%',
-
-
-            display: "inline-block",
-            px: 1.5,
-            py: 0.5,
-            borderRadius: "12px",
-            border: "1px solid",
-            borderColor:  row.status === "Active" ? "green" : "red",
-            color: row.status === "Active" ? "green" : "red",
-            fontWeight: 600,
-            fontSize: { xs: "0.7rem", sm: "0.85rem" },
-            textAlign: "center",
-            cursor: "pointer",
-            minWidth: 80,
-          }}
-          onClick={() => setOpenStatusDialog(row)}
-        >
-           <IconButton   sx={{ p: 0.5, }}>
-              <CircleSharp sx={{width:"8.2px",height:"8.2px",color: row.status === "Active" ? "green" : "red"}} fontSize="small" />
-            </IconButton>
-          {row.status || "Active"}<IconButton   sx={{ p: 0.5 }}>
-              <EditSharp fontSize="small" />
-            </IconButton>
-        </Box>
-      </TableCell>
-
-
-          <TableCell>
-        <Stack direction="row" spacing={2}  >  <IconButton sx={{ border: "2px solid #6fa9e2ff",
-    borderRadius: "8px",
-    p: 1,
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",gap:"9px"}}  variant="outlined" onClick={() => handleEdit(row)} >
-              <Edit fontSize="small" />
-            </IconButton>
-            <IconButton color="error" onClick={() => handleDelete(row)}   sx={{ 
-              border: "2px solid, #f71000ff",
-            color:" #e03a2eff",
-           borderRadius: "8px",
-    p: 1,ml:"auto",
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",gap:"9px" }}>
-              <Delete fontSize="small" />
-            </IconButton></Stack>
-          </TableCell>
-        </TableRow>
-      ))}
-    </TableBody>
-  </Table>
-</TableContainer>
-
-
-          <Box sx={{
-    display: "flex",
-    justifyContent: "center",  
-    alignItems: "center",      
-    mt: 2,                      
-  }} >
-           <Pagination
-  count={Math.ceil(seafarers.length / rowsPerPage)}
-  page={page}
-  onChange={handlePageChange}
-/>
-          </Box>
-
-<Dialog
-        open={openAdd || openEdit}
-        onClose={closeDialogs}
-      
-         maxWidth={false}
-  PaperProps={{
-    sx: {
-      width: 772,
-      height: 812,
-      borderRadius: "20px",
-      border: "1.5px solid #0069d0",
-     // overflowY: isMobile ? "hidden":"visible",
-      boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
-      p: 0,
-      "@media (max-width:900px)": {
-        width: "90%",
-        height: "auto",
-      },
-    },
-  }}
-      >
-        <DialogTitle
-        sx={{
-       height:"36px",
-       px:"24px",
-       py:"12px",
-      fontFamily: "Poppins, sans-serif",
-      fontWeight: 600,
-      fontSize: "1.25rem",
-      color: "#006D90",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      borderBottom: "1px solid #E0E0E0",
-    }}
-        >
-          {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}<IconButton  onClick={closeDialogs}><Close sx={{  backgroundColor:" #006D90" ,color:"#fae9e9ff"}}/></IconButton>
-        </DialogTitle>
-          <Divider/>
-        <DialogContent sx={{
-      px: 4,
-      py:"7px",
-      fontFamily: "Poppins, sans-serif",
-      backgroundColor: "#FFFFFF",
-      height: "100%",
-    }}>
-         <Grid container spacing={2}>
-            {[
-              { label: "Seafarer Name", name: "name" },
-              { label: "Mobile Number", name: "phone" },
-              { label: "Email ID", name: "email" },
-              { label: "Role", name: "role", type: "select", options: ["Deck Rating","Captain", "Engineer", "Crew"] },
-              { label: "Should we email seafarer?", name: "shouldEmail", type: "select", options: ["Yes", "No"] },
-              { label: "Vessel Admin?", name: "vesselAdmin", type: "select", options: ["Yes", "No"] },
-              { label: "Ship Name & Type*", name: "ship" },
-              { label: "ID Type*", name: "IdType", type: "select", options: ["Passport", "Seafarer ID"] },
-              { label: "ID Number*", name: "idNumber" },
-              { label: "Associated Country*", name: "location", type: "select", options: ["India", "USA", "UK"] },
-            ].map((field) => (
-              <Grid  size={6}item xs={12} sm={6} md={6} key={field.name}>
-                <Typography  variant="body2" 
-             sx={{
-   
-    height: 27,
-    fontFamily: "Poppins, sans-serif",
-    fontWeight: 400,
-
-    
-   
-  
-  
-  }}>{field.label}<Typography sx={{color:"#ff0000ff",display:"inline"}}>*</Typography></Typography>
-                {field.type === "select" ? (
-                  <TextField
-                sx={{
-    width: 314,
-    height: 30,
-    borderRadius: "10px",
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "10px",
-      height: 30,
-      paddingLeft: "10px",
-      "& fieldset": {
-        borderWidth: "1px",
-        borderColor: "#B0BEC5",
-      },
-      "&:hover fieldset": {
-        borderColor: "#064575", 
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#064575", 
-      },
-    },
-    "& .MuiInputBase-input": {
-      padding: "8px 10px",
-      fontSize: "0.85rem",
-    },
-  }}
-                    select
-                    fullWidth
-                    size="small"
-                    
-                    name={field.name}
-                    value={
-                      openAdd
-                        ? newSeafarer[field.name]
-                        : editSeafarer[field.name] || ""
-                    }
-                    onChange={handleInputChange}
-                  >
-                    {field.options.map((opt) => (
-                      <MenuItem  key={opt} value={opt}>
-                        {opt}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                ) : (
-                  <TextField 
+                   {/* Buttons on the right (desktop) or below (mobile) */}
+                  <Box
                     sx={{
-    width: 314,
-    height: 27,
-    borderRadius: "10px",
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "10px",
-      height: 27,
-      paddingLeft: "10px",
-      "& fieldset": {
-        borderWidth: "1px",
-        borderColor: "#B0BEC5", 
-      },
-      "&:hover fieldset": {
-        borderColor: "#064575",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#064575", 
-      },
-    },
-    "& .MuiInputBase-input": {
-      padding: "8px 10px",
-      fontSize: "0.85rem",
-    },
-  }}
+                      display: "flex",
+                      gap: 1,
+                      mt: { xs: 1, sm: 0 }, // Add top margin on mobile
+                      justifyContent: { xs: "flex-start", sm: "flex-end" },
+                    }}
+                  >
+                    <Button variant="contained"  startIcon={<Add/>}
+                     sx={{
+                      fontFamily:"poppins",
+                      fontWeight:"600",
+                      backgroundColor:"#006D90",
+                      border:"1px"}} 
+                      onClick={handleAdd}>Add Seafarer</Button>
+                    <Button variant="outlined" startIcon={<CloudUploadOutlined/>} sx={{fontFamily:"poppins",fontWeight:"600",backgroundColor:"#ffffffff",color:"#006D90",fontStyle:"semiBold",borderColor:"#006D90"}} onClick={handleBulkUpload}>Bulk Upload</Button>
+                  </Box>
+           </Box>
+
+
+                   {/* Table */}
+                   <TableContainer
+                      component={Paper}
+                      elevation={0}
+                      sx={{
+                      backgroundColor:"#F4FCFF",
+                        borderRadius: "10px",
+                        width: "100%",
+                        overflowX: "auto",
+                      }}
+                    >
+                      <Table
+                        size="small"
+                        sx={{
+                            backgroundColor:"#F4FCFF",
+                          borderSpacing: "0px 14px",
+                          borderCollapse: "separate",
+                          minWidth: 650, // ensures horizontal scroll on small screens
+                        }}
+                      >
+                        <TableHead>
+                          <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
+                            {headers.map((header, idx) => (
+                              <TableCell
+                                key={idx}
+                                sx={{
+                                  color:"#E4E4E4",
+                                  fontFamily: "Inter, sans-serif",
+                                    fontWeight: 700,           // bold
+                                    fontStyle: "normal",       // MUI uses "normal" instead of "Bold"
+                                    fontSize: "14.9px",
+                                    
+                                  minWidth: 120,
+                                  px: { xs: 0.5, sm: 1 }, // smaller padding on mobile
+                                  py: { xs: 0.5, sm: 1 },
+                                }}
+                              >
+                                {header}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        </TableHead>
+                        <TableBody  sx={{
+                      
+                        borderRadius: "20.2px",
+                        border: "1.06px solid #E4E4E4",
+                      
+                      
+                      }}>
+                          {paginatedSeafarers.map((row, index) => (
+                            <TableRow
+                              key={index}
+                              sx={{
+                                
+
+                                backgroundColor: "#fff",
+                                "& td": { px: { xs: 0.5, sm: 1 }, py: { xs: 0.5, sm: 1 } },
+                              }}
+                            >
+                              <TableCell>{row.sno}</TableCell>
+
+                              {/* Name / Email / Phone stacked */}
+                              <TableCell 
                     
-                    fullWidth
-                    size="small"
-                    name={field.name}
-                    value={
-                      openAdd
-                        ? newSeafarer[field.name]
-                        : editSeafarer[field.name] || ""
-                    }
-                    onChange={handleInputChange}
-                  />
+                    >
+
+                                <Box sx={{ display: "flex", flexDirection: "column", gap: 0.3,
+                      
+                        // leading-trim is not standard CSS, so we ignore it
+                      }}>
+                                  <Typography variant="body2" >{row.name}</Typography>
+                                  <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.email}</Typography>
+                                  <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.phone}</Typography>
+                                </Box>
+                              </TableCell>
+
+                              {/* ID Info */}
+                              <TableCell>
+                                <Typography sx={{ pt: "4px", fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.idNumber}</Typography>
+                                <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.IdType}</Typography>
+                                <Typography variant="body2" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.location}</Typography>
+                              </TableCell>
+
+                              <TableCell>
+                                {row.ship}
+                                <Typography color="text.secondary" sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.ship1}</Typography>
+                              </TableCell>
+
+                              <TableCell sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}>{row.role}</TableCell>
+
+                              {/* Attachment */}
+                              <TableCell>
+                                <IconButton color="primary" component="label" sx={{ p: 0.5,color:"#006D90" }}>
+                                  <AttachFile fontSize="small" />
+                                  <Typography sx={{ textDecoration: "underline", fontSize: { xs: "0.65rem", sm: "0.875rem",color:"#006D90" } }}>viewAttachment</Typography>
+                                </IconButton>
+                              </TableCell>
+
+                              {/* View / Password / Status / Edit/Delete */}
+                              <TableCell>
+                                <IconButton  onClick={() => handleViewCredentials(row)} sx={{ p: 0.5,color:"#006D90" }}>
+                                  <RemoveRedEyeOutlined fontSize="medium" />
+                                </IconButton>
+                              </TableCell>
+                              <TableCell>
+                                <IconButton onClick={() => handlePassword(row)} sx={{ p: 0.5 ,color:"#006D90" }}>
+                                  <LockReset fontSize="medium" />
+                                </IconButton>
+                              </TableCell>
+
+                      {/* ✅ Status Box inside Table Cell */}
+                          <TableCell align="center">
+                            <Box
+                              sx={{
+                                    fontFamily: 'Inter, sans-serif',
+                                
+                                    fontStyle: 'normal',   
+                                  
+                                    lineHeight: '140%',
+                                    display: "inline-block",
+                                    px: 1.5,
+                                    py: 0.5,
+                                    borderRadius: "12px",
+                                    border: "1px solid",
+                                    borderColor:  row.status === "Active" ? "green" : "red",
+                                    color: row.status === "Active" ? "green" : "red",
+                                    fontWeight: 600,
+                                    fontSize: { xs: "0.7rem", sm: "0.85rem" },
+                                    textAlign: "center",
+                                    cursor: "pointer",
+                                    minWidth: 80,
+                              }}
+                              onClick={() => setOpenStatusDialog(row)}
+                            >
+                              <IconButton   sx={{ p: 0.5, }}>
+                                  <CircleSharp sx={{width:"8.2px",height:"8.2px",color: row.status === "Active" ? "green" : "red"}} fontSize="small" />
+                                </IconButton>
+                              {row.status || "Active"}<IconButton   sx={{ p: 0.5 }}>
+                                  <EditSharp fontSize="small" />
+                                </IconButton>
+                            </Box>
+                          </TableCell>
+
+
+                              <TableCell>
+                            <Stack direction="row" spacing={2}  >
+                                <IconButton sx={{ border: "2px solid #6fa9e2ff",
+                                          borderRadius: "8px",
+                                          p: 1,
+                                          display: "inline-flex",
+                                          alignItems: "center",
+                                          justifyContent: "center",gap:"9px"}}  variant="outlined" onClick={() => handleEdit(row)} >
+                                         <Edit fontSize="small" />
+                                </IconButton>
+                                <IconButton color="error" onClick={() => handleDelete(row)}   sx={{ 
+                                     border: "2px solid, #f71000ff",
+                                     color:" #e03a2eff",
+                                    borderRadius: "8px",
+                                    p: 1,ml:"auto",
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",gap:"9px" }}>
+                                  <Delete fontSize="small" />
+                                </IconButton></Stack>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+
+
+                        <Box 
+                           sx={{
+                            display: "flex",
+                            justifyContent: "center",  
+                            alignItems: "center",      
+                            mt: 2,                      
+                          }} >
+                          <Pagination
+                                count={Math.ceil(seafarers.length / rowsPerPage)}
+                                page={page}
+                                onChange={handlePageChange}
+                              />
+                        </Box>
+
+              <Dialog
+                      open={openAdd || openEdit}
+                      onClose={closeDialogs}
+                    
+                      maxWidth={false}
+                PaperProps={{
+                  sx: {
+                    width: 772,
+                    height: 812,
+                    borderRadius: "20px",
+                    border: "1.5px solid #0069d0",
+                  // overflowY: isMobile ? "hidden":"visible",
+                    boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
+                    p: 0,
+                    "@media (max-width:900px)": {
+                      width: "90%",
+                      height: "auto",
+                    },
+                  },
+                }}
+                    >
+                      <DialogTitle
+                      sx={{
+                    height:"36px",
+                    px:"24px",
+                    py:"12px",
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 600,
+                    fontSize: "1.25rem",
+                    color: "#006D90",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderBottom: "1px solid #E0E0E0",
+                  }} >
+                        {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}
+                        <IconButton  onClick={closeDialogs}><Close sx={{  backgroundColor:" #006D90" ,color:"#fae9e9ff"}}/></IconButton>
+                      </DialogTitle>
+                        <Divider/>
+                      <DialogContent sx={{
+                    px: 4,
+                    py:"7px",
+                    fontFamily: "Poppins, sans-serif",
+                    backgroundColor: "#FFFFFF",
+                    height: "100%",
+                  }}>
+                      <Grid container spacing={2}>
+                          {[
+                            { label: "Seafarer Name", name: "name" },
+                            { label: "Mobile Number", name: "phone" },
+                            { label: "Email ID", name: "email" },
+                            { label: "Role", name: "role", type: "select", options: ["Deck Rating","Captain", "Engineer", "Crew"] },
+                            { label: "Should we email seafarer?", name: "shouldEmail", type: "select", options: ["Yes", "No"] },
+                            { label: "Vessel Admin?", name: "vesselAdmin", type: "select", options: ["Yes", "No"] },
+                            { label: "Ship Name & Type*", name: "ship" },
+                            { label: "ID Type*", name: "IdType", type: "select", options: ["Passport", "Seafarer ID"] },
+                            { label: "ID Number*", name: "idNumber" },
+                            { label: "Associated Country*", name: "location", type: "select", options: ["India", "USA", "UK"] },
+                          ].map((field) => (
+                            <Grid  size={6}item xs={12} sm={6} md={6} key={field.name}>
+                              <Typography  variant="body2" 
+                          sx={{
+                
+                  height: 27,
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 400,
+
+                  
+                
+                
+                
+                }}>{field.label} { openAdd
+                                      ?<Typography sx={{color:"#ff0000ff",display:"inline"}}>*</Typography>:""}</Typography>
+                              {field.type === "select" ? (
+                                <TextField
+                              sx={{
+                  width: 314,
+                  height: 30,
+                  borderRadius: "10px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "10px",
+                    height: 30,
+                    paddingLeft: "10px",
+                    "& fieldset": {
+                      borderWidth: "1px",
+                      borderColor: "#B0BEC5",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#064575", 
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#064575", 
+                    },
+                  },
+                  "& .MuiInputBase-input": {
+                    padding: "8px 10px",
+                    fontSize: "0.85rem",
+                  },
+                }}
+                                  select
+                                  fullWidth
+                                  size="small"
+                                  
+                                  name={field.name}
+                                  value={
+                                    openAdd
+                                      ? newSeafarer[field.name]
+                                      : editSeafarer[field.name] || ""
+                                  }
+                                  onChange={handleInputChange}
+                                >
+                                  {field.options.map((opt) => (
+                                    <MenuItem  key={opt} value={opt}>
+                                      {opt}
+                                    </MenuItem>
+                                  ))}
+                                </TextField>
+                              ) : (
+                                <TextField 
+                                  sx={{
+                  width: 314,
+                  height: 27,
+                  borderRadius: "10px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "10px",
+                    height: 27,
+                    paddingLeft: "10px",
+                    "& fieldset": {
+                      borderWidth: "1px",
+                      borderColor: "#B0BEC5", 
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#064575",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#064575", 
+                    },
+                  },
+                  "& .MuiInputBase-input": {
+                    padding: "8px 10px",
+                    fontSize: "0.85rem",
+                  },
+                }}
+                                  
+                                  fullWidth
+                                  size="small"
+                                  name={field.name}
+                                  value={
+                                    openAdd
+                                      ? newSeafarer[field.name]
+                                      : editSeafarer[field.name] || ""
+                                  }
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Grid>
+                          ))} </Grid>
+
+                    
+                        {/* Upload Section */}
+              <Box >
+                
+                <Typography sx={{
+                  width:"164px",
+                  height:"27px",
+                    fontFamily: "Poppins",
+                    fontWeight: 400,
+                    mt:"4px",
+                  // fontSize: "18px",
+                  
+                
+                  }}>Upload Documents</Typography>
+                {(!openAdd ? editSeafarer.documentName : newSeafarer.documentName) ? (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      border: "1px solid #E7E7E7",
+                      borderRadius: 2,
+                      mt:"6px",
+                    width:"673px",
+                    height:"68px",
+                      backgroundColor: "#F3F3F3",
+                    }}
+                  >
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                      {((openAdd ? newSeafarer.documentName : editSeafarer.documentName).endsWith(".pdf")) ? (
+                        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="pdf" width={26} />
+                      ) : ((openAdd ? newSeafarer.documentName : editSeafarer.documentName).match(/\.(doc|docx)$/)) ? (
+                        <img src="https://cdn-icons-png.flaticon.com/512/337/337932.png" alt="doc" width={26} />
+                      ) : (
+                        <img src="https://cdn-icons-png.flaticon.com/512/136/136524.png" alt="img" width={26} />
+                      )}
+
+                      <Box>
+                        <Typography fontWeight={400} sx={{ wordBreak: "break-all" }}>
+                          {openAdd ? newSeafarer.documentName : editSeafarer.documentName}
+                        </Typography>
+                        {(openAdd ? newSeafarer.document : editSeafarer.document) && (
+                          <Typography variant="caption" color="gray">
+                            {((openAdd ? newSeafarer.document : editSeafarer.document).size / 1024 / 1024).toFixed(2)} MB
+                          </Typography>
+                        )}
+                      </Box>
+                    </Box>
+
+                    <IconButton
+                      onClick={() => {
+                        if (openAdd) setNewSeafarer(prev => ({ ...prev, document: null, documentName: "" }));
+                        else setEditSeafarer(prev => ({ ...prev, document: null, documentName: "" }));
+                      }}
+                    >
+                      <Close />
+                    </IconButton>
+                  </Box>
+                ) : (
+                  <>
+                    <Box
+                      sx={{
+                        border: "2px dashed #006D90",
+                        gap: "9px",
+                        borderRadius: 2,
+                      width:"674px",
+                      height:"133px",
+                        textAlign: "center",
+                        backgroundColor: "#F9FBFC",
+                        "&:hover": { backgroundColor: "#F1F5F9" },
+                        transition: "0.2s",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <input
+                        type="file"
+                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                        hidden
+                        id="file-upload"
+                        onChange={handleFileChange}
+                      />
+                      <label htmlFor="file-upload">
+                        <DriveFolderUploadRounded sx={{ color: "#006D90",width:"30px",height:"30px"}} />
+                        <Typography variant="body2" color="text.secondary" >
+                          Drag your file(s) to start uploading
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" >
+                          OR
+                        </Typography>
+                        <Button
+                          variant="outlined"
+                          sx={{ borderColor: "#006D90", color: "#006D90", textTransform: "none", }}
+                          component="span"
+                        >
+                          Browse files
+                        </Button>
+                      </label>
+                    </Box>
+                    <Typography variant="caption" display="block" mt="2px" height="20px" color="gray">
+                      Support .docs, .docx, .pdf, .jpg, .png
+                    </Typography>
+                  </>
                 )}
-              </Grid>
-            ))} </Grid>
+              </Box>
+            </DialogContent>
+                      <DialogActions sx={{ px: 4, pb: 3 }}>
 
-       
-           {/* Upload Section */}
-<Box >
-  
-  <Typography sx={{
-    width:"164px",
-    height:"27px",
-      fontFamily: "Poppins",
-      fontWeight: 400,
-      mt:"4px",
-     // fontSize: "18px",
-    
-   
-    }}>Upload Documents</Typography>
-  {(!openAdd ? editSeafarer.documentName : newSeafarer.documentName) ? (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        border: "1px solid #E7E7E7",
-        borderRadius: 2,
-        mt:"6px",
-       width:"673px",
-       height:"68px",
-        backgroundColor: "#F3F3F3",
-      }}
-    >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        {((openAdd ? newSeafarer.documentName : editSeafarer.documentName).endsWith(".pdf")) ? (
-          <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="pdf" width={26} />
-        ) : ((openAdd ? newSeafarer.documentName : editSeafarer.documentName).match(/\.(doc|docx)$/)) ? (
-          <img src="https://cdn-icons-png.flaticon.com/512/337/337932.png" alt="doc" width={26} />
-        ) : (
-          <img src="https://cdn-icons-png.flaticon.com/512/136/136524.png" alt="img" width={26} />
-        )}
-
-        <Box>
-          <Typography fontWeight={400} sx={{ wordBreak: "break-all" }}>
-            {openAdd ? newSeafarer.documentName : editSeafarer.documentName}
-          </Typography>
-          {(openAdd ? newSeafarer.document : editSeafarer.document) && (
-            <Typography variant="caption" color="gray">
-              {((openAdd ? newSeafarer.document : editSeafarer.document).size / 1024 / 1024).toFixed(2)} MB
-            </Typography>
-          )}
-        </Box>
-      </Box>
-
-      <IconButton
-        onClick={() => {
-          if (openAdd) setNewSeafarer(prev => ({ ...prev, document: null, documentName: "" }));
-          else setEditSeafarer(prev => ({ ...prev, document: null, documentName: "" }));
-        }}
-      >
-        <Close />
-      </IconButton>
-    </Box>
-  ) : (
-    <>
-      <Box
-        sx={{
-          border: "2px dashed #006D90",
-          gap: "9px",
-          borderRadius: 2,
-         width:"674px",
-         height:"133px",
-          textAlign: "center",
-          backgroundColor: "#F9FBFC",
-          "&:hover": { backgroundColor: "#F1F5F9" },
-          transition: "0.2s",
-          cursor: "pointer",
-        }}
-      >
-        <input
-          type="file"
-          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-          hidden
-          id="file-upload"
-          onChange={handleFileChange}
-        />
-        <label htmlFor="file-upload">
-          <DriveFolderUploadRounded sx={{ color: "#006D90",width:"30px",height:"30px"}} />
-          <Typography variant="body2" color="text.secondary" >
-            Drag your file(s) to start uploading
-          </Typography>
-          <Typography variant="body2" color="text.secondary" >
-            OR
-          </Typography>
-          <Button
-            variant="outlined"
-            sx={{ borderColor: "#006D90", color: "#006D90", textTransform: "none", }}
-            component="span"
-          >
-            Browse files
-          </Button>
-        </label>
-      </Box>
-      <Typography variant="caption" display="block" mt="2px" height="20px" color="gray">
-        Support .docs, .docx, .pdf, .jpg, .png
-      </Typography>
-    </>
-  )}
-</Box>
-
-         
-
-
-       
-        </DialogContent>
-
-        <DialogActions sx={{ px: 4, pb: 3 }}>
-
-          {openAdd ? (
-            <Button  sx={{backgroundColor: "#006D90"}} variant="contained" onClick={handleAddSeafarer}>
-              + Add
-            </Button>
-          ) : (
-            <Button sx={{backgroundColor: "#006D90"}} variant="contained" onClick={handleEditSeafarer}>
-              Save Changes
-            </Button>
-          )}
-        </DialogActions>
-      </Dialog>
+                        {openAdd ? (
+                          <Button  sx={{backgroundColor: "#006D90"}} variant="contained" onClick={handleAddSeafarer}>
+                            + Add
+                          </Button>
+                        ) : (
+                          <Button sx={{backgroundColor: "#006D90"}} variant="contained" onClick={handleEditSeafarer}>
+                            Save Changes
+                          </Button>
+                        )}
+                      </DialogActions>
+              </Dialog>
 
  <Dialog
   open={!!openStatusDialog}
@@ -883,9 +894,7 @@ const handlePageChange = (event, value) => {
       <Button
         variant="contained"
        sx={{backgroundColor:"#006D90",textTransform:"none"}} 
-        onClick={handleStatusChange}
-        
-      >
+         onClick={handleStatusChange} >
         Update
       </Button>
     </Box>
@@ -967,7 +976,7 @@ const handlePageChange = (event, value) => {
             height:"186px",
             border: "2px dashed #006d90",
             borderRadius: 2,
-           p:1,
+            p:1,
             textAlign: "center",
             mb: 1,
             backgroundColor: "#fafafa",
