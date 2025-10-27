@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import pic from "./assets/pic.png";
 import {
   Email,
   Person,
@@ -11,6 +11,7 @@ import {
   Close,
   DriveFolderUploadRounded,
   DoneOutlined,
+  Check,
 } from "@mui/icons-material";
 import {
   Box,
@@ -257,13 +258,43 @@ function SeafarerCredentials({ seafarer }) {
         exclusive
         onChange={handleTabChange}
         sx={{
+         borderRadius: "50px",
+        overflow: "hidden",
+        border: "1px solid #006D90",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 0,
+        "& .MuiToggleButton-root": {
+          textTransform: "none",
+          border: "none",
+          borderRadius: "50px",
+          color: "#006D90",
+          px: 3,
+          py: 1,
+          fontFamily: "Poppins, sans-serif",
+          fontWeight: 500,
+          fontSize: "14px",
+          "&.Mui-selected": {
+            backgroundColor: "#006D90",
+            color: "white",
+          },
+        
+          "&:focus": {
+            outline: "none",
+          },
+        },
+        "@media (max-width:600px)": {
           width: "100%",
-          borderRadius: "32px",
-          border: "2px solid #1E3A8A",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: "row",
-        }}
+          "& .MuiToggleButton-root": {
+            fontSize: "12px",
+            px: 2,
+            py: 1,
+          },
+        },
+      }}
+
+        
       >
         <ToggleButton
           value="coc"
@@ -271,7 +302,7 @@ function SeafarerCredentials({ seafarer }) {
             flex: 1,
             textTransform: "none",
             fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: { xs: "16px", sm: "20px" },
             lineHeight: "100%",
             letterSpacing: "0%",
@@ -298,7 +329,7 @@ function SeafarerCredentials({ seafarer }) {
             flex: 1,
             textTransform: "none",
             fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: { xs: "16px", sm: "20px" },
             lineHeight: "100%",
             letterSpacing: "0%",
@@ -369,7 +400,7 @@ function SeafarerCredentials({ seafarer }) {
                 <TableCell>{formatDate(row.validUntil)}</TableCell>
                 <TableCell
                   sx={{
-                    color: "#064575",
+                    color: "#006D90",
                     fontWeight: 600,
                     textDecoration: "underline",
                     textDecorationLine: "solid",
@@ -379,7 +410,7 @@ function SeafarerCredentials({ seafarer }) {
                 >
                   <IconButton>
                     <AttachFile
-                      sx={{ transform: "rotate(45deg)", color: "#064575" }}
+                      sx={{ transform: "rotate(45deg)", color: "#006D90" }}
                     />
                   </IconButton>
                   {row.documentName || "viewAttachment"}
@@ -693,17 +724,16 @@ function SeafarerCredentials({ seafarer }) {
                   justifyContent: "space-between",
                   border: "1px solid #E7E7E7",
                   borderRadius: 2,
-                  px: 2,
-                  py: 1.5,
-                  mt: 1,
+                  mt: "6px",
+               
                   backgroundColor: "#F3F3F3",
-                  flexWrap: "wrap",
                   "@media (max-width:900px)": {
                     width: "100%",
                     height: "auto",
                     flexDirection: "row",
                     alignItems: "flex-start",
                     p: 1,
+                    fontSize:"10px"
                   },
                 }}
               >
@@ -713,14 +743,14 @@ function SeafarerCredentials({ seafarer }) {
                       src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
                       alt="pdf"
                       width={26}
-                      height={26}
+                    
                     />
                   ) : newEntry.documentName.match(/\.(doc|docx)$/) ? (
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/337/337932.png"
                       alt="doc"
                       width={26}
-                      height={26}
+                     
                     />
                   ) : (
                     <img
@@ -751,7 +781,7 @@ function SeafarerCredentials({ seafarer }) {
                 </Box>
 
                 <IconButton
-                  sx={{ display: "inline" }}
+                
                   onClick={() =>
                     setNewEntry((prev) => ({
                       ...prev,
@@ -789,8 +819,9 @@ function SeafarerCredentials({ seafarer }) {
             }}
             variant="contained"
             onClick={handleAddOrEditEntry}
-          >
+          > {editIndex !== null ? <Check/>:<Add/>}
             {editIndex !== null ? "Update" : "Add"}
+           
           </Button>
         </DialogActions>
       </Dialog>
@@ -816,7 +847,7 @@ function SeafarerCredentials({ seafarer }) {
             }}
           >
             Are you Sure Want To Delete This Seafarer List?
-          </Typography>
+          </Typography><img src={pic} alt="warning" width="270px" height="230"/>
         </DialogContent>
         <DialogActions>
           <Stack spacing={5} direction="row">

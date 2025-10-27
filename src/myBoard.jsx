@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import pic from "./assets/pic.png";
+
 import {
   Delete,
   Edit,
@@ -17,6 +19,19 @@ import {
   CloudUpload,
   CloudUploadOutlined,
   LockReset,
+  Person,
+  MobileFriendly,
+  Phone,
+  Email,
+  Work,
+  MarkEmailRead,
+  AdminPanelSettings,
+  Sailing,
+  Public,
+  MarkAsUnreadSharp,
+  Pin,
+  PinDrop,
+  Done,
 } from "@mui/icons-material";
 import {
   Box,
@@ -52,6 +67,8 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
+  InputAdornment,
+  Badge,
 } from "@mui/material";
 import SeafarerCredentials from "./cred";
 
@@ -470,9 +487,23 @@ function MyBoard() {
     setPage(value);
   };
 
+  const iconMap = {
+    name: <Person sx={{ color: "#d3d3d3ff" }} />,
+    phone: <Phone sx={{ color: "#d3d3d3ff" }} />,
+    email: <Email sx={{ color: "#d3d3d3ff" }} />,
+    role: <Work sx={{ color: "#d8d8d8ff" }} />,
+    shouldEmail: <MarkEmailRead sx={{ color: "#d3d3d3ff" }} />,
+    vesselAdmin: <AdminPanelSettings sx={{ color: "#d3d3d3ff" }} />,
+    ship: <Sailing sx={{ color: "#d3d3d3ff" }} />,
+    IdType: <MarkAsUnreadSharp sx={{ color: "#d3d3d3ff" }} />,
+    idNumber: <Pin sx={{ color: "#d3d3d3ff" }} />,
+    location: <Public sx={{ color: "#d3d3d3ff" }} />,
+  };
+
   return (
     <Box
       sx={{
+        alignItems: "center",
         pl: 2,
         pt: 2,
         width: "100%",
@@ -964,40 +995,65 @@ function MyBoard() {
                 }}
               >
                 {[
-                  { label: "Seafarer Name", name: "name" },
-                  { label: "Mobile Number", name: "phone" },
-                  { label: "Email ID", name: "email" },
+                  {
+                    label: "Seafarer Name",
+                    name: "name",
+                    placeholder: "Enter the seafarer name",
+                  },
+                  {
+                    label: "Mobile Number",
+                    name: "phone",
+                    placeholder: "Enter mobile numeber",
+                  },
+                  {
+                    label: "Email ID",
+                    name: "email",
+                    placeholder: "Enter the email id",
+                  },
                   {
                     label: "Role",
                     name: "role",
                     type: "select",
                     options: ["Deck Rating", "Captain", "Engineer", "Crew"],
+                    placeholder: "Select Role",
                   },
                   {
                     label: "Should we email seafarer?",
                     name: "shouldEmail",
                     type: "select",
                     options: ["Yes", "No"],
+                    placeholder: "Select",
                   },
                   {
                     label: "Vessel Admin?",
                     name: "vesselAdmin",
                     type: "select",
                     options: ["Yes", "No"],
+                    placeholder: "Select",
                   },
-                  { label: "Ship Name & Type*", name: "ship" },
+                  {
+                    label: "Ship Name & Type*",
+                    name: "ship",
+                    placeholder: "Select Ship name and type",
+                  },
                   {
                     label: "ID Type*",
                     name: "IdType",
                     type: "select",
                     options: ["Passport", "Seafarer ID"],
+                    placeholder: "Select id type",
                   },
-                  { label: "ID Number*", name: "idNumber" },
+                  {
+                    label: "ID Number*",
+                    name: "idNumber",
+                    placeholder: "Enter id number",
+                  },
                   {
                     label: "Associated Country*",
                     name: "location",
                     type: "select",
                     options: ["India", "USA", "UK"],
+                    placeholder: "Select country",
                   },
                 ].map((field) => (
                   <Grid item xs={12} sm={6} md={6} key={field.name}>
@@ -1011,11 +1067,12 @@ function MyBoard() {
                     >
                       {field.label}{" "}
                       {openAdd ? (
-                        <Typography
+                        <Box
+                          component="span"
                           sx={{ color: "#ff0000ff", display: "inline" }}
                         >
                           *
-                        </Typography>
+                        </Box>
                       ) : (
                         ""
                       )}
@@ -1024,13 +1081,38 @@ function MyBoard() {
                     {field.type === "select" ? (
                       <TextField
                         select
+                        required
                         fullWidth
                         size="small"
                         name={field.name}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              {iconMap[field.name]}
+                            </InputAdornment>
+                          ),
+                        }}
+                        SelectProps={{
+                          displayEmpty: true,
+                          renderValue: (selected) => {
+                            if (!selected) {
+                              return (
+                                <span
+                                  style={{
+                                    color: "#9e9e9e",
+                                  }}
+                                >
+                                  {field.placeholder}
+                                </span>
+                              );
+                            }
+                            return selected;
+                          },
+                        }}
                         value={
                           openAdd
-                            ? newSeafarer[field.name]
-                            : editSeafarer[field.name] || ""
+                            ? newSeafarer[field.name] ?? ""
+                            : editSeafarer[field.name] ?? ""
                         }
                         onChange={handleInputChange}
                         sx={{
@@ -1071,6 +1153,7 @@ function MyBoard() {
                     ) : (
                       <TextField
                         fullWidth
+                        required
                         size="small"
                         name={field.name}
                         value={
@@ -1079,6 +1162,14 @@ function MyBoard() {
                             : editSeafarer[field.name] || ""
                         }
                         onChange={handleInputChange}
+                        placeholder={field.placeholder}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              {iconMap[field.name]}
+                            </InputAdornment>
+                          ),
+                        }}
                         sx={{
                           width: 314,
                           height: 27,
@@ -1162,7 +1253,10 @@ function MyBoard() {
                       <Box>
                         <Typography
                           fontWeight={400}
-                          sx={{ wordBreak: "break-all" }}
+                          sx={{
+                            wordBreak: "break-all",
+                            "@media (max-width:600px)": { fontSize: "0.85rem" },
+                          }}
                         >
                           {openAdd
                             ? newSeafarer.documentName
@@ -1275,19 +1369,21 @@ function MyBoard() {
             <DialogActions sx={{ px: 4, pb: 3 }}>
               {openAdd ? (
                 <Button
-                  sx={{ backgroundColor: "#006D90" }}
+                  sx={{ backgroundColor: "#006D90", textTransform: "none" }}
                   variant="contained"
                   onClick={handleAddSeafarer}
+                  startIcon={<Add />}
                 >
                   Add
                 </Button>
               ) : (
                 <Button
-                  sx={{ backgroundColor: "#006D90" }}
+                  sx={{ backgroundColor: "#006D90", textTransform: "none" }}
                   variant="contained"
                   onClick={handleEditSeafarer}
+                  startIcon={<Done />}
                 >
-                  Save Changes
+                  Update
                 </Button>
               )}
             </DialogActions>
@@ -1296,6 +1392,19 @@ function MyBoard() {
           <Dialog
             open={!!openStatusDialog}
             onClose={() => setOpenStatusDialog(null)}
+            PaperProps={{
+              sx: {
+                border: "2px solid #006D90",
+                borderRadius: "12px",
+
+                backgroundColor: "#ffffffff",
+                "@media (max-width:600px)": {
+                  border: "2px solid #006D90",
+                  borderRadius: "10px",
+                  mx: 2,
+                },
+              },
+            }}
           >
             <DialogTitle
               sx={{
@@ -1323,7 +1432,7 @@ function MyBoard() {
             <Divider />
             <DialogContent sx={{ minWidth: 250 }}>
               <FormControl>
-                <RadioGroup
+                <RadioGroup 
                   value={openStatusDialog?.status || ""}
                   onChange={(e) =>
                     setOpenStatusDialog((prev) => ({
@@ -1357,45 +1466,132 @@ function MyBoard() {
                   variant="contained"
                   sx={{ backgroundColor: "#006D90", textTransform: "none" }}
                   onClick={handleStatusChange}
+                  startIcon={<Check/>}
                 >
                   Update
                 </Button>
               </Box>
             </DialogContent>
           </Dialog>
-          <Dialog open={openDelete} onClose={closeDialogs}>
+          <Dialog
+            fullWidth
+            maxWidth="xs"
+            open={openDelete}
+            onClose={closeDialogs}
+            PaperProps={{
+              sx: {
+                border: "2px solid #006D90",
+                borderRadius: "12px",
+
+                backgroundColor: "#ffffffff",
+                "@media (max-width:600px)": {
+                  border: "2px solid #006D90",
+                  borderRadius: "10px",
+                  mx: 2,
+                },
+              },
+            }}
+          >
             <DialogTitle align="right">
               <IconButton onClick={closeDialogs}>
                 <Close />
               </IconButton>
             </DialogTitle>
-            <DialogContent>
-              <Typography>
-                Do you really want to delete {selectedSeafarer?.name} List?
-              </Typography>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => {
-                  setSeafarers((prev) =>
-                    prev.filter((s) => s.sno !== selectedSeafarer.sno)
-                  );
-                  closeDialogs();
+            <DialogContent
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                gap: 2,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "poppins",
+                  fontWeight: 500,
+                  fontStyle: "medium",
+                  fontSize: "22px",
+                  alignItems: "center",
                 }}
               >
-                <IconButton>
-                  <Check />
-                </IconButton>
-                Delete this Seafear
-              </Button>
-              <Button onClick={closeDialogs}>
-                <IconButton>
-                  <Clear />
-                </IconButton>
-                Cancel This Time
-              </Button>
+                Do you really want to delete {selectedSeafarer?.name} List?
+              </Typography>{" "}
+              <img
+                src={pic}
+                alt="warning"
+                style={{ width: "270px", height: "211px" }}
+              />
+            </DialogContent>
+
+            <DialogActions
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                p: 2,
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  startIcon={<Check />}
+                  sx={{
+                    backgroundColor: "#006D90",
+                    textTransform: "none",
+                    borderRadius: "8px",
+                    width: "auto",
+                    height: "36px",
+                    fontSize: "13px",
+                    "&:hover": { backgroundColor: "#00506b" },
+                    "@media (max-width:600px)": {
+                      p: 3,
+                    },
+                  }}
+                  onClick={() => {
+                    setSeafarers((prev) =>
+                      prev.filter((s) => s.sno !== selectedSeafarer.sno)
+                    );
+                    closeDialogs();
+                  }}
+                >
+                  Delete This Seafarer
+                </Button>
+
+                <Button
+                  variant="outlined"
+                  startIcon={<Close />}
+                  sx={{
+                    color: "#006D90",
+                    borderColor: "#006D90",
+                    textTransform: "none",
+                    borderRadius: "8px",
+                    width: "auto",
+                    height: "36px",
+
+                    fontSize: "13px",
+                    "&:hover": {
+                      borderColor: "#00506b",
+                      color: "#00506b",
+                    },
+                    "@media (max-width:600px)": {
+                      p: 3,
+                    },
+                  }}
+                  onClick={closeDialogs}
+                >
+                  Cancel This Time
+                </Button>
+              </Box>
             </DialogActions>
           </Dialog>
           <Dialog
