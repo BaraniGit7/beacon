@@ -10,9 +10,6 @@ import {
   Save,
   Close,
   DriveFolderUploadRounded,
-  Done,
-  DoneOutline,
-  DoneOutlineOutlined,
   DoneOutlined,
 } from "@mui/icons-material";
 import {
@@ -204,7 +201,7 @@ function SeafarerCredentials({ seafarer }) {
                 </Typography>
                 <Typography  sx={{
                                     fontFamily: 'Inter, sans-serif',
-                                    fontWeight: 400,        // Regular
+                                    fontWeight: 400,        
                                     fontStyle: 'normal',
                                     fontSize: '16px',
                                     lineHeight: '100%',
@@ -228,10 +225,10 @@ function SeafarerCredentials({ seafarer }) {
   sx={{
     width: "100%",
     borderRadius: "32px",
-    border: "2px solid #1E3A8A", // parent border
+    border: "2px solid #1E3A8A", 
     overflow: "hidden",
     display: "flex",
-    flexDirection: { xs: "column", sm: "row" },
+    flexDirection: "row"
   }}
 >
   <ToggleButton
@@ -245,7 +242,7 @@ function SeafarerCredentials({ seafarer }) {
       lineHeight: "100%",
       letterSpacing: "0%",
       border: "none",
-      borderRadius: { xs: "32px", sm: "0 32px 32px 0" }, // round right corners
+      borderRadius: { xs: "32px", sm: "0 32px 32px 0" }, 
       color: "#1E3A8A",
       "&.Mui-selected": {
         backgroundColor: "#1E3A8A",
@@ -364,11 +361,11 @@ function SeafarerCredentials({ seafarer }) {
                   <Button variant="outlined" size="small" startIcon={<Add/>} onClick={() => handleOpenDialog()}
                 sx={{
             fontFamily: 'Poppins, sans-serif',
-            fontWeight: 600,             // SemiBold
+            fontWeight: 600,          
             fontStyle: 'normal',
             fontSize: '14px',
             lineHeight: '24px',
-            letterSpacing: '0.025em',    // 2.5%
+            letterSpacing: '0.025em',    
             textAlign: 'center',
             textTransform: 'uppercase',
             color:"#006D90", width: '88px',
@@ -400,7 +397,6 @@ function SeafarerCredentials({ seafarer }) {
           startIcon={<Save/>} onClick={handleSave}>Save</Button>
                 </Box>
 
-{/*Add-Edit Dialog*/}
              <Dialog
              open={openDialog}
   onClose={handleCloseDialog}
@@ -413,9 +409,9 @@ function SeafarerCredentials({ seafarer }) {
       backgroundColor: "#fff",
       overflow: "hidden",
       borderRadius: "16px",
-      // Only for mobile
+      
       "@media (max-width:600px)": {
-        mx: 2, // side margin
+        mx: 2, 
         borderRadius: "12px",
       },
     },
@@ -433,7 +429,7 @@ function SeafarerCredentials({ seafarer }) {
       pb: 1,
       pt: 0,
       mt: 1,
-      // Mobile font size tweak
+      
       "@media (max-width:600px)": {
         fontSize: "1rem",
         px: 2,
@@ -460,7 +456,7 @@ function SeafarerCredentials({ seafarer }) {
     }}
   >
     <Stack spacing={1}>
-      {/* Fields */}
+
       <Typography fontFamily="Poppins" mb={0.5}>
         {selectedTab === "coc" ? "COC Name" : "Course Name"}
         {editIndex === null && (
@@ -610,6 +606,10 @@ function SeafarerCredentials({ seafarer }) {
           sx={{
             display: "flex",
             alignItems: "center",
+               width: "673px",
+          height: "68px",
+          fontSize:"14px",
+            fontFamily: "Poppins",
             justifyContent: "space-between",
             border: "1px solid #E7E7E7",
             borderRadius: 2,
@@ -618,6 +618,14 @@ function SeafarerCredentials({ seafarer }) {
             mt: 1,
             backgroundColor: "#F3F3F3",
             flexWrap: "wrap",
+               "@media (max-width:900px)": {
+            width: "100%",
+            height: "auto",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            p: 1,
+        
+          },
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -650,7 +658,7 @@ function SeafarerCredentials({ seafarer }) {
                 fontFamily="Poppins"
                 sx={{
                   wordBreak: "break-all",
-                  "@media (max-width:600px)": { fontSize: "0.9rem" },
+                  "@media (max-width:600px)": { fontSize: "0.85rem" },
                 }}
               >
                 {newEntry.documentName}
@@ -663,7 +671,7 @@ function SeafarerCredentials({ seafarer }) {
             </Box>
           </Box>
 
-          <IconButton
+          <IconButton sx={{display:"inline"}}
             onClick={() =>
               setNewEntry((prev) => ({
                 ...prev,
@@ -706,8 +714,6 @@ function SeafarerCredentials({ seafarer }) {
     </Button>
   </DialogActions>
 </Dialog>
-
-        {/*Delete Dialog */}
       <Dialog fullWidth maxWidth="xs" open={deleteDialog.open} onClose={handleCloseDialog}>
           <DialogTitle align="right"><IconButton  onClick={handleCloseDialog}><Close
           /></IconButton></DialogTitle>

@@ -940,3 +940,46 @@ function MyBoard() {
 }
 
 export default MyBoard;
+<ToggleButtonGroup
+  value={selectedTab}
+  exclusive
+  onChange={handleTabChange}
+  sx={{
+    width: "100%",
+    borderRadius: "32px",
+    border: "2px solid #1E3A8A",
+    overflow: "hidden",
+    display: "flex",
+    gap: 1,
+    mb: 3,
+  }}
+>
+  {[
+    { value: "coc", label: "Certificate of Competence" },
+    { value: "stcw", label: "STCW Modular Courses" },
+  ].map((tab) => (
+    <ToggleButton
+      key={tab.value}
+      value={tab.value}
+      sx={{
+        flex: "none", // don't stretch
+        textTransform: "none",
+        fontFamily: "Inter,sans-serif",
+        fontWeight: 600,
+        fontSize: { xs: "12px", sm: "16px" }, // smaller font only on responsive
+        px: { xs: 1.5, sm: 3 },               // reduce horizontal padding on mobile
+        py: { xs: 0.5, sm: 1.5 },             // reduce vertical padding on mobile
+        border: "none",
+        borderRadius: "32px",
+        color: "#1E3A8A",
+        "&.Mui-selected": {
+          backgroundColor: "#1E3A8A",
+          color: "#fff",
+        },
+        whiteSpace: "nowrap", // prevent text wrapping
+      }}
+    >
+      {tab.label}
+    </ToggleButton>
+  ))}
+</ToggleButtonGroup>

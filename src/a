@@ -223,41 +223,162 @@ function SeafarerCredentials() {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <TableContainer component={Paper} sx={{ borderRadius: 2, maxHeight: 400 }}>
-        <Table >
-          <TableHead sx={{  backgroundColor: "#5C5C5C",border: "1.06px solid", borderCollapse:"separate" }}>
-            <TableRow>
-              <TableCell sx={{color: "#fff", fontWeight: 600 }}>S. No</TableCell>
-              <TableCell sx={{color: "#fff", fontWeight: 600 }}>{selectedTab === "coc" ? "COC Name" : "Course Name"}</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Flag State</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Date Issued</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Valid Until</TableCell>
-              <TableCell sx={{ color: "#fff",fontWeight: 600 }}>Documents</TableCell>
-              <TableCell sx={{color: "#fff", fontWeight: 600 }}>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {getCurrentTable().map((row, index) => (
-              <TableRow key={row.id}>
-                <TableCell>{row.id}</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.flagState}</TableCell>
-                <TableCell>{row.dateIssued}</TableCell>
-                <TableCell>{row.validUntil}</TableCell>
-                <TableCell sx={{ color: "#1E3A8A", fontWeight: 600 }}>
-                  {row.documentName || "No File"}
-                </TableCell>
-                <TableCell>
-                  <Stack direction="row" spacing={1}>
-                    <IconButton onClick={() => handleOpenDialog(index)}><Edit /></IconButton>
-                    <IconButton onClick={() => handleDelete(index)} color="error"><Delete /></IconButton>
-                  </Stack>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+        <TableContainer   //// today edited on 24 oct
+                           component={Paper}
+                           elevation={0}
+                           sx={{
+                              width: "100%",
+         height: isMobile ? "400px" : "612.96px", // mobile height smaller
+         backgroundColor: "#F4FCFF",
+         borderRadius: "10px",
+         overflowX: isMobile ? "auto" : "hidden", // scroll only on mobile
+                           }}
+                         >
+                           <Table
+                             size="small"
+                             sx={{
+                               minWidth: isMobile ? 600 : 1351, // smaller min-width on mobile
+                                width: "100%",
+                                 backgroundColor:"#F4FCFF",
+                               borderSpacing: "0px 14px",
+                               borderCollapse: "separate",
+                               
+                             }}
+                           >
+                             <TableHead>
+                               <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
+                                 {headers.map((header, idx) => (
+                                   <TableCell
+                                     key={idx}
+                                     sx={{
+                                        width:"1351px",
+                                     height:"47px",
+                                       color:"#E4E4E4",
+                                       fontFamily: "Inter, sans-serif",
+                                         fontWeight: 700,        
+                                         fontStyle: "normal",         
+                                      px: isMobile ? 0.5 : 1,
+                                       py: isMobile ? 0.5 : 1,
+                                       fontSize: isMobile ? "0.7rem" : "0.875rem",
+                                     }}
+                                   >
+                                     {header}
+                                   </TableCell>
+                                 ))}
+                               </TableRow>
+                             </TableHead>
+                             <TableBody  sx={{
+                             borderRadius: "20.2px",
+                             border: "1.06px solid #E4E4E4",
+                           
+                           
+                           }}>
+                               {paginatedSeafarers.map((row, index) => (
+                                 <TableRow
+                                   key={index}
+                                   sx={{
+                                     backgroundColor: "#fff",
+                 "& td": { px: isMobile ? 0.5 : 1, py: isMobile ? 0.5 : 1 },
+                                   }}>
+                                   <TableCell  sx={{ fontSize: isMobile ? "0.7rem" : "0.875rem" }}>{row.sno}</TableCell>
+                                   <TableCell >
+                         
+                         
+     
+                                     <Box sx={{ display: "flex", flexDirection: "column", gap: 0.3 }}>
+                                       <Typography variant="body2" sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.name}</Typography>
+                                       <Typography variant="body2" sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.email}</Typography>
+                                       <Typography variant="body2"sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.phone}</Typography>
+                                     </Box>
+                                   </TableCell>
+                                   <TableCell>
+                                     <Typography variant="body2" sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.idNumber}</Typography>
+                                     <Typography variant="body2" sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.IdType}</Typography>
+                                     <Typography variant="body2" sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.location}</Typography>
+                                   </TableCell>
+     
+                                   <TableCell><Typography variant="body2" sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.ship}</Typography>
+                                     <Typography color="text.secondary" sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.ship1}</Typography>
+                                   </TableCell>
+     
+                                   <TableCell sx={{ fontSize: isMobile ? "0.65rem" : "0.875rem" }}>{row.role}</TableCell>
+     
+                             
+                                   <TableCell>
+                                     <IconButton color="primary" component="label" sx={{ p: 0.5,color:"#006D90" }}>
+                                       <AttachFile fontSize="small" />
+                                       <Typography sx={{ textDecoration: "underline",fontSize: isMobile ? "0.65rem" : "0.875rem" ,color:"#006D90"  }}>viewAttachment</Typography>
+                                     </IconButton>
+                                   </TableCell>
+                                   <TableCell>
+                                     <IconButton   onClick={() => handleViewCredentials(row)} sx={{ p: 0.5,color:"#006D90",width:"54px",height:"25px"}}>
+                                       <RemoveRedEyeOutlined fontSize="medium" />
+                                     </IconButton>
+                                   </TableCell>
+                                   <TableCell>
+                                     <IconButton onClick={() => handlePassword(row)} sx={{ p: 0.5 ,color:"#006D90" }}>
+                                       <LockReset fontSize="medium" />
+                                     </IconButton>
+                                   </TableCell>
+                               <TableCell align="center">
+                                 <Box
+                                   sx={{
+                                         fontFamily: 'Inter, sans-serif',
+                                     
+                                         fontStyle: 'normal',   
+                                       
+                                         lineHeight: '140%',
+                                         display: "inline-block",
+                                         px: 1.5,
+                                         py: 0.5,
+                                         borderRadius: "12px",
+                                         border: "1px solid",
+                                         borderColor:  row.status === "Active" ? "green" : "red",
+                                         color: row.status === "Active" ? "green" : "red",
+                                         fontWeight: 600,
+                                       fontSize: isMobile ? "0.65rem" : "0.875rem",
+                                         textAlign: "center",
+                                         cursor: "pointer",
+                                         minWidth: 80,
+                                   }}
+                                   onClick={() => setOpenStatusDialog(row)}
+                                 >
+                                   <IconButton   sx={{ p: 0.5, }}>
+                                       <CircleSharp sx={{width:"8.2px",height:"8.2px",color: row.status === "Active" ? "green" : "red"}} fontSize="small" />
+                                     </IconButton>
+                                   {row.status || "Active"}<IconButton   sx={{ p: 0.5 }}>
+                                       <EditSharp fontSize="small" />
+                                     </IconButton>
+                                 </Box>
+                               </TableCell>
+     
+     
+                                   <TableCell>
+                                 <Stack direction="row" spacing={2}  >
+                                     <IconButton sx={{ border: "2px solid #6fa9e2ff",
+                                               borderRadius: "8px",
+                                               p: 1,
+                                               display: "inline-flex",
+                                               alignItems: "center",
+                                               justifyContent: "center",gap:"9px"}}  variant="outlined" onClick={() => handleEdit(row)} >
+                                              <Edit fontSize="small" />
+                                     </IconButton>
+                                     <IconButton color="error" onClick={() => handleDelete(row)}   sx={{ 
+                                          border: "2px solid, #f71000ff",
+                                          color:" #e03a2eff",
+                                         borderRadius: "8px",
+                                         p: 1,ml:"auto",
+                                         display: "inline-flex",
+                                         alignItems: "center",
+                                         justifyContent: "center",gap:"9px" }}>
+                                       <Delete fontSize="small" />
+                                     </IconButton></Stack>
+                                   </TableCell>
+                                 </TableRow>
+                               ))}
+                             </TableBody>
+                           </Table>
+                         </TableContainer>
 
     
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
@@ -346,3 +467,95 @@ function SeafarerCredentials() {
 }
 
 export default SeafarerCredentials;
+<Box
+      sx={{
+        mb: 1,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 0,
+        width: "100%",
+      }}
+    >
+      {/* 🔍 Search Bar */}
+      <Paper
+        sx={{
+          p: 1,
+          display: "flex",
+          alignItems: "center",
+          borderRadius: "8px",
+          width: isMobile ? "10%" : "480px",
+          height: "40px",
+          boxShadow: "none",
+          border: "1px solid #E0E0E0",
+          gap: "8px",
+        }}
+      >
+        <IconButton size="small">
+          <Search />
+        </IconButton>
+        <InputBase
+          sx={{
+            ml: 1,
+            flex: 1,
+            fontFamily: "Poppins, sans-serif",
+            fontSize: "14px",
+          }}
+          placeholder="Search or filter..."
+        />
+      </Paper>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 1,
+          flex: isMobile ? 0 : 1,
+          justifyContent: "flex-end",
+        }}
+      >
+        <Button
+          variant="contained"
+          startIcon={<Add />}
+          onClick={handleAdd}
+          sx={{
+            fontFamily: "Poppins, sans-serif",
+            fontWeight: 600,
+            fontSize: "12px",
+            textTransform: "uppercase",
+            backgroundColor: "#006D90",
+            color: "#fff",
+            borderRadius: "6px",
+            height: "36px",
+            minWidth: "100px", 
+            "&:hover": { backgroundColor: "#005b78" },
+          }}
+        >
+          Add seafarer
+        </Button>
+
+        <Button
+          variant="outlined"
+          startIcon={<CloudUploadOutlined />}
+          onClick={handleBulkUpload}
+          sx={{
+            fontFamily: "Poppins, sans-serif",
+            fontWeight: 600,
+            fontSize: "12px",
+            textTransform: "uppercase",
+            borderColor: "#006D90",
+            color: "#006D90",
+            backgroundColor: "#fff",
+            borderRadius: "6px",
+            height: "36px",
+            minWidth: "100px",
+            "&:hover": {
+              backgroundColor: "#E3F2F6",
+              borderColor: "#005b78",
+            },
+          }}
+        >
+          Bulk Upload
+        </Button>
+      </Box>
+    </Box>
