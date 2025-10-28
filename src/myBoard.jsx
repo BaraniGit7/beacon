@@ -9,18 +9,13 @@ import {
   AttachFile,
   Close,
   Check,
-  Clear,
   DriveFolderUploadRounded,
   CloseOutlined,
   CircleSharp,
-  EditSharp,
   Add,
-  Upload,
-  CloudUpload,
   CloudUploadOutlined,
   LockReset,
   Person,
-  MobileFriendly,
   Phone,
   Email,
   Work,
@@ -30,8 +25,8 @@ import {
   Public,
   MarkAsUnreadSharp,
   Pin,
-  PinDrop,
   Done,
+  EditRounded,
 } from "@mui/icons-material";
 import {
   Box,
@@ -60,15 +55,11 @@ import {
   Grid,
   Stack,
   MenuItem,
-  Menu,
-  FormGroup,
   FormControlLabel,
   FormControl,
-  FormLabel,
   RadioGroup,
   Radio,
   InputAdornment,
-  Badge,
 } from "@mui/material";
 import SeafarerCredentials from "./cred";
 
@@ -125,7 +116,7 @@ function MyBoard() {
       email: "ramacha@gmail.com",
       phone: "9791917536",
       ship: "Ms Training Ship1",
-      ship1: "(oilTanker)",
+     ship1: "(oilTanker)",
       role: "Deck Rating",
       status: "Active",
     },
@@ -511,6 +502,10 @@ function MyBoard() {
         pb: 0,
         backgroundColor: "#F4FCFF",
         minHeight: "100vh",
+        "@media(max-width:900px)":{
+          pl:0,
+          pt:0
+        }
       }}
     >
       <Breadcrumbs
@@ -563,7 +558,6 @@ function MyBoard() {
               pr: 3,
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
-
               justifyContent: isMobile ? "start" : "space-between",
               flexWrap: "nowrap",
               gap: isMobile ? 1 : 2,
@@ -576,8 +570,7 @@ function MyBoard() {
                 alignItems: "center",
                 borderRadius: "8px",
                 flex: "1 1 auto",
-                minWidth: "530px",
-                maxWidth: isMobile ? "120px" : "530px",
+                maxWidth: isMobile ? "400px" : "530px",
                 height: isMobile ? "35px" : "40px",
                 boxShadow: "none",
                 border: "1px solid #E0E0E0",
@@ -832,37 +825,48 @@ function MyBoard() {
                           fontFamily: "Inter, sans-serif",
                           fontStyle: "normal",
                           lineHeight: "140%",
-                          display: "inline-block",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: 500,
                           px: 1.5,
                           py: 0.5,
-                          gap: 0.5,
+                          gap: 0.8,
                           width: "102px",
-                          borderRadius: "12px",
+                          borderRadius: "38.32px",
                           border: "1px solid",
                           borderColor:
-                            row.status === "Active" ? "green" : "red",
-                          color: row.status === "Active" ? "green" : "red",
-                          fontWeight: 600,
+                            row.status === "Active" ? "#008339" : "#D10100",
+                          color:
+                            row.status === "Active" ? "#259800" : "#D10100",
+                          backgroundColor:
+                            row.status === "Active" ? "#F0FEED" : " #FFEEF0",
                           fontSize: { xs: "0.7rem", sm: "0.85rem" },
                           textAlign: "center",
                           cursor: "pointer",
                           minWidth: 80,
                         }}
-                        onClick={() => setOpenStatusDialog(row)}
                       >
                         <IconButton sx={{ p: 0.5 }}>
                           <CircleSharp
                             sx={{
                               width: "8.2px",
                               height: "8.2px",
-                              color: row.status === "Active" ? "green" : "red",
+                              color:
+                                row.status === "Active" ? "#259800" : "#D10100",
                             }}
-                            fontSize="small"
+                            fontSize="medium"
                           />
                         </IconButton>
                         {row.status || "Active"}
-                        <IconButton sx={{ p: 0.5 }}>
-                          <EditSharp fontSize="small" />
+                        <IconButton
+                          onClick={() => setOpenStatusDialog(row)}
+                          sx={{ p: 0.5 }}
+                        >
+                          <EditRounded
+                            fontSize="small"
+                            sx={{ color: "#000" }}
+                          />
                         </IconButton>
                       </Box>
                     </TableCell>
@@ -871,27 +875,28 @@ function MyBoard() {
                       <Stack direction="row" spacing={2}>
                         <IconButton
                           sx={{
-                            border: "2px solid #6fa9e2ff",
+                            border: "2px solid #006D90",
                             borderRadius: "8px",
                             p: 1,
                             display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
                             gap: "9px",
+                            backgroundColor: "#F4FCFF",
                           }}
                           variant="outlined"
                           onClick={() => handleEdit(row)}
                         >
-                          <Edit fontSize="small" />
+                          <Edit fontSize="small" sx={{ color: "#006D90" }} />
                         </IconButton>
                         <IconButton
-                          color="error"
                           onClick={() => handleDelete(row)}
                           sx={{
                             border: "2px solid, #f71000ff",
                             color: " #e03a2eff",
                             borderRadius: "8px",
                             p: 1,
+                            backgroundColor: "#FFEEF0",
                             ml: "auto",
                             display: "inline-flex",
                             alignItems: "center",
@@ -923,6 +928,7 @@ function MyBoard() {
             />
           </Box>
 
+         
           <Dialog
             open={openAdd || openEdit}
             onClose={closeDialogs}
@@ -954,7 +960,7 @@ function MyBoard() {
                 color: "#006D90",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center",
+                 alignItems: "center",
                 borderBottom: "1px solid #E0E0E0",
               }}
             >
@@ -968,7 +974,7 @@ function MyBoard() {
             <Divider />
             <DialogContent
               sx={{
-                px: 4,
+                px: 2,
                 py: "7px",
                 fontFamily: "Poppins, sans-serif",
                 backgroundColor: "#FFFFFF",
@@ -1032,10 +1038,13 @@ function MyBoard() {
                     placeholder: "Select",
                   },
                   {
-                    label: "Ship Name & Type*",
+                    label: "Ship Name & type *",
                     name: "ship",
-                    placeholder: "Select Ship name and type",
+                      type: "select",
+                    options: ["Yes", "No"],
+                    placeholder: "Select Ship name",
                   },
+                   
                   {
                     label: "ID Type*",
                     name: "IdType",
@@ -1056,7 +1065,7 @@ function MyBoard() {
                     placeholder: "Select country",
                   },
                 ].map((field) => (
-                  <Grid item xs={12} sm={6} md={6} key={field.name}>
+                  <Grid item xs={12} sm={6}  key={field.name}>
                     <Typography
                       variant="body2"
                       sx={{
@@ -1087,7 +1096,7 @@ function MyBoard() {
                         name={field.name}
                         InputProps={{
                           startAdornment: (
-                            <InputAdornment position="start">
+                            <InputAdornment position="start" >
                               {iconMap[field.name]}
                             </InputAdornment>
                           ),
@@ -1432,7 +1441,7 @@ function MyBoard() {
             <Divider />
             <DialogContent sx={{ minWidth: 250 }}>
               <FormControl>
-                <RadioGroup 
+                <RadioGroup
                   value={openStatusDialog?.status || ""}
                   onChange={(e) =>
                     setOpenStatusDialog((prev) => ({
@@ -1466,7 +1475,7 @@ function MyBoard() {
                   variant="contained"
                   sx={{ backgroundColor: "#006D90", textTransform: "none" }}
                   onClick={handleStatusChange}
-                  startIcon={<Check/>}
+                  startIcon={<Check />}
                 >
                   Update
                 </Button>

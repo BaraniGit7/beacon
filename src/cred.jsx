@@ -33,6 +33,8 @@ import {
   TextField,
   IconButton,
   Divider,
+  TableContainer,
+  Grid,
 } from "@mui/material";
 import { Delete, Edit, AttachFile } from "@mui/icons-material";
 
@@ -45,7 +47,7 @@ function SeafarerCredentials({ seafarer }) {
     {
       icon: <DirectionsBoat />,
       label: "Ship Name/Type",
-      value: `${seafarer.ship} ${seafarer.ship1}`,
+      value: `${seafarer.ship} \n ${seafarer.ship1}`,
     },
     { icon: <Work />, label: "Role", value: seafarer.role },
   ];
@@ -55,8 +57,8 @@ function SeafarerCredentials({ seafarer }) {
       id: 1,
       name: "Master National Certificate of Competence",
       flagState: "Poland",
-      dateIssued: "2024-11-10",
-      validUntil: "2025-11-12",
+      dateIssued: "10-10-2024",
+      validUntil: "12-11-2025",
       document: null,
       documentName: "",
     },
@@ -67,8 +69,8 @@ function SeafarerCredentials({ seafarer }) {
       id: 1,
       name: "Basic Safety Training",
       flagState: "Poland",
-      dateIssued: "2023-01-10",
-      validUntil: "2024-01-10",
+      dateIssued: "01-10-2023",
+      validUntil: "01-10-2023",
       document: null,
       documentName: "",
     },
@@ -192,17 +194,18 @@ function SeafarerCredentials({ seafarer }) {
   return (
     <Box
       sx={{
-        p: 2,
-        width: "100%",
-        height: "100%",
+        p: 3,
         mx: "auto",
         backgroundColor: "#F4FCFF",
         opacity: 1,
+        "@media(max-width:900px)":{
+          px:0
+        }
       }}
     >
       <Paper
         elevation={4}
-        sx={{ p: 3, borderRadius: 2, backgroundColor: "#f2f2f2ff", mb: 4 }}
+        sx={{ p: 6, borderRadius: 2, backgroundColor: "#f2f2f2ff", mb: 4 }}
       >
         <Typography
           variant="h6"
@@ -210,47 +213,88 @@ function SeafarerCredentials({ seafarer }) {
         >
           Credentials
         </Typography>
-        <Stack
-          direction={{ xs: "column", sm: "row" }}
-          spacing={2}
-          justifyContent="space-between"
-        >
-          {credentials.map((item) => (
-            <Box
-              key={item.label}
-              sx={{ display: "flex", gap: 2, minWidth: 200 }}
-            >
-              <Stack color="#006D90">{item.icon}</Stack>
-              <Stack spacing={1}>
-                <Typography
-                  sx={{
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 600,
-                    fontStyle: "normal",
-                    fontSize: "16px",
-                    lineHeight: "100%",
-                    letterSpacing: 0,
-                  }}
-                >
-                  {item.label}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 400,
-                    fontStyle: "normal",
-                    fontSize: "16px",
-                    lineHeight: "100%",
-                    letterSpacing: 0,
-                    color: "000000",
-                  }}
-                >
-                  {item.value}
-                </Typography>
-              </Stack>
+       <Grid
+  container
+  spacing={2}
+  sx={{
+    display: "flex",
+    flexWrap: "wrap",
+  }}
+>
+  {credentials.map((item) => (
+    <Grid
+      item
+      xs={6} 
+      sm={4}  
+      md={3} 
+      key={item.label}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "flex-start",
+          gap: 1.5,
+          minWidth: 150,
+        }}
+      >
+        <Box sx={{ color: "#006D90", mt: 0.3, flexShrink: 0 }}>
+          {item.icon}
+        </Box>
+        <Box>
+          <Typography
+            sx={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: { xs: "13px", sm: "15px" },
+              lineHeight: "120%",
+            }}
+          >
+            {item.label}
+          </Typography>
+          {item.label === "Ship Name/Type" ? (
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Typography
+                sx={{
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 400,
+                  fontSize: { xs: "12px", sm: "14px" },
+                  color: "#000",
+                  lineHeight: "120%",
+                }}
+              >
+                {seafarer.ship}
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 400,
+                  fontSize: { xs: "12px", sm: "14px" },
+                  color: "#555",
+                  lineHeight: "120%",
+                }}
+              >
+                {seafarer.ship1}
+              </Typography>
             </Box>
-          ))}
-        </Stack>
+          ) : (
+            <Typography
+              sx={{
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 400,
+                fontSize: { xs: "12px", sm: "14px" },
+                color: "#000",
+                lineHeight: "120%",
+              }}
+            >
+              {item.value}
+            </Typography>
+          )}
+        </Box>
+      </Box>
+    </Grid>
+  ))}
+</Grid>
+
       </Paper>
 
       <ToggleButtonGroup
@@ -258,43 +302,42 @@ function SeafarerCredentials({ seafarer }) {
         exclusive
         onChange={handleTabChange}
         sx={{
-         borderRadius: "50px",
-        overflow: "hidden",
-        border: "1px solid #006D90",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 0,
-        "& .MuiToggleButton-root": {
-          textTransform: "none",
-          border: "none",
           borderRadius: "50px",
-          color: "#006D90",
-          px: 3,
-          py: 1,
-          fontFamily: "Poppins, sans-serif",
-          fontWeight: 500,
-          fontSize: "14px",
-          "&.Mui-selected": {
-            backgroundColor: "#006D90",
-            color: "white",
-          },
-        
-          "&:focus": {
-            outline: "none",
-          },
-        },
-        "@media (max-width:600px)": {
-          width: "100%",
+          overflow: "hidden",
+          border: "1px solid #006D90",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 0,
           "& .MuiToggleButton-root": {
-            fontSize: "12px",
-            px: 2,
+            textTransform: "none",
+            border: "none",
+            borderRadius: "50px",
+            color: "#006D90",
+            boderColor:"#006D90",
+            px: 3,
             py: 1,
-          },
-        },
-      }}
+            fontFamily: "Poppins, sans-serif",
+            fontWeight: 500,
+            fontSize: "14px",
+            "&.Mui-selected": {
+              backgroundColor: "#006D90",
+              color: "white",
+            },
 
-        
+            "&:focus": {
+              outline: "none",
+            },
+          },
+          "@media (max-width:600px)": {
+            width: "100%",
+            "& .MuiToggleButton-root": {
+              fontSize: "12px",
+              px: 2,
+              py: 1,
+            },
+          },
+        }}
       >
         <ToggleButton
           value="coc"
@@ -308,14 +351,6 @@ function SeafarerCredentials({ seafarer }) {
             letterSpacing: "0%",
             border: "none",
             borderRadius: { xs: "32px", sm: "0 32px 32px 0" },
-            color: "#1E3A8A",
-            "&.Mui-selected": {
-              backgroundColor: "#1E3A8A",
-              color: "#fff",
-            },
-            "&:hover": {
-              backgroundColor: selectedTab === "coc" ? "#1E3A8A" : "#E0E7FF",
-            },
             py: { xs: 1.5, sm: 2 },
             transition: "all 0.3s ease",
           }}
@@ -334,15 +369,7 @@ function SeafarerCredentials({ seafarer }) {
             lineHeight: "100%",
             letterSpacing: "0%",
             border: "none",
-            borderRadius: { xs: "32px", sm: "32px 0 0 32px" },
-            color: "#1E3A8A",
-            "&.Mui-selected": {
-              backgroundColor: "#1E3A8A",
-              color: "#fff",
-            },
-            "&:hover": {
-              backgroundColor: selectedTab === "stcw" ? "#1E3A8A" : "#E0E7FF",
-            },
+            borderRadius: { xs: "32px", sm: "0 32px 32px 0" },
             py: { xs: 1.5, sm: 2 },
             transition: "all 0.3s ease",
           }}
@@ -350,13 +377,30 @@ function SeafarerCredentials({ seafarer }) {
           STCW Modular Courses
         </ToggleButton>
       </ToggleButtonGroup>
-      <Table sx={{ borderSpacing: "0px 14px", borderCollapse: "separate" }}>
+    <TableContainer sx={{
+                width:"100%",
+                borderRadius:"10px",
+                backgroundColor:"#F4FCFF",
+                boxShadow:"none",
+                overflow:"visible",
+                "@media(max-width:900px)":{
+                  maxHeight:320,
+                  overflowX:"auto",
+                  overFlowY:"auto"
+                }
+    }}> <Table sx={{ borderSpacing: "0px 14px", borderCollapse: "separate" ,
+      
+    }}>
         <TableHead
           sx={{
             backgroundColor: "#5C5C5C",
             border: "1.06px solid",
             borderCollapse: "separate",
-          }}
+            "@media(max-width:900px)":{
+              position:"sticky",
+              top:0,
+              zIndex:3
+            }          }}
         >
           <TableRow>
             <TableCell sx={{ color: "#fff", fontWeight: 600 }}>S. No</TableCell>
@@ -419,7 +463,8 @@ function SeafarerCredentials({ seafarer }) {
                   <Stack direction="row" spacing={2}>
                     <IconButton
                       sx={{
-                        border: "2px solid #6fa9e2ff",
+                        border: "2px solid #006D90",
+                        backgroundColor: "#F4F8FF",
                         width: "40px",
                         height: "40px",
                         borderRadius: "8px",
@@ -430,12 +475,13 @@ function SeafarerCredentials({ seafarer }) {
                       }}
                       onClick={() => handleOpenDialog(index)}
                     >
-                      <Edit />
+                      <Edit sx={{ color: "#006D90" }} />
                     </IconButton>
                     <IconButton
                       sx={{
                         border: "2px solid, #f71000ff",
                         color: " #e03a2eff",
+                        backgroundColor: "#FFEEF0",
                         borderRadius: "8px",
                         p: 1,
                         width: "40px",
@@ -447,7 +493,7 @@ function SeafarerCredentials({ seafarer }) {
                       onClick={() => handleDelete(index)}
                       color="error"
                     >
-                      <Delete color="#1976d2" />
+                      <Delete fontSize="small" />
                     </IconButton>
                   </Stack>
                 </TableCell>
@@ -456,7 +502,7 @@ function SeafarerCredentials({ seafarer }) {
           })}
         </TableBody>
       </Table>
-
+</TableContainer> 
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
         <Button
           variant="outlined"
@@ -510,8 +556,7 @@ function SeafarerCredentials({ seafarer }) {
       <Dialog
         open={openDialog}
         onClose={handleCloseDialog}
-        fullWidth
-        maxWidth="sm"
+        maxWidth={false}
         PaperProps={{
           sx: {
             border: "2px solid #006D90",
@@ -539,7 +584,6 @@ function SeafarerCredentials({ seafarer }) {
             pb: 1,
             pt: 0,
             mt: 1,
-
             "@media (max-width:600px)": {
               fontSize: "1rem",
               px: 2,
@@ -584,7 +628,6 @@ function SeafarerCredentials({ seafarer }) {
               value={newEntry.name}
               onChange={handleChange}
             />
-
             <Typography fontFamily="Poppins" mb={0.5}>
               Flag State
               {editIndex === null && (
@@ -620,7 +663,6 @@ function SeafarerCredentials({ seafarer }) {
               value={newEntry.dateIssued}
               onChange={handleChange}
             />
-
             <Typography fontFamily="Poppins" mb={0.5}>
               Valid Until
               {editIndex === null && (
@@ -639,11 +681,9 @@ function SeafarerCredentials({ seafarer }) {
               value={newEntry.validUntil}
               onChange={handleChange}
             />
-
             <Typography fontFamily="Poppins" fontWeight={500}>
               Upload Document
             </Typography>
-
             {!newEntry.documentName ? (
               <>
                 <Box
@@ -717,7 +757,6 @@ function SeafarerCredentials({ seafarer }) {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  width: "673px",
                   height: "68px",
                   fontSize: "14px",
                   fontFamily: "Poppins",
@@ -725,7 +764,7 @@ function SeafarerCredentials({ seafarer }) {
                   border: "1px solid #E7E7E7",
                   borderRadius: 2,
                   mt: "6px",
-               
+
                   backgroundColor: "#F3F3F3",
                   "@media (max-width:900px)": {
                     width: "100%",
@@ -733,7 +772,7 @@ function SeafarerCredentials({ seafarer }) {
                     flexDirection: "row",
                     alignItems: "flex-start",
                     p: 1,
-                    fontSize:"10px"
+                    fontSize: "10px",
                   },
                 }}
               >
@@ -743,14 +782,12 @@ function SeafarerCredentials({ seafarer }) {
                       src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
                       alt="pdf"
                       width={26}
-                    
                     />
                   ) : newEntry.documentName.match(/\.(doc|docx)$/) ? (
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/337/337932.png"
                       alt="doc"
                       width={26}
-                     
                     />
                   ) : (
                     <img
@@ -781,7 +818,6 @@ function SeafarerCredentials({ seafarer }) {
                 </Box>
 
                 <IconButton
-                
                   onClick={() =>
                     setNewEntry((prev) => ({
                       ...prev,
@@ -819,9 +855,10 @@ function SeafarerCredentials({ seafarer }) {
             }}
             variant="contained"
             onClick={handleAddOrEditEntry}
-          > {editIndex !== null ? <Check/>:<Add/>}
+          >
+            {" "}
+            {editIndex !== null ? <Check /> : <Add />}
             {editIndex !== null ? "Update" : "Add"}
-           
           </Button>
         </DialogActions>
       </Dialog>
@@ -830,15 +867,32 @@ function SeafarerCredentials({ seafarer }) {
         maxWidth="xs"
         open={deleteDialog.open}
         onClose={handleCloseDialog}
+        PaperProps={{
+          sx:{
+            border:"2px solid #006D90",
+            borderRadius:"12px",
+            backgroundColor:"#ffffff",
+            "@media(max-width:600px)":{
+                border: "2px solid #006D90",
+                  borderRadius: "10px",
+                  mx: 2,
+            }
+          },
+        }}
       >
         <DialogTitle align="right">
           <IconButton onClick={handleCloseDialog}>
-            <Close />
+            <Close sx={{color:"#006D90"}} />
           </IconButton>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent sx={{ display:"flex",
+              flexDirection:"column",
+              justifyContent:"center",
+              textAlign:"center",
+              gap:2, alignItems: "center",}}>
           <Typography
             sx={{
+             
               fontFamily: "poppins",
               fontWeight: 500,
               fontStyle: "medium",
@@ -847,7 +901,8 @@ function SeafarerCredentials({ seafarer }) {
             }}
           >
             Are you Sure Want To Delete This Seafarer List?
-          </Typography><img src={pic} alt="warning" width="270px" height="230"/>
+          </Typography>
+          <img src={pic} alt="warning" width="270px" height="230" />
         </DialogContent>
         <DialogActions>
           <Stack spacing={5} direction="row">
