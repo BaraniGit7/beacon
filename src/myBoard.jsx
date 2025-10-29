@@ -668,12 +668,13 @@ function MyBoard() {
                 borderCollapse: "separate",
               }}
             >
-              <TableHead>
+              <TableHead > 
                 <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
                   {headers.map((header, idx) => (
                     <TableCell
                       key={idx}
                       sx={{
+                        display:"flex-inline",
                         color: "#E4E4E4",
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 700,
@@ -689,6 +690,7 @@ function MyBoard() {
               </TableHead>
               <TableBody
                 sx={{
+                 
                   borderRadius: "20.2px",
                   border: "1.06px solid #E4E4E4",
                 }}
@@ -697,6 +699,7 @@ function MyBoard() {
                   <TableRow
                     key={index}
                     sx={{
+                       height:"10px",
                       backgroundColor: "#fff",
                       "& td": {
                         px: { xs: 0.5, sm: 1 },
@@ -710,7 +713,7 @@ function MyBoard() {
                         sx={{
                           display: "flex",
                           flexDirection: "column",
-                          gap: 0.3,
+                          gap: 0,
                         }}
                       >
                         <Typography
@@ -736,7 +739,7 @@ function MyBoard() {
                     <TableCell>
                       <Typography
                         sx={{
-                          pt: "4px",
+                      
                           fontSize: { xs: "0.65rem", sm: "0.875rem" },
                         }}
                       >
@@ -781,9 +784,9 @@ function MyBoard() {
                       <IconButton
                         color="primary"
                         component="label"
-                        sx={{ p: 0.5, color: "#006D90" }}
+                        sx={{ p: 0.5, color: "#006D90"}}
                       >
-                        <AttachFile fontSize="small" />
+                        <AttachFile fontSize="small" sx={{transform:"rotate(45deg)" }} />
                         <Typography
                           sx={{
                             textDecoration: "underline",
@@ -819,7 +822,7 @@ function MyBoard() {
                         <LockReset fontSize="medium" />
                       </IconButton>
                     </TableCell>
-                    <TableCell align="center">
+                    <TableCell align="left">
                       <Box
                         sx={{
                           fontFamily: "Inter, sans-serif",
@@ -871,7 +874,7 @@ function MyBoard() {
                       </Box>
                     </TableCell>
 
-                    <TableCell>
+                    <TableCell align="left">
                       <Stack direction="row" spacing={2}>
                         <IconButton
                           sx={{
@@ -936,7 +939,7 @@ function MyBoard() {
             PaperProps={{
               sx: {
                 width: 772,
-                height: 812,
+                height:812,
                 borderRadius: "20px",
                 border: "1.5px solid #0069d0",
                 overflowY: { sm: "hidden", xs: "visible" },
@@ -952,8 +955,8 @@ function MyBoard() {
             <DialogTitle
               sx={{
                 height: "36px",
-                px: "24px",
-                py: "12px",
+               px: "24px",
+               py: "12px",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: 600,
                 fontSize: "1.25rem",
@@ -965,17 +968,15 @@ function MyBoard() {
               }}
             >
               {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}
-              <IconButton onClick={closeDialogs}>
+              <IconButton onClick={closeDialogs} sx={{}}>
                 <Close
-                  sx={{ backgroundColor: " #006D90", color: "#fae9e9ff" }}
+                  sx={{ backgroundColor: " #006D90", color: "#ffffffff",borderRadius:"16px" }}
                 />
               </IconButton>
             </DialogTitle>
             <Divider />
             <DialogContent
               sx={{
-                px: 2,
-                py: "7px",
                 fontFamily: "Poppins, sans-serif",
                 backgroundColor: "#FFFFFF",
                 height: "100%",
@@ -994,7 +995,8 @@ function MyBoard() {
                 sx={{
                   display: "flex",
                   flexDirection: "row",
-                  flexWrap: "wrap",
+                  justifyContent:"space-around",
+                  flexWrap: "wrap" ,
                   "@media (max-width:900px)": {
                     flexDirection: "column",
                   },
@@ -1038,7 +1040,7 @@ function MyBoard() {
                     placeholder: "Select",
                   },
                   {
-                    label: "Ship Name & type *",
+                    label: "Ship Name & type ",
                     name: "ship",
                       type: "select",
                     options: ["Yes", "No"],
@@ -1046,19 +1048,19 @@ function MyBoard() {
                   },
                    
                   {
-                    label: "ID Type*",
+                    label: "ID Type",
                     name: "IdType",
                     type: "select",
                     options: ["Passport", "Seafarer ID"],
                     placeholder: "Select id type",
                   },
                   {
-                    label: "ID Number*",
+                    label: "ID Number",
                     name: "idNumber",
                     placeholder: "Enter id number",
                   },
                   {
-                    label: "Associated Country*",
+                    label: "Associated Country",
                     name: "location",
                     type: "select",
                     options: ["India", "USA", "UK"],
@@ -1070,8 +1072,9 @@ function MyBoard() {
                       variant="body2"
                       sx={{
                         height: 27,
-                        fontFamily: "Poppins, sans-serif",
+                        fontFamily: "Poppins",
                         fontWeight: 400,
+                        fontSize:"18px"
                       }}
                     >
                       {field.label}{" "}
@@ -1130,6 +1133,7 @@ function MyBoard() {
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
+                           // width:314,
                             height: 30,
                             paddingLeft: "10px",
                             "& fieldset": {
@@ -1181,7 +1185,7 @@ function MyBoard() {
                         }}
                         sx={{
                           width: 314,
-                          height: 27,
+                        //  height: 27,
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
@@ -1211,16 +1215,14 @@ function MyBoard() {
                     )}
                   </Grid>
                 ))}
-              </Grid>
-
-              <Box sx={{ mt: 2 }}>
+            
+              <Box sx={{ justifyContent:"space-evenly" }}>
                 <Typography
                   sx={{
-                    width: "164px",
-                    height: "27px",
+                    
                     fontFamily: "Poppins",
                     fontWeight: 400,
-                    mt: "4px",
+                    fontSize:"18px"
                   }}
                 >
                   Upload Documents
@@ -1314,7 +1316,7 @@ function MyBoard() {
                         border: "2px dashed #006D90",
                         gap: "9px",
                         borderRadius: 2,
-                        width: "674px",
+                       width: "674px",
                         height: "133px",
                         textAlign: "center",
                         backgroundColor: "#F9FBFC",
@@ -1372,12 +1374,13 @@ function MyBoard() {
                     </Typography>
                   </>
                 )}
-              </Box>
+              </Box>  </Grid>
+
             </DialogContent>
 
             <DialogActions sx={{ px: 4, pb: 3 }}>
-              {openAdd ? (
-                <Button
+              <Grid> {openAdd ? (
+               <Button
                   sx={{ backgroundColor: "#006D90", textTransform: "none" }}
                   variant="contained"
                   onClick={handleAddSeafarer}
@@ -1394,7 +1397,7 @@ function MyBoard() {
                 >
                   Update
                 </Button>
-              )}
+              )}</Grid>
             </DialogActions>
           </Dialog>
 

@@ -205,7 +205,11 @@ function SeafarerCredentials({ seafarer }) {
     >
       <Paper
         elevation={4}
-        sx={{ p: 6, borderRadius: 2, backgroundColor: "#f2f2f2ff", mb: 4 }}
+        sx={{  p: 6, borderRadius: 2, backgroundColor: "#f2f2f2ff", mb: 4 ,overflow:"hidden",
+           "@media(max-width:900px)":{
+          p:3
+        }
+        }}
       >
         <Typography
           variant="h6"
@@ -237,7 +241,8 @@ function SeafarerCredentials({ seafarer }) {
           minWidth: 150,
         }}
       >
-        <Box sx={{ color: "#006D90", mt: 0.3, flexShrink: 0 }}>
+        <Box sx={{ color: "#006D90", mt: 0.3, flexShrink: 0,"& svg": {
+              fontSize: { xs: 18, sm: 24 },  }}}>
           {item.icon}
         </Box>
         <Box>
@@ -246,7 +251,7 @@ function SeafarerCredentials({ seafarer }) {
               fontFamily: "Inter, sans-serif",
               fontWeight: 600,
               fontSize: { xs: "13px", sm: "15px" },
-              lineHeight: "120%",
+          
             }}
           >
             {item.label}
@@ -259,7 +264,7 @@ function SeafarerCredentials({ seafarer }) {
                   fontWeight: 400,
                   fontSize: { xs: "12px", sm: "14px" },
                   color: "#000",
-                  lineHeight: "120%",
+                
                 }}
               >
                 {seafarer.ship}
@@ -556,7 +561,8 @@ function SeafarerCredentials({ seafarer }) {
       <Dialog
         open={openDialog}
         onClose={handleCloseDialog}
-        maxWidth={false}
+        fullWidth
+        maxWidth="sm"
         PaperProps={{
           sx: {
             border: "2px solid #006D90",
