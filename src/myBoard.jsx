@@ -116,7 +116,7 @@ function MyBoard() {
       email: "ramacha@gmail.com",
       phone: "9791917536",
       ship: "Ms Training Ship1",
-     ship1: "(oilTanker)",
+      ship1: "(oilTanker)",
       role: "Deck Rating",
       status: "Active",
     },
@@ -467,7 +467,7 @@ function MyBoard() {
     closeDialogs();
   };
   const [page, setPage] = useState(1);
-  const rowsPerPage = 5;
+  const rowsPerPage = 6;
 
   const paginatedSeafarers = seafarers.slice(
     (page - 1) * rowsPerPage,
@@ -502,16 +502,16 @@ function MyBoard() {
         pb: 0,
         backgroundColor: "#F4FCFF",
         minHeight: "100vh",
-        "@media(max-width:900px)":{
-          pl:0,
-          pt:0
-        }
+        "@media(max-width:900px)": {
+          pl: 0,
+          pt: 0,
+        },
       }}
     >
       <Breadcrumbs
         separator=">"
         sx={{
-          mb: 2,
+          p: "2px",
           "& .MuiBreadcrumbs-separator": {
             mx: 1,
             color: "#000",
@@ -668,19 +668,23 @@ function MyBoard() {
                 borderCollapse: "separate",
               }}
             >
-              <TableHead > 
+              <TableHead>
                 <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
                   {headers.map((header, idx) => (
                     <TableCell
                       key={idx}
                       sx={{
-                        display:"flex-inline",
+                        p:1,
+                        display: "flex-inline",
                         color: "#E4E4E4",
+                        alignItems:"center",
+                        justifyContent:"space-between",
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 700,
                         fontStyle: "normal",
-                        px: { xs: 0.5, sm: 1 },
-                        py: { xs: 0.5, sm: 1 },
+                        fontSize: "14.9px",
+                        lineHeight: "150%",
+                        letterSpacing: "0px",
                       }}
                     >
                       {header}
@@ -690,7 +694,6 @@ function MyBoard() {
               </TableHead>
               <TableBody
                 sx={{
-                 
                   borderRadius: "20.2px",
                   border: "1.06px solid #E4E4E4",
                 }}
@@ -699,12 +702,8 @@ function MyBoard() {
                   <TableRow
                     key={index}
                     sx={{
-                       height:"10px",
+                      height: "10px",
                       backgroundColor: "#fff",
-                      "& td": {
-                        px: { xs: 0.5, sm: 1 },
-                        py: { xs: 0.5, sm: 1 },
-                      },
                     }}
                   >
                     <TableCell>{row.sno}</TableCell>
@@ -714,23 +713,43 @@ function MyBoard() {
                           display: "flex",
                           flexDirection: "column",
                           gap: 0,
+                          lineHeight: "12px",
                         }}
                       >
                         <Typography
-                          variant="body2"
-                          sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                          sx={{
+                            fontFamily: "poppins",
+                            fontWeight: 400,
+                            fontStyle: "normal",
+                            fontSize: "14px",
+                            lineHeight: "18px",
+                            LetterSpacing: "0px",
+                          }}
                         >
                           {row.name}
                         </Typography>
                         <Typography
                           variant="body2"
-                          sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                          sx={{
+                            fontFamily: "poppins",
+                            fontWeight: 400,
+                            fontStyle: "normal",
+                            fontSize: "14px",
+                            lineHeight: "18px",
+                            LetterSpacing: "0px",
+                          }}
                         >
                           {row.email}
                         </Typography>
                         <Typography
-                          variant="body2"
-                          sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                          sx={{
+                            fontFamily: "poppins",
+                            fontWeight: 400,
+                            fontStyle: "normal",
+                            fontSize: "14px",
+                            lineHeight: "18px",
+                            LetterSpacing: "0px",
+                          }}
                         >
                           {row.phone}
                         </Typography>
@@ -739,21 +758,37 @@ function MyBoard() {
                     <TableCell>
                       <Typography
                         sx={{
-                      
-                          fontSize: { xs: "0.65rem", sm: "0.875rem" },
+                          fontFamily: "poppins",
+                          fontWeight: 400,
+                          fontStyle: "normal",
+                          fontSize: "14px",
+                          lineHeight: "18px",
+                          LetterSpacing: "0px",
                         }}
                       >
                         {row.idNumber}
                       </Typography>
                       <Typography
-                        variant="body2"
-                        sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                        sx={{
+                          fontFamily: "poppins",
+                          fontWeight: 400,
+                          fontStyle: "normal",
+                          fontSize: "14px",
+                          lineHeight: "18px",
+                          LetterSpacing: "0px",
+                        }}
                       >
                         {row.IdType}
                       </Typography>
                       <Typography
-                        variant="body2"
-                        sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                        sx={{
+                          fontFamily: "poppins",
+                          fontWeight: 400,
+                          fontStyle: "normal",
+                          fontSize: "14px",
+                          lineHeight: "18px",
+                          LetterSpacing: "0px",
+                        }}
                       >
                         {row.location}
                       </Typography>
@@ -761,21 +796,41 @@ function MyBoard() {
 
                     <TableCell>
                       <Typography
-                        variant="body2"
-                        sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                        sx={{
+                          fontFamily: "poppins",
+                          fontWeight: 400,
+                          fontStyle: "normal",
+                          fontSize: "14px",
+                          lineHeight: "18px",
+                          LetterSpacing: "0px",
+                        }}
                       >
                         {row.ship}
                       </Typography>
                       <Typography
                         color="text.secondary"
-                        sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                        sx={{
+                          fontFamily: "poppins",
+                          fontWeight: 400,
+                          fontStyle: "normal",
+                          fontSize: "14px",
+                          lineHeight: "18px",
+                          LetterSpacing: "0px",
+                        }}
                       >
                         {row.ship1}
                       </Typography>
                     </TableCell>
 
                     <TableCell
-                      sx={{ fontSize: { xs: "0.65rem", sm: "0.875rem" } }}
+                      sx={{
+                        fontFamily: "poppins",
+                        fontWeight: 400,
+                        fontStyle: "normal",
+                        fontSize: "14px",
+                        lineHeight: "18px",
+                        LetterSpacing: "0px",
+                      }}
                     >
                       {row.role}
                     </TableCell>
@@ -784,20 +839,25 @@ function MyBoard() {
                       <IconButton
                         color="primary"
                         component="label"
-                        sx={{ p: 0.5, color: "#006D90"}}
+                        sx={{ p: 0.5, color: "#006D90" }}
                       >
-                        <AttachFile fontSize="small" sx={{transform:"rotate(45deg)" }} />
+                        <AttachFile
+                          fontSize="small"
+                          sx={{ transform: "rotate(45deg)" }}
+                        />
                         <Typography
                           sx={{
+                            fontFamily: "Inter",
+                            fontWeight: 400,
+                            fontStyle: "normal",
+                
                             textDecoration: "underline",
-                            fontSize: {
-                              xs: "0.65rem",
-                              sm: "0.875rem",
-                              color: "#006D90",
-                            },
+                            fontSize: "14px",
+                            lineHeight: "18px",
+                            color: "#006D90",
                           }}
                         >
-                          viewAttachment
+                          view Attachment
                         </Typography>
                       </IconButton>
                     </TableCell>
@@ -830,12 +890,12 @@ function MyBoard() {
                           lineHeight: "140%",
                           display: "inline-flex",
                           alignItems: "center",
-                          justifyContent: "center",
+                          justifyContent: "space-evenly",
                           fontWeight: 500,
                           px: 1.5,
                           py: 0.5,
                           gap: 0.8,
-                          width: "102px",
+                          width: "120px",
                           borderRadius: "38.32px",
                           border: "1px solid",
                           borderColor:
@@ -867,8 +927,7 @@ function MyBoard() {
                           sx={{ p: 0.5 }}
                         >
                           <EditRounded
-                            fontSize="small"
-                            sx={{ color: "#000" }}
+                            sx={{ color: "#000", fontSize: "20px" }}
                           />
                         </IconButton>
                       </Box>
@@ -924,14 +983,22 @@ function MyBoard() {
               alignItems: "center",
             }}
           >
-            <Pagination
+            <Pagination 
+            shape="rounded"
               count={Math.ceil(seafarers.length / rowsPerPage)}
               page={page}
               onChange={handlePageChange}
+              sx={{
+        
+          "& .Mui-selected": {
+            backgroundColor: "#0069D0",
+            color: "white",
+          },
+       
+        }}
             />
           </Box>
 
-         
           <Dialog
             open={openAdd || openEdit}
             onClose={closeDialogs}
@@ -939,7 +1006,7 @@ function MyBoard() {
             PaperProps={{
               sx: {
                 width: 772,
-                height:812,
+                height: 812,
                 borderRadius: "20px",
                 border: "1.5px solid #0069d0",
                 overflowY: { sm: "hidden", xs: "visible" },
@@ -955,22 +1022,26 @@ function MyBoard() {
             <DialogTitle
               sx={{
                 height: "36px",
-               px: "24px",
-               py: "12px",
+                px: "24px",
+                py: "12px",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: 600,
                 fontSize: "1.25rem",
                 color: "#006D90",
                 display: "flex",
                 justifyContent: "space-between",
-                 alignItems: "center",
+                alignItems: "center",
                 borderBottom: "1px solid #E0E0E0",
               }}
             >
               {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}
               <IconButton onClick={closeDialogs} sx={{}}>
                 <Close
-                  sx={{ backgroundColor: " #006D90", color: "#ffffffff",borderRadius:"16px" }}
+                  sx={{
+                    backgroundColor: " #006D90",
+                    color: "#ffffffff",
+                    borderRadius: "16px",
+                  }}
                 />
               </IconButton>
             </DialogTitle>
@@ -995,8 +1066,8 @@ function MyBoard() {
                 sx={{
                   display: "flex",
                   flexDirection: "row",
-                  justifyContent:"space-around",
-                  flexWrap: "wrap" ,
+                  justifyContent: "space-around",
+                  flexWrap: "wrap",
                   "@media (max-width:900px)": {
                     flexDirection: "column",
                   },
@@ -1042,11 +1113,11 @@ function MyBoard() {
                   {
                     label: "Ship Name & type ",
                     name: "ship",
-                      type: "select",
+                    type: "select",
                     options: ["Yes", "No"],
                     placeholder: "Select Ship name",
                   },
-                   
+
                   {
                     label: "ID Type",
                     name: "IdType",
@@ -1067,14 +1138,14 @@ function MyBoard() {
                     placeholder: "Select country",
                   },
                 ].map((field) => (
-                  <Grid item xs={12} sm={6}  key={field.name}>
+                  <Grid item xs={12} sm={6} key={field.name}>
                     <Typography
                       variant="body2"
                       sx={{
                         height: 27,
                         fontFamily: "Poppins",
                         fontWeight: 400,
-                        fontSize:"18px"
+                        fontSize: "18px",
                       }}
                     >
                       {field.label}{" "}
@@ -1099,7 +1170,7 @@ function MyBoard() {
                         name={field.name}
                         InputProps={{
                           startAdornment: (
-                            <InputAdornment position="start" >
+                            <InputAdornment position="start">
                               {iconMap[field.name]}
                             </InputAdornment>
                           ),
@@ -1133,7 +1204,7 @@ function MyBoard() {
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
-                           // width:314,
+                            // width:314,
                             height: 30,
                             paddingLeft: "10px",
                             "& fieldset": {
@@ -1185,7 +1256,7 @@ function MyBoard() {
                         }}
                         sx={{
                           width: 314,
-                        //  height: 27,
+                          //  height: 27,
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
@@ -1215,189 +1286,194 @@ function MyBoard() {
                     )}
                   </Grid>
                 ))}
-            
-              <Box sx={{ justifyContent:"space-evenly" }}>
-                <Typography
-                  sx={{
-                    
-                    fontFamily: "Poppins",
-                    fontWeight: 400,
-                    fontSize:"18px"
-                  }}
-                >
-                  Upload Documents
-                </Typography>
-
-                {(
-                  !openAdd
-                    ? editSeafarer.documentName
-                    : newSeafarer.documentName
-                ) ? (
-                  <Box
+                <Box sx={{ justifyContent: "space-evenly" }}>
+                  <Typography
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
                       fontFamily: "Poppins",
-                      justifyContent: "space-between",
-                      border: "1px solid #E7E7E7",
-                      borderRadius: 2,
-                      mt: "6px",
-                      width: "673px",
-                      height: "68px",
-                      fontSize: isMobile ? "12px" : "14px",
-                      backgroundColor: "#F3F3F3",
-                      "@media (max-width:900px)": {
-                        width: "100%",
-                        height: "auto",
-                        flexDirection: "row",
-                        alignItems: "flex-start",
-                        p: 1,
-                      },
+                      fontWeight: 400,
+                      fontSize: "18px",
                     }}
                   >
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
-                        alt="pdf"
-                        width={26}
-                      />
-                      <Box>
-                        <Typography
-                          fontWeight={400}
-                          sx={{
-                            wordBreak: "break-all",
-                            "@media (max-width:600px)": { fontSize: "0.85rem" },
-                          }}
-                        >
-                          {openAdd
-                            ? newSeafarer.documentName
-                            : editSeafarer.documentName}
-                        </Typography>
-                        {(openAdd
-                          ? newSeafarer.document
-                          : editSeafarer.document) && (
-                          <Typography variant="caption" color="gray">
-                            {(
-                              (openAdd
-                                ? newSeafarer.document
-                                : editSeafarer.document
-                              ).size /
-                              1024 /
-                              1024
-                            ).toFixed(2)}{" "}
-                            MB
-                          </Typography>
-                        )}
-                      </Box>
-                    </Box>
-                    <IconButton
-                      onClick={() => {
-                        if (openAdd)
-                          setNewSeafarer((prev) => ({
-                            ...prev,
-                            document: null,
-                            documentName: "",
-                          }));
-                        else
-                          setEditSeafarer((prev) => ({
-                            ...prev,
-                            document: null,
-                            documentName: "",
-                          }));
-                      }}
-                    >
-                      <Close />
-                    </IconButton>
-                  </Box>
-                ) : (
-                  <>
+                    Upload Documents
+                  </Typography>
+
+                  {(
+                    !openAdd
+                      ? editSeafarer.documentName
+                      : newSeafarer.documentName
+                  ) ? (
                     <Box
                       sx={{
-                        border: "2px dashed #006D90",
-                        gap: "9px",
+                        display: "flex",
+                        alignItems: "center",
+                        fontFamily: "Poppins",
+                        justifyContent: "space-between",
+                        border: "1px solid #E7E7E7",
                         borderRadius: 2,
-                       width: "674px",
-                        height: "133px",
-                        textAlign: "center",
-                        backgroundColor: "#F9FBFC",
-                        "&:hover": { backgroundColor: "#F1F5F9" },
-                        transition: "0.2s",
-                        cursor: "pointer",
+                        mt: "6px",
+                        width: "673px",
+                        height: "68px",
+                        fontSize: isMobile ? "12px" : "14px",
+                        backgroundColor: "#F3F3F3",
                         "@media (max-width:900px)": {
                           width: "100%",
-                          height: "120px",
+                          height: "auto",
+                          flexDirection: "row",
+                          alignItems: "flex-start",
+                          p: 1,
                         },
                       }}
                     >
-                      <input
-                        type="file"
-                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                        hidden
-                        id="file-upload"
-                        onChange={handleFileChange}
-                      />
-                      <label htmlFor="file-upload">
-                        <DriveFolderUploadRounded
-                          sx={{
-                            color: "#006D90",
-                            width: "30px",
-                            height: "30px",
-                          }}
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                      >
+                        <img
+                          src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                          alt="pdf"
+                          width={26}
                         />
-                        <Typography variant="body2" color="text.secondary">
-                          Drag your file(s) to start uploading
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          OR
-                        </Typography>
-                        <Button
-                          variant="outlined"
-                          sx={{
-                            borderColor: "#006D90",
-                            color: "#006D90",
-                            textTransform: "none",
-                          }}
-                          component="span"
-                        >
-                          Browse files
-                        </Button>
-                      </label>
+                        <Box>
+                          <Typography
+                            fontWeight={400}
+                            sx={{
+                              wordBreak: "break-all",
+                              "@media (max-width:600px)": {
+                                fontSize: "0.85rem",
+                              },
+                            }}
+                          >
+                            {openAdd
+                              ? newSeafarer.documentName
+                              : editSeafarer.documentName}
+                          </Typography>
+                          {(openAdd
+                            ? newSeafarer.document
+                            : editSeafarer.document) && (
+                            <Typography variant="caption" color="gray">
+                              {(
+                                (openAdd
+                                  ? newSeafarer.document
+                                  : editSeafarer.document
+                                ).size /
+                                1024 /
+                                1024
+                              ).toFixed(2)}{" "}
+                              MB
+                            </Typography>
+                          )}
+                        </Box>
+                      </Box>
+                      <IconButton
+                        onClick={() => {
+                          if (openAdd)
+                            setNewSeafarer((prev) => ({
+                              ...prev,
+                              document: null,
+                              documentName: "",
+                            }));
+                          else
+                            setEditSeafarer((prev) => ({
+                              ...prev,
+                              document: null,
+                              documentName: "",
+                            }));
+                        }}
+                      >
+                        <Close />
+                      </IconButton>
                     </Box>
-                    <Typography
-                      variant="caption"
-                      display="block"
-                      mt="2px"
-                      height="20px"
-                      color="gray"
-                    >
-                      Support .docs, .docx, .pdf, .jpg, .png
-                    </Typography>
-                  </>
-                )}
-              </Box>  </Grid>
-
+                  ) : (
+                    <>
+                      <Box
+                        sx={{
+                          border: "2px dashed #006D90",
+                          gap: "9px",
+                          borderRadius: 2,
+                          width: "674px",
+                          height: "133px",
+                          textAlign: "center",
+                          backgroundColor: "#F9FBFC",
+                          "&:hover": { backgroundColor: "#F1F5F9" },
+                          transition: "0.2s",
+                          cursor: "pointer",
+                          "@media (max-width:900px)": {
+                            width: "100%",
+                            height: "120px",
+                          },
+                        }}
+                      >
+                        <input
+                          type="file"
+                          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                          hidden
+                          id="file-upload"
+                          onChange={handleFileChange}
+                        />
+                        <label htmlFor="file-upload">
+                          <DriveFolderUploadRounded
+                            sx={{
+                              color: "#006D90",
+                              width: "30px",
+                              height: "30px",
+                            }}
+                          />
+                          <Typography variant="body2" color="text.secondary">
+                            Drag your file(s) to start uploading
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            OR
+                          </Typography>
+                          <Button
+                            variant="outlined"
+                            sx={{
+                              borderColor: "#006D90",
+                              color: "#006D90",
+                              textTransform: "none",
+                            }}
+                            component="span"
+                          >
+                            Browse files
+                          </Button>
+                        </label>
+                      </Box>
+                      <Typography
+                        variant="caption"
+                        display="block"
+                        mt="2px"
+                        height="20px"
+                        color="gray"
+                      >
+                        Support .docs, .docx, .pdf, .jpg, .png
+                      </Typography>
+                    </>
+                  )}
+                </Box>{" "}
+              </Grid>
             </DialogContent>
 
             <DialogActions sx={{ px: 4, pb: 3 }}>
-              <Grid> {openAdd ? (
-               <Button
-                  sx={{ backgroundColor: "#006D90", textTransform: "none" }}
-                  variant="contained"
-                  onClick={handleAddSeafarer}
-                  startIcon={<Add />}
-                >
-                  Add
-                </Button>
-              ) : (
-                <Button
-                  sx={{ backgroundColor: "#006D90", textTransform: "none" }}
-                  variant="contained"
-                  onClick={handleEditSeafarer}
-                  startIcon={<Done />}
-                >
-                  Update
-                </Button>
-              )}</Grid>
+              <Grid>
+                {" "}
+                {openAdd ? (
+                  <Button
+                    sx={{ backgroundColor: "#006D90", textTransform: "none" }}
+                    variant="contained"
+                    onClick={handleAddSeafarer}
+                    startIcon={<Add />}
+                  >
+                    Add
+                  </Button>
+                ) : (
+                  <Button
+                    sx={{ backgroundColor: "#006D90", textTransform: "none" }}
+                    variant="contained"
+                    onClick={handleEditSeafarer}
+                    startIcon={<Done />}
+                  >
+                    Update
+                  </Button>
+                )}
+              </Grid>
             </DialogActions>
           </Dialog>
 
@@ -1506,7 +1582,14 @@ function MyBoard() {
           >
             <DialogTitle align="right">
               <IconButton onClick={closeDialogs}>
-                <Close />
+                <Close
+                  sx={{
+                    backgroundColor: "#006D90",
+                    color: "#ffffff",
+                    fontSize: "24px",
+                    borderRadius: "16px",
+                  }}
+                />
               </IconButton>
             </DialogTitle>
             <DialogContent
@@ -1636,7 +1719,14 @@ function MyBoard() {
             >
               Bulk Upload
               <IconButton onClick={closeDialogs}>
-                <CloseOutlined />
+                <CloseOutlined
+                  sx={{
+                    backgroundColor: "#006D90",
+                    color: "#ffffff",
+                    fontSize: "24px",
+                    borderRadius: "16px",
+                  }}
+                />
               </IconButton>
             </DialogTitle>
 
@@ -1850,7 +1940,14 @@ function MyBoard() {
             >
               SeaFarer Password
               <IconButton sx={{ color: "#006D90" }} onClick={closeDialogs}>
-                <Close />
+                <Close
+                  sx={{
+                    backgroundColor: "#006D90",
+                    color: "#ffffff",
+                    fontSize: "24px",
+                    borderRadius: "16px",
+                  }}
+                />
               </IconButton>
             </DialogTitle>
             <Divider />
@@ -1863,13 +1960,18 @@ function MyBoard() {
                   *
                 </Typography>
               </Typography>
-              <TextField placeholder="New Password" type="password" />
+              <TextField
+                placeholder="New Password"
+                type="password"
+                sx={{ borderRadius: "1px" }}
+              />
             </DialogContent>
             <DialogActions>
               <Button
                 variant="contained"
                 sx={{ backgroundColor: "#006D90" }}
                 onClick={closeDialogs}
+                startIcon={<Check />}
               >
                 Update
               </Button>

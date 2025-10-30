@@ -223,6 +223,7 @@ function SeafarerCredentials({ seafarer }) {
   sx={{
     display: "flex",
     flexWrap: "wrap",
+    justifyContent:"space-between"
   }}
 >
   {credentials.map((item) => (
@@ -237,8 +238,16 @@ function SeafarerCredentials({ seafarer }) {
         sx={{
           display: "flex",
           alignItems: "flex-start",
+          
           gap: 1.5,
-          minWidth: 150,
+         minWidth: 150,
+
+         "@media(max-width:900px)":{
+            display: "flex",
+          alignItems: "flex-start",
+          gap: 1.5,
+         minWidth: 150,
+         }
         }}
       >
         <Box sx={{ color: "#006D90", mt: 0.3, flexShrink: 0,"& svg": {
