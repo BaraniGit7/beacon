@@ -816,7 +816,7 @@ function MyBoard() {
                   </TableCell>
                   <TableCell
                     sx={{
-                      textAlign: "left",
+                      textAlign: "center",
                      color: "#E4E4E4",
                       fontFamily: "Inter, sans-serif",
                       fontWeight: 700,
@@ -969,7 +969,7 @@ function MyBoard() {
                       {row.role}
                     </TableCell>
 
-                    <TableCell sx={{ px: 1 }}>
+                    <TableCell >
                       <Typography
                         sx={{
                           fontFamily: "Inter",
@@ -1062,11 +1062,13 @@ function MyBoard() {
                       </Box>
                     </TableCell>
 
-                    <TableCell sx={{ textAlign: "center",  }}>
+                    <TableCell sx={{ textAlign: "left",  }}>
                       <Box
                         sx={{
                           display:"flex",
-                         gap:1.5,
+                          alignItems:"center",
+                          justifyContent:"space-evenly",
+                        
                           direction: "row",
                           lineHeight: "12px",
                         }}
