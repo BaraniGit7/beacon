@@ -495,8 +495,8 @@ function MyBoard() {
     <Box
       sx={{
         alignItems: "center",
-        pl: 2,
-        pt: "5px",
+        pl: "3px",
+        pt: "4px",
         //  width: "100%",
         pr: 0,
         pb: 0,
@@ -552,8 +552,8 @@ function MyBoard() {
         <>
           <Box
             sx={{
-              mb: 1,
-              pr: 3,
+            
+              pr:"4px",
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
               justifyContent: isMobile ? "start" : "space-between",
@@ -1107,6 +1107,11 @@ function MyBoard() {
               page={page}
               onChange={handlePageChange}
               sx={{
+               " & .MuiPaginationItem-root": {
+      fontSize: "10px", // smaller number text
+    
+      margin: "0 2px",
+    },
                 "& .Mui-selected": {
                   backgroundColor: "#0069D0",
                   color: "white",
