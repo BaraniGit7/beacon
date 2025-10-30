@@ -496,7 +496,7 @@ function MyBoard() {
       sx={{
         alignItems: "center",
         pl: 2,
-        pt: 2,
+        pt: "5px",
         //  width: "100%",
         pr: 0,
         pb: 0,
@@ -506,6 +506,7 @@ function MyBoard() {
         "@media(max-width:900px)": {
           pl: 0,
           pt: 0,
+         
         },
       }}
     >
@@ -526,8 +527,8 @@ function MyBoard() {
             cursor: "pointer",
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
-
-            fontSize: "18px",
+          
+            fontSize: "16px",
             color: "#000000ff",
           }}
         >
@@ -567,9 +568,9 @@ function MyBoard() {
                 alignItems: "center",
                 borderRadius: "8px",
                 flex: "1 1 auto",
-                mt: "2px",
+                mt: "6px",
                 maxWidth: isMobile ? "400px" : "530px",
-                height: isMobile ? "28px" : "30px",
+                height: isMobile ? "26px" : "28px",
                 boxShadow: "none",
                 border: "1px solid #E0E0E0",
                 gap: "8px",
@@ -1060,13 +1061,13 @@ function MyBoard() {
                       </Box>
                     </TableCell>
 
-                    <TableCell sx={{ textAlign: "left", px: 1 }}>
+                    <TableCell sx={{ textAlign: "left",  }}>
                       <Stack direction="row" spacing={2}>
                         <IconButton
                           sx={{
                             border: "2px solid #006D90",
                             borderRadius: "8px",
-
+                            p:1,
                             backgroundColor: "#F4FCFF",
                           }}
                           variant="outlined"
@@ -1080,7 +1081,7 @@ function MyBoard() {
                             border: "2px solid, #f71000ff",
                             color: " #e03a2eff",
                             borderRadius: "8px",
-
+                            p:1,
                             backgroundColor: "#FFEEF0",
                           }}
                         >
