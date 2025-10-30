@@ -527,8 +527,8 @@ function MyBoard() {
             cursor: "pointer",
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
-            fontStyle: "Bold",
-            fontSize: "20px",
+           
+            fontSize: "18px",
             color: "#000000ff",
           }}
         >
@@ -540,9 +540,8 @@ function MyBoard() {
             sx={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 600,
-              fontStyle: "normal",
-              fontSize: "20px",
-              lineHeight: "100%",
+              fontSize: "18px",
+              
             }}
           >
             Seafarer Credentials
@@ -572,7 +571,7 @@ function MyBoard() {
                 flex: "1 1 auto",
                 mt:"2px",
                 maxWidth: isMobile ? "400px" : "530px",
-                height: isMobile ? "33px" : "35px",
+                height: isMobile ? "28px" : "30px",
                 boxShadow: "none",
                 border: "1px solid #E0E0E0",
                 gap: "8px",
@@ -609,15 +608,15 @@ function MyBoard() {
                 sx={{
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
-                  fontSize: isMobile ? "9px" : "11px",
+                  fontSize: isMobile ? "10px" : "12px",
                   lineHeight: "24px",
                   textTransform: "uppercase",
                   backgroundColor: "#006D90",
                   color: "#fff",
-                  width: "163px",
+              
                   borderRadius: "8px",
                   border: "1px solid #006D90",
-                  height: isMobile ? "35px" : "40px",
+                  height: isMobile ? "30px" : "35px",
                   px: isMobile ? 1 : 2,
                   "&:hover": { backgroundColor: "#005b78" },
                 }}
@@ -632,15 +631,15 @@ function MyBoard() {
                 sx={{
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
-                  fontSize: isMobile ? "9px" : "11px",
+                  fontSize: isMobile ? "10px" : "12px",
                   lineHeight: "24px",
                   textTransform: "uppercase",
                   borderColor: "#006D90",
                   color: "#006D90",
                   backgroundColor: "#fff",
                   borderRadius: "8px",
-                  height: isMobile ? "35px" : "40px",
-                  width: "163px",
+                  height: isMobile ? "30px" : "35px",
+                
                   px: isMobile ? 1 : 2,
                   "&:hover": {
                     backgroundColor: "#E3F2F6",
@@ -681,10 +680,10 @@ function MyBoard() {
                         alignItems:"center",
                         justifyContent:"space-between",
                         fontFamily: "Inter, sans-serif",
-                        fontWeight: 700,
-                        fontStyle: "normal",
-                        fontSize: "13px",
-                        lineHeight: "150%",
+                      fontWeight:700,
+                       
+                        fontSize: isMobile? "14px":"13px",
+                        lineHeight: isMobile?"120%":"150%",
                        // letterSpacing: "0px",
                       }}
                     >
@@ -721,8 +720,8 @@ function MyBoard() {
                             textAlign:"left",
                             fontFamily: "poppins",
                             fontWeight: 400,
-                            fontSize: "14px",
-                            lineHeight: "18px",
+                            fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
                            
                           }}
                         >
@@ -734,8 +733,9 @@ function MyBoard() {
                             textAlign:"left",
                             fontFamily: "poppins",
                             fontWeight: 400,
-                            fontSize: "14px",
-                            lineHeight: "18px",
+                           fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                             
                           }}
                         >
@@ -747,8 +747,9 @@ function MyBoard() {
                             fontFamily: "poppins",
                             fontWeight: 400,
                             fontStyle: "normal",
-                            fontSize: "14px",
-                            lineHeight: "18px",
+                            fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                           
                           }}
                         >
@@ -763,8 +764,9 @@ function MyBoard() {
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: "14px",
-                          lineHeight: "18px",
+                          fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                        
                         }}
                       >
@@ -776,8 +778,9 @@ function MyBoard() {
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: "14px",
-                          lineHeight: "18px",
+                         fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                         }}
                       >
                         {row.IdType}
@@ -788,8 +791,9 @@ function MyBoard() {
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: "14px",
-                          lineHeight: "18px",
+                          fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                          
                         }}
                       >
@@ -804,8 +808,9 @@ function MyBoard() {
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: "14px",
-                          lineHeight: "18px",
+                          fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                          
                         }}
                       >
@@ -818,8 +823,9 @@ function MyBoard() {
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: "14px",
-                          lineHeight: "18px",
+                         fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                         
                         }}
                       >
@@ -833,9 +839,9 @@ function MyBoard() {
                         fontFamily: "poppins",
                         fontWeight: 400,
                         fontStyle: "normal",
-                        fontSize: "14px",
-                        lineHeight: "18px",
-                        
+                        fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px"
+                           
                       }}
                     >
                       {row.role}
@@ -850,8 +856,9 @@ function MyBoard() {
                             fontStyle: "normal",
                 textAlign:"left",
                             textDecoration: "underline",
-                            fontSize: "14px",
-                            lineHeight: "20px",
+                            fontSize: isMobile?"12px":"14px",
+                            lineHeight:isMobile?"12px":"14px",
+                           
                             color: "#006D90",
                             
                           }}
