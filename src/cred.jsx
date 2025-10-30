@@ -205,7 +205,7 @@ function SeafarerCredentials({ seafarer }) {
     >
       <Paper
         elevation={4}
-        sx={{  p: 6, borderRadius: 2, backgroundColor: "#f2f2f2ff", mb: 4 ,overflow:"hidden",
+        sx={{  p: 2, borderRadius: 2, backgroundColor: "#f2f2f2ff", mb: 4 ,overflow:"hidden",
            "@media(max-width:900px)":{
           p:3
         }

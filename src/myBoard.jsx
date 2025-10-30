@@ -495,11 +495,14 @@ function MyBoard() {
     <Box
       sx={{
         alignItems: "center",
-      
+        pl: 2,
+        pt: 2,
+      //  width: "100%",
         pr: 0,
         pb: 0,
         backgroundColor: "#F4FCFF",
-        minHeight: "100vh",
+      //  minHeight: "100vh",
+        overflow:isMobile?"visible":"hidden",
         "@media(max-width:900px)": {
           pl: 0,
           pt: 0,
@@ -511,7 +514,7 @@ function MyBoard() {
         sx={{
           p: "2px",
           "& .MuiBreadcrumbs-separator": {
-            mx: 1,
+         
             color: "#000",
             fontSize: "20px",
           },
@@ -519,7 +522,6 @@ function MyBoard() {
       >
         <Link
           underline="hover"
-          color="inherit"
           onClick={handleBackToList}
           sx={{
             cursor: "pointer",
@@ -557,7 +559,7 @@ function MyBoard() {
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
               justifyContent: isMobile ? "start" : "space-between",
-              flexWrap: "nowrap",
+             
               gap: isMobile ? 1 : 2,
             }}
           >
@@ -568,22 +570,23 @@ function MyBoard() {
                 alignItems: "center",
                 borderRadius: "8px",
                 flex: "1 1 auto",
+                mt:"2px",
                 maxWidth: isMobile ? "400px" : "530px",
-                height: isMobile ? "35px" : "40px",
+                height: isMobile ? "33px" : "35px",
                 boxShadow: "none",
                 border: "1px solid #E0E0E0",
                 gap: "8px",
                 backgroundColor: "#fff",
               }}
             >
-              <IconButton size="small" sx={{ color: "#006D90" }}>
+              <IconButton  sx={{ color: "#006D90", }}>
                 <Search />
               </IconButton>
               <InputBase
                 sx={{
-                  ml: 1,
+                
                   flex: 1,
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: "poppins",
                   fontSize: isMobile ? "13px" : "15px",
                 }}
                 placeholder="Search or filter..."
@@ -593,10 +596,10 @@ function MyBoard() {
             <Box
               sx={{
                 display: "flex",
-                flexDirection: isMobile ? "column" : "row",
-                gap: { xs: 1, sm: 1.5 },
-                mt: { xs: 1, sm: 0 },
-                justifyContent: { xs: "stretch", sm: "flex-end" },
+                flexDirection:"row",
+                gap:isMobile ? 1 : 1.5,
+                mt: isMobile? "1px" : 0,
+                justifyContent: isMobile? "stretch":"flex-end"
               }}
             >
               <Button
@@ -606,7 +609,7 @@ function MyBoard() {
                 sx={{
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
-                  fontSize: isMobile ? "10px" : "12px",
+                  fontSize: isMobile ? "9px" : "11px",
                   lineHeight: "24px",
                   textTransform: "uppercase",
                   backgroundColor: "#006D90",
@@ -629,7 +632,7 @@ function MyBoard() {
                 sx={{
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
-                  fontSize: isMobile ? "10px" : "12px",
+                  fontSize: isMobile ? "9px" : "11px",
                   lineHeight: "24px",
                   textTransform: "uppercase",
                   borderColor: "#006D90",
@@ -655,7 +658,7 @@ function MyBoard() {
             sx={{
               backgroundColor: "#F4FCFF",
               borderRadius: "10px",
-              overflowY: "auto",
+             overflowY: isMobile? "auto":"hidden",
             }}
           >
             <Table
@@ -666,13 +669,13 @@ function MyBoard() {
                 borderCollapse: "separate",
               }}
             >
-              <TableHead>
-                <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
+              <TableHead >
+                <TableRow  sx={{ backgroundColor: "#5C5C5C" }}>
                   {headers.map((header, idx) => (
                     <TableCell
                       key={idx}
                       sx={{
-                        p:1,
+                        textAlign:"left",
                         display: "flex-inline",
                         color: "#E4E4E4",
                         alignItems:"center",
@@ -680,9 +683,9 @@ function MyBoard() {
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 700,
                         fontStyle: "normal",
-                        fontSize: "14.9px",
+                        fontSize: "13px",
                         lineHeight: "150%",
-                        letterSpacing: "0px",
+                       // letterSpacing: "0px",
                       }}
                     >
                       {header}
@@ -700,28 +703,27 @@ function MyBoard() {
                   <TableRow
                     key={index}
                     sx={{
-                      height: "10px",
+                  
                       backgroundColor: "#fff",
                     }}
                   >
-                    <TableCell>{row.sno}</TableCell>
+                    <TableCell sx={{textAlign:"left"}}>{row.sno}</TableCell>
                     <TableCell>
                       <Box
                         sx={{
                           display: "flex",
                           flexDirection: "column",
-                          gap: 0,
-                          lineHeight: "12px",
+                        lineHeight: "12px",
                         }}
                       >
                         <Typography
                           sx={{
+                            textAlign:"left",
                             fontFamily: "poppins",
                             fontWeight: 400,
-                            fontStyle: "normal",
                             fontSize: "14px",
                             lineHeight: "18px",
-                            LetterSpacing: "0px",
+                           
                           }}
                         >
                           {row.name}
@@ -729,63 +731,66 @@ function MyBoard() {
                         <Typography
                           variant="body2"
                           sx={{
+                            textAlign:"left",
                             fontFamily: "poppins",
                             fontWeight: 400,
-                            fontStyle: "normal",
                             fontSize: "14px",
                             lineHeight: "18px",
-                            LetterSpacing: "0px",
+                            
                           }}
                         >
                           {row.email}
                         </Typography>
                         <Typography
                           sx={{
+                            textAlign:"left",
                             fontFamily: "poppins",
                             fontWeight: 400,
                             fontStyle: "normal",
                             fontSize: "14px",
                             lineHeight: "18px",
-                            LetterSpacing: "0px",
+                          
                           }}
                         >
                           {row.phone}
                         </Typography>
                       </Box>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{textAlign:"left"}}>
                       <Typography
                         sx={{
+                          textAlign:"left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
                           fontSize: "14px",
                           lineHeight: "18px",
-                          LetterSpacing: "0px",
+                       
                         }}
                       >
                         {row.idNumber}
                       </Typography>
                       <Typography
                         sx={{
+                          textAlign:"left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
                           fontSize: "14px",
                           lineHeight: "18px",
-                          LetterSpacing: "0px",
                         }}
                       >
                         {row.IdType}
                       </Typography>
                       <Typography
                         sx={{
+                          textAlign:"left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
                           fontSize: "14px",
                           lineHeight: "18px",
-                          LetterSpacing: "0px",
+                         
                         }}
                       >
                         {row.location}
@@ -795,12 +800,13 @@ function MyBoard() {
                     <TableCell>
                       <Typography
                         sx={{
+                          textAlign:"left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
                           fontSize: "14px",
                           lineHeight: "18px",
-                          LetterSpacing: "0px",
+                         
                         }}
                       >
                         {row.ship}
@@ -808,12 +814,13 @@ function MyBoard() {
                       <Typography
                         color="text.secondary"
                         sx={{
+                          textAlign:"left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
                           fontSize: "14px",
                           lineHeight: "18px",
-                          LetterSpacing: "0px",
+                        
                         }}
                       >
                         {row.ship1}
@@ -822,78 +829,80 @@ function MyBoard() {
 
                     <TableCell
                       sx={{
+                        textAlign:"left",
                         fontFamily: "poppins",
                         fontWeight: 400,
                         fontStyle: "normal",
                         fontSize: "14px",
                         lineHeight: "18px",
-                        LetterSpacing: "0px",
+                        
                       }}
                     >
                       {row.role}
                     </TableCell>
 
-                    <TableCell>
-                      <IconButton
-                        color="primary"
-                        component="label"
-                        sx={{ p: 0.5, color: "#006D90" }}
-                      >
-                        <AttachFile
-                          fontSize="small"
-                          sx={{ transform: "rotate(45deg)" }}
-                        />
+                    <TableCell sx={{px:1}}>
+                  
                         <Typography
                           sx={{
                             fontFamily: "Inter",
                             fontWeight: 400,
                             fontStyle: "normal",
-                
+                textAlign:"left",
                             textDecoration: "underline",
                             fontSize: "14px",
-                            lineHeight: "18px",
+                            lineHeight: "20px",
                             color: "#006D90",
+                            
                           }}
-                        >
+                        ><IconButton
+                        color="primary"
+                      component="label"
+                        sx={{textAlign:"left", color: "#006D90" }}
+                      >
+                        <AttachFile
+                     
+                          sx={{fontSize:"17px", transform: "rotate(45deg)" }}
+                        /></IconButton>
                           view Attachment
                         </Typography>
-                      </IconButton>
+                     
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{textAlign:"left"}}>
                       <IconButton
                         onClick={() => handleViewCredentials(row)}
                         sx={{
-                          p: 0.5,
+                     
+              
                           color: "#006D90",
-                          width: "54px",
-                          height: "25px",
+                      
                         }}
                       >
-                        <RemoveRedEyeOutlined fontSize="medium" />
+                        <RemoveRedEyeOutlined />
                       </IconButton>
                     </TableCell>
-                    <TableCell>
+                    <TableCell  sx={{textAlign:"left"}}>
                       <IconButton
                         onClick={() => handlePassword(row)}
-                        sx={{ p: 0.5, color: "#006D90" }}
+                        sx={{  color: "#006D90" }}
                       >
                         <LockReset fontSize="medium" />
                       </IconButton>
                     </TableCell>
-                    <TableCell align="left">
+                    <TableCell sx={{textAlign:"left",px:0}}>
                       <Box
                         sx={{
+                          textAlign:"left",
                           fontFamily: "Inter, sans-serif",
                           fontStyle: "normal",
-                          lineHeight: "140%",
+                        
                           display: "inline-flex",
                           alignItems: "center",
                           justifyContent: "space-evenly",
                           fontWeight: 500,
-                          px: 1.5,
-                          py: 0.5,
-                          gap: 0.8,
-                          width: "120px",
+                        
+                         gap: 0.5,
+                        
                           borderRadius: "38.32px",
                           border: "1px solid",
                           borderColor:
@@ -902,52 +911,49 @@ function MyBoard() {
                             row.status === "Active" ? "#259800" : "#D10100",
                           backgroundColor:
                             row.status === "Active" ? "#F0FEED" : " #FFEEF0",
-                          fontSize: { xs: "0.7rem", sm: "0.85rem" },
-                          textAlign: "center",
+                          fontSize: isMobile? "11px":"13px",
+                       
                           cursor: "pointer",
-                          minWidth: 80,
+                        
                         }}
                       >
-                        <IconButton sx={{ p: 0.5 }}>
+                        <IconButton >
                           <CircleSharp
                             sx={{
-                              width: "8.2px",
-                              height: "8.2px",
+                            fontSize:"12px",
                               color:
                                 row.status === "Active" ? "#259800" : "#D10100",
                             }}
-                            fontSize="medium"
+                           
                           />
                         </IconButton>
                         {row.status || "Active"}
                         <IconButton
                           onClick={() => setOpenStatusDialog(row)}
-                          sx={{ p: 0.5 }}
+                          
                         >
                           <EditRounded
-                            sx={{ color: "#000", fontSize: "20px" }}
+                            sx={{ color: "#000", fontSize: "16px" }}
                           />
                         </IconButton>
                       </Box>
                     </TableCell>
 
-                    <TableCell align="left">
+                    <TableCell sx={{textAlign:"left",px:1}}>
                       <Stack direction="row" spacing={2}>
                         <IconButton
                           sx={{
                             border: "2px solid #006D90",
                             borderRadius: "8px",
-                            p: 1,
-                            display: "inline-flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: "9px",
+                        
+                         
+                        
                             backgroundColor: "#F4FCFF",
                           }}
                           variant="outlined"
                           onClick={() => handleEdit(row)}
                         >
-                          <Edit fontSize="small" sx={{ color: "#006D90" }} />
+                          <Edit  sx={{ color: "#006D90",fontSize:"16px" }} />
                         </IconButton>
                         <IconButton
                           onClick={() => handleDelete(row)}
@@ -955,16 +961,13 @@ function MyBoard() {
                             border: "2px solid, #f71000ff",
                             color: " #e03a2eff",
                             borderRadius: "8px",
-                            p: 1,
+                         
                             backgroundColor: "#FFEEF0",
-                            ml: "auto",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: "9px",
+                          
+                        
                           }}
                         >
-                          <Delete fontSize="small" />
+                          <Delete sx={{fontSize:"16px"}}/>
                         </IconButton>
                       </Stack>
                     </TableCell>
@@ -978,7 +981,7 @@ function MyBoard() {
             sx={{
               display: "flex",
               justifyContent: "center",
-              alignItems: "center",
+             
             }}
           >
             <Pagination 
@@ -1198,8 +1201,8 @@ function MyBoard() {
                         }
                         onChange={handleInputChange}
                         sx={{
-                          width: 314,
-                          height: 30,
+                         ///width: 314,
+                          //height: 30,
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
