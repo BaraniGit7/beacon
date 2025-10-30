@@ -495,9 +495,7 @@ function MyBoard() {
     <Box
       sx={{
         alignItems: "center",
-        pl: 2,
-        pt: 2,
-        width: "100%",
+      
         pr: 0,
         pb: 0,
         backgroundColor: "#F4FCFF",
@@ -1002,7 +1000,8 @@ function MyBoard() {
           <Dialog
             open={openAdd || openEdit}
             onClose={closeDialogs}
-            maxWidth={false}
+            fullWidth
+            maxWidth="md"
             PaperProps={{
               sx: {
                 width: 772,
@@ -1051,7 +1050,7 @@ function MyBoard() {
                 fontFamily: "Poppins, sans-serif",
                 backgroundColor: "#FFFFFF",
                 height: "100%",
-                overflow: "hidden",
+               //h overflow: "hidden",
                 "@media (max-width:900px)": {
                   height: "90vh",
                   overflowY: "auto",
@@ -1062,7 +1061,7 @@ function MyBoard() {
             >
               <Grid
                 container
-                spacing={2}
+                spacing={1}
                 sx={{
                   display: "flex",
                   flexDirection: "row",
@@ -1145,7 +1144,7 @@ function MyBoard() {
                         height: 27,
                         fontFamily: "Poppins",
                         fontWeight: 400,
-                        fontSize: "18px",
+                        fontSize: "16px",
                       }}
                     >
                       {field.label}{" "}
@@ -1204,7 +1203,7 @@ function MyBoard() {
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
-                            // width:314,
+                            width:314,
                             height: 30,
                             paddingLeft: "10px",
                             "& fieldset": {
@@ -1256,7 +1255,7 @@ function MyBoard() {
                         }}
                         sx={{
                           width: 314,
-                          //  height: 27,
+                          height: 27,
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
