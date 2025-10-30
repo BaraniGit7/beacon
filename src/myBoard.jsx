@@ -497,12 +497,12 @@ function MyBoard() {
         alignItems: "center",
         pl: 2,
         pt: 2,
-      //  width: "100%",
+        //  width: "100%",
         pr: 0,
         pb: 0,
         backgroundColor: "#F4FCFF",
-      //  minHeight: "100vh",
-        overflow:isMobile?"visible":"hidden",
+        //  minHeight: "100vh",
+        overflow: isMobile ? "visible" : "hidden",
         "@media(max-width:900px)": {
           pl: 0,
           pt: 0,
@@ -514,7 +514,6 @@ function MyBoard() {
         sx={{
           p: "2px",
           "& .MuiBreadcrumbs-separator": {
-         
             color: "#000",
             fontSize: "20px",
           },
@@ -527,7 +526,7 @@ function MyBoard() {
             cursor: "pointer",
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
-           
+
             fontSize: "18px",
             color: "#000000ff",
           }}
@@ -541,7 +540,6 @@ function MyBoard() {
               fontFamily: "Inter, sans-serif",
               fontWeight: 600,
               fontSize: "18px",
-              
             }}
           >
             Seafarer Credentials
@@ -558,7 +556,7 @@ function MyBoard() {
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
               justifyContent: isMobile ? "start" : "space-between",
-             
+
               gap: isMobile ? 1 : 2,
             }}
           >
@@ -569,7 +567,7 @@ function MyBoard() {
                 alignItems: "center",
                 borderRadius: "8px",
                 flex: "1 1 auto",
-                mt:"2px",
+                mt: "2px",
                 maxWidth: isMobile ? "400px" : "530px",
                 height: isMobile ? "28px" : "30px",
                 boxShadow: "none",
@@ -578,12 +576,11 @@ function MyBoard() {
                 backgroundColor: "#fff",
               }}
             >
-              <IconButton  sx={{ color: "#006D90", }}>
+              <IconButton sx={{ color: "#006D90" }}>
                 <Search />
               </IconButton>
               <InputBase
                 sx={{
-                
                   flex: 1,
                   fontFamily: "poppins",
                   fontSize: isMobile ? "13px" : "15px",
@@ -595,10 +592,10 @@ function MyBoard() {
             <Box
               sx={{
                 display: "flex",
-                flexDirection:"row",
-                gap:isMobile ? 1 : 1.5,
-                mt: isMobile? "1px" : 0,
-                justifyContent: isMobile? "stretch":"flex-end"
+                flexDirection: "row",
+                gap: isMobile ? 1 : 1.5,
+                mt: isMobile ? "1px" : 0,
+                justifyContent: isMobile ? "stretch" : "flex-end",
               }}
             >
               <Button
@@ -613,7 +610,7 @@ function MyBoard() {
                   textTransform: "uppercase",
                   backgroundColor: "#006D90",
                   color: "#fff",
-              
+
                   borderRadius: "8px",
                   border: "1px solid #006D90",
                   height: isMobile ? "30px" : "35px",
@@ -639,7 +636,7 @@ function MyBoard() {
                   backgroundColor: "#fff",
                   borderRadius: "8px",
                   height: isMobile ? "30px" : "35px",
-                
+
                   px: isMobile ? 1 : 2,
                   "&:hover": {
                     backgroundColor: "#E3F2F6",
@@ -657,7 +654,7 @@ function MyBoard() {
             sx={{
               backgroundColor: "#F4FCFF",
               borderRadius: "10px",
-             overflowY: isMobile? "auto":"hidden",
+              overflowY: isMobile ? "auto" : "hidden",
             }}
           >
             <Table
@@ -668,28 +665,168 @@ function MyBoard() {
                 borderCollapse: "separate",
               }}
             >
-              <TableHead >
-                <TableRow  sx={{ backgroundColor: "#5C5C5C" }}>
-                  {headers.map((header, idx) => (
-                    <TableCell
-                      key={idx}
-                      sx={{
-                        textAlign:"left",
-                        display: "flex-inline",
+              <TableHead>
+                <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                     
+                      color: "#E4E4E4",
+                     
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography> S.No</Typography>
+                  </TableCell>
+
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                    
+                      color: "#E4E4E4",
+                     
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography> Seafarer Info</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
                         color: "#E4E4E4",
-                        alignItems:"center",
-                        justifyContent:"space-between",
-                        fontFamily: "Inter, sans-serif",
-                      fontWeight:700,
-                       
-                        fontSize: isMobile? "14px":"13px",
-                        lineHeight: isMobile?"120%":"150%",
-                       // letterSpacing: "0px",
-                      }}
-                    >
-                      {header}
-                    </TableCell>
-                  ))}
+                    
+                     
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography> Id Info</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                     
+                      color: "#E4E4E4",
+                    
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography> Ship Name/Type</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                      
+                      color: "#E4E4E4",
+                   
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography>Role</Typography>
+                  </TableCell>
+
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                     
+                      color: "#E4E4E4",
+                      alignItems: "center",
+                     
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography> Documents </Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      px:0,
+                      textAlign: "left   ",
+                     
+                      color: "#E4E4E4",
+                   
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography>Credentials</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                      px:0,
+                      color: "#E4E4E4",
+            
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography>Password</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                     color: "#E4E4E4",
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography> Status</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                     color: "#E4E4E4",
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+
+                      fontSize: isMobile ? "14px" : "13px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+                    }}
+                  >
+                    <Typography>Actions</Typography>
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody
@@ -702,27 +839,25 @@ function MyBoard() {
                   <TableRow
                     key={index}
                     sx={{
-                  
                       backgroundColor: "#fff",
                     }}
                   >
-                    <TableCell sx={{textAlign:"left"}}>{row.sno}</TableCell>
+                    <TableCell sx={{ textAlign: "left" }}>{row.sno}</TableCell>
                     <TableCell>
                       <Box
                         sx={{
                           display: "flex",
                           flexDirection: "column",
-                        lineHeight: "12px",
+                          lineHeight: "12px",
                         }}
                       >
                         <Typography
                           sx={{
-                            textAlign:"left",
+                            textAlign: "left",
                             fontFamily: "poppins",
                             fontWeight: 400,
-                            fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
+                            fontSize: isMobile ? "12px" : "14px",
+                            lineHeight: isMobile ? "12px" : "14px",
                           }}
                         >
                           {row.name}
@@ -730,71 +865,62 @@ function MyBoard() {
                         <Typography
                           variant="body2"
                           sx={{
-                            textAlign:"left",
+                            textAlign: "left",
                             fontFamily: "poppins",
                             fontWeight: 400,
-                           fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
-                            
+                            fontSize: isMobile ? "12px" : "14px",
+                            lineHeight: isMobile ? "12px" : "14px",
                           }}
                         >
                           {row.email}
                         </Typography>
                         <Typography
                           sx={{
-                            textAlign:"left",
+                            textAlign: "left",
                             fontFamily: "poppins",
                             fontWeight: 400,
                             fontStyle: "normal",
-                            fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
-                          
+                            fontSize: isMobile ? "12px" : "14px",
+                            lineHeight: isMobile ? "12px" : "14px",
                           }}
                         >
                           {row.phone}
                         </Typography>
                       </Box>
                     </TableCell>
-                    <TableCell sx={{textAlign:"left"}}>
+                    <TableCell sx={{ textAlign: "left" }}>
                       <Typography
                         sx={{
-                          textAlign:"left",
+                          textAlign: "left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
-                       
+                          fontSize: isMobile ? "12px" : "14px",
+                          lineHeight: isMobile ? "12px" : "14px",
                         }}
                       >
                         {row.idNumber}
                       </Typography>
                       <Typography
                         sx={{
-                          textAlign:"left",
+                          textAlign: "left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                         fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
+                          fontSize: isMobile ? "12px" : "14px",
+                          lineHeight: isMobile ? "12px" : "14px",
                         }}
                       >
                         {row.IdType}
                       </Typography>
                       <Typography
                         sx={{
-                          textAlign:"left",
+                          textAlign: "left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
-                         
+                          fontSize: isMobile ? "12px" : "14px",
+                          lineHeight: isMobile ? "12px" : "14px",
                         }}
                       >
                         {row.location}
@@ -804,14 +930,12 @@ function MyBoard() {
                     <TableCell>
                       <Typography
                         sx={{
-                          textAlign:"left",
+                          textAlign: "left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                          fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
-                         
+                          fontSize: isMobile ? "12px" : "14px",
+                          lineHeight: isMobile ? "12px" : "14px",
                         }}
                       >
                         {row.ship}
@@ -819,14 +943,12 @@ function MyBoard() {
                       <Typography
                         color="text.secondary"
                         sx={{
-                          textAlign:"left",
+                          textAlign: "left",
                           fontFamily: "poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
-                         fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
-                        
+                          fontSize: isMobile ? "12px" : "14px",
+                          lineHeight: isMobile ? "12px" : "14px",
                         }}
                       >
                         {row.ship1}
@@ -835,81 +957,78 @@ function MyBoard() {
 
                     <TableCell
                       sx={{
-                        textAlign:"left",
+                        textAlign: "left",
                         fontFamily: "poppins",
                         fontWeight: 400,
                         fontStyle: "normal",
-                        fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px"
-                           
+                        fontSize: isMobile ? "12px" : "14px",
+                        lineHeight: isMobile ? "12px" : "14px",
                       }}
                     >
                       {row.role}
                     </TableCell>
 
-                    <TableCell sx={{px:1}}>
-                  
-                        <Typography
-                          sx={{
-                            fontFamily: "Inter",
-                            fontWeight: 400,
-                            fontStyle: "normal",
-                textAlign:"left",
-                            textDecoration: "underline",
-                            fontSize: isMobile?"12px":"14px",
-                            lineHeight:isMobile?"12px":"14px",
-                           
-                            color: "#006D90",
-                            
-                          }}
-                        ><IconButton
-                        color="primary"
-                      component="label"
-                        sx={{textAlign:"left", color: "#006D90" }}
+                    <TableCell sx={{ px: 1 }}>
+                      <Typography
+                        sx={{
+                          fontFamily: "Inter",
+                          fontWeight: 400,
+                          fontStyle: "normal",
+                          textAlign: "left",
+                          textDecoration: "underline",
+                          fontSize: isMobile ? "12px" : "14px",
+                          lineHeight: isMobile ? "12px" : "14px",
+
+                          color: "#006D90",
+                        }}
                       >
-                        <AttachFile
-                     
-                          sx={{fontSize:"17px", transform: "rotate(45deg)" }}
-                        /></IconButton>
-                          view Attachment
-                        </Typography>
-                     
+                        <IconButton
+                          color="primary"
+                          component="label"
+                          sx={{ textAlign: "left", color: "#006D90" }}
+                        >
+                          <AttachFile
+                            sx={{
+                              fontSize: "17px",
+                              transform: "rotate(45deg)",
+                            }}
+                          />
+                        </IconButton>
+                        view Attachment
+                      </Typography>
                     </TableCell>
-                    <TableCell sx={{textAlign:"left"}}>
+                    <TableCell sx={{ textAlign: "left" }}>
                       <IconButton
                         onClick={() => handleViewCredentials(row)}
                         sx={{
-                     
-              
                           color: "#006D90",
-                      
                         }}
                       >
                         <RemoveRedEyeOutlined />
                       </IconButton>
                     </TableCell>
-                    <TableCell  sx={{textAlign:"left"}}>
+                    <TableCell sx={{ textAlign: "left" }}>
                       <IconButton
                         onClick={() => handlePassword(row)}
-                        sx={{  color: "#006D90" }}
+                        sx={{ color: "#006D90" }}
                       >
                         <LockReset fontSize="medium" />
                       </IconButton>
                     </TableCell>
-                    <TableCell sx={{textAlign:"left",px:0}}>
+                    <TableCell sx={{ textAlign: "left", px: 0 }}>
                       <Box
                         sx={{
-                          textAlign:"left",
+                          textAlign: "left",
                           fontFamily: "Inter, sans-serif",
                           fontStyle: "normal",
-                        
+
                           display: "inline-flex",
                           alignItems: "center",
                           justifyContent: "space-evenly",
                           fontWeight: 500,
-                        
-                         gap: 0.5,
-                        
+
+                          gap: 0.5,
+
                           borderRadius: "38.32px",
                           border: "1px solid",
                           borderColor:
@@ -918,27 +1037,22 @@ function MyBoard() {
                             row.status === "Active" ? "#259800" : "#D10100",
                           backgroundColor:
                             row.status === "Active" ? "#F0FEED" : " #FFEEF0",
-                          fontSize: isMobile? "11px":"13px",
-                       
+                          fontSize: isMobile ? "11px" : "13px",
+
                           cursor: "pointer",
-                        
                         }}
                       >
-                        <IconButton >
+                        <IconButton>
                           <CircleSharp
                             sx={{
-                            fontSize:"12px",
+                              fontSize: "12px",
                               color:
                                 row.status === "Active" ? "#259800" : "#D10100",
                             }}
-                           
                           />
                         </IconButton>
                         {row.status || "Active"}
-                        <IconButton
-                          onClick={() => setOpenStatusDialog(row)}
-                          
-                        >
+                        <IconButton onClick={() => setOpenStatusDialog(row)}>
                           <EditRounded
                             sx={{ color: "#000", fontSize: "16px" }}
                           />
@@ -946,21 +1060,19 @@ function MyBoard() {
                       </Box>
                     </TableCell>
 
-                    <TableCell sx={{textAlign:"left",px:1}}>
+                    <TableCell sx={{ textAlign: "left", px: 1 }}>
                       <Stack direction="row" spacing={2}>
                         <IconButton
                           sx={{
                             border: "2px solid #006D90",
                             borderRadius: "8px",
-                        
-                         
-                        
+
                             backgroundColor: "#F4FCFF",
                           }}
                           variant="outlined"
                           onClick={() => handleEdit(row)}
                         >
-                          <Edit  sx={{ color: "#006D90",fontSize:"16px" }} />
+                          <Edit sx={{ color: "#006D90", fontSize: "16px" }} />
                         </IconButton>
                         <IconButton
                           onClick={() => handleDelete(row)}
@@ -968,13 +1080,11 @@ function MyBoard() {
                             border: "2px solid, #f71000ff",
                             color: " #e03a2eff",
                             borderRadius: "8px",
-                         
+
                             backgroundColor: "#FFEEF0",
-                          
-                        
                           }}
                         >
-                          <Delete sx={{fontSize:"16px"}}/>
+                          <Delete sx={{ fontSize: "16px" }} />
                         </IconButton>
                       </Stack>
                     </TableCell>
@@ -988,22 +1098,19 @@ function MyBoard() {
             sx={{
               display: "flex",
               justifyContent: "center",
-             
             }}
           >
-            <Pagination 
-            shape="rounded"
+            <Pagination
+              shape="rounded"
               count={Math.ceil(seafarers.length / rowsPerPage)}
               page={page}
               onChange={handlePageChange}
               sx={{
-        
-          "& .Mui-selected": {
-            backgroundColor: "#0069D0",
-            color: "white",
-          },
-       
-        }}
+                "& .Mui-selected": {
+                  backgroundColor: "#0069D0",
+                  color: "white",
+                },
+              }}
             />
           </Box>
 
@@ -1060,7 +1167,7 @@ function MyBoard() {
                 fontFamily: "Poppins, sans-serif",
                 backgroundColor: "#FFFFFF",
                 height: "100%",
-               //h overflow: "hidden",
+                //h overflow: "hidden",
                 "@media (max-width:900px)": {
                   height: "90vh",
                   overflowY: "auto",
@@ -1208,12 +1315,12 @@ function MyBoard() {
                         }
                         onChange={handleInputChange}
                         sx={{
-                         ///width: 314,
+                          ///width: 314,
                           //height: 30,
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
-                            width:314,
+                            width: 314,
                             height: 30,
                             paddingLeft: "10px",
                             "& fieldset": {

@@ -149,13 +149,30 @@ function MyBoard() {
           {/* Table */}
           <TableContainer component={Paper} elevation={0} sx={{ borderRadius: "10px", width: "100%", overflowX: "auto" }}>
             <Table size="small" sx={{ borderSpacing: "0px 14px", borderCollapse: "separate" }}>
-              <TableHead>
-                <TableRow sx={{ backgroundColor: "#baa9a9ff" }}>
-                  {headers.map((header, idx) => (
-                    <TableCell key={idx} sx={{ fontWeight: 600, minWidth: 120 }}>{header}</TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
+                  <TableHead >      {/* 30.10.2025 */}
+                              <TableRow  sx={{ backgroundColor: "#5C5C5C" }}>
+                                {headers.map((header, idx) => (
+                                  <TableCell
+                                    key={idx}
+                                    sx={{
+                                      textAlign:"left",
+                                      display: "flex-inline",
+                                      color: "#E4E4E4",
+                                      alignItems:"center",
+                                      justifyContent:"space-between",
+                                      fontFamily: "Inter, sans-serif",
+                                    fontWeight:700,
+                                     
+                                      fontSize: isMobile? "14px":"13px",
+                                      lineHeight: isMobile?"120%":"150%",
+                                     // letterSpacing: "0px",
+                                    }}
+                                  >
+                                    {header}
+                                  </TableCell>
+                                ))}
+                              </TableRow>
+                            </TableHead>
               <TableBody>
                 {seafarers.map((row, index) => (
                   <TableRow key={index} sx={{ backgroundColor: "#f5f5f5" }}>
