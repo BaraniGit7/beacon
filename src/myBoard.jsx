@@ -769,8 +769,8 @@ function MyBoard() {
                   </TableCell>
                   <TableCell
                     sx={{
-                      px:0,
-                      textAlign: "left   ",
+                  
+                      textAlign: "center   ",
                      
                       color: "#E4E4E4",
                    
@@ -786,8 +786,8 @@ function MyBoard() {
                   </TableCell>
                   <TableCell
                     sx={{
-                      textAlign: "left",
-                      px:0,
+                      textAlign: "center",
+                  
                       color: "#E4E4E4",
             
                       fontFamily: "Inter, sans-serif",
@@ -802,7 +802,7 @@ function MyBoard() {
                   </TableCell>
                   <TableCell
                     sx={{
-                      textAlign: "left",
+                      textAlign: "center",
                      color: "#E4E4E4",
                       fontFamily: "Inter, sans-serif",
                       fontWeight: 700,
@@ -998,7 +998,7 @@ function MyBoard() {
                         view Attachment
                       </Typography>
                     </TableCell>
-                    <TableCell sx={{ textAlign: "left" }}>
+                    <TableCell sx={{ textAlign: "center" }}>
                       <IconButton
                         onClick={() => handleViewCredentials(row)}
                         sx={{
@@ -1008,7 +1008,7 @@ function MyBoard() {
                         <RemoveRedEyeOutlined />
                       </IconButton>
                     </TableCell>
-                    <TableCell sx={{ textAlign: "left" }}>
+                    <TableCell sx={{ textAlign: "center" }}>
                       <IconButton
                         onClick={() => handlePassword(row)}
                         sx={{ color: "#006D90" }}
@@ -1016,10 +1016,11 @@ function MyBoard() {
                         <LockReset fontSize="medium" />
                       </IconButton>
                     </TableCell>
-                    <TableCell sx={{ textAlign: "left", px: 0 }}>
+                    <TableCell   sx={{
+                          textAlign: "center"}} >
                       <Box
                         sx={{
-                          textAlign: "left",
+                         // textAlign: "left",
                           fontFamily: "Inter, sans-serif",
                           fontStyle: "normal",
 
@@ -1061,8 +1062,15 @@ function MyBoard() {
                       </Box>
                     </TableCell>
 
-                    <TableCell sx={{ textAlign: "left",  }}>
-                      <Stack direction="row" spacing={2}>
+                    <TableCell sx={{ textAlign: "center",  }}>
+                      <Box
+                        sx={{
+                          display:"flex",
+                         gap:1.5,
+                          direction: "row",
+                          lineHeight: "12px",
+                        }}
+                      >
                         <IconButton
                           sx={{
                             border: "2px solid #006D90",
@@ -1087,7 +1095,7 @@ function MyBoard() {
                         >
                           <Delete sx={{ fontSize: "16px" }} />
                         </IconButton>
-                      </Stack>
+                      </Box>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -1108,7 +1116,7 @@ function MyBoard() {
               onChange={handlePageChange}
               sx={{
                " & .MuiPaginationItem-root": {
-      fontSize: "10px", // smaller number text
+      fontSize: "10px", 
     
       margin: "0 2px",
     },
