@@ -479,16 +479,16 @@ function MyBoard() {
   };
 
   const iconMap = {
-    name: <Person sx={{ color: "#d3d3d3ff" }} />,
-    phone: <Phone sx={{ color: "#d3d3d3ff" }} />,
-    email: <Email sx={{ color: "#d3d3d3ff" }} />,
-    role: <Work sx={{ color: "#d8d8d8ff" }} />,
-    shouldEmail: <MarkEmailRead sx={{ color: "#d3d3d3ff" }} />,
-    vesselAdmin: <AdminPanelSettings sx={{ color: "#d3d3d3ff" }} />,
-    ship: <Sailing sx={{ color: "#d3d3d3ff" }} />,
-    IdType: <MarkAsUnreadSharp sx={{ color: "#d3d3d3ff" }} />,
-    idNumber: <Pin sx={{ color: "#d3d3d3ff" }} />,
-    location: <Public sx={{ color: "#d3d3d3ff" }} />,
+    name: <Person sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
+    phone: <Phone sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
+    email: <Email sx={{ color: "#d3d3d3ff",fontSize:"17px"}} />,
+    role: <Work sx={{ color: "#d8d8d8ff",fontSize:"17px" }} />,
+    shouldEmail: <MarkEmailRead sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
+    vesselAdmin: <AdminPanelSettings sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
+    ship: <Sailing sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
+    IdType: <MarkAsUnreadSharp sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
+    idNumber: <Pin sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
+    location: <Public sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
   };
 
   return (
@@ -540,7 +540,7 @@ function MyBoard() {
             sx={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 600,
-              fontSize: "18px",
+              fontSize: "16px",
             }}
           >
             Seafarer Credentials
@@ -1068,7 +1068,7 @@ function MyBoard() {
                           display:"flex",
                           alignItems:"center",
                           justifyContent:"space-evenly",
-                        
+                          gap:1,
                           direction: "row",
                           lineHeight: "12px",
                         }}
@@ -1134,16 +1134,16 @@ function MyBoard() {
             open={openAdd || openEdit}
             onClose={closeDialogs}
             fullWidth
-            maxWidth="md"
+            maxWidth="sm"
             PaperProps={{
               sx: {
-                width: 772,
-                height: 812,
+           
+            
                 borderRadius: "20px",
                 border: "1.5px solid #0069d0",
-                overflowY: { sm: "hidden", xs: "visible" },
+                overflowY: isMobile? "visible":"hidden",
                 boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
-                p: 0,
+       
                 "@media (max-width:900px)": {
                   width: "90%",
                   height: "auto",
@@ -1153,12 +1153,11 @@ function MyBoard() {
           >
             <DialogTitle
               sx={{
-                height: "36px",
-                px: "24px",
-                py: "12px",
-                fontFamily: "Poppins, sans-serif",
+     
+               py:1,
+                fontFamily: "poppins",
                 fontWeight: 600,
-                fontSize: "1.25rem",
+                fontSize: "16px",
                 color: "#006D90",
                 display: "flex",
                 justifyContent: "space-between",
@@ -1170,6 +1169,7 @@ function MyBoard() {
               <IconButton onClick={closeDialogs} sx={{}}>
                 <Close
                   sx={{
+                    fontSize:"16px",
                     backgroundColor: " #006D90",
                     color: "#ffffffff",
                     borderRadius: "16px",
@@ -1181,9 +1181,7 @@ function MyBoard() {
             <DialogContent
               sx={{
                 fontFamily: "Poppins, sans-serif",
-                backgroundColor: "#FFFFFF",
-                height: "100%",
-                //h overflow: "hidden",
+                backgroundColor: "#FFFFFF",       
                 "@media (max-width:900px)": {
                   height: "90vh",
                   overflowY: "auto",
@@ -1194,7 +1192,8 @@ function MyBoard() {
             >
               <Grid
                 container
-                spacing={1}
+                columnSpacing={1}
+                rowSpacing={0}
                 sx={{
                   display: "flex",
                   flexDirection: "row",
@@ -1214,7 +1213,7 @@ function MyBoard() {
                   {
                     label: "Mobile Number",
                     name: "phone",
-                    placeholder: "Enter mobile numeber",
+                    placeholder: "Enter mobile number",
                   },
                   {
                     label: "Email ID",
@@ -1274,10 +1273,10 @@ function MyBoard() {
                     <Typography
                       variant="body2"
                       sx={{
-                        height: 27,
+                 
                         fontFamily: "Poppins",
                         fontWeight: 400,
-                        fontSize: "16px",
+                        fontSize: "14px",
                       }}
                     >
                       {field.label}{" "}
@@ -1331,12 +1330,11 @@ function MyBoard() {
                         }
                         onChange={handleInputChange}
                         sx={{
-                          ///width: 314,
-                          //height: 30,
+                        
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
-                            width: 314,
+                           width: 210,
                             height: 30,
                             paddingLeft: "10px",
                             "& fieldset": {
@@ -1352,7 +1350,7 @@ function MyBoard() {
                           },
                           "& .MuiInputBase-input": {
                             padding: "8px 10px",
-                            fontSize: "0.85rem",
+                            fontSize: "0.7rem",
                           },
                           "@media (max-width:900px)": {
                             width: "100%",
@@ -1387,8 +1385,8 @@ function MyBoard() {
                           ),
                         }}
                         sx={{
-                          width: 314,
-                          height: 27,
+                          width: 210,
+                     
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
@@ -1407,7 +1405,7 @@ function MyBoard() {
                           },
                           "& .MuiInputBase-input": {
                             padding: "8px 10px",
-                            fontSize: "0.85rem",
+                            fontSize: "0.7rem",
                           },
                           "@media (max-width:900px)": {
                             width: "100%",
@@ -1423,7 +1421,7 @@ function MyBoard() {
                     sx={{
                       fontFamily: "Poppins",
                       fontWeight: 400,
-                      fontSize: "18px",
+                      fontSize: "16px",
                     }}
                   >
                     Upload Documents
@@ -1442,9 +1440,8 @@ function MyBoard() {
                         justifyContent: "space-between",
                         border: "1px solid #E7E7E7",
                         borderRadius: 2,
-                        mt: "6px",
-                        width: "673px",
-                        height: "68px",
+                      
+                    
                         fontSize: isMobile ? "12px" : "14px",
                         backgroundColor: "#F3F3F3",
                         "@media (max-width:900px)": {
@@ -1469,6 +1466,8 @@ function MyBoard() {
                             fontWeight={400}
                             sx={{
                               wordBreak: "break-all",
+                              fontSize:"14px",
+                              width:"420px",
                               "@media (max-width:600px)": {
                                 fontSize: "0.85rem",
                               },
@@ -1519,10 +1518,12 @@ function MyBoard() {
                       <Box
                         sx={{
                           border: "2px dashed #006D90",
-                          gap: "9px",
+                      display:"flex",
+                    
+                      justifyContent:"space-around",
                           borderRadius: 2,
-                          width: "674px",
-                          height: "133px",
+                          width: "480px",
+                          //height: "133px",
                           textAlign: "center",
                           backgroundColor: "#F9FBFC",
                           "&:hover": { backgroundColor: "#F1F5F9" },
@@ -1545,14 +1546,13 @@ function MyBoard() {
                           <DriveFolderUploadRounded
                             sx={{
                               color: "#006D90",
-                              width: "30px",
-                              height: "30px",
+                            
                             }}
                           />
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.secondary"sx={{fontSize:"12px"}}>
                             Drag your file(s) to start uploading
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.secondary"sx={{fontSize:"10px"}}>
                             OR
                           </Typography>
                           <Button
@@ -1560,6 +1560,8 @@ function MyBoard() {
                             sx={{
                               borderColor: "#006D90",
                               color: "#006D90",
+                              fontSize:"10px",
+                              
                               textTransform: "none",
                             }}
                             component="span"
@@ -1741,6 +1743,9 @@ function MyBoard() {
                   fontStyle: "medium",
                   fontSize: "22px",
                   alignItems: "center",
+                     "@media (max-width:600px)": {
+                    fontSize:"18px"
+                    },
                 }}
               >
                 Do you really want to delete {selectedSeafarer?.name} List?
@@ -1748,7 +1753,8 @@ function MyBoard() {
               <img
                 src={pic}
                 alt="warning"
-                style={{ width: "270px", height: "211px" }}
+                style={{ width: "270px", height: "211px"}}
+                
               />
             </DialogContent>
 
@@ -1782,6 +1788,8 @@ function MyBoard() {
                     "&:hover": { backgroundColor: "#00506b" },
                     "@media (max-width:600px)": {
                       p: 3,
+                        width: "auto",
+                    height: "20px",
                     },
                   }}
                   onClick={() => {
@@ -1802,9 +1810,7 @@ function MyBoard() {
                     borderColor: "#006D90",
                     textTransform: "none",
                     borderRadius: "8px",
-                    width: "auto",
-                    height: "36px",
-
+                  
                     fontSize: "13px",
                     "&:hover": {
                       borderColor: "#00506b",
@@ -1812,6 +1818,9 @@ function MyBoard() {
                     },
                     "@media (max-width:600px)": {
                       p: 3,
+                        width: "auto",
+                    height: "20px",
+                      
                     },
                   }}
                   onClick={closeDialogs}
