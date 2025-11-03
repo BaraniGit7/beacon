@@ -213,7 +213,7 @@ function SeafarerCredentials({ seafarer }) {
       >
         <Typography
           variant="h6"
-          sx={{ fontWeight: 700, color: "#006D90", mb: 2, textAlign: "left" }}
+          sx={{ fontFamily: "poppins", fontWeight: 700, color: "#006D90", mb: 2,fontSize:"18px", textAlign: "left" }}
         >
           Credentials
         </Typography>
@@ -257,7 +257,7 @@ function SeafarerCredentials({ seafarer }) {
         <Box>
           <Typography
             sx={{
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "poppins",
               fontWeight: 600,
               fontSize: { xs: "13px", sm: "15px" },
           
@@ -269,7 +269,7 @@ function SeafarerCredentials({ seafarer }) {
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Typography
                 sx={{
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: 400,
                   fontSize: { xs: "12px", sm: "14px" },
                   color: "#000",
@@ -280,7 +280,7 @@ function SeafarerCredentials({ seafarer }) {
               </Typography>
               <Typography
                 sx={{
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: 400,
                   fontSize: { xs: "12px", sm: "14px" },
                   color: "#555",
@@ -293,7 +293,7 @@ function SeafarerCredentials({ seafarer }) {
           ) : (
             <Typography
               sx={{
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "poppins",
                 fontWeight: 400,
                 fontSize: { xs: "12px", sm: "14px" },
                 color: "#000",
@@ -331,7 +331,7 @@ function SeafarerCredentials({ seafarer }) {
             boderColor:"#006D90",
             px: 3,
             py: 1,
-            fontFamily: "Poppins, sans-serif",
+            fontFamily: "Poppins,",
             fontWeight: 500,
             fontSize: "14px",
             "&.Mui-selected": {
@@ -358,7 +358,7 @@ function SeafarerCredentials({ seafarer }) {
           sx={{
             flex: 1,
             textTransform: "none",
-            fontFamily: "Inter, sans-serif",
+             fontFamily: "poppins",
             fontWeight: 700,
             fontSize: { xs: "16px", sm: "20px" },
             lineHeight: "100%",
@@ -377,7 +377,7 @@ function SeafarerCredentials({ seafarer }) {
           sx={{
             flex: 1,
             textTransform: "none",
-            fontFamily: "Inter, sans-serif",
+             fontFamily: "poppins",
             fontWeight: 700,
             fontSize: { xs: "16px", sm: "20px" },
             lineHeight: "100%",
@@ -417,23 +417,23 @@ function SeafarerCredentials({ seafarer }) {
             }          }}
         >
           <TableRow>
-            <TableCell sx={{ color: "#fff", fontWeight: 600 }}>S. No</TableCell>
-            <TableCell sx={{ color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{  fontFamily: "poppins",color: "#fff", fontWeight: 600 }}>S. No</TableCell>
+            <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600 }}>
               {selectedTab === "coc" ? "COC Name" : "Course Name"}
             </TableCell>
-            <TableCell sx={{ color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600 }}>
               Flag State
             </TableCell>
-            <TableCell sx={{ color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600 }}>
               Date Issued
             </TableCell>
-            <TableCell sx={{ color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600 }}>
               Valid Until
             </TableCell>
-            <TableCell sx={{ color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600 }}>
               Documents
             </TableCell>
-            <TableCell sx={{ color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{  fontFamily: "poppins",color: "#fff", fontWeight: 600 }}>
               Actions
             </TableCell>
           </TableRow>
@@ -451,7 +451,7 @@ function SeafarerCredentials({ seafarer }) {
 
             return (
               <TableRow key={row.id} sx={{ backgroundColor: "#ffffff" }}>
-                <TableCell>{row.id}</TableCell>
+                <TableCell >{row.id}</TableCell>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.flagState}</TableCell>
                 <TableCell>{formatDate(row.dateIssued)}</TableCell>
@@ -594,7 +594,7 @@ function SeafarerCredentials({ seafarer }) {
             alignItems: "center",
             fontWeight: 700,
             color: "#006D90",
-            fontFamily: "Poppins, sans-serif",
+            fontFamily: "Poppins",
             fontSize: "1.25rem",
             pb: 1,
             pt: 0,
@@ -607,7 +607,7 @@ function SeafarerCredentials({ seafarer }) {
         >
           {editIndex !== null ? "Edit" : "Add"} Seafarer Credentials
           <IconButton onClick={handleCloseDialog}>
-            <Close sx={{ color: "#006D90" }} />
+            <Close sx={{ backgroundColor: "#006D90",color:"#ffff", borderRadius:"2px",fontSize:"18px" }} />
           </IconButton>
         </DialogTitle>
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 import SeafarerBoard from "./myBoard"; 
-import SeafarerDialog from "./aaa";
 
 
 

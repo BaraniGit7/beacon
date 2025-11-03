@@ -479,16 +479,20 @@ function MyBoard() {
   };
 
   const iconMap = {
-    name: <Person sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
-    phone: <Phone sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
-    email: <Email sx={{ color: "#d3d3d3ff",fontSize:"17px"}} />,
-    role: <Work sx={{ color: "#d8d8d8ff",fontSize:"17px" }} />,
-    shouldEmail: <MarkEmailRead sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
-    vesselAdmin: <AdminPanelSettings sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
-    ship: <Sailing sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
-    IdType: <MarkAsUnreadSharp sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
-    idNumber: <Pin sx={{ color: "#d3d3d3ff",fontSize:"17px" }} />,
-    location: <Public sx={{ color: "#d3d3d3ff" ,fontSize:"17px"}} />,
+    name: <Person sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+    phone: <Phone sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+    email: <Email sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+    role: <Work sx={{ color: "#d8d8d8ff", fontSize: "17px" }} />,
+    shouldEmail: (
+      <MarkEmailRead sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />
+    ),
+    vesselAdmin: (
+      <AdminPanelSettings sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />
+    ),
+    ship: <Sailing sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+    IdType: <MarkAsUnreadSharp sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+    idNumber: <Pin sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+    location: <Public sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
   };
 
   return (
@@ -506,7 +510,6 @@ function MyBoard() {
         "@media(max-width:900px)": {
           pl: 0,
           pt: 0,
-         
         },
       }}
     >
@@ -525,9 +528,9 @@ function MyBoard() {
           onClick={handleBackToList}
           sx={{
             cursor: "pointer",
-            fontFamily: "Inter, sans-serif",
+            fontFamily: "poppins",
             fontWeight: 600,
-          
+
             fontSize: "16px",
             color: "#000000ff",
           }}
@@ -538,7 +541,7 @@ function MyBoard() {
           <Typography
             color="text.primary"
             sx={{
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "Poppins",
               fontWeight: 600,
               fontSize: "16px",
             }}
@@ -552,8 +555,7 @@ function MyBoard() {
         <>
           <Box
             sx={{
-            
-              pr:"4px",
+              pr: "4px",
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
               justifyContent: isMobile ? "start" : "space-between",
@@ -671,162 +673,161 @@ function MyBoard() {
                   <TableCell
                     sx={{
                       textAlign: "left",
-                     
+
                       color: "#E4E4E4",
-                     
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography> S.No</Typography>
+                    {" "}
+                    S.No
                   </TableCell>
 
                   <TableCell
                     sx={{
                       textAlign: "left",
-                    
+
                       color: "#E4E4E4",
-                     
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography> Seafarer Info</Typography>
+                    Seafarer Info
                   </TableCell>
                   <TableCell
                     sx={{
                       textAlign: "left",
-                        color: "#E4E4E4",
-                    
-                     
+
+                      color: "#E4E4E4",
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography> Id Info</Typography>
+                    Id Info
                   </TableCell>
                   <TableCell
                     sx={{
                       textAlign: "left",
-                     
+
                       color: "#E4E4E4",
-                    
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography> Ship Name/Type</Typography>
+                    Ship Name/Type
                   </TableCell>
                   <TableCell
                     sx={{
                       textAlign: "left",
-                      
+
                       color: "#E4E4E4",
-                   
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography>Role</Typography>
+                    Role
                   </TableCell>
 
                   <TableCell
                     sx={{
                       textAlign: "left",
-                     
+
                       color: "#E4E4E4",
-                      alignItems: "center",
-                     
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography> Documents </Typography>
+                    Documents
                   </TableCell>
                   <TableCell
                     sx={{
-                  
                       textAlign: "center   ",
-                     
+
                       color: "#E4E4E4",
-                   
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography>Credentials</Typography>
+                    Credentials
                   </TableCell>
                   <TableCell
                     sx={{
                       textAlign: "center",
-                  
+
                       color: "#E4E4E4",
-            
+
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography>Password</Typography>
+                    Password
                   </TableCell>
                   <TableCell
                     sx={{
                       textAlign: "center",
-                     color: "#E4E4E4",
+                      color: "#E4E4E4",
                       fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      fontWeight: "bold",
 
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography> Status</Typography>
+                    Status
                   </TableCell>
                   <TableCell
                     sx={{
                       textAlign: "center",
-                     color: "#E4E4E4",
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: 700,
+                      color: "#E4E4E4",
 
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: "bold",
                       fontSize: isMobile ? "14px" : "13px",
                       lineHeight: isMobile ? "120%" : "150%",
                       // letterSpacing: "0px",
                     }}
                   >
-                    <Typography>Actions</Typography>
+                    Actions
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -969,10 +970,11 @@ function MyBoard() {
                       {row.role}
                     </TableCell>
 
-                    <TableCell >
+                    <TableCell>
                       <Typography
                         sx={{
-                          fontFamily: "Inter",
+                          justifycontent: "center",
+                          fontFamily: "Poppins",
                           fontWeight: 400,
                           fontStyle: "normal",
                           textAlign: "left",
@@ -986,16 +988,17 @@ function MyBoard() {
                         <IconButton
                           color="primary"
                           component="label"
-                          sx={{ textAlign: "left", color: "#006D90" }}
+                          sx={{ textAlign: "left", color: "#006D90", p: 0 }}
                         >
                           <AttachFile
                             sx={{
-                              fontSize: "17px",
+                              p: 0,
+                              fontSize: "15px",
                               transform: "rotate(45deg)",
                             }}
                           />
-                        </IconButton>
-                        view Attachment
+                        </IconButton>{" "}
+                        View Attachment
                       </Typography>
                     </TableCell>
                     <TableCell sx={{ textAlign: "center" }}>
@@ -1016,12 +1019,15 @@ function MyBoard() {
                         <LockReset fontSize="medium" />
                       </IconButton>
                     </TableCell>
-                    <TableCell   sx={{
-                          textAlign: "center"}} >
+                    <TableCell
+                      sx={{
+                        textAlign: "center",
+                      }}
+                    >
                       <Box
                         sx={{
-                         // textAlign: "left",
-                          fontFamily: "Inter, sans-serif",
+                          // textAlign: "left",
+                          fontFamily: "poppins",
                           fontStyle: "normal",
 
                           display: "inline-flex",
@@ -1062,13 +1068,13 @@ function MyBoard() {
                       </Box>
                     </TableCell>
 
-                    <TableCell sx={{ textAlign: "left",  }}>
+                    <TableCell sx={{ textAlign: "left" }}>
                       <Box
                         sx={{
-                          display:"flex",
-                          alignItems:"center",
-                          justifyContent:"space-evenly",
-                          gap:1,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
+                          gap: 1,
                           direction: "row",
                           lineHeight: "12px",
                         }}
@@ -1077,7 +1083,7 @@ function MyBoard() {
                           sx={{
                             border: "2px solid #006D90",
                             borderRadius: "8px",
-                            p:1,
+                            p: 1,
                             backgroundColor: "#F4FCFF",
                           }}
                           variant="outlined"
@@ -1091,7 +1097,7 @@ function MyBoard() {
                             border: "2px solid, #f71000ff",
                             color: " #e03a2eff",
                             borderRadius: "8px",
-                            p:1,
+                            p: 1,
                             backgroundColor: "#FFEEF0",
                           }}
                         >
@@ -1117,11 +1123,11 @@ function MyBoard() {
               page={page}
               onChange={handlePageChange}
               sx={{
-               " & .MuiPaginationItem-root": {
-      fontSize: "10px", 
-    
-      margin: "0 2px",
-    },
+                " & .MuiPaginationItem-root": {
+                  fontSize: "10px",
+
+                  margin: "0 2px",
+                },
                 "& .Mui-selected": {
                   backgroundColor: "#0069D0",
                   color: "white",
@@ -1129,7 +1135,7 @@ function MyBoard() {
               }}
             />
           </Box>
-
+          {/*Add-Edit Dialog*/}
           <Dialog
             open={openAdd || openEdit}
             onClose={closeDialogs}
@@ -1137,13 +1143,11 @@ function MyBoard() {
             maxWidth="sm"
             PaperProps={{
               sx: {
-           
-            
                 borderRadius: "20px",
                 border: "1.5px solid #0069d0",
-                overflowY: isMobile? "visible":"hidden",
+                overflowY: isMobile ? "visible" : "hidden",
                 boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
-       
+
                 "@media (max-width:900px)": {
                   width: "90%",
                   height: "auto",
@@ -1153,8 +1157,7 @@ function MyBoard() {
           >
             <DialogTitle
               sx={{
-     
-               py:1,
+                py: 1,
                 fontFamily: "poppins",
                 fontWeight: 600,
                 fontSize: "16px",
@@ -1169,10 +1172,10 @@ function MyBoard() {
               <IconButton onClick={closeDialogs} sx={{}}>
                 <Close
                   sx={{
-                    fontSize:"16px",
+                    fontSize: "15px",
                     backgroundColor: " #006D90",
                     color: "#ffffffff",
-                    borderRadius: "16px",
+                    borderRadius: "2px",
                   }}
                 />
               </IconButton>
@@ -1180,8 +1183,10 @@ function MyBoard() {
             <Divider />
             <DialogContent
               sx={{
+                py: 1,
+                //  px:0,
                 fontFamily: "Poppins, sans-serif",
-                backgroundColor: "#FFFFFF",       
+                backgroundColor: "#FFFFFF",
                 "@media (max-width:900px)": {
                   height: "90vh",
                   overflowY: "auto",
@@ -1193,13 +1198,13 @@ function MyBoard() {
               <Grid
                 container
                 columnSpacing={1}
-                rowSpacing={0}
+                rowSpacing={1}
                 sx={{
                   display: "flex",
                   flexDirection: "row",
-                  justifyContent: "space-around",
+                  justifyContent: "space-between",
                   flexWrap: "wrap",
-                  "@media (max-width:900px)": {
+                  "@media (max-width:600px)": {
                     flexDirection: "column",
                   },
                 }}
@@ -1273,10 +1278,9 @@ function MyBoard() {
                     <Typography
                       variant="body2"
                       sx={{
-                 
                         fontFamily: "Poppins",
                         fontWeight: 400,
-                        fontSize: "14px",
+                        fontSize: "12px",
                       }}
                     >
                       {field.label}{" "}
@@ -1313,6 +1317,7 @@ function MyBoard() {
                               return (
                                 <span
                                   style={{
+                                    fontSize: "10px",
                                     color: "#9e9e9e",
                                   }}
                                 >
@@ -1330,12 +1335,11 @@ function MyBoard() {
                         }
                         onChange={handleInputChange}
                         sx={{
-                        
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
-                           width: 210,
-                            height: 30,
+                            width: 210,
+                            height: 27,
                             paddingLeft: "10px",
                             "& fieldset": {
                               borderWidth: "1px",
@@ -1359,7 +1363,11 @@ function MyBoard() {
                         }}
                       >
                         {field.options.map((opt) => (
-                          <MenuItem key={opt} value={opt}>
+                          <MenuItem
+                            sx={{ fontSize: "13px", fontFamily: "poppins" }}
+                            key={opt}
+                            value={opt}
+                          >
                             {opt}
                           </MenuItem>
                         ))}
@@ -1385,12 +1393,11 @@ function MyBoard() {
                           ),
                         }}
                         sx={{
-                          width: 210,
-                     
                           borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
                             height: 27,
+                            width: 210,
                             paddingLeft: "10px",
                             "& fieldset": {
                               borderWidth: "1px",
@@ -1405,7 +1412,7 @@ function MyBoard() {
                           },
                           "& .MuiInputBase-input": {
                             padding: "8px 10px",
-                            fontSize: "0.7rem",
+                            fontSize: "10px",
                           },
                           "@media (max-width:900px)": {
                             width: "100%",
@@ -1416,12 +1423,13 @@ function MyBoard() {
                     )}
                   </Grid>
                 ))}
-                <Box sx={{ justifyContent: "space-evenly" }}>
+                <Box>
                   <Typography
                     sx={{
                       fontFamily: "Poppins",
                       fontWeight: 400,
-                      fontSize: "16px",
+                      fontSize: "11px",
+                      pb: 1,
                     }}
                   >
                     Upload Documents
@@ -1435,16 +1443,16 @@ function MyBoard() {
                     <Box
                       sx={{
                         display: "flex",
+                        // width: "80%",
                         alignItems: "center",
                         fontFamily: "Poppins",
                         justifyContent: "space-between",
                         border: "1px solid #E7E7E7",
                         borderRadius: 2,
-                      
-                    
+
                         fontSize: isMobile ? "12px" : "14px",
                         backgroundColor: "#F3F3F3",
-                        "@media (max-width:900px)": {
+                        "@media (max-width:600px)": {
                           width: "100%",
                           height: "auto",
                           flexDirection: "row",
@@ -1466,8 +1474,8 @@ function MyBoard() {
                             fontWeight={400}
                             sx={{
                               wordBreak: "break-all",
-                              fontSize:"14px",
-                              width:"420px",
+                              fontSize: "14px",
+                              width: "420px",
                               "@media (max-width:600px)": {
                                 fontSize: "0.85rem",
                               },
@@ -1518,18 +1526,20 @@ function MyBoard() {
                       <Box
                         sx={{
                           border: "2px dashed #006D90",
-                      display:"flex",
-                    
-                      justifyContent:"space-around",
+                          display: "flex",
+                          py: 0.5,
+
+                          justifyContent: "center",
+                          alignItems: "center",
                           borderRadius: 2,
-                          width: "480px",
-                          //height: "133px",
+                          minWidth: "353%",
+                          height: "85px",
                           textAlign: "center",
                           backgroundColor: "#F9FBFC",
                           "&:hover": { backgroundColor: "#F1F5F9" },
                           transition: "0.2s",
                           cursor: "pointer",
-                          "@media (max-width:900px)": {
+                          "@media (max-width:600px)": {
                             width: "100%",
                             height: "120px",
                           },
@@ -1546,13 +1556,21 @@ function MyBoard() {
                           <DriveFolderUploadRounded
                             sx={{
                               color: "#006D90",
-                            
+                              fontSize: "20px",
                             }}
                           />
-                          <Typography variant="body2" color="text.secondary"sx={{fontSize:"12px"}}>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ fontSize: "9px" }}
+                          >
                             Drag your file(s) to start uploading
                           </Typography>
-                          <Typography variant="body2" color="text.secondary"sx={{fontSize:"10px"}}>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ fontSize: "7px", p: "1px" }}
+                          >
                             OR
                           </Typography>
                           <Button
@@ -1560,8 +1578,8 @@ function MyBoard() {
                             sx={{
                               borderColor: "#006D90",
                               color: "#006D90",
-                              fontSize:"10px",
-                              
+                              fontSize: "8px",
+
                               textTransform: "none",
                             }}
                             component="span"
@@ -1570,13 +1588,7 @@ function MyBoard() {
                           </Button>
                         </label>
                       </Box>
-                      <Typography
-                        variant="caption"
-                        display="block"
-                        mt="2px"
-                        height="20px"
-                        color="gray"
-                      >
+                      <Typography variant="caption" color="gray" fontSize="9px">
                         Support .docs, .docx, .pdf, .jpg, .png
                       </Typography>
                     </>
@@ -1585,12 +1597,22 @@ function MyBoard() {
               </Grid>
             </DialogContent>
 
-            <DialogActions sx={{ px: 4, pb: 3 }}>
+            <DialogActions sx={{ px: 3, pb: 2 }}>
               <Grid>
-                {" "}
+                {/* {" "} */}
                 {openAdd ? (
                   <Button
-                    sx={{ backgroundColor: "#006D90", textTransform: "none" }}
+                    sx={{
+                      backgroundColor: "#006D90",
+                      textTransform: "none",
+                      fontSize: "10px",
+                      "& .MuiButton-startIcon": {
+                        marginRight: "4px",
+                        "& > *:nth-of-type(1)": {
+                          fontSize: "13px",
+                        },
+                      },
+                    }}
                     variant="contained"
                     onClick={handleAddSeafarer}
                     startIcon={<Add />}
@@ -1599,7 +1621,17 @@ function MyBoard() {
                   </Button>
                 ) : (
                   <Button
-                    sx={{ backgroundColor: "#006D90", textTransform: "none" }}
+                    sx={{
+                      backgroundColor: "#006D90",
+                      textTransform: "none",
+                      fontSize: "10px",
+                      "& .MuiButton-startIcon": {
+                        marginRight: "4px",
+                        "& > *:nth-of-type(1)": {
+                          fontSize: "13px",
+                        },
+                      },
+                    }}
                     variant="contained"
                     onClick={handleEditSeafarer}
                     startIcon={<Done />}
@@ -1610,7 +1642,7 @@ function MyBoard() {
               </Grid>
             </DialogActions>
           </Dialog>
-
+          {/*status Dialog*/}
           <Dialog
             open={!!openStatusDialog}
             onClose={() => setOpenStatusDialog(null)}
@@ -1630,12 +1662,10 @@ function MyBoard() {
           >
             <DialogTitle
               sx={{
-                height: "36px",
-                px: "24px",
-                py: "12px",
-                fontFamily: "Poppins, sans-serif",
+              
+                fontFamily: "Poppins",
                 fontWeight: 600,
-                fontSize: "1.25rem",
+                fontSize: "18px",
                 color: "#006D90",
                 display: "flex",
                 justifyContent: "space-between",
@@ -1646,8 +1676,8 @@ function MyBoard() {
               Change Status
               <IconButton onClick={() => setOpenStatusDialog(null)}>
                 <Close
-                  sx={{ backgroundColor: " #006D90", color: "#fae9e9ff" }}
-                  fontSize="small"
+                  sx={{ backgroundColor: " #006D90", color: "#fae9e9ff" ,fontSize:"17px"}}
+                  fontSize="18px"
                 />
               </IconButton>
             </DialogTitle>
@@ -1663,14 +1693,34 @@ function MyBoard() {
                     }))
                   }
                 >
-                  <FormControlLabel
+                  <FormControlLabel sx={{
+      "& .MuiFormControlLabel-label": {
+        fontSize: "18px",
+        fontFamily:"poppins" 
+      },
+    }}
                     value="Active"
-                    control={<Radio sx={{ color: "#006D90" }} />}
+                    control={<Radio sx={{
+          color: "#006D90", 
+          "&.Mui-checked": {
+            color: "#00B8D4", 
+          },
+        }} />}
                     label="Active"
                   />
-                  <FormControlLabel
+                  <FormControlLabel sx={{
+      "& .MuiFormControlLabel-label": {
+        fontSize: "18px",
+        fontFamily:"poppins" 
+      },
+    }}
                     value="Inactive"
-                    control={<Radio sx={{ color: "#006D90" }} />}
+                    control={<Radio sx={{
+          color: "#006D90",
+          "&.Mui-checked": {
+            color: "#00B8D4",
+          },
+        }}/>}
                     label="Inactive"
                   />
                 </RadioGroup>
@@ -1686,7 +1736,17 @@ function MyBoard() {
               >
                 <Button
                   variant="contained"
-                  sx={{ backgroundColor: "#006D90", textTransform: "none" }}
+                 sx={{
+                  backgroundColor: "#006D90",
+                  textTransform: "none",
+                  fontSize: "12px",
+                  "& .MuiButton-startIcon": {
+                    marginRight: "4px",
+                    "& > *:nth-of-type(1)": {
+                      fontSize: "13px",
+                    },
+                  },
+                }}
                   onClick={handleStatusChange}
                   startIcon={<Check />}
                 >
@@ -1695,6 +1755,7 @@ function MyBoard() {
               </Box>
             </DialogContent>
           </Dialog>
+          {/*Delete Dialog*/}
           <Dialog
             fullWidth
             maxWidth="xs"
@@ -1741,11 +1802,11 @@ function MyBoard() {
                   fontFamily: "poppins",
                   fontWeight: 500,
                   fontStyle: "medium",
-                  fontSize: "22px",
+                  fontSize: "16px",
                   alignItems: "center",
-                     "@media (max-width:600px)": {
-                    fontSize:"18px"
-                    },
+                  "@media (max-width:600px)": {
+                    fontSize: "18px",
+                  },
                 }}
               >
                 Do you really want to delete {selectedSeafarer?.name} List?
@@ -1753,8 +1814,7 @@ function MyBoard() {
               <img
                 src={pic}
                 alt="warning"
-                style={{ width: "270px", height: "211px"}}
-                
+                style={{ width: "270px", height: "211px" }}
               />
             </DialogContent>
 
@@ -1788,8 +1848,8 @@ function MyBoard() {
                     "&:hover": { backgroundColor: "#00506b" },
                     "@media (max-width:600px)": {
                       p: 3,
-                        width: "auto",
-                    height: "20px",
+                      width: "auto",
+                      height: "20px",
                     },
                   }}
                   onClick={() => {
@@ -1810,7 +1870,7 @@ function MyBoard() {
                     borderColor: "#006D90",
                     textTransform: "none",
                     borderRadius: "8px",
-                  
+
                     fontSize: "13px",
                     "&:hover": {
                       borderColor: "#00506b",
@@ -1818,9 +1878,8 @@ function MyBoard() {
                     },
                     "@media (max-width:600px)": {
                       p: 3,
-                        width: "auto",
-                    height: "20px",
-                      
+                      width: "auto",
+                      height: "20px",
                     },
                   }}
                   onClick={closeDialogs}
@@ -1830,6 +1889,7 @@ function MyBoard() {
               </Box>
             </DialogActions>
           </Dialog>
+          {/*Bulk Upload Dialog*/}
           <Dialog
             open={openBulkUpload}
             onClose={closeDialogs}
@@ -2058,7 +2118,7 @@ function MyBoard() {
               )}
             </DialogActions>
           </Dialog>
-
+          {/*Password Dialog*/}
           <Dialog
             fullWidth
             maxWidth="xs"
@@ -2073,10 +2133,9 @@ function MyBoard() {
                 alignItems: "center",
                 fontWeight: 400,
                 color: "#006D90",
-                m: 1,
+
                 fontFamily: "Poppins",
-                fontSize: "1.25rem",
-                p: 1,
+                fontSize: " 16px",
               }}
             >
               SeaFarer Password
@@ -2085,17 +2144,17 @@ function MyBoard() {
                   sx={{
                     backgroundColor: "#006D90",
                     color: "#ffffff",
-                    fontSize: "24px",
-                    borderRadius: "16px",
+                    fontSize: "18px",
+                    borderRadius: "2px",
                   }}
                 />
               </IconButton>
             </DialogTitle>
             <Divider />
             <DialogContent
-              sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 1 }}
+              sx={{ display: "flex", flexDirection: "column", gap: 2 }}
             >
-              <Typography>
+              <Typography sx={{ fontSize: "14px" }}>
                 Enter your Password{" "}
                 <Typography display="inline" color="#f80000ff">
                   *
@@ -2104,13 +2163,29 @@ function MyBoard() {
               <TextField
                 placeholder="New Password"
                 type="password"
-                sx={{ borderRadius: "1px" }}
+                sx={{
+                  borderRadius: "1px",
+                  fontSize: "12px",
+                  "& .MuiInputBase-input::placeholder": {
+                    fontSize: "13px",
+                  },
+                }}
               />
             </DialogContent>
             <DialogActions>
               <Button
                 variant="contained"
-                sx={{ backgroundColor: "#006D90" }}
+                sx={{
+                  backgroundColor: "#006D90",
+                  textTransform: "none",
+                  fontSize: "12px",
+                  "& .MuiButton-startIcon": {
+                    marginRight: "4px",
+                    "& > *:nth-of-type(1)": {
+                      fontSize: "13px",
+                    },
+                  },
+                }}
                 onClick={closeDialogs}
                 startIcon={<Check />}
               >
