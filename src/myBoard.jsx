@@ -1473,11 +1473,12 @@ function MyBoard() {
                           <Typography
                             fontWeight={400}
                             sx={{
-                              wordBreak: "break-all",
+                           //   wordBreak: "break-all",
                               fontSize: "14px",
-                              width: "420px",
+                              width: "475px",
                               "@media (max-width:600px)": {
-                                fontSize: "0.85rem",
+                                fontSize: "10px",
+                                 width: "10%",
                               },
                             }}
                           >
@@ -1488,7 +1489,7 @@ function MyBoard() {
                           {(openAdd
                             ? newSeafarer.document
                             : editSeafarer.document) && (
-                            <Typography variant="caption" color="gray">
+                            <Typography variant="caption" color="gray" sx={{fontSize:"12px"}}>
                               {(
                                 (openAdd
                                   ? newSeafarer.document
@@ -1518,7 +1519,7 @@ function MyBoard() {
                             }));
                         }}
                       >
-                        <Close />
+                        <Close sx={{fontSize:"16px"}} />
                       </IconButton>
                     </Box>
                   ) : (
@@ -1540,8 +1541,10 @@ function MyBoard() {
                           transition: "0.2s",
                           cursor: "pointer",
                           "@media (max-width:600px)": {
-                            width: "100%",
+                            minWidth: "1%",
+                           // width:"90%",
                             height: "120px",
+                            overflow:"visible"
                           },
                         }}
                       >
