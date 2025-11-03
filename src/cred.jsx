@@ -35,6 +35,7 @@ import {
   Divider,
   TableContainer,
   Grid,
+  MenuItem,
 } from "@mui/material";
 import { Delete, Edit, AttachFile } from "@mui/icons-material";
 
@@ -199,13 +200,13 @@ function SeafarerCredentials({ seafarer }) {
         backgroundColor: "#F4FCFF",
         opacity: 1,
         "@media(max-width:900px)":{
-          px:0
+          px:0,
         }
       }}
     >
       <Paper
         elevation={4}
-        sx={{  p: 2, borderRadius: 2, backgroundColor: "#f2f2f2ff", mb: 4 ,overflow:"hidden",
+        sx={{  p: 2, borderRadius: 2, backgroundColor: "#ffffffff", mb: 4 ,overflow:"hidden",border:"1px solid #006D90",
            "@media(max-width:900px)":{
           p:3
         }
@@ -438,7 +439,12 @@ function SeafarerCredentials({ seafarer }) {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody sx={{ backgroundColor: "#ffffff" }}>
+        <TableBody sx={{  backgroundColor: "#ffffff",
+    fontFamily: "Poppins, sans-serif",
+    "& *": {
+      fontFamily: "Poppins, sans-serif !important", 
+    },
+  }}>
           {getCurrentTable().map((row, index) => {
             const formatDate = (dateString) => {
               if (!dateString) return "";
@@ -450,9 +456,9 @@ function SeafarerCredentials({ seafarer }) {
             };
 
             return (
-              <TableRow key={row.id} sx={{ backgroundColor: "#ffffff" }}>
+              <TableRow key={row.id} sx={{  fontFamily: "poppins",color: "#fff", fontWeight: 600 }}>
                 <TableCell >{row.id}</TableCell>
-                <TableCell>{row.name}</TableCell>
+                <TableCell >{row.name}</TableCell>
                 <TableCell>{row.flagState}</TableCell>
                 <TableCell>{formatDate(row.dateIssued)}</TableCell>
                 <TableCell>{formatDate(row.validUntil)}</TableCell>
@@ -464,6 +470,7 @@ function SeafarerCredentials({ seafarer }) {
                     textDecorationLine: "solid",
                     textDecorationSkipInk: "true",
                     textDecorationThickness: "0%",
+                    fontFamily:"poppins"
                   }}
                 >
                   <IconButton>
@@ -471,7 +478,7 @@ function SeafarerCredentials({ seafarer }) {
                       sx={{ transform: "rotate(45deg)", color: "#006D90" }}
                     />
                   </IconButton>
-                  {row.documentName || "viewAttachment"}
+                  {row.documentName || "View Attachment"}
                 </TableCell>
                 <TableCell>
                   <Stack direction="row" spacing={2}>
@@ -479,17 +486,14 @@ function SeafarerCredentials({ seafarer }) {
                       sx={{
                         border: "2px solid #006D90",
                         backgroundColor: "#F4F8FF",
-                        width: "40px",
-                        height: "40px",
+                       
                         borderRadius: "8px",
                         p: 1,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                      
                       }}
                       onClick={() => handleOpenDialog(index)}
                     >
-                      <Edit sx={{ color: "#006D90" }} />
+                      <Edit sx={{ color: "#006D90",fontSize:"16px" }} />
                     </IconButton>
                     <IconButton
                       sx={{
@@ -498,16 +502,13 @@ function SeafarerCredentials({ seafarer }) {
                         backgroundColor: "#FFEEF0",
                         borderRadius: "8px",
                         p: 1,
-                        width: "40px",
-                        height: "40px",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        
+                
                       }}
                       onClick={() => handleDelete(index)}
-                      color="error"
+                      
                     >
-                      <Delete fontSize="small" />
+                      <Delete sx={{color:"#e03a2eff",fontSize:"16px"}}/>
                     </IconButton>
                   </Stack>
                 </TableCell>
@@ -524,24 +525,25 @@ function SeafarerCredentials({ seafarer }) {
           startIcon={<Add />}
           onClick={() => handleOpenDialog()}
           sx={{
-            fontFamily: "Poppins, sans-serif",
+          fontFamily: "poppins",
             fontWeight: 600,
-            fontStyle: "normal",
+           // fontStyle: "normal",
             fontSize: "14px",
-            lineHeight: "24px",
-            letterSpacing: "0.025em",
-            textAlign: "center",
-            textTransform: "uppercase",
+           // lineHeight: "24px",
+            //letterSpacing: "0.025em",
+            //textAlign: "center",
+            //textTransform: "uppercase",
             color: "#006D90",
-            width: "88px",
+            borderColor:"#006D90",
+            //width: "88px",
             borderRadius: "8px",
-            borderWidth: "1px",
-            paddingRight: "13px",
-            paddingLeft: "10px",
-            gap: "8px",
-            opacity: 1,
+           // borderWidth: "1px",
+            //paddingRight: "13px",
+           // paddingLeft: "10px",
+           // gap: "8px",
+           // opacity: 1,
 
-            transform: "rotate(0deg)",
+            //transform: "rotate(0deg)",
           }}
         >
           Add
@@ -552,13 +554,13 @@ function SeafarerCredentials({ seafarer }) {
           sx={{
             backgroundColor: "#006D90",
             borderRadius: "8px",
-            borderWidth: "1px",
-            borderStyle: "solid",
-            paddingRight: "13px",
-            paddingLeft: "10px",
+         //   borderWidth: "1px",
+          //  borderStyle: "solid",
+          //  paddingRight: "13px",
+           // paddingLeft: "10px",  
             gap: "8px",
             transform: "rotate(0deg)",
-            opacity: 1,
+           // opacity: 1,
           }}
           startIcon={<Save />}
           onClick={handleSave}
@@ -571,7 +573,7 @@ function SeafarerCredentials({ seafarer }) {
         open={openDialog}
         onClose={handleCloseDialog}
         fullWidth
-        maxWidth="sm"
+        maxWidth="xs"
         PaperProps={{
           sx: {
             border: "2px solid #006D90",
@@ -595,7 +597,7 @@ function SeafarerCredentials({ seafarer }) {
             fontWeight: 700,
             color: "#006D90",
             fontFamily: "Poppins",
-            fontSize: "1.25rem",
+            fontSize: "14px",
             pb: 1,
             pt: 0,
             mt: 1,
@@ -614,89 +616,181 @@ function SeafarerCredentials({ seafarer }) {
         <Divider />
 
         <DialogContent
+        
+         
+        >
+         
+            <Grid
+  container
+  spacing={1}
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+   
+  }}
+>
+  {[
+    {
+      label: selectedTab === "coc" ? "COC Name" : "Course Name",
+      name: "name",
+      type: "select",
+      options:
+        selectedTab === "coc"
+          ? ["Deck Rating", "Captain", "Engineer", "Crew"]
+          : ["Web", "Cloud", "Test", "Security"],
+      placeholder:
+        selectedTab === "coc"
+          ? "Select COC Name"
+          : "Select Course Name",
+    },
+    {
+      label: "Flag State",
+      name: "flagState",
+      type: "select",
+      options: ["India", "Panama", "Liberia", "Bahamas"],
+      placeholder: "Select Flag State",
+  
+    },
+    {
+      label: "Date Issued",
+      name: "dateIssued",
+      type: "date",
+      placeholder: "Select Date Issued",
+    },
+    {
+      label: "Valid Until",
+      name: "validUntil",
+      type: "date",
+      placeholder: "Select Valid Date",
+    },
+  ].map((field) => (
+    <Grid  key={field.name}>
+      {/* ---- Label ---- */}
+      <Typography
+        variant="body2"
+        sx={{
+          fontFamily: "Poppins",
+          fontWeight: 400,
+          fontSize: "12px",
+          mb: 0.5,
+        }}
+      >
+        {field.label}
+        { editIndex === null ? (
+                             <Box
+                               component="span"
+                               sx={{ color: "#ff0000ff", display: "inline" }}
+                             >
+                               *
+                             </Box>
+                           ) : (
+                             ""
+                           )}
+      </Typography>
+
+      {/* ---- Input ---- */}
+      {field.type === "select" ? (
+        <TextField
+          select
+          required
+          fullWidth
+          size="small"
+          name={field.name}
+          value={newEntry[field.name] || ""}
+          onChange={handleChange}
+          SelectProps={{
+            displayEmpty: true,
+            renderValue: (selected) =>
+              selected ? (
+                selected
+              ) : (
+                <span style={{ fontSize: "10px", color: "#9e9e9e"  }}>
+                  {field.placeholder}
+                </span>
+              ),
+          }}
           sx={{
-            sm: {
-              px: 4,
-              overflowY: "auto",
-              "@media (max-width:600px)": {
-                px: 2,
-                py: 2,
-                maxHeight: "80vh",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+              height:"27px",
+              "& fieldset": {
+                borderColor: "#B0BEC5",
               },
+              "&:hover fieldset": {
+                borderColor: "#064575",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#064575",
+              },
+            },
+            "& .MuiInputBase-input": {
+              padding: "8px 10px",
+              fontSize: "0.7rem",
+            },
+            "@media (max-width:900px)": {
+              width: "100%",
+              height: "40px",
             },
           }}
         >
-          <Stack spacing={1}>
-            <Typography fontFamily="Poppins" mb={0.5}>
-              {selectedTab === "coc" ? "COC Name" : "Course Name"}
-              {editIndex === null && (
-                <Typography display="inline" color="#f80505ff">
-                  *
-                </Typography>
-              )}
-            </Typography>
-            <TextField
-              size="small"
-              required
-              name="name"
-              fullWidth
-              value={newEntry.name}
-              onChange={handleChange}
-            />
-            <Typography fontFamily="Poppins" mb={0.5}>
-              Flag State
-              {editIndex === null && (
-                <Typography display="inline" color="#f80505ff">
-                  *
-                </Typography>
-              )}
-            </Typography>
-            <TextField
-              size="small"
-              required
-              name="flagState"
-              fullWidth
-              value={newEntry.flagState}
-              onChange={handleChange}
-            />
+          <MenuItem value="" disabled sx={{fontSize:"12px",fontFamily:"poppins"}} >
+            {field.placeholder}
+          </MenuItem>
+          {field.options.map((opt) => (
+            <MenuItem
+              key={opt}
+              value={opt}
+              sx={{ fontSize: "13px", fontFamily: "Poppins" }}
+            >
+              {opt}
+            </MenuItem>
+          ))}
+        </TextField>
+      ) : (
+        <TextField
+          fullWidth
+          required
+          size="small"
+          name={field.name}
+          type={field.type}
+          value={newEntry[field.name] || ""}
+          onChange={handleChange}
+          InputLabelProps={{ shrink: true }}
+          placeholder={field.placeholder}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+               height:"27px",
+              "& fieldset": {
+                borderColor: "#B0BEC5",
+              },
+              "&:hover fieldset": {
+                borderColor: "#064575",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#064575",
+              },
+            },
+            "& .MuiInputBase-input": {
+              padding: "8px 10px",
+              fontSize: "10px",
+            },
+            "@media (max-width:900px)": {
+              width: "100%",
+              height: "40px",
+            },
+          }}
+        />
+      )}
+    </Grid>
+  ))}
+</Grid>
 
-            <Typography fontFamily="Poppins" mb={0.5}>
-              Date Issued
-              {editIndex === null && (
-                <Typography display="inline" color="#f80505ff">
-                  *
-                </Typography>
-              )}
-            </Typography>
-            <TextField
-              size="small"
-              required
-              name="dateIssued"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-              value={newEntry.dateIssued}
-              onChange={handleChange}
-            />
-            <Typography fontFamily="Poppins" mb={0.5}>
-              Valid Until
-              {editIndex === null && (
-                <Typography display="inline" color="#f80505ff">
-                  *
-                </Typography>
-              )}
-            </Typography>
-            <TextField
-              size="small"
-              required
-              name="validUntil"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-              value={newEntry.validUntil}
-              onChange={handleChange}
-            />
-            <Typography fontFamily="Poppins" fontWeight={500}>
+
+           
+            <Typography fontFamily="Poppins" fontWeight={500} fontSize="12px"p={0.5}>
               Upload Document
             </Typography>
             {!newEntry.documentName ? (
@@ -705,7 +799,8 @@ function SeafarerCredentials({ seafarer }) {
                   sx={{
                     border: "2px dashed #006D90",
                     borderRadius: 2,
-                    p: 1,
+                    p: 1.5,
+                  
                     textAlign: "center",
                     backgroundColor: "#F9FBFC",
                     "&:hover": { backgroundColor: "#F1F5F9" },
@@ -724,13 +819,13 @@ function SeafarerCredentials({ seafarer }) {
                     onChange={handleFileChange}
                   />
                   <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
-                    <DriveFolderUploadRounded sx={{ color: "#006D90" }} />
+                    <DriveFolderUploadRounded sx={{ color: "#006D90",fontSize:"14px" }} />
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      mt={1}
+                  
                       sx={{
-                        "@media (max-width:600px)": { fontSize: "0.85rem" },
+                       fontSize: "10px" 
                       }}
                     >
                       Drag your file(s) to start uploading
@@ -738,7 +833,7 @@ function SeafarerCredentials({ seafarer }) {
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ py: 1 }}
+                      sx={{ fontFamily:"poppins",fontSize:"10px" }}
                     >
                       OR
                     </Typography>
@@ -747,7 +842,8 @@ function SeafarerCredentials({ seafarer }) {
                       sx={{
                         borderColor: "#006D90",
                         color: "#006D90",
-                        mt: 1,
+                       mt: 1,
+                       fontSize:"10px",
                         textTransform: "none",
                         fontWeight: 600,
                       }}
@@ -761,7 +857,8 @@ function SeafarerCredentials({ seafarer }) {
                 <Typography
                   variant="caption"
                   display="block"
-                  mt={1}
+                  //mt={1}
+                  fontSize="10px"
                   color="gray"
                 >
                   Supports .doc, .docx, .pdf, .jpg, .png
@@ -772,8 +869,8 @@ function SeafarerCredentials({ seafarer }) {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  height: "68px",
-                  fontSize: "14px",
+               
+                  fontSize: "12px",
                   fontFamily: "Poppins",
                   justifyContent: "space-between",
                   border: "1px solid #E7E7E7",
@@ -815,17 +912,17 @@ function SeafarerCredentials({ seafarer }) {
 
                   <Box>
                     <Typography
-                      fontWeight={600}
+                      fontWeight={500}
                       fontFamily="Poppins"
                       sx={{
-                        wordBreak: "break-all",
+                       fontSize:"10px", wordBreak: "break-all",
                         "@media (max-width:600px)": { fontSize: "0.85rem" },
                       }}
                     >
                       {newEntry.documentName}
                     </Typography>
                     {newEntry.document && (
-                      <Typography variant="caption" color="gray">
+                      <Typography variant="caption" color="gray"sx={{fontSize:"10px"}}>
                         {(newEntry.document.size / 1024 / 1024).toFixed(2)} MB
                       </Typography>
                     )}
@@ -841,16 +938,17 @@ function SeafarerCredentials({ seafarer }) {
                     }))
                   }
                 >
-                  <Close />
+                  <Close sx={{  fontSize:"14px",}} />
                 </IconButton>
               </Box>
             )}
-          </Stack>
+            
+          
         </DialogContent>
 
         <DialogActions
           sx={{
-            px: 3,
+            px: 2,
             pb: 2,
             "@media (max-width:600px)": {
               px: 2,
@@ -861,18 +959,22 @@ function SeafarerCredentials({ seafarer }) {
           <Button
             sx={{
               backgroundColor: "#006D90",
-              px: "14px",
-              py: "8px",
-              "@media (max-width:600px)": {
-                width: "100%",
-                fontSize: "0.9rem",
-              },
+                      textTransform: "none",
+                      fontSize: "10px",
+                      "& .MuiButton-startIcon": {
+                        marginRight: "4px",
+                        "& > *:nth-of-type(1)": {
+                          fontSize: "13px",
+                        },
+                      },
+                      
             }}
             variant="contained"
             onClick={handleAddOrEditEntry}
+            startIcon= {editIndex !== null ? <Check  /> : <Add />}
           >
-            {" "}
-            {editIndex !== null ? <Check /> : <Add />}
+          
+           
             {editIndex !== null ? "Update" : "Add"}
           </Button>
         </DialogActions>
