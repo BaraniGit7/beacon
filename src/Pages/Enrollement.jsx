@@ -18,14 +18,14 @@ export default function Encrollment() {
   const handleCloseFilter = () => setOpenFilter(false);
 
   return (
-    <Box sx={{ p: 2 }}>
+    <Box sx={{ p: 2 ,backgroundColor:"#f4fcff"}}>
       {/* Heading with combined icon */}
       <Typography
         variant="h6"
         sx={{
           display: "flex",
           alignItems: "center",
-          mb: 2,
+          mb: 1,
           fontWeight: 600,
           fontFamily: "Poppins",
           gap: 1,
@@ -55,8 +55,9 @@ export default function Encrollment() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          gap: 2,
-          mb: 3
+          gap: 1,
+          mb: 1.9,
+         
         }}
       >
         <Paper
@@ -65,16 +66,16 @@ export default function Encrollment() {
             display: "flex",
             flex: "1 1 auto",
             maxWidth:"50%",
-      
+            height:"30px",
             alignItems: "center",
             px: 1,
-            borderRadius: "12px"
+            borderRadius: "6px"
           }}
         >
           <IconButton>
-            <Search />
+            <Search sx={{fontSize:"15px"}} />
           </IconButton>
-          <InputBase placeholder="Search…" fullWidth />
+          <InputBase placeholder="Search…" fullWidth sx={{fontSize:"12px"}} />
         </Paper>
 
         <FilterDialog open={openFilter} handleClose={handleCloseFilter} />
@@ -82,22 +83,23 @@ export default function Encrollment() {
 
       {/* Enroll Details + Legend */}
       <EnrollDetails />
-      <Box sx={{ display: "flex", alignItems: "center", gap: 4, mb: 2 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 4,mb:1}}>
         <Typography sx={{ display: "flex", alignItems: "center", gap: 1,fontSize: "13px",
                           fontFamily: "poppins", }}>
-          <CheckBox sx={{ color: "red" }} />
+          <CheckBox sx={{ color: "red",fontSize:"16px" }} />
           Already enrolled courses
         </Typography>
 
         <Typography sx={{ display: "flex", alignItems: "center", gap: 1 ,fontSize: "13px",
                           fontFamily: "poppins",}}>
-          <CheckBox sx={{ color: "green" }} />
-          Courses selected to enroll now
+          <CheckBox sx={{ color: "green" ,fontSize:"16px" }} />
+          Courses selected now for Enrollment
         </Typography>
       </Box>
 
       {/* Table */}
       <Tables />
     </Box>
+
   );
 }

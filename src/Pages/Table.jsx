@@ -1,8 +1,8 @@
+import { Save } from "@mui/icons-material";
 import {
   Box,
   Button,
   Checkbox,
- 
   MenuItem,
   Pagination,
   Paper,
@@ -75,6 +75,8 @@ export default function Tables() {
         sx={{
           backgroundColor: "#F4FCFF",
           borderRadius: "10px",
+          maxHeight: 200,
+          overflowY: "auto",
         }}
       >
         <Table
@@ -85,14 +87,21 @@ export default function Tables() {
           }}
         >
           <TableHead>
-            <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
+            <TableRow
+              sx={{
+                backgroundColor: "#5C5C5C",
+                position: "sticky",
+                top: 0,
+                zIndex: 2,
+              }}
+            >
               <TableCell
                 sx={{
                   textAlign: "left",
-
+                  fontSize: "13px",
                   color: "#E4E4E4",
 
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: "bold",
                 }}
               ></TableCell>
@@ -101,8 +110,7 @@ export default function Tables() {
                   textAlign: "left",
 
                   color: "#E4E4E4",
-
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: "bold",
                 }}
               >
@@ -111,10 +119,10 @@ export default function Tables() {
               <TableCell
                 sx={{
                   textAlign: "left",
-
+                  fontSize: "13px",
                   color: "#E4E4E4",
 
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: "bold",
                 }}
               >
@@ -125,8 +133,8 @@ export default function Tables() {
                   textAlign: "left",
 
                   color: "#E4E4E4",
-
-                  fontFamily: "Inter, sans-serif",
+                  fontSize: "13px",
+                  fontFamily: "poppins",
                   fontWeight: "bold",
                 }}
               >
@@ -137,7 +145,7 @@ export default function Tables() {
                   textAlign: "left",
 
                   color: "#E4E4E4",
-
+                  fontSize: "13px",
                   fontFamily: "Inter, sans-serif",
                   fontWeight: "bold",
                 }}
@@ -149,8 +157,8 @@ export default function Tables() {
                   textAlign: "left",
 
                   color: "#E4E4E4",
-
-                  fontFamily: "Inter, sans-serif",
+                  fontSize: "13px",
+                  fontFamily: "poppins",
                   fontWeight: "bold",
                 }}
               >
@@ -161,8 +169,8 @@ export default function Tables() {
                   textAlign: "left",
 
                   color: "#E4E4E4",
-
-                  fontFamily: "Inter, sans-serif",
+                  fontSize: "13px",
+                  fontFamily: "poppins",
                   fontWeight: "bold",
                 }}
               >
@@ -175,23 +183,34 @@ export default function Tables() {
           >
             {paginatedTable.map((tab, index) => (
               <TableRow key={index} sx={{ backgroundColor: "#ffff" }}>
-              <TableCell align="center">
-  <Checkbox
-    defaultChecked
-    sx={{
-      color: "green",
-      "&.Mui-checked": {
-        color: "green",
-      },
-    }}
-  />
-</TableCell>
+                <TableCell align="center">
+                  <Checkbox
+                    
+                    sx={{
+                     transform: "scale(0.8)",
+                      color: "green",
+                      "&.Mui-checked": {
+                        color: "green",
+                      },
+                    }}
+                  />
+                </TableCell>
 
-                <TableCell>{tab.coursecode}</TableCell>
-                <TableCell>{tab.coursename}</TableCell>
-                <TableCell>{tab.opertionalarea}</TableCell>
-                <TableCell>{tab.functionalarea}</TableCell>
-                <TableCell>{tab.targetaudience}</TableCell>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                  {tab.coursecode}
+                </TableCell>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                  {tab.coursename}
+                </TableCell>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                  {tab.opertionalarea}
+                </TableCell>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                  {tab.functionalarea}
+                </TableCell>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                  {tab.targetaudience}
+                </TableCell>
                 <TableCell>
                   {tab.standards.split(")").map((std, i) =>
                     std.trim() ? (
@@ -267,7 +286,7 @@ export default function Tables() {
             {/* <MenuItem value="custom">custom</MenuItem> */}
           </Select>
 
-          {customPage && (
+          {/* {customPage && (
             <TextField
               type="number"
               placeholder="Enter"
@@ -292,7 +311,7 @@ export default function Tables() {
                 }
               }}
             />
-          )}
+          )} */}
           <Typography sx={{ fontSize: "12px", fontFamily: "poppins" }}>
             Row
           </Typography>
@@ -306,17 +325,28 @@ export default function Tables() {
             "& .MuiPaginationItem-root": {
               fontSize: "10px",
               margin: "0 2px",
+            color:"#006D90"
             },
-            "& .Mui-selected": {
-              backgroundColor: "#0069D0",
-              color: "white",
-            },
+             "& .MuiPaginationItem-root.Mui-selected": {
+      backgroundColor: "#006D90", // selected background
+      color: "#fff",               // selected text color
+    },
+    "& .MuiPaginationItem-root.Mui-selected:hover": {
+      backgroundColor: "#00c0ebff", // hover color for selected
+    },
           }}
-        /><Box sx={{  right: 0,
+        />
+        <Box
+          sx={{
+            right: 0,
             position: "absolute",
             display: "flex",
             alignItems: "center",
-            gap: 1,}}><Button variant="contained">Save & Enroll Courses</Button></Box>
+            gap: 1,
+          }}
+        >
+          <Button sx={{backgroundColor:"#006D90",fontSize:"10px" }} startIcon={<Save/>} variant="contained">Save & Enroll Courses</Button>
+        </Box>
       </Box>
     </>
   );

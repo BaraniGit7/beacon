@@ -35,6 +35,7 @@ export default function EnrollDetails() {
       <Typography
         variant="h6"
         sx={{
+          px:1.5,
           fontFamily: "Poppins",
           fontWeight: 700,
           color: "#006D90",
@@ -47,8 +48,9 @@ export default function EnrollDetails() {
 
       <Grid
         container
-        spacing={2}
+        spacing={1}
         sx={{
+          p:1.5,
           display: "flex",
           justifyContent: "space-between",
         }}
@@ -58,7 +60,7 @@ export default function EnrollDetails() {
             <Box
               sx={{
                 display: "flex",
-                alignItems: "space-evenly",
+                justifyContent:"center",
                 gap: 1.3,
               }}
             >
