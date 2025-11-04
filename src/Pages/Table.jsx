@@ -2,8 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
-  FormControlLabel,
-  FormGroup,
+ 
   MenuItem,
   Pagination,
   Paper,
@@ -201,7 +200,7 @@ export default function Tables() {
                         sx={{
                           display: "block",
                           fontSize: "13px",
-                          fontFamily: "Inter, sans-serif",
+                          fontFamily: "poppins",
                           lineHeight: "20px",
                         }}
                       >

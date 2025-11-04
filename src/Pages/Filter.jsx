@@ -53,12 +53,12 @@ export default function FilterDialog() {
 
   return (
     <>
-      <Button sx={{color:"#006D90",fontWeight:600, border:"2px solid #006D90",borderRadius:"8px"}} startIcon={<FilterListAlt />} variant="outlined" onClick={handleOpen}>
+      <Button sx={{color:"#006D90",fontWeight:600, border:"2px solid #006D90",borderRadius:"8px",fontSize:"12px"}} startIcon={<FilterListAlt />} variant="outlined" onClick={handleOpen}>
          Filter Courses
       </Button>
 
       <Dialog open={dialog} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center"}}>
           Filter Courses
           <IconButton onClick={handleClose}>
             <Close />
