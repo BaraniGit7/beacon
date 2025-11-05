@@ -445,76 +445,64 @@ function SeafarerCredentials({ seafarer }) {
       fontFamily: "Poppins, sans-serif !important", 
     },
   }}>
-          {getCurrentTable().map((row, index) => {
-            const formatDate = (dateString) => {
-              if (!dateString) return "";
-              const date = new Date(dateString);
-              const day = date.getDate().toString().padStart(2, "0");
-              const month = (date.getMonth() + 1).toString().padStart(2, "0");
-              const year = date.getFullYear();
-              return `${day}-${month}-${year}`;
-            };
+       {getCurrentTable().map((row, index) => (
+  <TableRow
+    key={row.id}
+    sx={{ fontFamily: "Poppins", color: "#fff", fontWeight: 600 }}
+  >
+    <TableCell>{row.id}</TableCell>
+    <TableCell>{row.name}</TableCell>
+    <TableCell>{row.flagState}</TableCell>
+    <TableCell>{row.dateIssued}</TableCell>
+    <TableCell>{row.validUntil}</TableCell>
 
-            return (
-              <TableRow key={row.id} sx={{  fontFamily: "poppins",color: "#fff", fontWeight: 600 }}>
-                <TableCell >{row.id}</TableCell>
-                <TableCell >{row.name}</TableCell>
-                <TableCell>{row.flagState}</TableCell>
-                <TableCell>{formatDate(row.dateIssued)}</TableCell>
-                <TableCell>{formatDate(row.validUntil)}</TableCell>
-                <TableCell
-                  sx={{
-                    color: "#006D90",
-                    fontWeight: 600,
-                    textDecoration: "underline",
-                    textDecorationLine: "solid",
-                    textDecorationSkipInk: "true",
-                    textDecorationThickness: "0%",
-                    fontFamily:"poppins"
-                  }}
-                >
-                  <IconButton>
-                    <AttachFile
-                      sx={{ transform: "rotate(45deg)", color: "#006D90" }}
-                    />
-                  </IconButton>
-                  {row.documentName || "View Attachment"}
-                </TableCell>
-                <TableCell>
-                  <Stack direction="row" spacing={2}>
-                    <IconButton
-                      sx={{
-                        border: "2px solid #006D90",
-                        backgroundColor: "#F4F8FF",
-                       
-                        borderRadius: "8px",
-                        p: 1,
-                      
-                      }}
-                      onClick={() => handleOpenDialog(index)}
-                    >
-                      <Edit sx={{ color: "#006D90",fontSize:"16px" }} />
-                    </IconButton>
-                    <IconButton
-                      sx={{
-                        border: "2px solid, #f71000ff",
-                        color: " #e03a2eff",
-                        backgroundColor: "#FFEEF0",
-                        borderRadius: "8px",
-                        p: 1,
-                        
-                
-                      }}
-                      onClick={() => handleDelete(index)}
-                      
-                    >
-                      <Delete sx={{color:"#e03a2eff",fontSize:"16px"}}/>
-                    </IconButton>
-                  </Stack>
-                </TableCell>
-              </TableRow>
-            );
-          })}
+    <TableCell
+      sx={{
+        color: "#006D90",
+        fontWeight: 600,
+        textDecoration: "underline",
+        textDecorationLine: "solid",
+        textDecorationSkipInk: "true",
+        textDecorationThickness: "0%",
+        fontFamily: "Poppins",
+      }}
+    >
+      <IconButton>
+        <AttachFile sx={{ transform: "rotate(45deg)", color: "#006D90" }} />
+      </IconButton>
+      {row.documentName || "View Attachment"}
+    </TableCell>
+
+    <TableCell>
+      <Stack direction="row" spacing={2}>
+        <IconButton
+          sx={{
+            border: "2px solid #006D90",
+            backgroundColor: "#F4F8FF",
+            borderRadius: "8px",
+            p: 1,
+          }}
+          onClick={() => handleOpenDialog(index)}
+        >
+          <Edit sx={{ color: "#006D90", fontSize: "16px" }} />
+        </IconButton>
+        <IconButton
+          sx={{
+            border: "2px solid #f71000ff",
+            color: "#e03a2eff",
+            backgroundColor: "#FFEEF0",
+            borderRadius: "8px",
+            p: 1,
+          }}
+          onClick={() => handleDelete(index)}
+        >
+          <Delete sx={{ color: "#e03a2eff", fontSize: "16px" }} />
+        </IconButton>
+      </Stack>
+    </TableCell>
+  </TableRow>
+))}
+
         </TableBody>
       </Table>
 </TableContainer> 
