@@ -1,4 +1,14 @@
-import { CancelOutlined, Check, Close, CloseOutlined, Filter, FilterAltOutlined, FilterListAlt, Room, Tune } from "@mui/icons-material";
+import {
+  CancelOutlined,
+  Check,
+  Close,
+  CloseOutlined,
+  Filter,
+  FilterAltOutlined,
+  FilterListAlt,
+  Room,
+  Tune,
+} from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -11,7 +21,7 @@ import {
   IconButton,
   MenuItem,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 
@@ -27,7 +37,7 @@ export default function FilterDialog() {
       type: "select",
       options: ["Room1", "Room2", "Room3"],
       placeholder: "Select operational area",
-      icon:<Tune/>
+      icon: <Tune />,
     },
     {
       label: "Functional Area",
@@ -35,7 +45,7 @@ export default function FilterDialog() {
       type: "select",
       options: ["Function1", "Function2", "Function3"],
       placeholder: "Select functional area",
-      icon:<Room/>
+      icon: <Room />,
     },
     {
       label: "Target Audience",
@@ -53,34 +63,64 @@ export default function FilterDialog() {
 
   return (
     <>
-      <Button sx={{color:"#006D90",fontWeight:600, border:"2px solid #006D90",borderRadius:"8px",fontSize:"10px",backgroundColor:"#fff"}} startIcon={<FilterAltOutlined />} variant="outlined" onClick={handleOpen}>
-         Filter Courses
+      <Button
+        sx={{
+          color: "#006D90",
+          fontWeight: 600,
+          border: "1px solid #006D90",
+          borderRadius: "8px",
+          fontSize: "10px",
+          backgroundColor: "#fff",
+        }}
+        startIcon={<FilterAltOutlined />}
+        variant="outlined"
+        onClick={handleOpen}
+      >
+        Filter Courses
       </Button>
 
-      <Dialog open={dialog} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle sx={{ fontSize:"18px",fontFamily:"poppins",color:"#006D90",display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+      <Dialog open={dialog} onClose={handleClose} fullWidth maxWidth="sm" sx={{ border:"1px solid #006D90"}}>
+        <DialogTitle
+          sx={{
+            fontSize: "18px",
+            fontWeight: 700,
+            fontFamily: "poppins",
+            color: "#006D90",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+           
+          }}
+        >
           Filter Courses
           <IconButton onClick={handleClose}>
-            <CancelOutlined sx={{color:"#006D90"}} />
+            <CancelOutlined sx={{ color: "#006D90" }} />
           </IconButton>
         </DialogTitle>
         <Divider />
 
         <DialogContent>
-          <Grid container spacing={2}sx={{
-           display: "flex",
-    flexDirection: "column",
-    //justifyContent: "space-between",
-    flexWrap: "wrap",
-          }}>
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              //justifyContent: "space-between",
+              flexWrap: "wrap",
+            }}
+          >
             {filters.map((filter) => (
               <Grid item xs={12} sm={6} key={filter.name}>
-                <Typography  variant="body2"
-        sx={{
-          fontFamily: "Poppins",
-          fontWeight: 400,
-          fontSize: "16px",
-          mb: 0.5,  }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontFamily: "Poppins",
+                    fontWeight: 400,
+                    fontSize: "16px",
+                    mb: 0.5,
+                  }}
+                >
                   {filter.label}
                   <Box component="span" sx={{ color: "#ff0000" }}>
                     *
@@ -88,29 +128,36 @@ export default function FilterDialog() {
                 </Typography>
 
                 {filter.type === "select" ? (
-                  <TextField sx={{fontFamily:"poppins"}} 
+                  <TextField
+                    sx={{ fontFamily: "poppins" }}
                     select
                     required
                     fullWidth
                     size="small"
                     name={filter.name}
-                   SelectProps={{
-            displayEmpty: true,
-            renderValue: (selected) =>
-              selected ? (
-                selected
-              ) : (
-                <span style={{ color: "#9e9e9e" ,fontFamily:"poppins"}}>
-                  {filter.placeholder}
-                </span>
-              ),
-          }} 
+                    SelectProps={{
+                      displayEmpty: true,
+                      renderValue: (selected) =>
+                        selected ? (
+                          selected
+                        ) : (
+                          <span
+                            style={{ color: "#9e9e9e", fontFamily: "poppins" }}
+                          >
+                            {filter.placeholder}
+                          </span>
+                        ),
+                    }}
                   >
-                    <MenuItem sx={{fontFamily:"poppins"}} value="" disabled>
+                    <MenuItem sx={{ fontFamily: "poppins" }} value="" disabled>
                       {filter.placeholder}
                     </MenuItem>
                     {filter.options.map((opt) => (
-                      <MenuItem sx={{fontFamily:"poppins"}}  key={opt} value={opt}>
+                      <MenuItem
+                        sx={{ fontFamily: "poppins" }}
+                        key={opt}
+                        value={opt}
+                      >
                         {opt}
                       </MenuItem>
                     ))}
@@ -123,7 +170,14 @@ export default function FilterDialog() {
                     name={filter.name}
                     type={filter.type}
                     placeholder={filter.placeholder}
-                    sx={{fontFamily:"poppins"}} 
+                    sx={{
+                      "& .MuiInputBase-input::placeholder": {
+                        fontFamily: "Poppins",
+                      },
+                      "& .MuiInputBase-input": {
+                        fontFamily: "Poppins",
+                      },
+                    }}
                   />
                 )}
               </Grid>
@@ -132,8 +186,21 @@ export default function FilterDialog() {
         </DialogContent>
 
         <DialogActions>
-        
-          <Button onClick={handleClose} variant="contained" sx={{color:"#ffff",backgroundColor:"#006D90",fontSize:"12px"}}  > <IconButton><Check sx={{fontSize:"16px",color:"#ffff"}}/></IconButton>Apply</Button>
+          <Button
+            onClick={handleClose}
+            variant="contained"
+            sx={{
+              color: "#ffff",
+              backgroundColor: "#006D90",
+              fontSize: "12px",
+            }}
+          >
+           
+          
+              <Check sx={{pr:"8px", fontSize: "16px", color: "#ffff" }} />
+         
+            Apply
+          </Button>
         </DialogActions>
       </Dialog>
     </>

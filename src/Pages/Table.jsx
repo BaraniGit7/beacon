@@ -324,15 +324,17 @@ export default function Tables() {
           sx={{
             "& .MuiPaginationItem-root": {
               fontSize: "10px",
-              margin: "0 2px",
+              margin: "0px",
             color:"#006D90"
             },
              "& .MuiPaginationItem-root.Mui-selected": {
-      backgroundColor: "#006D90", // selected background
-      color: "#fff",               // selected text color
+      backgroundColor: "#006D90", 
+      color: "#fff",              
     },
     "& .MuiPaginationItem-root.Mui-selected:hover": {
-      backgroundColor: "#00c0ebff", // hover color for selected
+      backgroundColor: "#00c0ebff",
+    },   "@media (max-width: 600px)": {
+     fontSize:"12px"
     },
           }}
         />
@@ -343,9 +345,11 @@ export default function Tables() {
             display: "flex",
             alignItems: "center",
             gap: 1,
+              
+
           }}
         >
-          <Button sx={{backgroundColor:"#006D90",fontSize:"10px" }} startIcon={<Save/>} variant="contained">Save & Enroll Courses</Button>
+          <Button sx={{backgroundColor:"#006D90",fontSize:"10px" }}  variant="contained"><Save sx={{fontSize:"16px"}}/>Save & Enroll</Button>
         </Box>
       </Box>
     </>

@@ -33,18 +33,9 @@ export default function Encrollment() {
         }}
       >
         <Box sx={{ position: "relative", display: "inline-flex", mr: 1 }}>
-          <Person sx={{ fontSize: 28, color: "#0069d0" }} />
-          <Edit
-            sx={{
-              position: "absolute",
-              bottom: 0,
-              right: -4,
-              fontSize: 14,
-           
-              color: "#0069d0",
-            
-            }}
-          />
+          <Person sx={{ fontSize: 28, color: "#006D90" }} />
+         
+       
         </Box>
         Enrollment
       </Typography>
