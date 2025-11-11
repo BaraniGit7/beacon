@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from "react";
 
 import {
@@ -61,7 +62,7 @@ import BulkUpload from "./BulkUploadDia";
 import Password from "./passwordDialog";
 import DeleteDialog from "./DeleteDialog";
 import SeafarerStatus from "./SeafarerStatus";
-import Pages from "./Pagination";
+import PagesX from "./Pagination";
 function MyBoard() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -77,18 +78,7 @@ function MyBoard() {
   const [openPassword, setOpenPassword] = useState(false);
   const [bulkSeafarers, setBulkSeafarers] = useState([]);
 
-  const headers = [
-    "S.No",
-    "Seafarer Info",
-    "Id Info",
-    "Ship Name/Type",
-    "Role",
-    "Documents",
-    "Credentials",
-    "Password",
-    "Status",
-    "Actions",
-  ];
+ 
   const [newSeafarer, setNewSeafarer] = useState({
     name: "",
     phone: "",
@@ -263,39 +253,43 @@ function MyBoard() {
   const handleFileRemove = (index) => {
     setFiles((prev) => prev.filter((_, i) => i !== index));
   };
-  const handleUpload = () => {
-    if (files.length === 0) {
-      alert("Please select files to upload.");
-      return;
-    }
-    setSeafarers((prev) => [...prev, ...bulkSeafarers]);
-    if (onAddFiles) {
-      const newSeafarers = files.map((file, index) => ({
-        sno: Date.now() + index,
-        documentName: file.name,
-        document: file,
-        status: "Active",
-      }));
-      onAddFiles(newSeafarers);
-    }
+ const handleUpload = () => {
+  if (!files.length) {
+    alert("Please select files to upload.");
+    return;
+  }
 
-    alert(`${files.length} file(s) uploaded successfully!`);
-    setFiles([]);
-    setBulkSeafarers([]);
-    setDuplicateCount(0);
-    closeDialogs();
-  };
-  const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowPerPage] = useState(6);
-  const [customPage, setCustompage] = useState(false);
+  const newSeafarers = files.map((file, index) => ({
+    sno: Date.now() + index,
+    documentName: file.name,
+    document: file,
+    status: "Active",
+  }));
 
-  const handlePageChange = (event, value) => {
-    setPage(value);
-  };
-  const paginatedSeafarers = seafarers.slice(
-    (page - 1) * rowsPerPage,
-    page * rowsPerPage
-  );
+  setSeafarers((prev) => [...prev, ...newSeafarers]);
+  onAddFiles?.(newSeafarers); 
+
+  alert(`${files.length} file(s) uploaded successfully!`);
+  setFiles([]);
+  setBulkSeafarers([]);
+  setDuplicateCount(0);
+  closeDialogs();
+};
+
+  const [pages, setpages] = useState(1);
+   const [rowsPerPage, setRowPerPage] = useState(5);
+   const handlePageChange = (event, value) => {
+     setpages(value);
+   };
+   const handleRow = (event) => {
+     setRowPerPage(Number(event.target.value));
+     setpages(1);
+   };
+   const total = Math.ceil(seafarers.length / rowsPerPage);
+   const paginatedSeafarers = seafarers.slice(
+     (pages - 1) * rowsPerPage,
+     pages * rowsPerPage
+   );
 
   const iconMap = {
     name: <Person sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
@@ -482,12 +476,17 @@ function MyBoard() {
           />
 
          {/*Pagination*/ }
-         <Pages handlePageChange={handlePageChange}
-         setCustompage={setCustompage}
-         setRowPerPage={setRowPerPage}
-         page={page}
+         <PagesX handlePageChange={handlePageChange}
+        isMobile={isMobile}
+        
+        handleRow={handleRow}
+        total={total}
+        
+        
+         
+         pages={pages}
          rowsPerPage={rowsPerPage}
-         customPage={customPage}
+       
          seafarers={seafarers}
          />
           {/*Add-Edit Dialog*/}

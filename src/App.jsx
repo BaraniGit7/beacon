@@ -2,8 +2,7 @@ import React from "react";
 
 import SeafarerBoard from "./SeafarerList/myBoard";
 import Encrollment from "./Pages/Enrollement";
-import Ticket from "./Pages/Tickets/Ticket";
-import MyDialog from "./des";
+import Ticket from "./Tickets/Ticket";
 
 
 
@@ -12,7 +11,7 @@ function App() {
   return (
 
   
-<MyDialog/>
+<SeafarerBoard/>
    
   );
 }

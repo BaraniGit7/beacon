@@ -40,20 +40,8 @@ import {
 import { Delete, Edit, AttachFile } from "@mui/icons-material";
 
 function SeafarerCredentials({ seafarer }) {
-  if (!seafarer) return null;
-  const credentials = [
-    { icon: <Person />, label: "Name", value: seafarer.name },
-    { icon: <Email />, label: "Email ID", value: seafarer.email },
-    { icon: <Phone />, label: "Mobile Number", value: seafarer.phone },
-    {
-      icon: <DirectionsBoat />,
-      label: "Ship Name/Type",
-      value: `${seafarer.ship} \n ${seafarer.ship1}`,
-    },
-    { icon: <Work />, label: "Role", value: seafarer.role },
-  ];
   const [selectedTab, setSelectedTab] = useState("coc");
-  const [cocTable, setCocTable] = useState([
+    const [cocTable, setCocTable] = useState([
     {
       id: 1,
       name: "Master National Certificate of Competence",
@@ -92,6 +80,20 @@ function SeafarerCredentials({ seafarer }) {
     documentName: "",
   });
 
+  if (!seafarer) return null;
+  const credentials = [
+    { icon: <Person />, label: "Name", value: seafarer.name },
+    { icon: <Email />, label: "Email ID", value: seafarer.email },
+    { icon: <Phone />, label: "Mobile Number", value: seafarer.phone },
+    {
+      icon: <DirectionsBoat />,
+      label: "Ship Name/Type",
+      value: `${seafarer.ship} \n ${seafarer.ship1}`,
+    },
+    { icon: <Work />, label: "Role", value: seafarer.role },
+  ];
+  
+
   const handleTabChange = (event, newValue) => {
     if (newValue !== null) setSelectedTab(newValue);
   };
@@ -122,7 +124,7 @@ function SeafarerCredentials({ seafarer }) {
     setDeleteDialog({ open: true, index });
   };
 
-  const confirmDelete = (index) => {
+  const confirmDelete = () => { //index
     const table = getCurrentTable();
     const updated = table.filter((_, i) => i !== deleteDialog.index);
     setCurrentTable(updated);
@@ -439,71 +441,81 @@ function SeafarerCredentials({ seafarer }) {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody sx={{  backgroundColor: "#ffffff",
-    fontFamily: "Poppins, sans-serif",
-    "& *": {
-      fontFamily: "Poppins, sans-serif !important", 
-    },
-  }}>
-       {getCurrentTable().map((row, index) => (
-  <TableRow
-    key={row.id}
-    sx={{ fontFamily: "Poppins", color: "#fff", fontWeight: 600 }}
-  >
-    <TableCell>{row.id}</TableCell>
-    <TableCell>{row.name}</TableCell>
-    <TableCell>{row.flagState}</TableCell>
-    <TableCell>{row.dateIssued}</TableCell>
-    <TableCell>{row.validUntil}</TableCell>
-
-    <TableCell
+     <TableBody
+  sx={{
+    backgroundColor: "#ffffff",
+    fontFamily: "Poppins",
+    "& *": { fontFamily: "Poppins !important" },
+  }}
+>
+  {getCurrentTable().map((row, index) => (
+    <TableRow
+      key={row.id || index}
       sx={{
-        color: "#006D90",
-        fontWeight: 600,
-        textDecoration: "underline",
-        textDecorationLine: "solid",
-        textDecorationSkipInk: "true",
-        textDecorationThickness: "0%",
-        fontFamily: "Poppins",
+        "&:hover": { backgroundColor: "#f9f9f9" }, // subtle hover effect
+        transition: "background-color 0.2s ease",
       }}
     >
-      <IconButton>
-        <AttachFile sx={{ transform: "rotate(45deg)", color: "#006D90" }} />
-      </IconButton>
-      {row.documentName || "View Attachment"}
-    </TableCell>
+      <TableCell sx={{ fontWeight: 400 }}>{row.id}</TableCell>
+      <TableCell sx={{ fontWeight: 400 }}>{row.name}</TableCell>
+      <TableCell sx={{ fontWeight: 400 }}>{row.flagState}</TableCell>
+      <TableCell sx={{ fontWeight: 400 }}>{row.dateIssued}</TableCell>
+      <TableCell sx={{ fontWeight: 400 }}>{row.validUntil}</TableCell>
 
-    <TableCell>
-      <Stack direction="row" spacing={2}>
-        <IconButton
-          sx={{
-            border: "2px solid #006D90",
-            backgroundColor: "#F4F8FF",
-            borderRadius: "8px",
-            p: 1,
-          }}
-          onClick={() => handleOpenDialog(index)}
-        >
-          <Edit sx={{ color: "#006D90", fontSize: "16px" }} />
+      <TableCell
+        sx={{
+          color: "#006D90",
+          fontWeight: 500,
+          display: "flex",
+          alignItems: "center",
+          gap: 0.5,
+        }}
+      >
+        <IconButton size="small">
+          <AttachFile sx={{ transform: "rotate(45deg)", color: "#006D90" }} />
         </IconButton>
-        <IconButton
+        <Typography
           sx={{
-            border: "2px solid #f71000ff",
-            color: "#e03a2eff",
-            backgroundColor: "#FFEEF0",
-            borderRadius: "8px",
-            p: 1,
+            textDecoration: "underline",
+            fontSize: "13px",
+            cursor: "pointer",
           }}
-          onClick={() => handleDelete(index)}
         >
-          <Delete sx={{ color: "#e03a2eff", fontSize: "16px" }} />
-        </IconButton>
-      </Stack>
-    </TableCell>
-  </TableRow>
-))}
+          {row.documentName || "View Attachment"}
+        </Typography>
+      </TableCell>
 
-        </TableBody>
+      <TableCell>
+        <Stack direction="row" spacing={1.5}>
+          <IconButton
+            sx={{
+              border: "2px solid #006D90",
+              backgroundColor: "#F4F8FF",
+              borderRadius: "8px",
+              p: 0.8,
+            }}
+            onClick={() => handleOpenDialog(index)}
+          >
+            <Edit sx={{ color: "#006D90", fontSize: 16 }} />
+          </IconButton>
+
+          <IconButton
+            sx={{
+              border: "2px solid #f71000",
+              backgroundColor: "#FFEEF0",
+              borderRadius: "8px",
+              p: 0.8,
+            }}
+            onClick={() => handleDelete(index)}
+          >
+            <Delete sx={{ color: "#e03a2e", fontSize: 16 }} />
+          </IconButton>
+        </Stack>
+      </TableCell>
+    </TableRow>
+  ))}
+</TableBody>
+
       </Table>
 </TableContainer> 
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>

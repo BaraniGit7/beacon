@@ -19,7 +19,7 @@ import { useState } from "react";
 import YesDialog from "./Yes";
 
 export default function TableTicket() {
-  const [data, setData] = useState([
+  const data  = useState([
     {
       sno: "1",
       TicketDate: "11/07/2025",

@@ -76,7 +76,11 @@ export default function BulkUpload(
                 maxHeight: { xs: "70vh", sm: "none" },
               }}
             >
-              <Typography
+             
+
+              {files.length < 5 && (
+                <>
+                 <Typography
                 sx={{
                   fontStyle: "italic",
                   fontSize: { xs: "14px", sm: "16px" },
@@ -86,9 +90,6 @@ export default function BulkUpload(
               >
                 *Add your documents here and you can upload up to 5 files
               </Typography>
-
-              {files.length < 5 && (
-                <>
                   <Paper
                     variant="outlined"
                     onDragOver={(e) => e.preventDefault()}
@@ -98,8 +99,8 @@ export default function BulkUpload(
                       handleFileAdd(dropped);
                     }}
                     sx={{
-                      width: { xs: "90%", sm: "501px" },
-                      height: { xs: "auto", sm: "186px" },
+                      width: { xs: "90%", sm: "auto" },
+                      height: { xs: "auto", sm: "auto" },
                       border: "2px dashed #006d90",
                       borderRadius: 2,
                       p: 2,
@@ -112,19 +113,19 @@ export default function BulkUpload(
                     }}
                   >
                     <DriveFolderUploadRounded
-                      sx={{ fontSize: 48, color: "#006d90", mb: 1 }}
+                      sx={{ fontSize: 22, color: "#006d90", mb: 1 }}
                     />
                     <Typography
                       sx={{
                         fontWeight: 400,
                         mb: 1,
-                        fontSize: { xs: "13px", sm: "15px" },
+                        fontSize: { xs: "11px", sm: "13px" },
                       }}
                     >
                       Drag your file(s) to start uploading
                     </Typography>
                     <Typography
-                      sx={{ mb: 1, fontSize: { xs: "13px", sm: "15px" } }}
+                      sx={{ mb: 1, fontSize: { xs: "10px", sm: "12px" } }}
                     >
                       OR
                     </Typography>
@@ -137,7 +138,7 @@ export default function BulkUpload(
                         px: 3,
                         borderColor: "#006d90",
                         color: "#006d90",
-                        fontSize: { xs: "13px", sm: "15px" },
+                        fontSize: { xs: "11px", sm: "13px" },
                       }}
                     >
                       Browse Files
@@ -161,62 +162,72 @@ export default function BulkUpload(
               )}
 
               {files.length > 0 && (
-                <Box>
-                  {files.map((file, index) => {
-                    const ext = file.name.split(".").pop().toLowerCase();
-                    const iconSrc =
-                      ext === "pdf"
-                        ? "https://cdn-icons-png.flaticon.com/512/337/337946.png"
-                        : ["doc", "docx"].includes(ext)
-                        ? "https://cdn-icons-png.flaticon.com/512/337/337932.png"
-                        : ["jpg", "jpeg", "png"].includes(ext)
+                 <>
+            {/* <Typography
+              sx={{
+                fontStyle: "italic",
+                fontSize: { xs: "14px", sm: "16px" },
+                color: "rgba(60, 244, 60, 0.8)",
+                mb: 2,
+              }}
+            >
+              Upload Sucessfully!
+            </Typography> */}
+            <Box>
+                {files.map((file, index) => {
+                  const ext = file.name.split(".").pop().toLowerCase();
+                  const iconSrc = ext === "pdf"
+                    ? "https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                    : ["doc", "docx"].includes(ext)
+                      ? "https://cdn-icons-png.flaticon.com/512/337/337932.png"
+                      : ["jpg", "jpeg", "png"].includes(ext)
                         ? "https://cdn-icons-png.flaticon.com/512/136/136524.png"
                         : "https://cdn-icons-png.flaticon.com/512/136/136523.png";
 
-                    return (
-                      <Paper
-                        key={index}
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          p: 1.5,
-                          mt: 2,
-                          mb: 1,
-                          borderRadius: 2,
-                          border: "1px solid #e0e0e0",
-                          backgroundColor: "#f9f9f9",
-                          flexDirection: "row",
-                          gap: { xs: 1, sm: 0 },
-                        }}
+                  return (
+                    <Paper
+                      key={index}
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        p: 1.5,
+                        mt: 2,
+                        mb: 1,
+                        borderRadius: 2,
+                        border: "1px solid #e0e0e0",
+                        backgroundColor: "#f9f9f9",
+                        flexDirection: "row",
+                        gap: { xs: 1, sm: 0 },
+                      }}
+                    >
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
                       >
-                        <Box
-                          sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                        >
-                          <img src={iconSrc} alt={ext} width={26} />
-                          <Box>
-                            <Typography
-                              fontWeight={400}
-                              sx={{
-                                wordBreak: "break-all",
-                                fontSize: { xs: "13px", sm: "15px" },
-                              }}
-                            >
-                              {file.name}
-                            </Typography>
-                            <Typography variant="caption" color="gray">
-                              {(file.size / (1024 * 1024)).toFixed(2)} MB
-                            </Typography>
-                          </Box>
+                        <img src={iconSrc} alt={ext} width={26} />
+                        <Box>
+                          <Typography
+                            fontWeight={400}
+                            sx={{
+                              wordBreak: "break-all",
+                              fontSize: { xs: "13px", sm: "15px" },
+                            }}
+                          >
+                            {file.name}
+                          </Typography>
+                          <Typography variant="caption" color="gray">
+                            {(file.size / (1024 * 1024)).toFixed(2)} MB
+                          </Typography>
                         </Box>
+                      </Box>
 
-                        <IconButton onClick={() => handleFileRemove(index)}>
-                          <Close sx={{ color: "#D10100" }} />
-                        </IconButton>
-                      </Paper>
-                    );
-                  })}
-                </Box>
+                      <IconButton onClick={() => handleFileRemove(index)}>
+                        <Close sx={{ color: "#D10100" }} />
+                      </IconButton>
+                    </Paper>
+                  );
+                })}
+              </Box></>
               )}
             </DialogContent>
 
