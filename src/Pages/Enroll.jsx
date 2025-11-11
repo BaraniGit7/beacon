@@ -45,83 +45,97 @@ export default function EnrollDetails() {
     Seafarer Enrollment Details
   </Typography>
 
-  <Grid
-    container
-    spacing={1}
-    sx={{
-      p: 1,
+ <Grid
+  container
+  spacing={1.5}
+  sx={{
+    p: { xs: 0.5, sm: 1.5},
       display: "flex",
-   
-      justifyContent:"space-between"
-    }}
-  >
-    {details.map((enroll) => (
-      <Grid
-        item
-        xs={12}
-        sm={6} 
-        key={enroll.label}
+        justifyContent:"space-between",
+                  alignItems: "center",
+  }}
+>
+  {details.map((enroll) => (
+    <Grid
+      item
+      xs={12}
+      sm={6}
+    
+      key={enroll.label}
+      sx={{
+        display: "flex",
+        justifyContent:"space-between",
+                  alignItems: "center",
+      }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          
+          alignItems: "flex-start",
+          gap: 1,
+          p: { xs: 0.5, sm: 1 },
+        //  borderRadius: 1,
+          flex: 1, // make it stretch evenly
+          backgroundColor: "#fff",
+          transition: "background-color 0.2s ease",
+          "&:hover": {
+            backgroundColor: "#f5fafa",
+          },
+        }}
       >
+        {/* Icon */}
         <Box
           sx={{
+            color: "#006D90",
+            mt: 0.3,
+            flexShrink: 0,
             display: "flex",
             alignItems: "flex-start",
-            gap: 1.5,
-            p: 0.5,
-            borderRadius: 1,
-            transition: "background-color 0.2s ease",
-            "&:hover": {
-              backgroundColor: "#f5fafa",
+            justifyContent: "center",
+            "& svg": {
+              fontSize: { xs: 16, sm: 18 },
             },
           }}
         >
-          {/* Icon */}
-          <Box
+          {enroll.icon}
+        </Box>
+
+        {/* Text */}
+        <Box sx={{ flex: 1 }}>
+          <Typography
             sx={{
-              color: "#006D90",
-              mt: 0.3,
-              flexShrink: 0,
-              "& svg": {
-                fontSize: { xs: 18, sm: 20 },
-              },
+              fontFamily: "Poppins",
+              fontWeight: 600,
+              fontSize: { xs: "12px", sm: "13px" },
+              color: "#333",
+              mb: 0.3,
+              lineHeight: 1.4,
             }}
           >
-            {enroll.icon}
-          </Box>
+            {enroll.label}
+          </Typography>
 
-          {/* Text Content */}
-          <Box>
+          {enroll.value.split(/\n|(?=\()/).map((line, i) => (
             <Typography
+              key={i}
               sx={{
                 fontFamily: "Poppins",
-                fontWeight: 600,
-                fontSize: "13px",
-                color: "#333",
-                mb: 0.3,
+                fontWeight: 400,
+                color: "#000",
+                fontSize: { xs: "11px", sm: "13px" },
+                lineHeight: 1.5,
               }}
             >
-              {enroll.label}
+              {line.trim()}
             </Typography>
-
-            {enroll.value.split(/\n|(?=\()/).map((line, i) => (
-              <Typography
-                key={i}
-                sx={{
-                  fontFamily: "Poppins",
-                  fontWeight: 400,
-                  color: "#000",
-                  fontSize: "13px",
-                  lineHeight: "20px",
-                }}
-              >
-                {line.trim()}
-              </Typography>
-            ))}
-          </Box>
+          ))}
         </Box>
-      </Grid>
-    ))}
-  </Grid>
+      </Box>
+    </Grid>
+  ))}
+</Grid>
+
 </Paper>
 
   );

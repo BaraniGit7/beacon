@@ -33,7 +33,7 @@ export default function Encrollment() {
         }}
       >
         <Box sx={{ position: "relative", display: "inline-flex", mr: 1 }}>
-          <Person sx={{ fontSize: 28, color: "#006D90" }} />
+          <Person sx={{ fontSize: 22, color: "#006D90" }} />
          
        
         </Box>
@@ -57,14 +57,15 @@ export default function Encrollment() {
             display: "flex",
             flex: "1 1 auto",
             maxWidth:"50%",
-            height:"30px",
+            //height:"3%",
             alignItems: "center",
+            py:0,
             px: 1,
             borderRadius: "6px"
           }}
         >
           <IconButton>
-            <Search sx={{fontSize:"15px"}} />
+            <Search sx={{fontSize:"11px"}} />
           </IconButton>
           <InputBase placeholder="Search…" fullWidth sx={{fontSize:"12px"}} />
         </Paper>

@@ -1,10 +1,11 @@
-import { Save } from "@mui/icons-material";
+import { ArrowBack, ArrowForward, Save } from "@mui/icons-material";
 import {
   Box,
   Button,
   Checkbox,
   MenuItem,
   Pagination,
+  PaginationItem,
   Paper,
   Select,
   Table,
@@ -16,6 +17,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
 import { useState } from "react";
 
 export default function Tables() {
@@ -48,6 +50,47 @@ export default function Tables() {
         "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
     },
     {
+      coursecode: "MSTS-203",
+      coursename: "Procedure for effective Bridge Watchkeeping",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    },
+     {
+      coursecode: "MSTS-205",
+      coursename: "Procedures for effectives Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-206",
+      coursename: "Procedures for effective Bridges Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-207",
+      coursename: "Procedures for effective Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-208",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
       coursecode: "MSTS-204",
       coursename: "Procedures for effective Bridge Watchkeepings",
       opertionalarea: "Deck Courses",
@@ -55,7 +98,191 @@ export default function Tables() {
       targetaudience: "operations",
       standards:
         "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
-    },
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }, {
+      coursecode: "MSTS-204",
+      coursename: "Procedures for effective Bridge Watchkeepings",
+      opertionalarea: "Deck Courses",
+      functionalarea: "Navigation",
+      targetaudience: "operations",
+      standards:
+        "STCW(Navigation) SIRE(Navigation and Communications) RDBMS(Navigation and Communications) TMSA(Navigational Safety) CDI (Navigational safety)",
+    }
   ]);
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowPerPage] = useState(4);
@@ -75,7 +302,7 @@ export default function Tables() {
         sx={{
           backgroundColor: "#F4FCFF",
           borderRadius: "10px",
-          maxHeight: 200,
+          maxHeight: 375,
           overflowY: "auto",
         }}
       >
@@ -236,22 +463,31 @@ export default function Tables() {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-between",
           alignItems: "center",
-          mt: 2,
-          position: "relative",
+          mt: 1,
+           flexWrap: "nowrap", // ✅ force single row
+        overflowX: "auto", // ✅ scrolls on mobile instead of wrapping
+        whiteSpace: "nowrap",
+        //  px:1,
+       //flexWrap: { xs: "wrap", sm: "nowrap" }, 
+          gap:1,
+         // position: "relative",
+       scrollbarWidth:"none","&::-webkit-scrollbar": { display: "none" },
         }}
       >
         <Box
           sx={{
-            left: 0,
-            position: "absolute",
+         
+           // position: "absolute",
             display: "flex",
             alignItems: "center",
-            gap: 1,
+            gap: 0.5,
+       //  flex: { xs: "1 1 100%", sm: "unset" },
+         // justifyContent: { xs: "center", sm: "flex-start" },
           }}
         >
-          <Typography sx={{ fontFamily: "poppins", fontSize: "12px" }}>
+          <Typography sx={{ fontFamily: "poppins", fontSize: "10px" }}>
             Show
           </Typography>
           <Select
@@ -271,11 +507,8 @@ export default function Tables() {
               backgroundColor: "#ffff",
               fontSize: "11px",
               height: "26px",
-              minWidth: "15px",
-              "& .MuiSelect-select": {
-                py: "2px",
-                px: "6px",
-              },
+              minWidth: "50px",
+             
             }}
           >
             {[5, 10, 15, 20].map((n) => (
@@ -312,20 +545,47 @@ export default function Tables() {
               }}
             />
           )} */}
-          <Typography sx={{ fontSize: "12px", fontFamily: "poppins" }}>
+          {/* <Typography sx={{ fontSize: "12px", fontFamily: "poppins" }}>
             Row
-          </Typography>
+          </Typography> */}
         </Box>
+        <Box sx={{ display: "flex",
+    justifyContent: "center",
+     //flex: { xs: "1 1 100%", sm: "unset" },
+  flexGrow:1,
+  mx:1,
+  }}>
         <Pagination
+        siblingCount={1}
+        boundaryCount={0}
           shape="rounded"
           count={Math.ceil(table.length / rowsPerPage)}
           page={page}
           onChange={handlePageChange}
+            showFirstButton={false}
+      showLastButton={false}
+      renderItem={(item)=>{
+        if(item.type==="previous"||item.type==="next"){
+          return(
+            <PaginationItem {...item} slots={{previous:ArrowBack , next:ArrowForward}}/>
+          );
+        }
+        if(item.page===page){
+          return <PaginationItem {...item} />
+        }
+        return(
+          <PaginationItem {...item} />
+        )
+      }}
+       
           sx={{
             "& .MuiPaginationItem-root": {
               fontSize: "10px",
-              margin: "0px",
-            color:"#006D90"
+            margin: "0px",
+      color: "#006D90",
+      minWidth: "22px",
+      height: "20px",
+       padding: "0px",
             },
              "& .MuiPaginationItem-root.Mui-selected": {
       backgroundColor: "#006D90", 
@@ -333,25 +593,33 @@ export default function Tables() {
     },
     "& .MuiPaginationItem-root.Mui-selected:hover": {
       backgroundColor: "#00c0ebff",
-    },   "@media (max-width: 600px)": {
-     fontSize:"12px"
-    },
-          }}
+    },}}
         />
-        <Box
-          sx={{
-            right: 0,
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-            gap: 1,
-              
-
-          }}
-        >
-          <Button sx={{backgroundColor:"#006D90",fontSize:"10px" }}  variant="contained"><Save sx={{fontSize:"16px"}}/>Save & Enroll</Button>
-        </Box>
-      </Box>
+      
+        </Box>  <Box
+    sx={{
+      //flex: { xs: "1 1 100%", sm: "unset" },
+      display: "flex",
+      justifyContent: { xs: "center", sm: "flex-end" },
+    }}
+  >
+    <Button
+      variant="contained"
+      size="small"
+      sx={{
+        backgroundColor: "#006D90",
+        fontSize: "11px",
+        textTransform: "none",
+        borderRadius: "6px",
+        px: 1.5,
+        height: "26px",
+        "&:hover": { backgroundColor: "#00A0C6" },
+      }}
+    >
+      Save 
+    </Button>
+  </Box>
+</Box>
     </>
   );
 }

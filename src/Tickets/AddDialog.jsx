@@ -119,12 +119,12 @@ export default function AddDialog() {
       {/* OPEN BUTTON */}
       <Button
         onClick={openDialog}
-        startIcon={<Add />}
+        startIcon={<Add sx={{fontSize:"12px"}} />}
         sx={{
           textTransform: "none",
           fontFamily: "Poppins",
           fontWeight: 500,
-          fontSize: "13px",
+          fontSize: "12px",
           backgroundColor: "#006D90",
           color: "#fff",
           borderRadius: "6px",
@@ -210,7 +210,7 @@ export default function AddDialog() {
                     mb: 0.5,
                   }}
                 >
-                  {field.label}{" "}
+                  {field.label}
                   <Box component="span" sx={{ color: "#ff0000" }}>
                     *
                   </Box>
@@ -225,6 +225,13 @@ export default function AddDialog() {
                     name={field.name}
                     value={newSeafarer[field.name]}
                     onChange={handleInputChange}
+                     InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          {iconMap[field.name]}
+                        </InputAdornment>
+                      ),
+                    }}  
                     SelectProps={{
                       displayEmpty: true,
                       renderValue: (selected) =>
@@ -233,6 +240,7 @@ export default function AddDialog() {
                         ) : (
                           selected
                         ),
+                        
                     }}
                     sx={{
                       "& .MuiOutlinedInput-root": {

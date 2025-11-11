@@ -382,7 +382,7 @@ export default function TableTicket() {
         sx={{
           backgroundColor: "#F4FCFF",
           boderRadius: "10px",
-          maxHeight: isMobile ? 540 : 433,
+         maxHeight: isMobile ? 540 : 600,//0
           overflowY: "auto",
         }}
       >
@@ -659,7 +659,7 @@ export default function TableTicket() {
       <Box
         sx={{
           display: "flex",
-          justifyContent: isMobile?"space-between":"center",
+          justifyContent: isMobile?"flex-start":"center",
           alignItems: "center",
           position: "relative",
           p:isMobile? 1 : 2,
@@ -672,14 +672,14 @@ export default function TableTicket() {
             position: isMobile ? "static" : "absolute",
             display: "flex",
             alignItems: "center",
-             gap: isMobile ? 0.5 : 1,
+             gap: isMobile ? 2 : 1,
         //  mb: isMobile ? 1 : 0,
           }}
         >
           <Typography
-            sx={{ fontSize: "12px", fontFamily: "poppins", fontWeight: 400 }}
+            sx={{ fontSize: "13px", fontFamily: "poppins", fontWeight: 400 }}
           >
-            show
+            Show
           </Typography>
           <Select
          // defaultValue={5}
@@ -704,12 +704,13 @@ export default function TableTicket() {
             ))}
           </Select>
         </Box>
-        <Pagination
+        <Box > <Pagination
           count={total}
           onChange={handlePageChange}
           page={pages}
           size="small"
           sx={{
+        
             "& .MuiPaginationItem-root": {
               color: "#006D90",
               fontSize: "12px",
@@ -720,7 +721,8 @@ export default function TableTicket() {
               color: "#fff",
             },
           }}
-        />
+        /></Box>
+       
       </Box>
     </Box>
   );

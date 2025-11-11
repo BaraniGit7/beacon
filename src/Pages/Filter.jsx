@@ -63,19 +63,20 @@ export default function FilterDialog() {
 
   return (
     <>
-      <Button
+      <Button size="small"
         sx={{
           color: "#006D90",
           fontWeight: 600,
+       
           border: "1px solid #006D90",
           borderRadius: "8px",
-          fontSize: "10px",
+          fontSize: "9px",
           backgroundColor: "#fff",
         }}
-        startIcon={<FilterAltOutlined />}
         variant="outlined"
         onClick={handleOpen}
       >
+        <FilterAltOutlined sx={{ fontSize: "12px" ,m:"o" }} />
         Filter Courses
       </Button>
 
