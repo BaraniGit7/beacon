@@ -133,16 +133,16 @@ export default function BulkUpload({
         }}
       >
         Bulk Upload
-        <IconButton onClick={closeDialogs}>
-          <CloseOutlined
+     
+          <CloseOutlined onClick={closeDialogs}
             sx={{
               backgroundColor: "#006D90",
               color: "#ffffff",
-              fontSize: "24px",
-              borderRadius: "16px",
+              fontSize: "20px",
+              borderRadius: "2px",
             }}
           />
-        </IconButton>
+       
       </DialogTitle>
 
       <Divider />
@@ -177,7 +177,7 @@ export default function BulkUpload({
                 handleFileAdd(dropped);
               }}
               sx={{
-                width:isMobile ? "90%":"auto",
+                width : isMobile ? "90%":"auto",
                 border: "2px dashed #006d90",
                 borderRadius: 2,
                 p: 2,
@@ -187,23 +187,50 @@ export default function BulkUpload({
                 cursor: "pointer",
                 transition: "0.2s",
                 "&:hover": { backgroundColor: "#f0f8ff" },
+                 display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
               }}
             >
               <DriveFolderUploadRounded
                 sx={{ fontSize: 22, color: "#006d90", mb: 1 }}
               />
-              <Typography sx={{ fontSize:isMobile ? "12px" : "14px" }}>
+              <Typography sx={{ fontFamily:"poppins", fontSize:isMobile ? "12px" : "14px" ,textAlign:"center"}}>
                 Drag your file(s) to start uploading
               </Typography>
-              <Typography
-                sx={{ mb: 1, fontSize : isMobile ? "10px" : "12px" }}
-              >
-                OR
-              </Typography>
+             <Box
+  sx={{
+  
+    width: "100%",
+      maxWidth: "400px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      mt: 2,
+      mb: 1,
+  }}
+>
+  <Box sx={{ flexGrow: 1, height: "1px", backgroundColor: "#B0BEC5" }} />
+  <Typography
+    sx={{
+      mx:1.5,
+      fontFamily: "Poppins",
+      fontSize: "10px",
+      color: "#9e9e9e",
+      fontWeight: 500,
+    }}
+  >
+    OR
+  </Typography>
+  <Box sx={{ flexGrow: 1, height: "1px", backgroundColor: "#B0BEC5" }} />
+</Box>
+
               <Button
                 variant="outlined"
                 component="label"
                 sx={{
+                  fontFamily:"poppins",
                   textTransform: "none",
                   borderRadius: 2,
                   px: 3,
@@ -275,9 +302,9 @@ export default function BulkUpload({
                     </Box>
                   </Box>
 
-                  <IconButton onClick={() => handleFileRemove(index)}>
-                    <Close sx={{ color: "#5d5d5d" }} />
-                  </IconButton>
+                  
+                    <Close onClick={() => handleFileRemove(index)} sx={{ color: "#5d5d5d" }} />
+                 
                 </Paper>
               );
             })}

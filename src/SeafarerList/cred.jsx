@@ -36,11 +36,17 @@ import {
   TableContainer,
   Grid,
   MenuItem,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { Delete, Edit, AttachFile } from "@mui/icons-material";
 
 function SeafarerCredentials({ seafarer }) {
   const [selectedTab, setSelectedTab] = useState("coc");
+   const [dragAct,SetDragAct]=useState(false);
+
+  const theme= useTheme();
+const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const [cocTable, setCocTable] = useState([
     {
       id: 1,
@@ -193,7 +199,32 @@ function SeafarerCredentials({ seafarer }) {
     console.log("STCW Data:", stcwTable);
     alert("Data saved! Check console.");
   };
-
+  const handleDragOver=(e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    SetDragAct(true);
+   
+  }
+   const handleDragLeave=(e)=>{
+      e.preventDefault();
+    e.stopPropagation();
+    SetDragAct(false);
+      
+    }
+    const handleDrop=(e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      SetDragAct(false);
+      const file=e.dataTransfer.files[0];
+      if(file){
+        setNewEntry((prev)=>({
+          ...prev,
+          document:file,
+          documentName:file.name,
+        }))
+      }
+    }
+ 
   return (
     <Box
       sx={{
@@ -254,7 +285,7 @@ function SeafarerCredentials({ seafarer }) {
         }}
       >
         <Box sx={{ color: "#006D90", mt: 0.3, flexShrink: 0,"& svg": {
-              fontSize: { xs: 18, sm: 24 },  }}}>
+              fontSize:isMobile ? 18 : 24  }}}>
           {item.icon}
         </Box>
         <Box>
@@ -262,8 +293,7 @@ function SeafarerCredentials({ seafarer }) {
             sx={{
               fontFamily: "poppins",
               fontWeight: 600,
-              fontSize: { xs: "13px", sm: "15px" },
-          
+              fontSize: isMobile?"13px":"15px",
             }}
           >
             {item.label}
@@ -274,7 +304,7 @@ function SeafarerCredentials({ seafarer }) {
                 sx={{
                   fontFamily: "poppins",
                   fontWeight: 400,
-                  fontSize: { xs: "12px", sm: "14px" },
+                  fontSize: isMobile ? "12px" : "14px",
                   color: "#000",
                 
                 }}
@@ -285,7 +315,7 @@ function SeafarerCredentials({ seafarer }) {
                 sx={{
                   fontFamily: "poppins",
                   fontWeight: 400,
-                  fontSize: { xs: "12px", sm: "14px" },
+                  fontSize: isMobile ? "12px" : "14px",
                   color: "#555",
                   lineHeight: "120%",
                 }}
@@ -298,7 +328,7 @@ function SeafarerCredentials({ seafarer }) {
               sx={{
                 fontFamily: "poppins",
                 fontWeight: 400,
-                fontSize: { xs: "12px", sm: "14px" },
+                fontSize:isMobile?"12px":"14px",
                 color: "#000",
                 lineHeight: "120%",
               }}
@@ -363,12 +393,12 @@ function SeafarerCredentials({ seafarer }) {
             textTransform: "none",
              fontFamily: "poppins",
             fontWeight: 700,
-            fontSize: { xs: "16px", sm: "20px" },
+            fontSize: isMobile ? "16px" : "20px",
             lineHeight: "100%",
             letterSpacing: "0%",
             border: "none",
-            borderRadius: { xs: "32px", sm: "0 32px 32px 0" },
-            py: { xs: 1.5, sm: 2 },
+            borderRadius: isMobile ?  "32px": "0 32px 32px 0" ,
+            py: isMobile ? 1.5 : 2,
             transition: "all 0.3s ease",
           }}
         >
@@ -382,12 +412,12 @@ function SeafarerCredentials({ seafarer }) {
             textTransform: "none",
              fontFamily: "poppins",
             fontWeight: 700,
-            fontSize: { xs: "16px", sm: "20px" },
+            fontSize:isMobile?"16px":"20px",
             lineHeight: "100%",
             letterSpacing: "0%",
             border: "none",
-            borderRadius: { xs: "32px", sm: "0 32px 32px 0" },
-            py: { xs: 1.5, sm: 2 },
+            borderRadius: isMobile ?  "32px": "0 32px 32px 0" ,
+            py:isMobile? 1.5:2,
             transition: "all 0.3s ease",
           }}
         >
@@ -528,7 +558,7 @@ function SeafarerCredentials({ seafarer }) {
           fontFamily: "poppins",
             fontWeight: 600,
            // fontStyle: "normal",
-            fontSize: "14px",
+            fontSize: "12px",
            // lineHeight: "24px",
             //letterSpacing: "0.025em",
             //textAlign: "center",
@@ -553,6 +583,7 @@ function SeafarerCredentials({ seafarer }) {
           size="small"
           sx={{
             backgroundColor: "#006D90",
+            fontSize:"12px",
             borderRadius: "8px",
          //   borderWidth: "1px",
           //  borderStyle: "solid",
@@ -795,14 +826,17 @@ function SeafarerCredentials({ seafarer }) {
             </Typography>
             {!newEntry.documentName ? (
               <>
-                <Box
+                <Box 
+                  onDragOver={handleDragOver}
+  onDragLeave={handleDragLeave}
+  onDrop={handleDrop}
                   sx={{
-                    border: "2px dashed #006D90",
+                 border: dragAct ? "2px solid #006D90" : "2px dashed #006D90",
                     borderRadius: 2,
                     p: 1.5,
                   
                     textAlign: "center",
-                    backgroundColor: "#F9FBFC",
+                    backgroundColor:  dragAct ? "#EAF6FA" : "#F9FBFC",
                     "&:hover": { backgroundColor: "#F1F5F9" },
                     transition: "0.2s",
                     "@media (max-width:600px)": {
@@ -828,7 +862,9 @@ function SeafarerCredentials({ seafarer }) {
                        fontSize: "10px" 
                       }}
                     >
-                      Drag your file(s) to start uploading
+                     {dragAct
+        ? "Drop your file here..."
+        : "Drag & drop or click to browse files"}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -837,7 +873,7 @@ function SeafarerCredentials({ seafarer }) {
                     >
                       OR
                     </Typography>
-                    <Button
+                    <Button 
                       variant="outlined"
                       sx={{
                         borderColor: "#006D90",

@@ -23,16 +23,15 @@ export default function DeleteDialog({openDelete,closeDialogs,selectedSeafarer, 
             }}
           >
             <DialogTitle align="right">
-              <IconButton onClick={closeDialogs}>
-                <Close
+            
+                <Close onClick={closeDialogs}
                   sx={{
                     backgroundColor: "#006D90",
                     color: "#ffffff",
-                    fontSize: "24px",
-                    borderRadius: "16px",
+                    fontSize: "20px",
+                    borderRadius: "2px",
                   }}
                 />
-              </IconButton>
             </DialogTitle>
             <DialogContent
               sx={{

@@ -37,9 +37,13 @@ export default function SeafarerTable({
             elevation={0}
             sx={{
               flex:1,
+              m:0,
+              p:0,
               backgroundColor: "#F4FCFF",
               borderRadius: "10px",
-              overflowY: isMobile ? "auto" : "hidden",
+            //  scrollbarWidth:"none",
+               // "&::-webkit-scrollbar": { display: "none" },
+              maxHeight:500
             }}
           >
             <Table
@@ -51,7 +55,9 @@ export default function SeafarerTable({
               }}
             >
               <TableHead>
-                <TableRow sx={{ backgroundColor: "#5C5C5C" }}>
+                <TableRow sx={{ backgroundColor: "#5C5C5C",position:"sticky",
+                top:0,zIndex:2
+                 }}>
                   <TableCell
                     sx={{
                       textAlign: "left",

@@ -180,10 +180,10 @@ export default function SeafarerDialog({
               }}
             >
               {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}
-              <IconButton onClick={handleClose} sx={{}}>
+              <IconButton onClick={handleClose} >
                 <Close
                   sx={{
-                    fontSize: "15px",
+                    fontSize: "20px",
                     backgroundColor: " #006D90",
                     color: "#ffffffff",
                     borderRadius: "2px",
