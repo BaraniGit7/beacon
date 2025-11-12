@@ -14,7 +14,23 @@ import {
 } from "@mui/material";
 
 
-export default function SeafarerStatus({openStatusDialog,setOpenStatusDialog,handleStatusChange}) {
+
+export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,setSeafarers}) {
+  
+    const handleStatusChange = () => {
+      if (!openStatusDialog) return;
+  
+      const newStatus = openStatusDialog.status;
+  
+      setSeafarers((prev) =>
+        prev.map((s) =>
+          s.sno === openStatusDialog.sno ? { ...s, status: newStatus } : s
+        )
+      );
+  
+      setOpenStatusDialog(null);
+    };
+  
  
   {
     return (

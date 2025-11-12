@@ -19,6 +19,16 @@ import {
   Add,
   Done,
   DriveFolderUploadRounded,
+  Person,
+  Phone,
+  Email,
+  Work,
+  MarkEmailRead,
+  AdminPanelSettings,
+  Sailing,
+  MarkAsUnreadSharp,
+  Pin,
+  Public,
 } from "@mui/icons-material";
 
 export default function SeafarerDialog({
@@ -26,16 +36,116 @@ export default function SeafarerDialog({
   openEdit,
   closeDialogs,
   isMobile,
-  iconMap,
   newSeafarer,
   editSeafarer,
-  handleInputChange,
-  handleFileChange,
-  handleAddSeafarer,
-  handleEditSeafarer,
+ setSeafarers,seafarers,setOpenAdd,setOpenEdit,
+ 
   setNewSeafarer,
   setEditSeafarer,
 }) {
+   const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (openAdd) setNewSeafarer((prev) => ({ ...prev, [name]: value }));
+    else if (openEdit) setEditSeafarer((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (openAdd) {
+        setNewSeafarer((prev) => ({
+          ...prev,
+          document: file,
+          documentName: file.name,
+        }));
+      } else if (openEdit) {
+        setEditSeafarer((prev) => ({
+          ...prev,
+          document: file,
+          documentName: file.name,
+        }));
+      }
+    }
+  };
+  const handleAddSeafarer = () => {
+    setSeafarers([
+      ...seafarers,
+      { ...newSeafarer, sno: (seafarers.length + 1).toString() },
+    ]);
+    setOpenAdd(false);
+  };
+  const handleEditSeafarer = () => {
+    setSeafarers((prev) =>
+      prev.map((s) => (s.sno === editSeafarer.sno ? editSeafarer : s))
+    );
+    setOpenEdit(false);
+  };
+  const handleClose = () => {
+  closeDialogs();
+  setNewSeafarer({
+    name: "",
+    phone: "",
+    email: "",
+    role: "",
+    shouldEmail: "",
+    vesselAdmin: "",
+    ship: "",
+    ship1: "",
+    IdType: "",
+    idNumber: "",
+    location: "",
+    status: "Active",
+    document: null,
+    documentName: "",
+  });
+  setEditSeafarer({});
+};
+   const commonStyles={ borderRadius: "10px",
+                          "& .MuiOutlinedInput-root": {
+                            borderRadius: "10px",
+                            width: 210,
+                            height: 27,
+                            paddingLeft: "10px",
+                            "& fieldset": {
+                              borderWidth: "1px",
+                              borderColor: "#B0BEC5",
+                            },
+                            "&:hover fieldset": {
+                              borderColor: "#064575",
+                            },
+                            "&.Mui-focused fieldset": {
+                              borderColor: "#064575",
+                            },
+                          },
+                          "& .MuiInputBase-input": {
+                            padding: "8px 10px",
+                            fontSize: "0.7rem",
+                          },
+                          "@media (max-width:900px)": {
+                            width: "100%",
+                            height: "40px",
+                          },
+
+      }
+   const iconMap = {
+      name: <Person sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+      phone: <Phone sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+      email: <Email sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+      role: <Work sx={{ color: "#d8d8d8ff", fontSize: "17px" }} />,
+      shouldEmail: (
+        <MarkEmailRead sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />
+      ),
+      vesselAdmin: (
+        <AdminPanelSettings sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />
+      ),
+      ship: <Sailing sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+      IdType: <MarkAsUnreadSharp sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+      idNumber: <Pin sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+      location: <Public sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
+    
+    };
+   
+  
     return(
          <Dialog
             open={openAdd || openEdit}
@@ -70,7 +180,7 @@ export default function SeafarerDialog({
               }}
             >
               {openAdd ? "Add Seafarer Details" : "Edit Seafarer Details"}
-              <IconButton onClick={closeDialogs} sx={{}}>
+              <IconButton onClick={handleClose} sx={{}}>
                 <Close
                   sx={{
                     fontSize: "15px",
@@ -235,33 +345,8 @@ export default function SeafarerDialog({
                             : editSeafarer[field.name] ?? ""
                         }
                         onChange={handleInputChange}
-                        sx={{
-                          borderRadius: "10px",
-                          "& .MuiOutlinedInput-root": {
-                            borderRadius: "10px",
-                            width: 210,
-                            height: 27,
-                            paddingLeft: "10px",
-                            "& fieldset": {
-                              borderWidth: "1px",
-                              borderColor: "#B0BEC5",
-                            },
-                            "&:hover fieldset": {
-                              borderColor: "#064575",
-                            },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#064575",
-                            },
-                          },
-                          "& .MuiInputBase-input": {
-                            padding: "8px 10px",
-                            fontSize: "0.7rem",
-                          },
-                          "@media (max-width:900px)": {
-                            width: "100%",
-                            height: "40px",
-                          },
-                        }}
+                        
+                        sx={commonStyles}
                       >
                         {field.options.map((opt) => (
                           <MenuItem
@@ -293,33 +378,7 @@ export default function SeafarerDialog({
                             </InputAdornment>
                           ),
                         }}
-                        sx={{
-                          borderRadius: "10px",
-                          "& .MuiOutlinedInput-root": {
-                            borderRadius: "10px",
-                            height: 27,
-                            width: 210,
-                            paddingLeft: "10px",
-                            "& fieldset": {
-                              borderWidth: "1px",
-                              borderColor: "#B0BEC5",
-                            },
-                            "&:hover fieldset": {
-                              borderColor: "#064575",
-                            },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#064575",
-                            },
-                          },
-                          "& .MuiInputBase-input": {
-                            padding: "8px 10px",
-                            fontSize: "10px",
-                          },
-                          "@media (max-width:900px)": {
-                            width: "100%",
-                            height: "40px",
-                          },
-                        }}
+                     sx={commonStyles}
                       />
                     )}
                   </Grid>
