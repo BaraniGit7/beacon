@@ -103,7 +103,7 @@ export default function SeafarerDialog({
    const commonStyles={ borderRadius: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "10px",
-                            width: 210,
+                            width: isMobile ? "100%" : 210,
                             height: 27,
                             paddingLeft: "10px",
                             "& fieldset": {
@@ -111,10 +111,10 @@ export default function SeafarerDialog({
                               borderColor: "#B0BEC5",
                             },
                             "&:hover fieldset": {
-                              borderColor: "#064575",
+                              borderColor: "#006D90",
                             },
                             "&.Mui-focused fieldset": {
-                              borderColor: "#064575",
+                              borderColor: "#006D90",
                             },
                           },
                           "& .MuiInputBase-input": {
@@ -457,7 +457,7 @@ export default function SeafarerDialog({
                                 ).size /
                                 1024 /
                                 1024
-                              ).toFixed(2)}{" "}
+                              ).toFixed(2)}
                               MB
                             </Typography>
                           )}

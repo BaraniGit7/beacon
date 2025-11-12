@@ -86,12 +86,8 @@ function MyBoard() {
     setOpenBulkUpload(false);
     setOpenPassword(false);
     setSelectedSeafarer(null);
- 
   };
- 
-  
-
-  const [pages, setPages] = useState(1);
+   const [pages, setPages] = useState(1);
    const [rowsPerPage, setRowPerPage] = useState(5);
    const handlePageChange = (event, value) => {
      setPages(value);
@@ -111,17 +107,14 @@ function MyBoard() {
     <Box
       sx={{
         alignItems: "center",
-        pl: "3px",
-        pt: "4px",
-        //  width: "100%",
-        pr: 0,
-        pb: 0,
+        
+        p:2,
         backgroundColor: "#F4FCFF",
         //  minHeight: "100vh",
         overflow: isMobile ? "visible" : "hidden",
         "@media(max-width:900px)": {
-          pl: 0,
-          pt: 0,
+         
+          p:1.5
         },
       }}
     >
