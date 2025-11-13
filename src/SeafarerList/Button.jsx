@@ -49,8 +49,8 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
                 backgroundColor: "#fff",
               }}
             >
-              <IconButton sx={{ color: "#006D90" }}>
-                <Search />
+              <IconButton >
+                <Search sx={{ color: "#006D90",fontSize:"17px" }} />
               </IconButton>
               <InputBase
                 sx={{
@@ -88,7 +88,7 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
                   border: "1px solid #006D90",
                   height: isMobile ? "30px" : "35px",
                   px: isMobile ? 1 : 2,
-                  "&:hover": { backgroundColor: "#005b78" },
+                  "&:hover": { backgroundColor: "#006081ff" },
                 }}
               >
                 Add Seafarer

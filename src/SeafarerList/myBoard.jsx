@@ -124,7 +124,7 @@ function MyBoard() {
           p: "2px",
           "& .MuiBreadcrumbs-separator": {
             color: "#000",
-            fontSize: "20px",
+            fontSize: "18px",
           },
         }}
       >

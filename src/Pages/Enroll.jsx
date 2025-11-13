@@ -24,7 +24,7 @@ export default function EnrollDetails() {
  <Paper
   elevation={4}
   sx={{
-    p: 2,
+    p: 1.2,
     borderRadius: 2,
     backgroundColor: "#fff",
     mb: 1.5,

@@ -139,7 +139,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
-    setEditIndex(null);
+   // setEditIndex(null);
     setDeleteDialog({ open: false, index: null });
     setNewEntry({
       name: "",
@@ -239,7 +239,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     >
       <Paper
         elevation={4}
-        sx={{  p: 2, borderRadius: 2, backgroundColor: "#ffffffff", mb: 4 ,overflow:"hidden",border:"1px solid #006D90",
+        sx={{  p: 1.5, borderRadius: 2, backgroundColor: "#ffffffff", mb: 4 ,overflow:"hidden",border:"1px solid #006D90",
            "@media(max-width:900px)":{
           p:3
         }
@@ -262,11 +262,11 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 >
   {credentials.map((item) => (
     <Grid
-      item
-      xs={6} 
-      sm={4}  
-      md={3} 
-      key={item.label}
+     // item
+     // xs={6} 
+     // sm={4}  
+     // md={3} 
+    //  key={item.label}
     >
       <Box
         sx={{
@@ -463,10 +463,10 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
             <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600 }}>
               Valid Until
             </TableCell>
-            <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{ fontFamily: "poppins", color: "#fff", fontWeight: 600,textAlign:"left" }}>
               Documents
             </TableCell>
-            <TableCell sx={{  fontFamily: "poppins",color: "#fff", fontWeight: 600 }}>
+            <TableCell sx={{  fontFamily: "poppins",color: "#fff", fontWeight: 600 ,textAlign:"left"}}>
               Actions
             </TableCell>
           </TableRow>
@@ -482,7 +482,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     <TableRow
       key={row.id || index}
       sx={{
-        "&:hover": { backgroundColor: "#f9f9f9" }, // subtle hover effect
+        "&:hover": { backgroundColor: "#f9f9f9" },
         transition: "background-color 0.2s ease",
       }}
     >
@@ -493,24 +493,21 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
       <TableCell sx={{ fontWeight: 400 }}>{row.validUntil}</TableCell>
 
       <TableCell
-        sx={{
-          color: "#006D90",
-          fontWeight: 500,
-          display: "flex",
-          alignItems: "center",
-          gap: 0.5,
-        }}
-      >
-        <IconButton size="small">
-          <AttachFile sx={{ transform: "rotate(45deg)", color: "#006D90" }} />
-        </IconButton>
+>
+       
+        
+       
         <Typography
           sx={{
+            display:"inline-flex",
+            alignItems:"center",
             textDecoration: "underline",
-            fontSize: "13px",
+            fontSize: "14px",
             cursor: "pointer",
+            color:"#006D90"
           }}
         >
+            <AttachFile sx={{ transform: "rotate(45deg)", color: "#006D90",fontSize:"17px" }} />
           {row.documentName || "View Attachment"}
         </Typography>
       </TableCell>

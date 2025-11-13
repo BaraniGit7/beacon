@@ -111,7 +111,7 @@ export default function SeafarerDialog({
                               borderColor: "#B0BEC5",
                             },
                             "&:hover fieldset": {
-                              borderColor: "#006D90",
+                              borderColor: "#3fadd2ff",
                             },
                             "&.Mui-focused fieldset": {
                               borderColor: "#006D90",
@@ -382,7 +382,8 @@ export default function SeafarerDialog({
                       />
                     )}
                   </Grid>
-                ))}
+                  
+                ))}     </Grid>
                 <Box>
                   <Typography
                     sx={{
@@ -488,13 +489,12 @@ export default function SeafarerDialog({
                         sx={{
                           border: "2px dashed #006D90",
                           display: "flex",
-                          py: 0.5,
+                          py: 0.8,
 
                           justifyContent: "center",
                           alignItems: "center",
                           borderRadius: 2,
-                          minWidth: "353%",
-                          height: "85px",
+                          
                           textAlign: "center",
                           backgroundColor: "#F9FBFC",
                           "&:hover": { backgroundColor: "#F1F5F9" },
@@ -557,7 +557,7 @@ export default function SeafarerDialog({
                     </>
                   )}
                 </Box>{" "}
-              </Grid>
+         
             </DialogContent>
 
             <DialogActions sx={{ px: 3, pb: 2 }}>

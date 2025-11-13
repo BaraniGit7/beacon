@@ -37,13 +37,13 @@ export default function SeafarerTable({
             elevation={0}
             sx={{
               flex:1,
-              m:0,
+              m:1,
               p:0,
               backgroundColor: "#F4FCFF",
               borderRadius: "10px",
             //  scrollbarWidth:"none",
                // "&::-webkit-scrollbar": { display: "none" },
-              maxHeight:500
+              maxHeight:470
             }}
           >
             <Table
@@ -426,7 +426,7 @@ export default function SeafarerTable({
                           gap: 0.5,
 
                           borderRadius: "38.32px",
-                          border: "1px solid",
+                          border: "1.8px solid",
                           borderColor:
                             row.status === "Active" ? "#008339" : "#D10100",
                           color:
