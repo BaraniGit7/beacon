@@ -125,7 +125,7 @@ export default function AddDialog() {
           fontFamily: "Poppins",
           fontWeight: 500,
           fontSize: "12px",
-          backgroundColor: "#006D90",
+          backgroundColor: "#259BC1",
           color: "#fff",
           borderRadius: "6px",
           px: 1.5,
@@ -158,7 +158,7 @@ export default function AddDialog() {
             fontFamily: "Poppins",
             fontWeight: 600,
             fontSize: "16px",
-            color: "#006D90",
+            color: "#259BC1",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -170,7 +170,7 @@ export default function AddDialog() {
             <Close
               sx={{
                 fontSize: "15px",
-                backgroundColor: "#006D90",
+                backgroundColor: "#259BC1",
                 color: "#ffffff",
                 borderRadius: "2px",
               }}
@@ -306,7 +306,7 @@ export default function AddDialog() {
             startIcon={<Add />}
             onClick={closeDialogs}
             sx={{
-              backgroundColor: "#006D90",
+              backgroundColor: "#259BC1",
               textTransform: "none",
               fontSize: "13px",
               fontFamily: "Poppins",

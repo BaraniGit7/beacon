@@ -128,7 +128,7 @@ export default function BulkUpload({
           alignItems: "center",
           fontFamily: "Poppins",
           fontWeight: 600,
-          color: "#006d90",
+          color: "#259BC1",
           fontSize: isMobile ? "16px": "18px"
         }}
       >
@@ -136,7 +136,7 @@ export default function BulkUpload({
      
           <CloseOutlined onClick={closeDialogs}
             sx={{
-              backgroundColor: "#006D90",
+              backgroundColor: "#259BC1",
               color: "#ffffff",
               fontSize: "20px",
               borderRadius: "2px",
@@ -178,7 +178,7 @@ export default function BulkUpload({
               }}
               sx={{
                 width : isMobile ? "90%":"auto",
-                border: "2px dashed #006d90",
+                border: "2px dashed #259BC1",
                 borderRadius: 2,
                 p: 2,
                 textAlign: "center",
@@ -194,7 +194,7 @@ export default function BulkUpload({
               }}
             >
               <DriveFolderUploadRounded
-                sx={{ fontSize: 22, color: "#006d90", mb: 1 }}
+                sx={{ fontSize: 22, color: "#259BC1", mb: 1 }}
               />
               <Typography sx={{ fontFamily:"poppins", fontSize:isMobile ? "12px" : "14px" ,textAlign:"center"}}>
                 Drag your file(s) to start uploading
@@ -234,8 +234,8 @@ export default function BulkUpload({
                   textTransform: "none",
                   borderRadius: 2,
                   px: 3,
-                  borderColor: "#006d90",
-                  color: "#006d90",
+                  borderColor: "#259BC1",
+                  color: "#259BC1",
                   fontSize:isMobile?"11px":"13px",
                 }}
               >
@@ -322,13 +322,13 @@ export default function BulkUpload({
                 textTransform: "none",
                 borderRadius: 2,
                 px: 3,
-                bgcolor: "#006d90",
+                bgcolor: "#259BC1",
               }}
               onClick={handleUpload}
             >
               <DriveFolderUploadRounded sx={{ mr: 1 }} /> Upload
             </Button>
-
+        
             <Typography sx={{ mx: 1, fontSize: "13px", color: "gray" }}>
               Total Duplicates: {duplicateCount}
             </Typography>

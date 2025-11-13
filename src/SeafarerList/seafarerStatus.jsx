@@ -39,12 +39,12 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
         onClose={() => setOpenStatusDialog(null)}
         PaperProps={{
           sx: {
-            border: "2px solid #006D90",
+            border: "2px solid #259BC1",
             borderRadius: "12px",
 
             backgroundColor: "#ffffffff",
             "@media (max-width:600px)": {
-              border: "2px solid #006D90",
+              border: "2px solid #259BC1",
               borderRadius: "10px",
               mx: 2,
             },
@@ -56,7 +56,7 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
             fontFamily: "Poppins",
             fontWeight: 600,
             fontSize: "18px",
-            color: "#006D90",
+            color: "#259BC1",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -67,8 +67,8 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
           <IconButton onClick={() => setOpenStatusDialog(null)}>
             <Close
               sx={{
-                backgroundColor: " #006D90",
-                color: "#fae9e9ff",
+                backgroundColor: " #259BC1",
+                color: "#ffffff",
                 fontSize: "17px",
               }}
               fontSize="18px"
@@ -98,7 +98,7 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
                 control={
                   <Radio
                     sx={{
-                      color: "#006D90",
+                      color: "#259BC1",
                       "&.Mui-checked": {
                         color: "#00B8D4",
                       },
@@ -118,7 +118,7 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
                 control={
                   <Radio
                     sx={{
-                      color: "#006D90",
+                      color: "#259BC1",
                       "&.Mui-checked": {
                         color: "#00B8D4",
                       },
@@ -141,7 +141,7 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "#006D90",
+                backgroundColor: "#259BC1",
                 textTransform: "none",
                 fontSize: "12px",
                 "& .MuiButton-startIcon": {

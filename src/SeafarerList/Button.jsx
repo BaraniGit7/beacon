@@ -50,7 +50,7 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
               }}
             >
               <IconButton >
-                <Search sx={{ color: "#006D90",fontSize:"17px" }} />
+                <Search sx={{ color: "#259BC1",fontSize:"17px" }} />
               </IconButton>
               <InputBase
                 sx={{
@@ -81,11 +81,11 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
                   fontSize: isMobile ? "10px" : "12px",
                   lineHeight: "24px",
                   textTransform: "uppercase",
-                  backgroundColor: "#006D90",
+                  backgroundColor: "#259BC1",
                   color: "#fff",
 
                   borderRadius: "8px",
-                  border: "1px solid #006D90",
+                  border: "1px solid #259BC1",
                   height: isMobile ? "30px" : "35px",
                   px: isMobile ? 1 : 2,
                   "&:hover": { backgroundColor: "#006081ff" },
@@ -104,8 +104,8 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
                   fontSize: isMobile ? "10px" : "12px",
                   lineHeight: "24px",
                   textTransform: "uppercase",
-                  borderColor: "#006D90",
-                  color: "#006D90",
+                  borderColor: "#259BC1",
+                  color: "#259BC1",
                   backgroundColor: "#fff",
                   borderRadius: "8px",
                   height: isMobile ? "30px" : "35px",
@@ -113,7 +113,7 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
                   px: isMobile ? 1 : 2,
                   "&:hover": {
                     backgroundColor: "#E3F2F6",
-                    borderColor: "#005b78",
+                    borderColor: "#259BC1",
                   },
                 }}
               >

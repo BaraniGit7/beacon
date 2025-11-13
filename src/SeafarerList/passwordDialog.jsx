@@ -15,7 +15,7 @@ export default function Password(
            <Dialog
             fullWidth
             maxWidth="xs"
-            sx={{ borderColor: " #006D90" }}
+            sx={{ borderColor: " #259BC1" }}
             open={openPassword}
             onClose={closeDialogs}
           >
@@ -25,17 +25,17 @@ export default function Password(
                 justifyContent: "space-between",
                 alignItems: "center",
                 fontWeight: 400,
-                color: "#006D90",
+                color: "#259BC1",
 
                 fontFamily: "Poppins",
                 fontSize: " 17px",
               }}
             >
               SeaFarer Password
-              <IconButton sx={{ color: "#006D90" }} onClick={closeDialogs}>
+              <IconButton sx={{ color: "#259BC1" }} onClick={closeDialogs}>
                 <Close
                   sx={{
-                    backgroundColor: "#006D90",
+                    backgroundColor: "#259BC1",
                     color: "#ffffff",
                     fontSize: "18px",
                     borderRadius: "2px",
@@ -64,7 +64,7 @@ export default function Password(
                       <IconButton onClick={handleClick}
                       onMouseDown={handleMouse}
                       edge="end">
-                        {showPassword ?<VisibilityOff sx={{fontSize:"19px",color:"#006D90"}}/> :<Visibility  sx={{fontSize:"19px",color:"#006D90"}}/>}
+                        {showPassword ?<VisibilityOff sx={{fontSize:"19px",color:"#259BC1"}}/> :<Visibility  sx={{fontSize:"19px",color:"#259BC1"}}/>}
                       </IconButton>
                     </InputAdornment>
                   )
@@ -88,7 +88,7 @@ export default function Password(
                               borderColor: "#3fadd2ff",
                             },
                             "&.Mui-focused fieldset": {
-                              borderColor: "#006D90",
+                              borderColor: "#259BC1",
                             },
                           },
                     
@@ -99,7 +99,7 @@ export default function Password(
               <Button
                 variant="contained"
                 sx={{
-                  backgroundColor: "#006D90",
+                  backgroundColor: "#259BC1",
                   textTransform: "none",
                   fontSize: "12px",
                   "& .MuiButton-startIcon": {

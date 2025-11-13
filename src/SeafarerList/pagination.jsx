@@ -58,12 +58,12 @@ export default function PagesX({isMobile,rowsPerPage,handleRow,total,handlePageC
       
       alignItems:"center",
       "& .MuiPaginationItem-root": {
-        color: "#006D90",
+        color: "#259BC1",
         fontSize: isMobile ? 10: 12,
         mx: isMobile?0 : 0.7,
       },
       "& .MuiPaginationItem-root.Mui-selected": {
-        backgroundColor: "#006D90",
+        backgroundColor: "#259BC1",
         color: "#fff",
       },
     }}

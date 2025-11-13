@@ -712,12 +712,12 @@ export default function TableTicket() {
           sx={{
         
             "& .MuiPaginationItem-root": {
-              color: "#006D90",
+              color: "#259BC1",
               fontSize: "12px",
               margin: "0px 2px"
             },
             "& .MuiPaginationItem-root.Mui-selected": {
-              backgroundColor: "#006D90",
+              backgroundColor: "#259BC1",
               color: "#fff",
             },
           }}

@@ -114,7 +114,7 @@ export default function SeafarerDialog({
                               borderColor: "#3fadd2ff",
                             },
                             "&.Mui-focused fieldset": {
-                              borderColor: "#006D90",
+                              borderColor: "#259BC1",
                             },
                           },
                           "& .MuiInputBase-input": {
@@ -155,7 +155,7 @@ export default function SeafarerDialog({
             PaperProps={{
               sx: {
                 borderRadius: "20px",
-                border: "1.5px solid #0069d0",
+                border: "1.5px solid #259BC1",
                 overflowY: isMobile ? "visible" : "hidden",
                 boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
 
@@ -172,7 +172,7 @@ export default function SeafarerDialog({
                 fontFamily: "poppins",
                 fontWeight: 600,
                 fontSize: "16px",
-                color: "#006D90",
+                color: "#259BC1",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -184,7 +184,7 @@ export default function SeafarerDialog({
                 <Close
                   sx={{
                     fontSize: "20px",
-                    backgroundColor: " #006D90",
+                    backgroundColor: " #259BC1",
                     color: "#ffffffff",
                     borderRadius: "2px",
                   }}
@@ -487,7 +487,7 @@ export default function SeafarerDialog({
                     <>
                       <Box
                         sx={{
-                          border: "2px dashed #006D90",
+                          border: "2px dashed #259BC1",
                           display: "flex",
                           py: 0.8,
 
@@ -518,7 +518,7 @@ export default function SeafarerDialog({
                         <label htmlFor="file-upload">
                           <DriveFolderUploadRounded
                             sx={{
-                              color: "#006D90",
+                              color: "#259BC1",
                               fontSize: "20px",
                             }}
                           />
@@ -539,8 +539,8 @@ export default function SeafarerDialog({
                           <Button
                             variant="outlined"
                             sx={{
-                              borderColor: "#006D90",
-                              color: "#006D90",
+                              borderColor: "#259BC1",
+                              color: "#259BC1",
                               fontSize: "8px",
 
                               textTransform: "none",
@@ -566,7 +566,7 @@ export default function SeafarerDialog({
                 {openAdd ? (
                   <Button
                     sx={{
-                      backgroundColor: "#006D90",
+                      backgroundColor: "#259BC1",
                       textTransform: "none",
                       fontSize: "10px",
                       "& .MuiButton-startIcon": {
@@ -585,7 +585,7 @@ export default function SeafarerDialog({
                 ) : (
                   <Button
                     sx={{
-                      backgroundColor: "#006D90",
+                      backgroundColor: "#259BC1",
                       textTransform: "none",
                       fontSize: "10px",
                       "& .MuiButton-startIcon": {

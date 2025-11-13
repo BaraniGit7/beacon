@@ -10,12 +10,12 @@ export default function DeleteDialog({openDelete,closeDialogs,selectedSeafarer, 
             onClose={closeDialogs}
             PaperProps={{
               sx: {
-                border: "2px solid #006D90",
+                border: "2px solid #259BC1",
                 borderRadius: "12px",
 
                 backgroundColor: "#ffffffff",
                 "@media (max-width:600px)": {
-                  border: "2px solid #006D90",
+                  border: "2px solid #259BC1",
                   borderRadius: "10px",
                   mx: 2,
                 },
@@ -26,7 +26,7 @@ export default function DeleteDialog({openDelete,closeDialogs,selectedSeafarer, 
             
                 <Close onClick={closeDialogs}
                   sx={{
-                    backgroundColor: "#006D90",
+                    backgroundColor: "#259BC1",
                     color: "#ffffff",
                     fontSize: "20px",
                     borderRadius: "2px",
@@ -85,7 +85,7 @@ export default function DeleteDialog({openDelete,closeDialogs,selectedSeafarer, 
                   variant="contained"
                   startIcon={<Check />}
                   sx={{
-                    backgroundColor: "#006D90",
+                    backgroundColor: "#259BC1",
                     textTransform: "none",
                     borderRadius: "8px",
                     width: "auto",
@@ -110,8 +110,8 @@ export default function DeleteDialog({openDelete,closeDialogs,selectedSeafarer, 
                   variant="outlined"
                   startIcon={<Close />}
                   sx={{
-                    color: "#006D90",
-                    borderColor: "#006D90",
+                    color: "#259BC1",
+                    borderColor: "#259BC1",
                     textTransform: "none",
                     borderRadius: "8px",
 

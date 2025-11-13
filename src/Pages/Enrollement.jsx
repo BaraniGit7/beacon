@@ -14,7 +14,7 @@ import Tables from "./Table";
 export default function Encrollment() {
   const [openFilter, setOpenFilter] = useState(false);
 
-  const handleOpenFilter = () => setOpenFilter(true);
+ // const handleOpenFilter = () => setOpenFilter(true);
   const handleCloseFilter = () => setOpenFilter(false);
 
   return (
@@ -33,7 +33,7 @@ export default function Encrollment() {
         }}
       >
         <Box sx={{ position: "relative", display: "inline-flex", mr: 1 }}>
-          <Person sx={{ fontSize: 22, color: "#006D90" }} />
+          <Person sx={{ fontSize: 22, color: "#259BC1" }} />
          
        
         </Box>

@@ -65,10 +65,10 @@ export default function FilterDialog() {
     <>
       <Button size="small"
         sx={{
-          color: "#006D90",
+          color: "#259BC1",
           fontWeight: 600,
        
-          border: "1px solid #006D90",
+          border: "1px solid #259BC1",
           borderRadius: "8px",
           fontSize: "9px",
           backgroundColor: "#fff",
@@ -80,13 +80,13 @@ export default function FilterDialog() {
         Filter Courses
       </Button>
 
-      <Dialog open={dialog} onClose={handleClose} fullWidth maxWidth="sm" sx={{ border:"1px solid #006D90"}}>
+      <Dialog open={dialog} onClose={handleClose} fullWidth maxWidth="sm" sx={{ border:"1px solid #259BC1"}}>
         <DialogTitle
           sx={{
             fontSize: "18px",
             fontWeight: 700,
             fontFamily: "poppins",
-            color: "#006D90",
+            color: "#259BC1",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -95,7 +95,7 @@ export default function FilterDialog() {
         >
           Filter Courses
           <IconButton onClick={handleClose}>
-            <CancelOutlined sx={{ color: "#006D90" }} />
+            <CancelOutlined sx={{ color: "#259BC1" }} />
           </IconButton>
         </DialogTitle>
         <Divider />
@@ -192,7 +192,7 @@ export default function FilterDialog() {
             variant="contained"
             sx={{
               color: "#ffff",
-              backgroundColor: "#006D90",
+              backgroundColor: "#259BC1",
               fontSize: "12px",
             }}
           >

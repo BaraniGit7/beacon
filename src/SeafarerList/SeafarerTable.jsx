@@ -370,13 +370,13 @@ export default function SeafarerTable({
                           fontSize: isMobile ? "12px" : "14px",
                           lineHeight: isMobile ? "12px" : "14px",
 
-                          color: "#006D90",
+                          color: "#259BC1",
                         }}
                       >
                         <IconButton
                           color="primary"
                           component="label"
-                          sx={{ textAlign: "left", color: "#006D90", p: 0 }}
+                          sx={{ textAlign: "left", color: "#259BC1", p: 0 }}
                         >
                           <AttachFile
                             sx={{
@@ -393,7 +393,7 @@ export default function SeafarerTable({
                       <IconButton
                         onClick={() => handleViewCredentials(row)}
                         sx={{
-                          color: "#006D90",
+                          color: "#259BC1",
                         }}
                       >
                         <RemoveRedEyeOutlined />
@@ -402,7 +402,7 @@ export default function SeafarerTable({
                     <TableCell sx={{ textAlign: "center" }}>
                       <IconButton
                         onClick={() => handlePassword(row)}
-                        sx={{ color: "#006D90" }}
+                        sx={{ color: "#259DC1" }}
                       >
                         <LockReset fontSize="medium" />
                       </IconButton>
@@ -469,7 +469,7 @@ export default function SeafarerTable({
                       >
                         <IconButton
                           sx={{
-                            border: "2px solid #006D90",
+                            border: "2px solid #259BC1",
                             borderRadius: "8px",
                             p: 1,
                             backgroundColor: "#F4FCFF",
@@ -477,7 +477,7 @@ export default function SeafarerTable({
                           variant="outlined"
                           onClick={() => handleEdit(row)}
                         >
-                          <Edit sx={{ color: "#006D90", fontSize: "16px" }} />
+                          <Edit sx={{ color: "#259DC1", fontSize: "16px" }} />
                         </IconButton>
                         <IconButton
                           onClick={() => handleDelete(row)}

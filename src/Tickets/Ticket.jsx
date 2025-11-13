@@ -19,7 +19,7 @@ export default function Ticket(){
    
   }}
 >
-  <AirplaneTicket sx={{ fontSize: "18px", color: "#006D90" }} />
+  <AirplaneTicket sx={{ fontSize: "18px", color: "#259BC1" }} />
   Ticket
 </Typography>
 

@@ -239,7 +239,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     >
       <Paper
         elevation={4}
-        sx={{  p: 1.5, borderRadius: 2, backgroundColor: "#ffffffff", mb: 4 ,overflow:"hidden",border:"1px solid #006D90",
+        sx={{  p: 1.5, borderRadius: 2, backgroundColor: "#ffffffff", mb: 4 ,overflow:"hidden",border:"1px solid #259BC1",
            "@media(max-width:900px)":{
           p:3
         }
@@ -247,7 +247,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
       >
         <Typography
           variant="h6"
-          sx={{ fontFamily: "poppins", fontWeight: 700, color: "#006D90", mb: 2,fontSize:"18px", textAlign: "left" }}
+          sx={{ fontFamily: "poppins", fontWeight: 700, color: "#259BC1", mb: 2,fontSize:"18px", textAlign: "left" }}
         >
           Credentials
         </Typography>
@@ -284,7 +284,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
          }
         }}
       >
-        <Box sx={{ color: "#006D90", mt: 0.3, flexShrink: 0,"& svg": {
+        <Box sx={{ color: "#259BC1", mt: 0.3, flexShrink: 0,"& svg": {
               fontSize:isMobile ? 18 : 24  }}}>
           {item.icon}
         </Box>
@@ -351,7 +351,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
         sx={{
           borderRadius: "50px",
           overflow: "hidden",
-          border: "1px solid #006D90",
+          border: "1px solid #259BC1",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -360,15 +360,15 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
             textTransform: "none",
             border: "none",
             borderRadius: "50px",
-            color: "#006D90",
-            boderColor:"#006D90",
+            color: "#259BC1",
+            boderColor:"#259BC1",
             px: 3,
             py: 1,
             fontFamily: "Poppins,",
             fontWeight: 500,
             fontSize: "14px",
             "&.Mui-selected": {
-              backgroundColor: "#006D90",
+              backgroundColor: "#259BC1",
               color: "white",
             },
 
@@ -504,10 +504,10 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
             textDecoration: "underline",
             fontSize: "14px",
             cursor: "pointer",
-            color:"#006D90"
+            color:"#259BC1"
           }}
         >
-            <AttachFile sx={{ transform: "rotate(45deg)", color: "#006D90",fontSize:"17px" }} />
+            <AttachFile sx={{ transform: "rotate(45deg)", color: "#259BC1",fontSize:"17px" }} />
           {row.documentName || "View Attachment"}
         </Typography>
       </TableCell>
@@ -516,14 +516,14 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
         <Stack direction="row" spacing={1.5}>
           <IconButton
             sx={{
-              border: "2px solid #006D90",
+              border: "2px solid #259BC1",
               backgroundColor: "#F4F8FF",
               borderRadius: "8px",
               p: 0.8,
             }}
             onClick={() => handleOpenDialog(index)}
           >
-            <Edit sx={{ color: "#006D90", fontSize: 16 }} />
+            <Edit sx={{ color: "#259BC1", fontSize: 16 }} />
           </IconButton>
 
           <IconButton
@@ -560,8 +560,8 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
             //letterSpacing: "0.025em",
             //textAlign: "center",
             //textTransform: "uppercase",
-            color: "#006D90",
-            borderColor:"#006D90",
+            color: "#259BC1",
+            borderColor:"#259BC1",
             //width: "88px",
             borderRadius: "8px",
            // borderWidth: "1px",
@@ -579,7 +579,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
           variant="contained"
           size="small"
           sx={{
-            backgroundColor: "#006D90",
+            backgroundColor: "#259BC1",
             fontSize:"12px",
             borderRadius: "8px",
          //   borderWidth: "1px",
@@ -604,7 +604,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
         maxWidth="xs"
         PaperProps={{
           sx: {
-            border: "2px solid #006D90",
+            border: "2px solid #259BC1",
             boxShadow: "0px 4px 20px rgba(0,0,0,0.15)",
             backgroundColor: "#fff",
             overflow: "hidden",
@@ -623,7 +623,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
             justifyContent: "space-between",
             alignItems: "center",
             fontWeight: 700,
-            color: "#006D90",
+            color: "#259BC1",
             fontFamily: "Poppins",
             fontSize: "14px",
             pb: 1,
@@ -637,7 +637,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
         >
           {editIndex !== null ? "Edit" : "Add"} Seafarer Credentials
           <IconButton onClick={handleCloseDialog}>
-            <Close sx={{ backgroundColor: "#006D90",color:"#ffff", borderRadius:"2px",fontSize:"18px" }} />
+            <Close sx={{ backgroundColor: "#259BC1",color:"#ffff", borderRadius:"2px",fontSize:"18px" }} />
           </IconButton>
         </DialogTitle>
 
@@ -828,7 +828,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   onDragLeave={handleDragLeave}
   onDrop={handleDrop}
                   sx={{
-                 border: dragAct ? "2px solid #006D90" : "2px dashed #006D90",
+                 border: dragAct ? "2px solid #259BC1" : "2px dashed #259BC1",
                     borderRadius: 2,
                     p: 1.5,
                   
@@ -850,7 +850,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
                     onChange={handleFileChange}
                   />
                   <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
-                    <DriveFolderUploadRounded sx={{ color: "#006D90",fontSize:"14px" }} />
+                    <DriveFolderUploadRounded sx={{ color: "#259BC1",fontSize:"14px" }} />
                     <Typography
                       variant="body2"
                       color="text.secondary"
@@ -873,8 +873,8 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
                     <Button 
                       variant="outlined"
                       sx={{
-                        borderColor: "#006D90",
-                        color: "#006D90",
+                        borderColor: "#259BC1",
+                        color: "#259BC1",
                        mt: 1,
                        fontSize:"10px",
                         textTransform: "none",
@@ -991,7 +991,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
         >
           <Button
             sx={{
-              backgroundColor: "#006D90",
+              backgroundColor: "#259BC1",
                       textTransform: "none",
                       fontSize: "10px",
                       "& .MuiButton-startIcon": {
@@ -1019,11 +1019,11 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
         onClose={handleCloseDialog}
         PaperProps={{
           sx:{
-            border:"2px solid #006D90",
+            border:"2px solid #259BC1",
             borderRadius:"12px",
             backgroundColor:"#ffffff",
             "@media(max-width:600px)":{
-                border: "2px solid #006D90",
+                border: "2px solid #259BC1",
                   borderRadius: "10px",
                   mx: 2,
             }
@@ -1032,7 +1032,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
       >
         <DialogTitle align="right">
           <IconButton onClick={handleCloseDialog}>
-            <Close sx={{color:"#006D90"}} />
+            <Close sx={{color:"#259BC1"}} />
           </IconButton>
         </DialogTitle>
         <DialogContent sx={{ display:"flex",
@@ -1058,7 +1058,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
           <Stack spacing={5} direction="row">
             <Button
               variant="contained"
-              sx={{ backgroundColor: "#006D90" }}
+              sx={{ backgroundColor: "#259BC1" }}
               startIcon={<DoneOutlined />}
               onClick={confirmDelete}
             >
@@ -1066,7 +1066,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
             </Button>
             <Button
               variant="outlined"
-              sx={{ color: "#006D90" }}
+              sx={{ color: "#259BC1" }}
               startIcon={<Close />}
               onClick={handleCloseDialog}
             >

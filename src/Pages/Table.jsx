@@ -582,13 +582,13 @@ export default function Tables() {
             "& .MuiPaginationItem-root": {
               fontSize: "10px",
             margin: "0px",
-      color: "#006D90",
+      color: "#259BC1",
       minWidth: "22px",
       height: "20px",
        padding: "0px",
             },
              "& .MuiPaginationItem-root.Mui-selected": {
-      backgroundColor: "#006D90", 
+      backgroundColor: "#259BC1", 
       color: "#fff",              
     },
     "& .MuiPaginationItem-root.Mui-selected:hover": {
@@ -607,7 +607,7 @@ export default function Tables() {
       variant="contained"
       size="small"
       sx={{
-        backgroundColor: "#006D90",
+        backgroundColor: "#259BC1",
         fontSize: "11px",
         textTransform: "none",
         borderRadius: "6px",

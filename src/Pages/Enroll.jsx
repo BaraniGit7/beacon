@@ -28,7 +28,7 @@ export default function EnrollDetails() {
     borderRadius: 2,
     backgroundColor: "#fff",
     mb: 1.5,
-    border: "1px solid #006D90",
+    border: "1px solid #259BC1",
   }}
 >
   <Typography
@@ -37,7 +37,7 @@ export default function EnrollDetails() {
       px: 1.5,
       fontFamily: "Poppins",
       fontWeight: 700,
-      color: "#006D90",
+      color: "#259BC1",
       fontSize: "16px",
       mb: 1,
     }}
@@ -76,7 +76,7 @@ export default function EnrollDetails() {
           gap: 1,
           p: { xs: 0.5, sm: 1 },
         //  borderRadius: 1,
-          flex: 1, // make it stretch evenly
+          flex: 1, 
           backgroundColor: "#fff",
           transition: "background-color 0.2s ease",
           "&:hover": {
@@ -87,7 +87,7 @@ export default function EnrollDetails() {
         {/* Icon */}
         <Box
           sx={{
-            color: "#006D90",
+            color: "#259BC1",
             mt: 0.3,
             flexShrink: 0,
             display: "flex",
