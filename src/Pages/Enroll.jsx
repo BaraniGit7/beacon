@@ -24,10 +24,10 @@ export default function EnrollDetails() {
  <Paper
   elevation={4}
   sx={{
-    p: 1.2,
+    p: 3,
     borderRadius: 2,
     backgroundColor: "#fff",
-    mb: 1.5,
+    mb: 4,
     border: "1px solid #259BC1",
   }}
 >
@@ -47,34 +47,33 @@ export default function EnrollDetails() {
 
  <Grid
   container
-  spacing={1.5}
+  rowSpacing={2}
   sx={{
-    p: { xs: 0.5, sm: 1.5},
+    px: { xs: 0.5, sm: 1.5},
       display: "flex",
+       flexWrap: "wrap",
         justifyContent:"space-between",
-                  alignItems: "center",
+                alignItems: "center",
   }}
 >
   {details.map((enroll) => (
     <Grid
-      item
-      xs={12}
-      sm={6}
+      //item
+     // xs={12}
+     // sm={6}
     
       key={enroll.label}
       sx={{
-        display: "flex",
-        justifyContent:"space-between",
-                  alignItems: "center",
+       
       }}>
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
-          
+          minWidth:150,
           alignItems: "flex-start",
           gap: 1,
-          p: { xs: 0.5, sm: 1 },
+         // p: { xs: 0.5, sm: 1 },
         //  borderRadius: 1,
           flex: 1, 
           backgroundColor: "#fff",

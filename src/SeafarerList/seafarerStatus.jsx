@@ -37,6 +37,8 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
       <Dialog
         open={!!openStatusDialog}
         onClose={() => setOpenStatusDialog(null)}
+        //fullWidth
+        maxWidth="xs"
         PaperProps={{
           sx: {
             border: "2px solid #259BC1",

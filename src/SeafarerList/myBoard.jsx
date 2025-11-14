@@ -17,7 +17,7 @@ import BulkUpload from "./BulkUploadDia";
 import Password from "./passwordDialog";
 import DeleteDialog from "./DeleteDialog";
 import SeafarerStatus from "./SeafarerStatus";
-import PagesX from "./Pagination";
+import PagesX from "./pagination";
 import SeafarerButton from "./Button";
 function MyBoard() {
   const theme = useTheme();
@@ -66,9 +66,16 @@ function MyBoard() {
     setEditSeafarer(seafarer);
     setOpenEdit(true);
   };
-  const confirmDelete = () => {
-    setSeafarers((prev) => prev.filter((s) => s.sno !== selectedSeafarer.sno));
-  };
+ const confirmDelete = () => {
+  setSeafarers(prev => {
+    const filtered = prev.filter(s => s.sno !== selectedSeafarer.sno);
+    return filtered.map((item, index) => ({
+      ...item,
+      sno: index + 1,
+    }));
+  });
+};
+
   const handleDelete = (seafarer) => {
     setSelectedSeafarer(seafarer);
     setOpenDelete(true);
@@ -173,6 +180,8 @@ function MyBoard() {
             handlePassword={handlePassword}
             handleViewCredentials={handleViewCredentials}
             setOpenStatusDialog={setOpenStatusDialog}
+            pages={pages}
+            rowsPerPage={rowsPerPage}
           />
 
          {/*Pagination*/ }

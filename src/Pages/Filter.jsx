@@ -1,11 +1,7 @@
 import {
   CancelOutlined,
   Check,
-  Close,
-  CloseOutlined,
-  Filter,
   FilterAltOutlined,
-  FilterListAlt,
   Room,
   Tune,
 } from "@mui/icons-material";
@@ -55,9 +51,10 @@ export default function FilterDialog() {
     },
     {
       label: "Select Standards",
-      type: "text",
+      type: "select",
       name: "selectStandards",
-      placeholder: "Select standards",
+      options:["STCW(Navigation)", "SIRE(Navigation and Communications)"," RDBMS(Navigation and Communications)"," TMSA(Navigational Safety)" ,"CDI (Navigational safety)"] ,
+      placeholder:"Select Standards"
     },
   ];
 
@@ -70,13 +67,13 @@ export default function FilterDialog() {
        
           border: "1px solid #259BC1",
           borderRadius: "8px",
-          fontSize: "9px",
+          fontSize: "11px",
           backgroundColor: "#fff",
         }}
         variant="outlined"
         onClick={handleOpen}
       >
-        <FilterAltOutlined sx={{ fontSize: "12px" ,m:"o" }} />
+        <FilterAltOutlined sx={{ fontSize: "19px" ,m:"0px 2px" }} />
         Filter Courses
       </Button>
 
@@ -118,7 +115,7 @@ export default function FilterDialog() {
                   sx={{
                     fontFamily: "Poppins",
                     fontWeight: 400,
-                    fontSize: "16px",
+                    fontSize: "14px",
                     mb: 0.5,
                   }}
                 >
@@ -130,7 +127,9 @@ export default function FilterDialog() {
 
                 {filter.type === "select" ? (
                   <TextField
-                    sx={{ fontFamily: "poppins" }}
+                    sx={{ fontFamily: "poppins" , fontSize:"14px" ,"& .MuiInputBase-input": {
+                        fontFamily: "Poppins" , fontSize:"14px"
+                      }, }}
                     select
                     required
                     fullWidth
@@ -143,19 +142,19 @@ export default function FilterDialog() {
                           selected
                         ) : (
                           <span
-                            style={{ color: "#9e9e9e", fontFamily: "poppins" }}
+                            style={{ color: "#9e9e9e", fontFamily: "poppins" , fontSize:"14px" }}
                           >
                             {filter.placeholder}
                           </span>
                         ),
                     }}
                   >
-                    <MenuItem sx={{ fontFamily: "poppins" }} value="" disabled>
+                    <MenuItem sx={{ fontFamily: "poppins", fontSize:"14px"}} value="" disabled>
                       {filter.placeholder}
                     </MenuItem>
                     {filter.options.map((opt) => (
                       <MenuItem
-                        sx={{ fontFamily: "poppins" }}
+                        sx={{ fontFamily: "poppins" , fontSize:"14px"}}
                         key={opt}
                         value={opt}
                       >
@@ -172,11 +171,12 @@ export default function FilterDialog() {
                     type={filter.type}
                     placeholder={filter.placeholder}
                     sx={{
+                        fontSize:"14px",
                       "& .MuiInputBase-input::placeholder": {
-                        fontFamily: "Poppins",
+                        fontFamily: "Poppins",  fontSize:"14px"
                       },
                       "& .MuiInputBase-input": {
-                        fontFamily: "Poppins",
+                        fontFamily: "Poppins" , fontSize:"14px"
                       },
                     }}
                   />
@@ -187,7 +187,7 @@ export default function FilterDialog() {
         </DialogContent>
 
         <DialogActions>
-          <Button
+          <Button 
             onClick={handleClose}
             variant="contained"
             sx={{
@@ -195,12 +195,8 @@ export default function FilterDialog() {
               backgroundColor: "#259BC1",
               fontSize: "12px",
             }}
-          >
-           
-          
-              <Check sx={{pr:"8px", fontSize: "16px", color: "#ffff" }} />
-         
-            Apply
+          > <Check sx={{pr:"8px", fontSize: "22px", color: "#ffff" }} /> 
+          Apply
           </Button>
         </DialogActions>
       </Dialog>

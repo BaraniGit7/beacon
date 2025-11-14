@@ -39,7 +39,7 @@ export default function PagesX({isMobile,rowsPerPage,handleRow,total,handlePageC
         minWidth: 40,
       }}
     >
-      {[5, 6, 10, 15, 21].map((n) => (
+      {[5, 6, 7,8,9,10, 15, 21].map((n) => (
         <MenuItem key={n} value={n} sx={{ fontSize: 14 }}>
           {n}
         </MenuItem>

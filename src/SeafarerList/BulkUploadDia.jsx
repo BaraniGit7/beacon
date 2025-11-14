@@ -177,7 +177,7 @@ export default function BulkUpload({
                 handleFileAdd(dropped);
               }}
               sx={{
-                width : isMobile ? "90%":"auto",
+                width : isMobile ? "100%":"auto",
                 border: "2px dashed #259BC1",
                 borderRadius: 2,
                 p: 2,

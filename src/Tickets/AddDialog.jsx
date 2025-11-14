@@ -49,8 +49,6 @@ export default function AddDialog() {
     idNumber: "",
     ticketNumber: "",
   });
-
-  // keep icon map outside function (add icons if you want)
   const iconMap = { name: <Person sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
       phone: <Phone sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,
       email: <Email sx={{ color: "#d3d3d3ff", fontSize: "17px" }} />,

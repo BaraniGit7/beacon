@@ -30,7 +30,29 @@ export default function SeafarerTable({
   handlePassword,
   handleViewCredentials,
   setOpenStatusDialog,
+  pages,rowsPerPage
 }) {
+  const headerStyle={
+       textAlign: "left",
+
+                      color: "#E4E4E4",
+
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: "bold",
+
+                      fontSize: isMobile ? "13px" : "14px",
+                      lineHeight: isMobile ? "120%" : "150%",
+                      // letterSpacing: "0px",
+
+  }
+  const textStyle={
+        textAlign: "left",
+          whiteSpace:"nowrap",
+                            fontFamily: "poppins",
+                            fontWeight: 400,
+                            fontSize: isMobile ? "12px" : "14px",
+                            lineHeight: isMobile ? "15px" : "16px",
+  }
   return (
     <TableContainer
             component={Paper}
@@ -59,161 +81,56 @@ export default function SeafarerTable({
                 top:0,zIndex:2
                  }}>
                   <TableCell
-                    sx={{
-                      textAlign: "left",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                    sx={headerStyle}
                   >
                     
                     S.No
                   </TableCell>
 
                   <TableCell
-                    sx={{
-                      textAlign: "left",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                   sx={headerStyle}
                   >
                     Seafarer Info
                   </TableCell>
                   <TableCell
-                    sx={{
-                      textAlign: "left",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                    sx={headerStyle}
                   >
                     Id Info
                   </TableCell>
                   <TableCell
-                    sx={{
-                      textAlign: "left",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                     sx={headerStyle}
                   >
                     Ship Name/Type
                   </TableCell>
                   <TableCell
-                    sx={{
-                      textAlign: "left",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                    sx={headerStyle}
                   >
                     Role
                   </TableCell>
 
                   <TableCell
-                    sx={{
-                      textAlign: "left",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ?"13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                     sx={headerStyle}
                   >
                     Documents
                   </TableCell>
                   <TableCell
-                    sx={{
-                      textAlign: "center   ",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ?"13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                    sx={{...headerStyle,textAlign:"center"}}
                   >
                     Credentials
                   </TableCell>
                   <TableCell
-                    sx={{
-                      textAlign: "center",
-
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                  sx={{...headerStyle,textAlign:"center"}}
                   >
                     Password
                   </TableCell>
                   <TableCell
-                    sx={{
-                      textAlign: "center",
-                      color: "#E4E4E4",
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+                   sx={{...headerStyle,textAlign:"center"}}
                   >
                     Status
                   </TableCell>
                   <TableCell
-                    sx={{
-                      textAlign: "center",
-                      color: "#E4E4E4",
-
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "bold",
-                      fontSize: isMobile ? "13px" : "14px",
-                      lineHeight: isMobile ? "120%" : "150%",
-                      // letterSpacing: "0px",
-                    }}
+               sx={{...headerStyle,textAlign:"center"}}
+                 
                   >
                     Actions
                   </TableCell>
@@ -232,47 +149,24 @@ export default function SeafarerTable({
                       backgroundColor: "#fff",
                     }}
                   >
-                    <TableCell sx={{ textAlign: "left" }}>{row.sno}</TableCell>
+                    <TableCell sx={{ textAlign: "left" }}>{(pages-1) * rowsPerPage + index + 1}</TableCell>
                     <TableCell>
                       <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          lineHeight: "12px",
-                        }}
+                        sx={textStyle}
                       >
                         <Typography
-                          sx={{
-                            textAlign: "left",
-                            fontFamily: "poppins",
-                            fontWeight: 400,
-                            fontSize: isMobile ? "12px" : "14px",
-                            lineHeight: isMobile ? "12px" : "16px",
-                          }}
+                          sx={textStyle}
                         >
                           {row.name}
                         </Typography>
                         <Typography
                           variant="body2"
-                          sx={{
-                            textAlign: "left",
-                            fontFamily: "poppins",
-                            fontWeight: 400,
-                            fontSize: isMobile ? "12px" : "14px",
-                            lineHeight: isMobile ? "12px" : "14px",
-                          }}
+                        sx={textStyle}
                         >
                           {row.email}
                         </Typography>
                         <Typography
-                          sx={{
-                            textAlign: "left",
-                            fontFamily: "poppins",
-                            fontWeight: 400,
-                            fontStyle: "normal",
-                            fontSize: isMobile ? "12px" : "14px",
-                            lineHeight: isMobile ? "12px" : "16px",
-                          }}
+                        sx={textStyle}
                         >
                           {row.phone}
                         </Typography>
@@ -280,38 +174,17 @@ export default function SeafarerTable({
                     </TableCell>
                     <TableCell sx={{ textAlign: "left" }}>
                       <Typography
-                        sx={{
-                          textAlign: "left",
-                          fontFamily: "poppins",
-                          fontWeight: 400,
-                          fontStyle: "normal",
-                          fontSize: isMobile ? "12px" : "14px",
-                          lineHeight: isMobile ? "12px" : "16px",
-                        }}
+                        sx={textStyle}
                       >
                         {row.idNumber}
                       </Typography>
                       <Typography
-                        sx={{
-                          textAlign: "left",
-                          fontFamily: "poppins",
-                          fontWeight: 400,
-                          fontStyle: "normal",
-                          fontSize: isMobile ? "12px" : "14px",
-                          lineHeight: isMobile ? "12px" : "14px",
-                        }}
+                        sx={textStyle}
                       >
                         {row.IdType}
                       </Typography>
                       <Typography
-                        sx={{
-                          textAlign: "left",
-                          fontFamily: "poppins",
-                          fontWeight: 400,
-                          fontStyle: "normal",
-                          fontSize: isMobile ? "12px" : "14px",
-                          lineHeight: isMobile ? "12px" : "14px",
-                        }}
+                        sx={textStyle}
                       >
                         {row.location}
                       </Typography>
@@ -319,41 +192,20 @@ export default function SeafarerTable({
 
                     <TableCell>
                       <Typography
-                        sx={{
-                          textAlign: "left",
-                          fontFamily: "poppins",
-                          fontWeight: 400,
-                          fontStyle: "normal",
-                          fontSize: isMobile ? "12px" : "14px",
-                          lineHeight: isMobile ? "12px" : "14px",
-                        }}
+                        sx={textStyle}
                       >
                         {row.ship}
                       </Typography>
                       <Typography
                         color="text.secondary"
-                        sx={{
-                          textAlign: "left",
-                          fontFamily: "poppins",
-                          fontWeight: 400,
-                          fontStyle: "normal",
-                          fontSize: isMobile ? "12px" : "14px",
-                          lineHeight: isMobile ? "12px" : "14px",
-                        }}
+                        sx={textStyle}
                       >
                         {row.ship1}
                       </Typography>
                     </TableCell>
 
                     <TableCell
-                      sx={{
-                        textAlign: "left",
-                        fontFamily: "poppins",
-                        fontWeight: 400,
-                        fontStyle: "normal",
-                        fontSize: isMobile ? "12px" : "14px",
-                        lineHeight: isMobile ? "12px" : "14px",
-                      }}
+                      sx={textStyle}
                     >
                       {row.role}
                     </TableCell>
@@ -361,6 +213,7 @@ export default function SeafarerTable({
                     <TableCell>
                       <Typography
                         sx={{
+                          whiteSpace:"nowrap",
                           justifycontent: "center",
                           fontFamily: "Poppins",
                           fontWeight: 400,
@@ -461,7 +314,7 @@ export default function SeafarerTable({
                         sx={{
                           display: "flex",
                           alignItems: "center",
-                          justifyContent: "space-evenly",
+                          justifyContent: "center",
                           gap: 1,
                           direction: "row",
                           lineHeight: "12px",

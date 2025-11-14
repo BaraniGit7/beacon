@@ -26,7 +26,7 @@ export default function Password(
                 alignItems: "center",
                 fontWeight: 400,
                 color: "#259BC1",
-
+                pr:1.5, //for close button padding reduce on right side
                 fontFamily: "Poppins",
                 fontSize: " 17px",
               }}

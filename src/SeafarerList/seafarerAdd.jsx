@@ -434,9 +434,10 @@ export default function SeafarerDialog({
                           <Typography
                             fontWeight={400}
                             sx={{
-                           //   wordBreak: "break-all",
+                           //  wordBreak: "break-all",
                               fontSize: "14px",
                               width: "475px",
+                              flexWrap:"nowrap",
                               "@media (max-width:600px)": {
                                 fontSize: "10px",
                                  width: "10%",

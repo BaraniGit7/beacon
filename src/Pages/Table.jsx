@@ -14,14 +14,14 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField,
   Typography,
 } from "@mui/material";
 
 import { useState } from "react";
 
 export default function Tables() {
-  const [table, setTable] = useState([
+ {/* const[table,setTable]*/}  const [table] = useState([
+   
     {
       coursecode: "MSTS-200",
       coursename: "Introduction to Bridge Equipment",
@@ -287,6 +287,12 @@ export default function Tables() {
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowPerPage] = useState(4);
   const [customPage, setCustompage] = useState(1);
+  const [selectedRows,setSelectedRows]=useState([]);
+  const handleCheckBox=((code)=>(
+    setSelectedRows((prev)=>
+      prev.includes(code)? prev.filter((c)=> c!=code):[...prev,code]
+    )
+  ))
   const handlePageChange = (event, value) => {
     setPage(value);
   };
@@ -294,6 +300,14 @@ export default function Tables() {
     (page - 1) * rowsPerPage,
     page * rowsPerPage
   );
+  const headerStyles={
+     textAlign: "left",
+                  whiteSpace:"nowrap",
+                  color: "#E4E4E4",
+                  fontSize: "13px",
+                  fontFamily: "poppins",
+                  fontWeight: "bold",
+  }
   return (
     <>
       <TableContainer
@@ -323,59 +337,26 @@ export default function Tables() {
               }}
             >
               <TableCell
-                sx={{
-                  textAlign: "left",
-                  fontSize: "13px",
-                  color: "#E4E4E4",
-
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
+             sx={headerStyles}
               ></TableCell>
               <TableCell
-                sx={{
-                  textAlign: "left",
-
-                  color: "#E4E4E4",
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
+              sx={headerStyles}
               >
                 Course Code
               </TableCell>
               <TableCell
-                sx={{
-                  textAlign: "left",
-                  fontSize: "13px",
-                  color: "#E4E4E4",
-
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
+                sx={headerStyles}
+                 
               >
                 Course Name
               </TableCell>
               <TableCell
-                sx={{
-                  textAlign: "left",
-
-                  color: "#E4E4E4",
-                  fontSize: "13px",
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
+                sx={headerStyles}
               >
                 Operational Area
               </TableCell>
               <TableCell
-                sx={{
-                  textAlign: "left",
-
-                  color: "#E4E4E4",
-                  fontSize: "13px",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: "bold",
-                }}
+                sx={headerStyles}
               >
                 Functional Area
               </TableCell>
@@ -392,14 +373,7 @@ export default function Tables() {
                 Target Audience
               </TableCell>
               <TableCell
-                sx={{
-                  textAlign: "left",
-
-                  color: "#E4E4E4",
-                  fontSize: "13px",
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
+               sx={headerStyles}
               >
                 Standards
               </TableCell>
@@ -412,7 +386,8 @@ export default function Tables() {
               <TableRow key={index} sx={{ backgroundColor: "#ffff" }}>
                 <TableCell align="center">
                   <Checkbox
-                    
+                  checked={selectedRows.includes(tab.coursecode)}  
+                  onChange={()=>handleCheckBox(tab.coursecode)} 
                     sx={{
                      transform: "scale(0.8)",
                       color: "green",
@@ -448,6 +423,7 @@ export default function Tables() {
                           fontSize: "13px",
                           fontFamily: "poppins",
                           lineHeight: "20px",
+                          whiteSpace:"nowrap"
                         }}
                       >
                         {std.trim() + ")"}
@@ -466,8 +442,8 @@ export default function Tables() {
           justifyContent: "space-between",
           alignItems: "center",
           mt: 1,
-           flexWrap: "nowrap", // ✅ force single row
-        overflowX: "auto", // ✅ scrolls on mobile instead of wrapping
+           flexWrap: "nowrap", 
+        overflowX: "auto",
         whiteSpace: "nowrap",
         //  px:1,
        //flexWrap: { xs: "wrap", sm: "nowrap" }, 
@@ -511,7 +487,7 @@ export default function Tables() {
              
             }}
           >
-            {[5, 10, 15, 20].map((n) => (
+            {[2,3,4,5,6, 10, 15, 20].map((n) => (
               <MenuItem key={n} value={n} sx={{ fontSize: "12px" }}>
                 {n}
               </MenuItem>
