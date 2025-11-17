@@ -15,8 +15,10 @@ import {
   Typography,
   Paper,
   Divider,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import { Cancel } from "@mui/icons-material";
 
 const borderColor = "rgba(0, 187, 255, 1)";
 const borderStyle = `1px solid ${borderColor}`;
@@ -25,6 +27,8 @@ const MyDialog = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const theme=useTheme();
+  const isMobile=useMediaQuery(theme.breakpoints.down("sm"));
 
   const pendingCertificates = [
     { company: "IMC Ship Management PTE LTD", count: 23 },
@@ -43,16 +47,20 @@ const MyDialog = () => {
     { company: "Sandbox", duplicate: 0, idMismatch: 7, courseMismatch: 15 },
   ];
 
-  const tableContainerStyle = {
-    borderRadius: "5px",
-    overflow: "hidden",
-    mb: 4,
-    border: borderStyle, 
-   
-  };
+ const tableContainerStyle = {
+  borderRadius: "5px",
+  overflowX: "auto",
+  WebkitOverflowScrolling: "touch",
+  border: borderStyle,
+};
 
   const cellBorderRight = {
     borderRight: borderStyle,
+    fontFamily: "poppins",
+    fontSize:isMobile? "13px":"16px",
+    fontWeight: 600,
+    lineHeight: "100%",
+    padding:isMobile?  "6px 8px": "7px 9px",
     "&:last-child": { borderRight: "none" },
   };
 
@@ -70,131 +78,171 @@ const MyDialog = () => {
         PaperProps={{
           sx: {
             borderRadius: 4,
-            p: 2,
-            px:5,
+            p: isMobile ? 2 : 4,
+            pt:"10px",
             backgroundColor: "#f9fbfc",
-            overflow: "hidden",
           },
         }}
       >
-        <DialogTitle
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            fontWeight: "700",
-            color: "primary.main",
-            pb: 1,
-            pt:0,
-            mt:0,
-          }}
-        >
-          Offline Certificate Information
-          <IconButton onClick={handleClose} >
-            <CloseIcon  color="primary" />
-          </IconButton>
-        </DialogTitle>
-        <Divider sx={{ mx: -3, mb: 2 }} />
+      <DialogTitle
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between", 
+    position: "relative",
+    fontWeight: 700,
+    color: "#006D90",
+   pr:0,
+   pl:2,
+   py:1.5,
+   gap:isMobile?0:"auto",
+    whiteSpace:  "nowrap",
+    fontFamily: "poppins",
+    fontSize:isMobile?"16px":"24px",
+  }}
+>
+  Offline Certificate Information
 
-        <DialogContent sx={{ overflow: "visible", p: 0 }}>
+ 
+  <IconButton
+    onClick={handleClose}
+    sx={{
+      
+   
+      color: "#006D90",
+    }}
+  >
+    <Cancel  sx={{  fontSize:"25px",
+     }} />
+  </IconButton>
+</DialogTitle>
+        <Divider sx={{ mx: isMobile ? -2 : -4 , mb: 0.5 }} />
+
+        <DialogContent sx={{   p: 0,
+    px:isMobile ? 1.5 : 2 }}>
+          {/* Pending Header */}
           <Typography
-            variant="h6"
-            fontWeight={700}
-            textAlign="center"
-            color="primary.main"
-            mb={2}
-          
+            sx={{
+              textAlign: "center",
+              color: "#006D90",
+              whiteSpace:"nowrap",
+              p:1,
+              fontSize: isMobile ? "16px" : "24px" ,
+              fontFamily: "poppins",
+              fontWeight: 700,
+            }}
           >
             Pending Certificate Approval
           </Typography>
 
-    
-          <TableContainer component={Paper}  elevation={0} sx={tableContainerStyle}>
-            <Table size="small" sx={{ borderCollapse: "separate", width: "100%" }}>
+          {/* Pending Table */}
+          <TableContainer component={Paper} elevation={0} sx={tableContainerStyle}>
+            <Table size="small" sx={{ borderCollapse: "collapse", }}>
               <TableBody sx={{ backgroundColor: "#dfecf5ff" }}>
                 {pendingCertificates.map((item, index) => (
                   <TableRow
                     key={index}
                     sx={{
                       "&:not(:last-child) td": { borderBottom: borderStyle },
-                      "&:last-child td": { borderBottom: "none" }
+                      "&:last-child td": { borderBottom: "none" },
                     }}
                   >
-                    <TableCell sx={{ fontWeight: "600", ...cellBorderRight }}>
-                      {item.company}
-                    </TableCell>
-                    <TableCell
-                      sx={{
-                        textAlign: "left",
-                        fontWeight: "600",
-                        ...cellBorderRight,
-                      }}
-                    >
-                      {item.count}
-                    </TableCell>
+                    <TableCell sx={{ ...cellBorderRight }}>{item.company}</TableCell>
+                    <TableCell sx={{ ...cellBorderRight }}>{item.count}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
 
+          {/* Duplicate Header */}
           <Typography
-            variant="h6"
-            fontWeight={700}
-            textAlign="center"
-            color="primary.main"
-            mb={2}
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: 700,
+              textAlign: "center",
+              color: "#006D90",
+              p:1 ,
+              whiteSpace:"nowrap",
+              fontSize:  isMobile ? "16px" : "24px" ,
+            }}
           >
             Duplicates and Mismatches
           </Typography>
 
-        
-          <TableContainer component={Paper} elevation={0} sx={tableContainerStyle}>
-            <Table size="small" sx={{ borderCollapse: "separate", width: "100%" }}>
-              <TableHead sx={{ backgroundColor: "#d6e6f7ff"}}>
-                <TableRow>
-                  {[
-                    "Company Name",
-                    "Duplicate",
-                    "ID Mismatch",
-                    "Course Mismatch",
-                  ].map((header, idx) => (
-                    <TableCell
-                      key={idx}
-                      sx={{ fontWeight: "700",
+          {/* Duplicate Table */}
+          <TableContainer
+  component={Paper}
+  elevation={0}
+  sx={{
+    width: "100%",
+    overflowX: { xs: "auto", md: "visible" }, 
+    maxHeight: "70vh", mb:2,
+    
+    ...tableContainerStyle,
+  }}
+>
+  <Table
+    size="small"
+    sx={{
+      borderCollapse: "collapse",
+      minWidth: { xs: "600px", md: "auto" }, 
+    }}
+  >
+    <TableHead sx={{ backgroundColor: "#dfecf5ff" }}>
+      <TableRow>
+        {["Company Name", "Duplicate", "ID Mismatch", "Course Mismatch"].map(
+          (header, idx) => (
+            <TableCell
+              key={idx}
+              sx={{
+                fontWeight: 700,
+                fontFamily: "Poppins",
+                fontSize:isMobile? "12px" : "16px",
                 borderRight: borderStyle,
+                whiteSpace:isMobile?"wrap": "nowrap",
+                padding:  isMobile? "6px 8px": "8px 12px" ,
                 "&:last-child": { borderRight: "none" },
-                borderBottom: borderStyle }}
-                    >
-                      {header}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody sx={{ backgroundColor:"#d6e6f7ff" }}>
-                {duplicatesData.map((row, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{
-                      "&:not(:last-child) td": { borderBottom: borderStyle },
-                      "&:last-child td": { borderBottom: "none" },
-                      
-                    }}
-                  >
-                    <TableCell
-                      sx={{ width: 500, fontWeight: "600", ...cellBorderRight }}
-                    >
-                      {row.company}
-                    </TableCell>
-                    <TableCell sx={cellBorderRight}>{row.duplicate}</TableCell>
-                    <TableCell sx={cellBorderRight}>{row.idMismatch}</TableCell>
-                    <TableCell sx={cellBorderRight}>{row.courseMismatch}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                borderBottom: borderStyle,
+              }}
+            >
+              {header}
+            </TableCell>
+          )
+        )}
+      </TableRow>
+    </TableHead>
+
+    <TableBody sx={{ backgroundColor: "#dfecf5ff" }}>
+      {duplicatesData.map((row, index) => (
+        <TableRow
+          key={index}
+          sx={{
+            "&:not(:last-child) td": { borderBottom: borderStyle },
+            "&:last-child td": { borderBottom: "none" },
+          }}
+        >
+          <TableCell
+            sx={{
+              whiteSpace: "normal",
+              wordBreak: "break-word",
+              ...cellBorderRight,
+            }}
+          >
+            {row.company}
+          </TableCell>
+          <TableCell sx={cellBorderRight}>{row.duplicate}</TableCell>
+          <TableCell sx={cellBorderRight}>{row.idMismatch}</TableCell>
+          <TableCell sx={cellBorderRight}>{row.courseMismatch}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
+
+      
         </DialogContent>
+           
       </Dialog>
     </Box>
   );

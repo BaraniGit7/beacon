@@ -7,7 +7,8 @@ import AddDialog from "./AddDialog";
 
 export default function Ticket(){
     return(
-        <Box sx={{   backgroundColor: "#F4FCFF",}}>
+     <Box sx={{ backgroundColor: "#F4FCFF", width: "100%", p: 1 }}>
+
          <Typography
   sx={{
     display: "flex",

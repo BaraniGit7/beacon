@@ -532,7 +532,7 @@ export default function Tables() {
   mx:1,
   }}>
         <Pagination
-        siblingCount={1}
+        siblingCount={0}
         boundaryCount={0}
           shape="rounded"
           count={Math.ceil(table.length / rowsPerPage)}

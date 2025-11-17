@@ -1,124 +1,190 @@
-<Typography fontFamily="Poppins" fontWeight={500} >
-  Upload Document<Typography  display="inline" color="#f80505ff">*</Typography>
-</Typography>
+import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+  Divider,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
+import { Cancel } from "@mui/icons-material";
 
+const borderColor = "#259BC1";
+const borderStyle = `1.5px solid ${borderColor}`;
 
-{!selectedSeafarer?.Document (
-  <><Box
-                sx={{
-                  border: "2px dashed #B0BEC5",
-                  borderRadius: 2,
-                  p: 3,
-                  textAlign: "center",
-                  backgroundColor: "#F9FBFC",
-                  "&:hover": { backgroundColor: "#F1F5F9" },
-                  transition: "0.2s",
-                }}
-              >
-                <input required
-                  type="file"
-                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                  hidden
-                  id="file-upload"
-                  onChange={handleChangeFile} />
-                <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
-                  <DriveFolderUploadRounded
-                    sx={{
-                    
-                      color: "#064575"
-                      
-                    }} />
-                  <Typography variant="body2" color="text.secondary" mt={1}>
-                    Drag your file(s) to start uploading
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{py:1}}>OR</Typography>
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      borderColor: "#064575",
-                      color: "#064575",
-                      mt: 1,
-                      textTransform: "none",
-                      fontWeight: 600,
-                    }}
-                    component="span"
-                  >
-                    Browse files
-                  </Button>
+const MyDialog = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-                </label>
-              </Box><Box> <Typography variant="caption" display="block" mt={1} color="gray">
-        Support .docs, .docx, .pdf, .jpg, .png
-      </Typography></Box></>
-) : (
-  <Box
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      border: "1px solid #064575",
-      borderRadius: 2,
-      px: 2,
-      py: 1.5,
-      mt: 1,
-      backgroundColor: "#E8F0FE",
-    }}
-  >
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-     
-      {newEntry.documentName.endsWith(".pdf") ? (
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
-          alt="pdf"
-          width={26}
-          height={26}
-        />
-      ) : newEntry.documentName.match(/\.(doc|docx)$/) ? (
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/337/337932.png"
-          alt="doc"
-          width={26}
-          height={26}
-        />
-      ) : (
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/136/136524.png"
-          alt="img"
-          width={26}
-          height={26}
-        />
-      )}
+  const pendingCertificates = [
+    { company: "IMC Ship Management PTE LTD", count: 23 },
+    { company: "Nitta Kisen Kaisha Ltd", count: 4 },
+    { company: "NSK Ship Management Private Limated", count: 25 },
+    { company: "Wideshine Management PTE Limated", count: 165 },
+  ];
 
-     
-      <Box>
-        <Typography
-          fontWeight={600}
-       
-          fontFamily="Poppins"
-          sx={{ wordBreak: "break-all" }}
-        >
-          {newEntry.documentName}
-        </Typography>
-        {newEntry.document && (
-          <Typography variant="caption" color="gray">
-            {(newEntry.document.size / 1024 / 1024).toFixed(2)} MB
+  const duplicatesData = [
+    { company: "Nitta Kisen Kaisha Ltd", duplicate: 38, idMismatch: 0, courseMismatch: 0 },
+    { company: "NSK Ship Management Private Limated", duplicate: 13, idMismatch: 0, courseMismatch: 0 },
+    { company: "Wideshine Management PTE Limated", duplicate: 0, idMismatch: 0, courseMismatch: 0 },
+    { company: "CMS Demo Company", duplicate: 138, idMismatch: 0, courseMismatch: 5 },
+    { company: "Mariner Skills Training", duplicate: 13, idMismatch: 5, courseMismatch: 21 },
+    { company: "MMSL Japan Ltd", duplicate: 0, idMismatch: 0, courseMismatch: 0 },
+    { company: "Sandbox", duplicate: 0, idMismatch: 7, courseMismatch: 15 },
+  ];
+
+  const tableContainerStyle = {
+    borderRadius: "5px",
+    overflowX: isMobile ? "auto" : "hidden",
+    border: borderStyle,
+    my: 2,
+    mx: isMobile ? 0 : 4, // equal horizontal spacing on desktop
+  };
+
+  const cellStyle = {
+    borderRight: borderStyle,
+    fontFamily: "poppins",
+    fontSize: isMobile ? "13px" : "16px",
+    fontWeight: 600,
+    lineHeight: "100%",
+    padding: isMobile ? "6px 8px" : "8px 12px",
+    "&:last-child": { borderRight: "none" },
+  };
+
+  return (
+    <Box>
+      <Button variant="contained" color="primary" onClick={handleOpen}>
+        Try
+      </Button>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="md"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 4,
+            p: isMobile ? 2 : 4,
+            backgroundColor: "#f9fbfc",
+          },
+        }}
+      >
+        {/* Dialog Title */}
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 1 }}>
+          <Typography
+            sx={{
+              fontWeight: 700,
+              color: "#006D90",
+              fontFamily: "poppins",
+              fontSize: { xs: "18px", sm: "24px" },
+            }}
+          >
+            Offline Certificate Information
           </Typography>
-        )}
-      </Box>
+          <IconButton onClick={handleClose} sx={{ color: "#006D90" }}>
+            <Cancel />
+          </IconButton>
+        </Box>
+        <Divider sx={{ mb: 2 }} />
+
+        <DialogContent sx={{ p: 0 }}>
+          {/* Pending Certificates Table */}
+          <Typography
+            sx={{
+              textAlign: "center",
+              color: "#006D90",
+              fontWeight: 700,
+              fontFamily: "poppins",
+              fontSize: { xs: "18px", sm: "24px" },
+              mb: 1,
+            }}
+          >
+            Pending Certificate Approval
+          </Typography>
+
+          <TableContainer component={Paper} elevation={0} sx={tableContainerStyle}>
+            <Table sx={{ minWidth: isMobile ? 500 : "100%", borderCollapse: "collapse" }} size="small">
+              <TableBody sx={{ backgroundColor: "#dfecf5ff" }}>
+                {pendingCertificates.map((item, index) => (
+                  <TableRow key={index} sx={{ "&:not(:last-child) td": { borderBottom: borderStyle } }}>
+                    <TableCell sx={cellStyle}>{item.company}</TableCell>
+                    <TableCell sx={cellStyle}>{item.count}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          {/* Duplicates Table */}
+          <Typography
+            sx={{
+              textAlign: "center",
+              color: "#006D90",
+              fontWeight: 700,
+              fontFamily: "poppins",
+              fontSize: { xs: "18px", sm: "24px" },
+              mt: 3,
+              mb: 1,
+            }}
+          >
+            Duplicates and Mismatches
+          </Typography>
+
+          <TableContainer component={Paper} elevation={0} sx={tableContainerStyle}>
+            <Table sx={{ minWidth: isMobile ? 600 : "100%", borderCollapse: "collapse" }} size="small">
+              <TableHead sx={{ backgroundColor: "#dfecf5ff" }}>
+                <TableRow>
+                  {["Company Name", "Duplicate", "ID Mismatch", "Course Mismatch"].map((header, idx) => (
+                    <TableCell
+                      key={idx}
+                      sx={{
+                        fontWeight: 700,
+                        fontFamily: "poppins",
+                        fontSize: { xs: "12px", sm: "16px" },
+                        borderRight: borderStyle,
+                        whiteSpace: "nowrap",
+                        padding: isMobile ? "6px 8px" : "8px 12px",
+                        "&:last-child": { borderRight: "none" },
+                        borderBottom: borderStyle,
+                      }}
+                    >
+                      {header}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody sx={{ backgroundColor: "#dfecf5ff" }}>
+                {duplicatesData.map((row, index) => (
+                  <TableRow key={index} sx={{ "&:not(:last-child) td": { borderBottom: borderStyle } }}>
+                    <TableCell sx={{ ...cellStyle, whiteSpace: "normal", wordBreak: "break-word" }}>
+                      {row.company}
+                    </TableCell>
+                    <TableCell sx={cellStyle}>{row.duplicate}</TableCell>
+                    <TableCell sx={cellStyle}>{row.idMismatch}</TableCell>
+                    <TableCell sx={cellStyle}>{row.courseMismatch}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </DialogContent>
+      </Dialog>
     </Box>
+  );
+};
 
-
-    <IconButton
-      onClick={() =>
-        setNewEntry((prev) => ({
-          ...prev,
-          document: null,
-          documentName: "",
-        }))
-      }
-      color="error"
-    >
-      <Close />
-    </IconButton>
-  </Box>
-)}
+export default MyDialog;

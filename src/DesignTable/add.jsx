@@ -1,359 +1,235 @@
-<Grid
-  container
-  columnSpacing={1}
-  rowSpacing={1}
-  sx={{
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    "@media (max-width:600px)": {
-      flexDirection: "column",
-    },
-  }}
->
-  {[
-    {
-      label: selectedTab === "coc" ? "COC Name" : "Course Name",
-      name: "name",
-      type: "select",
-      options:
-        selectedTab === "coc"
-          ? ["Deck Rating", "Captain", "Engineer", "Crew"]
-          : ["Web", "Cloud", "Test", "Security"],
-      placeholder:
-        selectedTab === "coc" ? "Select COC Name" : "Select Course Name",
-    },
-    {
-      label: "Flag State",
-      name: "flagState",
-      type: "select",
-      options: ["India", "Panama", "Liberia", "Bahamas"],
-      placeholder: "Select Flag State",
-    },
-    {
-      label: "Date Issued",
-      name: "dateIssued",
-      type: "date",
-      placeholder: "Select Date Issued",
-    },
-    {
-      label: "Valid Until",
-      name: "validUntil",
-      type: "date",
-      placeholder: "Select Valid Date",
-    },
-  ].map((field) => (
-    <Grid item xs={12} sm={6} key={field.name}>
-      {/* ---- Label ---- */}
-      <Typography
-        variant="body2"
-        sx={{
-          fontFamily: "Poppins",
-          fontWeight: 400,
-          fontSize: "12px",
-          mb: 0.5,
-        }}
-      >
-        {field.label} (
-        <Box component="span" sx={{ color: "#ff0000ff", display: "inline" }}>
-          *
-        </Box>
-        )
-      </Typography>
+import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+  Divider,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
+import { Cancel } from "@mui/icons-material";
 
-      {/* ---- Input ---- */}
-      {field.type === "select" ? (
-        <TextField
-          select
-          required
-          fullWidth
-          size="small"
-          name={field.name}
-          value={newEntry[field.name] || ""}
-          onChange={handleChange}
-          SelectProps={{
-            displayEmpty: true,
-            renderValue: (selected) =>
-              selected ? (
-                selected
-              ) : (
-                <span style={{ fontSize: "10px", color: "#9e9e9e" }}>
-                  {field.placeholder}
-                </span>
-              ),
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              borderRadius: "10px",
-              width: 210,
-              height: 27,
-              "& fieldset": {
-                borderColor: "#B0BEC5",
-              },
-              "&:hover fieldset": {
-                borderColor: "#064575",
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#064575",
-              },
-            },
-            "& .MuiInputBase-input": {
-              padding: "8px 10px",
-              fontSize: "0.7rem",
-            },
-            "@media (max-width:900px)": {
-              width: "100%",
-              height: "40px",
-            },
-          }}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          {field.options.map((opt) => (
-            <MenuItem
-              key={opt}
-              value={opt}
-              sx={{ fontSize: "13px", fontFamily: "Poppins" }}
-            >
-              {opt}
-            </MenuItem>
-          ))}
-        </TextField>
-      ) : (
-        <TextField
-          fullWidth
-          required
-          size="small"
-          name={field.name}
-          type={field.type}
-          value={newEntry[field.name] || ""}
-          onChange={handleChange}
-          InputLabelProps={{ shrink: true }}
-          placeholder={field.placeholder}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              borderRadius: "10px",
-              height: 27,
-              width: 210,
-              "& fieldset": {
-                borderColor: "#B0BEC5",
-              },
-              "&:hover fieldset": {
-                borderColor: "#064575",
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#064575",
-              },
-            },
-            "& .MuiInputBase-input": {
-              padding: "8px 10px",
-              fontSize: "10px",
-            },
-            "@media (max-width:900px)": {
-              width: "100%",
-              height: "40px",
-            },
-          }}
-        />
-      )}
-    </Grid>
-  ))}
-</Grid>;
-<><DialogActions sx={{ px: 3, pb: 2 }}>
-  <Grid>
-    {/* {" "} */}
-    {editIndex === null ? (
-      <Button
-        sx={{
-          backgroundColor: "#006D90",
-          textTransform: "none",
-          fontSize: "10px",
-          "& .MuiButton-startIcon": {
-            marginRight: "4px",
-            "& > *:nth-of-type(1)": {
-              fontSize: "13px",
-            },
+const borderColor = "#259BC1";
+const borderStyle = `1.5px solid ${borderColor}`;
+
+const MyDialog = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const theme=useTheme();
+  const isMobile=useMediaQuery(theme.breakpoints.down("sm"));
+
+  const pendingCertificates = [
+    { company: "IMC Ship Management PTE LTD", count: 23 },
+    { company: "Nitta Kisen Kaisha Ltd", count: 4 },
+    { company: "NSK Ship Management Private Limated", count: 25 },
+    { company: "Wideshine Management PTE Limated", count: 165 },
+  ];
+
+  const duplicatesData = [
+    { company: "Nitta Kisen Kaisha Ltd", duplicate: 38, idMismatch: 0, courseMismatch: 0 },
+    { company: "NSK Ship Management Private Limated", duplicate: 13, idMismatch: 0, courseMismatch: 0 },
+    { company: "Wideshine Management PTE Limated", duplicate: 0, idMismatch: 0, courseMismatch: 0 },
+    { company: "CMS Demo Company", duplicate: 138, idMismatch: 0, courseMismatch: 5 },
+    { company: "Mariner Skills Training", duplicate: 13, idMismatch: 5, courseMismatch: 21 },
+    { company: "MMSL Japan Ltd", duplicate: 0, idMismatch: 0, courseMismatch: 0 },
+    { company: "Sandbox", duplicate: 0, idMismatch: 7, courseMismatch: 15 },
+  ];
+
+  const tableContainerStyle = {
+    borderRadius: "5px",
+   
+  
+  overflowX:isMobile?"auto":"hidden",
+    border: borderStyle,
+  };
+
+  const cellBorderRight = {
+    borderRight: borderStyle,
+    fontFamily: "poppins",
+    fontSize:isMobile? "13px":"16px",
+    fontWeight: 600,
+    lineHeight: "100%",
+    padding:isMobile?  "6px 8px": "7px 9px",
+    "&:last-child": { borderRight: "none" },
+  };
+
+  return (
+    <Box>
+      <Button variant="contained" color="primary" onClick={handleOpen}>
+        Try
+      </Button>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="md"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 4,
+            p: isMobile ? 2 : 4,
+            pt:"10px",
+          
+            backgroundColor: "#f9fbfc",
           },
         }}
-        variant="contained"
-        onClick={handleAddOrEditEntry}
-        startIcon={<Add />}
       >
-        Add
-      </Button>
-    ) : (
-      <Button
-        sx={{
-          backgroundColor: "#006D90",
-          textTransform: "none",
-          fontSize: "10px",
-          "& .MuiButton-startIcon": {
-            marginRight: "4px",
-            "& > *:nth-of-type(1)": {
-              fontSize: "13px",
-            },
-          },
-        }}
-        variant="contained"
-        onClick={handleAddOrEditEntry}
-        startIcon={<Done />}
-      >
-        Update
-      </Button>
-    )}
-  </Grid>
-</DialogActions><Box
+     
+
+        <DialogContent sx={{ overflow: "visible",   p: 0,
+    px: { xs: 1.5, sm: 2 },}}>
+   <Box>  <Typography
   sx={{
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
-    mt: 2,
-    px: 1,
-    flexWrap: "wrap",
-    gap: 1,
-    // position: "relative",
-    "@media(max-width:768px)": {
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      gap: 1
-    }
+    justifyContent: "space-between", // center title
+   // position: "relative",
+    fontWeight: 700,
+    color: "#006D90",
+    py: 0,
+    pb: 1,
+    pt:1,
+
+    m:0,
+    px: 0,
+   
+    whiteSpace: "nowrap",
+    fontFamily: "poppins",
+    fontSize: { xs: "18px", sm: "24px" },
   }}
 >
-    <Box
-      sx={{
-        // position: "absolute",
-        display: "flex",
-        alignItems: "center",
-        gap: 0.5,
-        "@media(max-width:768px)": {
-          order: 2,
-        }
-      }}
-    >
-      <Typography sx={{ fontFamily: "poppins", fontSize: "12px" }}>
-        Show
-      </Typography>
-      <Select
-        value={rowsPerPage}
-        onChange
-        size="small"
-        sx={{
-          backgroundColor: "#ffff",
-          fontSize: "11px",
-          height: "26px",
-          minWidth: "50px",
-          "& .MuiSelect-select": {
-            py: "2px",
-            px: "6px",
-          },
-        }}
-      >
-        {[5, 10, 15, 20].map((n) => (
-          <MenuItem key={n} value={n} sx={{ fontSize: "12px" }}>
-            {n}
-          </MenuItem>
-        ))}
-        {/* <MenuItem value="custom">custom</MenuItem> */}
-      </Select>
+  Offline Certificate Information <IconButton
+    onClick={handleClose}
+    sx={{
+      // pushes icon to extreme right
+   
+     
+      color: "#006D90",
+    }}
+  >
+    <Cancel />
+  </IconButton></Typography>
 
-      {/* {customPage && (
-      <TextField
-        type="number"
-        placeholder="Enter"
-        size="small"
-        inputProps={{
-          min: 1,
-          style: { fontSize: 11, width: 45, padding: "2px 4px" },
-        }}
-        sx={{
-          height: "26px",
-          "& .MuiOutlinedInput-root": {
-            borderRadius: "6px",
-            height: "26px",
-            backgroundColor: "#ffff",
-          },
-        }}
-        onChange={(e) => {
-          const val = Number(e.target.value);
-          if (val > 0) {
-            setRowPerPage(val);
-            setPage(1);
-          }
-        }}
-      />
-    )} */}
-      {/* <Typography sx={{ fontSize: "12px", fontFamily: "poppins" }}>
-      Row
-    </Typography> */}
+  {/* CLOSE ICON — stays at right end */}
+ <Divider sx={{mb:2,mx:-6}}/></Box> 
+          {/* Pending Header */}
+          <Typography
+            sx={{
+              textAlign: "center",
+              color: "#006D90",
+             
+              p:1,
+              fontSize: { xs: "18px", sm: "24px" },
+              fontFamily: "poppins",
+              fontWeight: 700,
+            }}
+          >
+            Pending Certificate Approval
+          </Typography>
+
+          {/* Pending Table */}
+          <TableContainer component={Paper} elevation={0} sx={tableContainerStyle}>
+            <Table size="small" sx={{ borderCollapse: "collapse", }}>
+              <TableBody sx={{ backgroundColor: "#dfecf5ff" }}>
+                {pendingCertificates.map((item, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{
+                      "&:not(:last-child) td": { borderBottom: borderStyle },
+                      "&:last-child td": { borderBottom: "none" },
+                    }}
+                  >
+                    <TableCell sx={{ ...cellBorderRight }}>{item.company}</TableCell>
+                    <TableCell sx={{ ...cellBorderRight }}>{item.count}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          {/* Duplicate Header */}
+          <Typography
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: 700,
+              textAlign: "center",
+              color: "#006D90",
+              p:1,
+             
+              fontSize: { xs: "18px", sm: "24px" },
+            }}
+          >
+            Duplicates and Mismatches
+          </Typography>
+
+          {/* Duplicate Table */}
+          <TableContainer component={Paper} elevation={0} sx={tableContainerStyle}>
+            <Table size="small" sx={{ minWidth: isMobile ? 600 : "100%",  borderCollapse: "collapse",}}>
+              <TableHead sx={{ backgroundColor: "#dfecf5ff" }}>
+                <TableRow>
+                  {["Company Name", "Duplicate", "ID Mismatch", "Course Mismatch"].map((header, idx) => (
+                    <TableCell
+                      key={idx}
+                      sx={{
+                        fontWeight: 700,
+                        fontFamily: "poppins",
+                        fontSize: { xs: "12px", sm: "16px" },
+                        borderRight: borderStyle,
+                        whiteSpace: "nowrap",
+                        padding: { xs: "6px 8px", sm: "8px 12px" },
+                        "&:last-child": { borderRight: "none" },
+                        borderBottom: borderStyle,
+                      }}
+                    >
+                      {header}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+
+              <TableBody sx={{ backgroundColor: "#dfecf5ff" }}>
+                {duplicatesData.map((row, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{
+                      "&:not(:last-child) td": { borderBottom: borderStyle },
+                      "&:last-child td": { borderBottom: "none" },
+                    }}
+                  >
+                    <TableCell
+                      sx={{
+                      
+                        whiteSpace: "normal",
+                        wordBreak: "break-word",
+                        ...cellBorderRight,
+                      }}
+                    >
+                      {row.company}
+                    </TableCell>
+                    <TableCell sx={cellBorderRight}>{row.duplicate}</TableCell>
+                    <TableCell sx={cellBorderRight}>{row.idMismatch}</TableCell>
+                    <TableCell sx={cellBorderRight}>{row.courseMismatch}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </DialogContent>
+      </Dialog>
     </Box>
-    <Box sx={{
-      display: "flex",
-      justifyContent: "center",
+  );
+};
 
-      //  mt: 2,
-      flexGrow: 1, // 👈 allows wrapping on small screens
-
-      "@media (max-width: 600px)": {
-        order: 1,
-        width: "100%",
-      },
-    }}></Box>
-    <Pagination
-      siblingCount={1}
-      boundaryCount={1}
-      shape="rounded"
-      count={Math.ceil(table.length / rowsPerPage)}
-      page={page}
-      onChange={handlePageChange}
-      showFirstButton={false}
-      showLastButton={false}
-      renderItem={(item) => {
-        if (item.type === "previous" || item.type === "next") {
-          return (
-            <PaginationItem {...item} slots={{ previous: ArrowBack, next: ArrowForward }} />
-          );
-        }
-        if (item.page === page) {
-          return <PaginationItem {...item} />;
-        }
-        return (
-          <PaginationItem {...item} page="." disabled sx={{ pointerEvents: "none", minWidth: "6px", opacity: 0.6 }} />
-        );
-      } }
-
-      sx={{
-        "& .MuiPaginationItem-root": {
-          fontSize: "10px",
-          margin: "0px 2px",
-          color: "#006D90",
-          minWidth: "20px",
-          height: "20px",
-          padding: "0px",
-        },
-        "& .MuiPaginationItem-root.Mui-selected": {
-          backgroundColor: "#006D90",
-          color: "#fff",
-        },
-        "& .MuiPaginationItem-root.Mui-selected:hover": {
-          backgroundColor: "#00c0ebff",
-        },
-      }} />
-
-    <Button sx={{
-      backgroundColor: "#006D90",
-      fontSize: "10px",
-      height: "26px",
-      px: 1.5,
-      display: "flex",
-      alignItems: "center",
-      gap: 0.5,
-      "@media (max-width: 768px)": {
-        order: 3,
-        width: "100%",
-        justifyContent: "center"
-      }
-    }} variant="contained"><Save sx={{ fontSize: "16px" }} />Save & Enroll</Button>
-  </Box></>
+export default MyDialog;

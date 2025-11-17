@@ -1,27 +1,21 @@
-import { Box, MenuItem, Pagination, Select, TextField, Typography } from "@mui/material";
+import { Box, MenuItem, Pagination, Select, Typography } from "@mui/material";
 
 export default function PagesX({isMobile,rowsPerPage,handleRow,total,handlePageChange,pages}){
     return(
            <Box
   sx={{
+    width: "100%",
     display: "flex",
-  justifyContent: "center",
     alignItems: "center",
-    flexWrap: "wrap", 
-    gap:isMobile? 5 : 2,
+    justifyContent: "space-between", 
+    px: isMobile ? 1 : 2,
     mt: 1,
     mb: 1,
-     width: "100%",
-        position: "relative",
     
   }}
 >
   {/* Left side: "Show" and Select */}
-  <Box sx={{  position: "absolute",
-          left: isMobile ? "10px" : "20px",
-          display: "flex",
-          alignItems: "center",
-          gap: 1, }}>
+  <Box sx={{  display: "flex", alignItems: "center", gap: 1  }}>
     <Typography
       sx={{ fontSize: 13, fontFamily: "Poppins", fontWeight: 400 }}
     >
@@ -48,7 +42,7 @@ export default function PagesX({isMobile,rowsPerPage,handleRow,total,handlePageC
   </Box>
 
   {/* Right side: Pagination */}
-  <Pagination
+<Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}> <Pagination
     count={total}
     onChange={handlePageChange}
     page={pages}
@@ -60,14 +54,14 @@ export default function PagesX({isMobile,rowsPerPage,handleRow,total,handlePageC
       "& .MuiPaginationItem-root": {
         color: "#259BC1",
         fontSize: isMobile ? 10: 12,
-        mx: isMobile?0 : 0.7,
+        mx: isMobile ? 0 : 0.7,
       },
       "& .MuiPaginationItem-root.Mui-selected": {
         backgroundColor: "#259BC1",
         color: "#fff",
       },
     }}
-  />
+  /></Box>
 </Box>
 
     )

@@ -19,7 +19,7 @@ import { useState } from "react";
 import YesDialog from "./Yes";
 
 export default function TableTicket() {
-  const data  = useState([
+  const[data] = useState([
     {
       sno: "1",
       TicketDate: "11/07/2025",
@@ -421,6 +421,7 @@ export default function TableTicket() {
                   fontFamily: "poppins",
                  fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
+                  whiteSpace:"nowrap"
                 }}
               >
                 Ticket Date
@@ -476,6 +477,7 @@ export default function TableTicket() {
                   fontFamily: "poppins",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
+                     whiteSpace:"nowrap"
                 }}
               >
                 Answered Date
@@ -487,6 +489,7 @@ export default function TableTicket() {
                   fontFamily: "poppins",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
+                     whiteSpace:"nowrap"
                 }}
               >
                 SLA Met?
@@ -559,6 +562,7 @@ export default function TableTicket() {
                       display: "flex",
                       fontFamily: "poppins",
                       fontWeight: 400,
+                         whiteSpace:"nowrap"
                     }}
                   >
                     {tick.mari}
@@ -589,6 +593,7 @@ export default function TableTicket() {
                     fontSize: "12px",
                     fontFamily: "poppins",
                     fontWeight: 400,
+                       whiteSpace:"nowrap"
                   }}
                 >
                   {tick.area}
@@ -658,22 +663,18 @@ export default function TableTicket() {
       </TableContainer>
       <Box
         sx={{
-          display: "flex",
-          justifyContent: isMobile?"flex-start":"center",
-          alignItems: "center",
-          position: "relative",
-          p:isMobile? 1 : 2,
-          gap:isMobile?1:2
+         width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between", 
+    px: isMobile ? 1 : 2,
+    mt: 1,
+    mb: 1,
         }}
       >
         <Box
           sx={{
-        left: isMobile ? "auto" : 0,
-            position: isMobile ? "static" : "absolute",
-            display: "flex",
-            alignItems: "center",
-             gap: isMobile ? 2 : 1,
-        //  mb: isMobile ? 1 : 0,
+       display: "flex", alignItems: "center", gap: 1 
           }}
         >
           <Typography
@@ -704,7 +705,7 @@ export default function TableTicket() {
             ))}
           </Select>
         </Box>
-        <Box > <Pagination
+        <Box sx={{flex:1,display:"flex",justifyContent:"center",gap:1}} > <Pagination
           count={total}
           onChange={handlePageChange}
           page={pages}

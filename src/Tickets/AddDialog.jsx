@@ -242,7 +242,7 @@ export default function AddDialog() {
                     }}
                     sx={{
                       "& .MuiOutlinedInput-root": {
-                        borderRadius: "10px",  width: 210,
+                        borderRadius: "10px",  width:isMobile? "100%":210,
                             height: 27,
                             paddingLeft: "10px",
                         "& fieldset": { borderColor: "#B0BEC5" },
@@ -279,7 +279,7 @@ export default function AddDialog() {
                     }}
                     sx={{
                       "& .MuiOutlinedInput-root": {
-                        borderRadius: "10px",width: 210,
+                        borderRadius: "10px",width: isMobile?"100%":210,
                             height: 27,
                         "& fieldset": { borderColor: "#B0BEC5" },
                         "&:hover fieldset": { borderColor: "#064575" },
