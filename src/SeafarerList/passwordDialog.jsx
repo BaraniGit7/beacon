@@ -1,4 +1,4 @@
-import { Check, Close, Visibility, VisibilityOff } from "@mui/icons-material";
+import { Check, Close, Done, DoneAllOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
@@ -27,11 +27,11 @@ export default function Password(
                 fontWeight: 400,
                 color: "#259BC1",
                 pr:1.5, //for close button padding reduce on right side
-                fontFamily: "Poppins",
-                fontSize: " 17px",
+                fontFamily: "Poppins,sans-serif",
+                fontSize: " 16px",
               }}
             >
-              SeaFarer Password
+              Seafarer Password
               <IconButton sx={{ color: "#259BC1" }} onClick={closeDialogs}>
                 <Close
                   sx={{
@@ -47,7 +47,7 @@ export default function Password(
             <DialogContent
               sx={{ display: "flex", flexDirection: "column", gap: 2 }}
             >
-              <Typography sx={{ fontSize: "16px" ,fontFamily:"poppins"}}>
+              <Typography sx={{ fontSize: "14px" ,fontFamily:"poppins,sans-serif"}}>
                 Enter your Password
                 <span> </span>
                 <Typography display="inline" color="#f80000ff">
@@ -70,6 +70,7 @@ export default function Password(
                   )
                 }}
                 sx={{
+                 mb:1,
                   borderRadius: "1px",
                   fontSize: "12px",
                   "& .MuiInputBase-input::placeholder": {
@@ -78,7 +79,8 @@ export default function Password(
                   },
                    "& .MuiOutlinedInput-root": {
                             borderRadius: "px",
-                          
+                          fontFamily:"poppins,sans-serif",
+                          fontSize:"14px",
                             paddingLeft: "10px",
                             "& fieldset": {
                               borderWidth: "1px",
@@ -93,28 +95,25 @@ export default function Password(
                           },
                     
                 }}
+                
               />
-            </DialogContent>
-            <DialogActions>
-              <Button
+               <Button
                 variant="contained"
-                sx={{
+                sx={{  
+                      
+                  ml:"auto",
                   backgroundColor: "#259BC1",
                   textTransform: "none",
-                  fontSize: "12px",
-                  "& .MuiButton-startIcon": {
-                    marginRight: "4px",
-                    "& > *:nth-of-type(1)": {
-                      fontSize: "13px",
-                    },
-                  },
+                  fontSize: "13px",
                 }}
                 onClick={closeDialogs}
-                startIcon={<Check />}
+             
               >
+                <Done sx={{ fontSize: "22px",  marginRight: "5px"}}/>
                 Update
               </Button>
-            </DialogActions>
+            </DialogContent>
+           
           </Dialog>
     )
 }

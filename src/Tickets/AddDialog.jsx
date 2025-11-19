@@ -35,7 +35,9 @@ export default function AddDialog() {
   const isMobile = useMediaQuery("(max-width:900px)");
 
   const openDialog = () => setOpenAdd(true);
-  const closeDialogs = () => setOpenAdd(false);
+  const closeDialogs = () => {setOpenAdd(false);
+    setOpenAdd("");
+  };
 
   const [newSeafarer, setNewSeafarer] = useState({
     name: "",
@@ -120,7 +122,7 @@ export default function AddDialog() {
         startIcon={<Add sx={{fontSize:"12px"}} />}
         sx={{
           textTransform: "none",
-          fontFamily: "Poppins",
+          fontFamily: "Poppins,sans-serif",
           fontWeight: 500,
           fontSize: "12px",
           backgroundColor: "#259BC1",
@@ -153,7 +155,7 @@ export default function AddDialog() {
           sx={{
             py: 1,
             px: 2,
-            fontFamily: "Poppins",
+            fontFamily: "Poppins,sans-serif",
             fontWeight: 600,
             fontSize: "16px",
             color: "#259BC1",
@@ -202,7 +204,7 @@ export default function AddDialog() {
                 <Typography
                   variant="body2"
                   sx={{
-                    fontFamily: "Poppins",
+                    fontFamily: "Poppins,sans-serif",
                     fontWeight: 400,
                     fontSize: "14px",
                     mb: 0.5,
@@ -251,7 +253,7 @@ export default function AddDialog() {
                       },
                       "& .MuiInputBase-input": {
                         fontSize: "13px",
-                        fontFamily: "Poppins",
+                        fontFamily: "Poppins,sans-serif",
                       },
                     }}
                   >
@@ -287,7 +289,7 @@ export default function AddDialog() {
                       },
                       "& .MuiInputBase-input": {
                         fontSize: "13px",
-                        fontFamily: "Poppins",
+                        fontFamily: "Poppins,sans-serif",
                       },
                     }}
                   />
@@ -307,7 +309,7 @@ export default function AddDialog() {
               backgroundColor: "#259BC1",
               textTransform: "none",
               fontSize: "13px",
-              fontFamily: "Poppins",
+              fontFamily: "Poppins,sans-serif",
               color: "#fff",
               borderRadius: "6px",
               "&:hover": { backgroundColor: "#004d6e" },

@@ -407,7 +407,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "left",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                   fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                 }}
@@ -418,7 +418,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "left",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                  fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                   whiteSpace:"nowrap"
@@ -430,7 +430,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "left",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                 }}
@@ -441,7 +441,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "left",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                 }}
@@ -452,7 +452,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "left",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                 }}
@@ -463,7 +463,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "left",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                 }}
@@ -474,7 +474,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "left",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                      whiteSpace:"nowrap"
@@ -486,7 +486,7 @@ export default function TableTicket() {
                 sx={{
                   textAlign: "center",
                   color: "#ffff",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                 fontSize: isMobile?"12.5px":"13px",
                   fontWeight: 700,
                      whiteSpace:"nowrap"
@@ -502,7 +502,7 @@ export default function TableTicket() {
                 <TableCell
                   sx={{
                     fontSize: "12px",
-                    fontFamily: "poppins",
+                    fontFamily: "poppins,sans-serif",
                     fontWeight: 400,
                   }}
                 >
@@ -512,7 +512,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -521,7 +521,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -532,7 +532,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -541,7 +541,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -550,7 +550,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -560,7 +560,7 @@ export default function TableTicket() {
                     sx={{
                       fontSize: "12px",
                       display: "flex",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                          whiteSpace:"nowrap"
                     }}
@@ -572,7 +572,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -581,7 +581,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -591,7 +591,7 @@ export default function TableTicket() {
                 <TableCell
                   sx={{
                     fontSize: "12px",
-                    fontFamily: "poppins",
+                    fontFamily: "poppins,sans-serif",
                     fontWeight: 400,
                        whiteSpace:"nowrap"
                   }}
@@ -601,7 +601,7 @@ export default function TableTicket() {
                 <TableCell
                   sx={{
                     fontSize: "12px",
-                    fontFamily: "poppins",
+                    fontFamily: "poppins,sans-serif",
                     fontWeight: 400,
                   }}
                 >
@@ -609,7 +609,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -620,7 +620,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -629,7 +629,7 @@ export default function TableTicket() {
                   <Typography
                     sx={{
                       fontSize: "12px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 400,
                     }}
                   >
@@ -646,7 +646,7 @@ export default function TableTicket() {
                       border: "1px solid #259800",
                       borderRadius: "8px",
                       fontSize: "10px",
-                      fontFamily: "poppins",
+                      fontFamily: "poppins,sans-serif",
                       fontWeight: 600,
                       zIndex: 0,
                      p:0,
@@ -678,7 +678,7 @@ export default function TableTicket() {
           }}
         >
           <Typography
-            sx={{ fontSize: "13px", fontFamily: "poppins", fontWeight: 400 }}
+            sx={{ fontSize: "13px", fontFamily: "poppins,sans-serif", fontWeight: 400 }}
           >
             Show
           </Typography>

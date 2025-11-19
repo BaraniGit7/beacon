@@ -140,7 +140,7 @@ function MyBoard() {
           onClick={handleBackToList}
           sx={{
             cursor: "pointer",
-            fontFamily: "poppins",
+            fontFamily: "poppins, sans-serif",
             fontWeight: 600,
 
             fontSize: "16px",
@@ -153,7 +153,7 @@ function MyBoard() {
           <Typography
             color="text.primary"
             sx={{
-              fontFamily: "Poppins",
+              fontFamily: "Poppins, sans-serif",
               fontWeight: 600,
               fontSize: "16px",
             }}

@@ -27,7 +27,7 @@ export default function Encrollment() {
           alignItems: "center",
           mb: 1,
           fontWeight: 600,
-          fontFamily: "Poppins",
+          fontFamily: "Poppins,sans-serif",
           gap: 1,
           fontSize:"16px"
         }}
@@ -77,13 +77,13 @@ export default function Encrollment() {
       <EnrollDetails />
       <Box sx={{ display: "flex", alignItems: "center", gap: 4,mb:1}}>
         <Typography sx={{ display: "flex", alignItems: "center", gap: 1,fontSize: "13px",
-                          fontFamily: "poppins", }}>
-          <CheckBox sx={{ color: "red",fontSize:"16px" }} />
+                          fontFamily: "poppins,sans-serif", }}>
+          <CheckBox sx={{ color: "red",fontSize:"16px"}} />
           Already enrolled courses
         </Typography>
 
         <Typography sx={{ display: "flex", alignItems: "center", gap: 1 ,fontSize: "13px",
-                          fontFamily: "poppins",}}>
+                          fontFamily: "poppins,sans-serif",}}>
           <CheckBox sx={{ color: "green" ,fontSize:"16px" }} />
           Courses selected now for Enrollment
         </Typography>

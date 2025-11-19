@@ -15,11 +15,15 @@ import {
   TableHead,
   TableRow,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 
 import { useState } from "react";
 
 export default function Tables() {
+  const theme=useTheme();
+  const isMobile=useMediaQuery(theme.breakpoints.down("sm"));
  {/* const[table,setTable]*/}  const [table] = useState([
    
     {
@@ -305,7 +309,7 @@ export default function Tables() {
                   whiteSpace:"nowrap",
                   color: "#E4E4E4",
                   fontSize: "13px",
-                  fontFamily: "poppins",
+                  fontFamily: "poppins,sans-serif",
                   fontWeight: "bold",
   }
   return (
@@ -318,6 +322,7 @@ export default function Tables() {
           borderRadius: "10px",
           maxHeight: 375,
           overflowY: "auto",
+          scrollbarWidth:"none",
         }}
       >
         <Table
@@ -361,14 +366,7 @@ export default function Tables() {
                 Functional Area
               </TableCell>
               <TableCell
-                sx={{
-                  textAlign: "left",
-
-                  color: "#E4E4E4",
-                  fontSize: "13px",
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
+                sx={headerStyles}
               >
                 Target Audience
               </TableCell>
@@ -398,19 +396,19 @@ export default function Tables() {
                   />
                 </TableCell>
 
-                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins,sans-serif" ,fontWeight:400}}>
                   {tab.coursecode}
                 </TableCell>
-                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins,sans-serif",fontWeight:400,whiteSpace:"nowrap" }}>
                   {tab.coursename}
                 </TableCell>
-                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins,sans-serif",fontWeight:400 }}>
                   {tab.opertionalarea}
                 </TableCell>
-                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins,sans-serif" ,fontWeight:400}}>
                   {tab.functionalarea}
                 </TableCell>
-                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins" }}>
+                <TableCell sx={{ fontSize: "13px", fontFamily: "poppins,sans-serif",fontWeight:400 }}>
                   {tab.targetaudience}
                 </TableCell>
                 <TableCell>
@@ -421,9 +419,9 @@ export default function Tables() {
                         sx={{
                           display: "block",
                           fontSize: "13px",
-                          fontFamily: "poppins",
+                          fontFamily: "poppins,sans-serif",
                           lineHeight: "20px",
-                          whiteSpace:"nowrap"
+                          whiteSpace:"nowrap",fontWeight:400
                         }}
                       >
                         {std.trim() + ")"}
@@ -444,7 +442,7 @@ export default function Tables() {
           mt: 1,
            flexWrap: "nowrap", 
         overflowX: "auto",
-        whiteSpace: "nowrap",
+        whiteSpace: "nowrap",fontWeight:400,
         //  px:1,
        //flexWrap: { xs: "wrap", sm: "nowrap" }, 
           gap:1,
@@ -463,7 +461,7 @@ export default function Tables() {
          // justifyContent: { xs: "center", sm: "flex-start" },
           }}
         >
-          <Typography sx={{ fontFamily: "poppins", fontSize: "10px" }}>
+          <Typography sx={{ fontFamily: "poppins,sans-serif", fontSize: "13px",fontWeight:500 }}>
             Show
           </Typography>
           <Select
@@ -521,7 +519,7 @@ export default function Tables() {
               }}
             />
           )} */}
-          {/* <Typography sx={{ fontSize: "12px", fontFamily: "poppins" }}>
+          {/* <Typography sx={{ fontSize: "12px", fontFamily: "poppins,sans-serif" }}>
             Row
           </Typography> */}
         </Box>
@@ -556,8 +554,8 @@ export default function Tables() {
        
           sx={{
             "& .MuiPaginationItem-root": {
-              fontSize: "10px",
-            margin: "0px",
+              fontSize: "13px",
+            margin: "0px 2px",
       color: "#259BC1",
       minWidth: "22px",
       height: "20px",
@@ -576,7 +574,7 @@ export default function Tables() {
     sx={{
       //flex: { xs: "1 1 100%", sm: "unset" },
       display: "flex",
-      justifyContent: { xs: "center", sm: "flex-end" },
+      justifyContent:isMobile? "center": "flex-end" ,
     }}
   >
     <Button
@@ -584,14 +582,15 @@ export default function Tables() {
       size="small"
       sx={{
         backgroundColor: "#259BC1",
-        fontSize: "11px",
+        fontSize: isMobile?"11px":"14px",
         textTransform: "none",
         borderRadius: "6px",
         px: 1.5,
-        height: "26px",
+        height: isMobile?"26px":"35px",
         "&:hover": { backgroundColor: "#00A0C6" },
       }}
     >
+      <Save sx={{mr:"4px",fontSize:"18px"}}/>
       Save 
     </Button>
   </Box>

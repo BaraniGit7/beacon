@@ -18,6 +18,8 @@ import {
   MenuItem,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { useState } from "react";
 
@@ -25,7 +27,8 @@ export default function FilterDialog() {
   const [dialog, setDialog] = useState(false);
   const handleOpen = () => setDialog(true);
   const handleClose = () => setDialog(false);
-
+  const theme=useTheme();
+  const isMobile=useMediaQuery(theme.breakpoints.down("sm"));
   const filters = [
     {
       label: "Operational Area",
@@ -67,22 +70,22 @@ export default function FilterDialog() {
        
           border: "1px solid #259BC1",
           borderRadius: "8px",
-          fontSize: "11px",
+          fontSize: isMobile?"10px":"12px",
           backgroundColor: "#fff",
         }}
         variant="outlined"
         onClick={handleOpen}
       >
-        <FilterAltOutlined sx={{ fontSize: "19px" ,m:"0px 2px" }} />
+        <FilterAltOutlined sx={{ fontSize: isMobile?"19px":"15px" ,m:"0px 2px" }} />
         Filter Courses
       </Button>
 
       <Dialog open={dialog} onClose={handleClose} fullWidth maxWidth="sm" sx={{ border:"1px solid #259BC1"}}>
         <DialogTitle
           sx={{
-            fontSize: "18px",
+            fontSize: "17px",
             fontWeight: 700,
-            fontFamily: "poppins",
+            fontFamily: "poppins,sans-serif",
             color: "#259BC1",
             display: "flex",
             justifyContent: "space-between",
@@ -113,7 +116,7 @@ export default function FilterDialog() {
                 <Typography
                   variant="body2"
                   sx={{
-                    fontFamily: "Poppins",
+                    fontFamily: "Poppins,sans-serif",
                     fontWeight: 400,
                     fontSize: "14px",
                     mb: 0.5,
@@ -127,9 +130,24 @@ export default function FilterDialog() {
 
                 {filter.type === "select" ? (
                   <TextField
-                    sx={{ fontFamily: "poppins" , fontSize:"14px" ,"& .MuiInputBase-input": {
-                        fontFamily: "Poppins" , fontSize:"14px"
-                      }, }}
+                    sx={{ fontFamily: "poppins,sans-serif" , fontSize:"14px" ,"& .MuiInputBase-input": {
+                        fontFamily: "Poppins,sans-serif" , fontSize:"14px"
+                      },    "& .MuiOutlinedInput-root": {
+                          
+                          fontFamily:"poppins,sans-serif",
+                          fontSize:"13px",
+                            paddingLeft: "10px",
+                            "& fieldset": {
+                              borderWidth: "1px",
+                              borderColor: "#B0BEC5",
+                            },
+                            "&:hover fieldset": {
+                              borderColor: "#3fadd2ff",
+                            },
+                            "&.Mui-focused fieldset": {
+                              borderColor: "#259BC1",
+                            },
+                          },}}
                     select
                     required
                     fullWidth
@@ -142,19 +160,19 @@ export default function FilterDialog() {
                           selected
                         ) : (
                           <span
-                            style={{ color: "#9e9e9e", fontFamily: "poppins" , fontSize:"14px" }}
+                            style={{ color: "#9e9e9e", fontFamily: "poppins,sans-serif" , fontSize:"14px" }}
                           >
                             {filter.placeholder}
                           </span>
                         ),
                     }}
                   >
-                    <MenuItem sx={{ fontFamily: "poppins", fontSize:"14px"}} value="" disabled>
+                    <MenuItem sx={{ fontFamily: "poppins,sans-serif", fontSize:"14px"}} value="" disabled>
                       {filter.placeholder}
                     </MenuItem>
                     {filter.options.map((opt) => (
                       <MenuItem
-                        sx={{ fontFamily: "poppins" , fontSize:"14px"}}
+                        sx={{ fontFamily: "poppins,sans-serif" , fontSize:"14px"}}
                         key={opt}
                         value={opt}
                       >
@@ -173,11 +191,27 @@ export default function FilterDialog() {
                     sx={{
                         fontSize:"14px",
                       "& .MuiInputBase-input::placeholder": {
-                        fontFamily: "Poppins",  fontSize:"14px"
+                        fontFamily: "Poppins,sans-serif",  fontSize:"14px"
                       },
                       "& .MuiInputBase-input": {
-                        fontFamily: "Poppins" , fontSize:"14px"
+                        fontFamily: "Poppins,sans-serif" , fontSize:"14px"
                       },
+                         "& .MuiOutlinedInput-root": {
+                           
+                          fontFamily:"poppins,sans-serif",
+                          fontSize:"13px",
+                            paddingLeft: "10px",
+                            "& fieldset": {
+                              borderWidth: "1px",
+                              borderColor: "#B0BEC5",
+                            },
+                            "&:hover fieldset": {
+                              borderColor: "#3fadd2ff",
+                            },
+                            "&.Mui-focused fieldset": {
+                              borderColor: "#259BC1",
+                            },
+                          },
                     }}
                   />
                 )}
@@ -191,6 +225,7 @@ export default function FilterDialog() {
             onClick={handleClose}
             variant="contained"
             sx={{
+              fontFamily:"poppins,sans-serif",
               color: "#ffff",
               backgroundColor: "#259BC1",
               fontSize: "12px",

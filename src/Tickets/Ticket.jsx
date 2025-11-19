@@ -16,7 +16,7 @@ export default function Ticket(){
     gap: "6px", 
     fontSize: "16px",
     fontWeight: 600,
-    fontFamily: "Poppins",
+    fontFamily: "Poppins,sans-serif",
    
   }}
 >
@@ -42,13 +42,13 @@ export default function Ticket(){
                     alignItems:"center",
                     px:1,
                     borderRadius:"5px",
-                    gap:"8px",fontFamily:"poppins",
+                    gap:"8px",fontFamily:"poppins,sans-serif",
                     border:"1px solid #a9a9a9ff"
                 }}
                 >
                     <Search sx={{fontSize:"16px"}}/>
                     <InputBase
-                    placeholder="search" fullWidth sx={{fontSize:"15px",fontFamily:'poppins'}}/>
+                    placeholder="search" fullWidth sx={{fontSize:"15px",fontFamily:'poppins,sans-serif'}}/>
                 </Paper>
                <AddDialog/>
             </Box>

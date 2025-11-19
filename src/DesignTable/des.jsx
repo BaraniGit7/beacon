@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import { Cancel } from "@mui/icons-material";
 
-const borderColor = "rgba(0, 187, 255, 1)";
+const borderColor = "#259BC1";
 const borderStyle = `1px solid ${borderColor}`;
 
 const MyDialog = () => {

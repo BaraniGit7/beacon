@@ -17,7 +17,7 @@ export default function PagesX({isMobile,rowsPerPage,handleRow,total,handlePageC
   {/* Left side: "Show" and Select */}
   <Box sx={{  display: "flex", alignItems: "center", gap: 1  }}>
     <Typography
-      sx={{ fontSize: 13, fontFamily: "Poppins", fontWeight: 400 }}
+      sx={{ fontSize: 13, fontFamily: "Poppins,sans-serif", fontWeight: 400 }}
     >
       Show
     </Typography>
@@ -29,7 +29,7 @@ export default function PagesX({isMobile,rowsPerPage,handleRow,total,handlePageC
       sx={{
         backgroundColor: "#fff",
         fontSize: 12,
-        height: 26,
+        height: 23,
         minWidth: 40,
       }}
     >

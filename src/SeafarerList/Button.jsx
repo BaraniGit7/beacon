@@ -55,8 +55,8 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
               <InputBase
                 sx={{
                   flex: 1,
-                  fontFamily: "poppins",
-                  fontSize: isMobile ? "13px" : "15px",
+                  fontFamily: "poppins, sans-serif",
+                  fontSize: isMobile ? "13px" : "13px",
                 }}
                 placeholder="Search or filter..."
               />
@@ -79,7 +79,7 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
                   fontSize: isMobile ? "10px" : "12px",
-                  lineHeight: "24px",
+               
                   textTransform: "uppercase",
                   backgroundColor: "#259BC1",
                   color: "#fff",
@@ -102,7 +102,7 @@ export default function SeafarerButton({isMobile,setNewSeafarer,setOpenAdd,setOp
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
                   fontSize: isMobile ? "10px" : "12px",
-                  lineHeight: "24px",
+              
                   textTransform: "uppercase",
                   borderColor: "#259BC1",
                   color: "#259BC1",

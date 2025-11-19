@@ -4,7 +4,6 @@ import {
   DialogContent,
   DialogActions,
   Divider,
-  IconButton,
   Typography,
   Box,
   Button,
@@ -126,7 +125,7 @@ export default function BulkUpload({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          fontFamily: "Poppins",
+          fontFamily: "Poppins, sans-serif",
           fontWeight: 600,
           color: "#259BC1",
           fontSize: isMobile ? "16px": "18px"
@@ -160,7 +159,7 @@ export default function BulkUpload({
             <Typography
               sx={{
                 fontStyle: "italic",
-                fontSize: { xs: "14px", sm: "16px" },
+                fontSize: { xs: "12px", sm: "14px" },
                 color: "#D10100",
                 mb: 2,
               }}
@@ -196,7 +195,7 @@ export default function BulkUpload({
               <DriveFolderUploadRounded
                 sx={{ fontSize: 22, color: "#259BC1", mb: 1 }}
               />
-              <Typography sx={{ fontFamily:"poppins", fontSize:isMobile ? "12px" : "14px" ,textAlign:"center"}}>
+              <Typography sx={{ fontFamily:"poppins, sans-serif", fontSize:isMobile ? "12px" : "14px" ,textAlign:"center"}}>
                 Drag your file(s) to start uploading
               </Typography>
              <Box
@@ -215,7 +214,7 @@ export default function BulkUpload({
   <Typography
     sx={{
       mx:1.5,
-      fontFamily: "Poppins",
+      fontFamily: "Poppins, sans-serif",
       fontSize: "10px",
       color: "#9e9e9e",
       fontWeight: 500,
@@ -230,7 +229,7 @@ export default function BulkUpload({
                 variant="outlined"
                 component="label"
                 sx={{
-                  fontFamily:"poppins",
+                  fontFamily:"poppins, sans-serif",
                   textTransform: "none",
                   borderRadius: 2,
                   px: 3,
@@ -291,12 +290,12 @@ export default function BulkUpload({
                       <Typography
                         sx={{
                           wordBreak: "break-all",
-                          fontSize:isMobile?"13px":"15px"
+                          fontSize:isMobile?"11px":"13px"
                         }}
                       >
                         {file.name}
                       </Typography>
-                      <Typography variant="caption" color="gray">
+                      <Typography variant="caption" color="gray" sx={{fontSize:"11px"}}>
                         {(file.size / (1024 * 1024)).toFixed(2)} MB
                       </Typography>
                     </Box>

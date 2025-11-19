@@ -35,7 +35,7 @@ export default function EnrollDetails() {
     variant="h6"
     sx={{
       px: 1.5,
-      fontFamily: "Poppins",
+      fontFamily: "Poppins,sans-serif",
       fontWeight: 700,
       color: "#259BC1",
       fontSize: "16px",
@@ -104,7 +104,7 @@ export default function EnrollDetails() {
         <Box sx={{ flex: 1 }}>
           <Typography
             sx={{
-              fontFamily: "Poppins",
+              fontFamily: "Poppins,sans-serif",
               fontWeight: 600,
               fontSize: { xs: "12px", sm: "13px" },
               color: "#333",
@@ -119,7 +119,7 @@ export default function EnrollDetails() {
             <Typography
               key={i}
               sx={{
-                fontFamily: "Poppins",
+                fontFamily: "Poppins,sans-serif",
                 fontWeight: 400,
                 color: "#000",
                 fontSize: { xs: "11px", sm: "13px" },

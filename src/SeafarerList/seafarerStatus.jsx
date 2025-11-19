@@ -37,8 +37,8 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
       <Dialog
         open={!!openStatusDialog}
         onClose={() => setOpenStatusDialog(null)}
-        //fullWidth
-        maxWidth="xs"
+        // fullWidth
+        
         PaperProps={{
           sx: {
             border: "2px solid #259BC1",
@@ -55,9 +55,9 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
       >
         <DialogTitle
           sx={{
-            fontFamily: "Poppins",
+            fontFamily: "Poppins, sans-serif",
             fontWeight: 600,
-            fontSize: "18px",
+            fontSize: "16px",
             color: "#259BC1",
             display: "flex",
             justifyContent: "space-between",
@@ -78,7 +78,10 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
           </IconButton>
         </DialogTitle>
         <Divider />
-        <DialogContent sx={{ minWidth: 250 }}>
+        <DialogContent sx={{ 
+          minWidth: 320,
+          
+           }}>
           <FormControl>
             <RadioGroup
               value={openStatusDialog?.status || ""}
@@ -92,8 +95,8 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
               <FormControlLabel
                 sx={{
                   "& .MuiFormControlLabel-label": {
-                    fontSize: "18px",
-                    fontFamily: "poppins",
+                    fontSize: "14px",
+                    fontFamily: "poppins, sans-serif",
                   },
                 }}
                 value="Active"
@@ -112,8 +115,8 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
               <FormControlLabel
                 sx={{
                   "& .MuiFormControlLabel-label": {
-                    fontSize: "18px",
-                    fontFamily: "poppins",
+                    fontSize: "14px",
+                    fontFamily: "poppins, sans-serif",
                   },
                 }}
                 value="Inactive"
@@ -137,6 +140,7 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
               display: "flex",
               justifyContent: "flex-end",
               mt: 2,
+              mb:1,
               gap: 1,
             }}
           >
@@ -145,11 +149,12 @@ export default function SeafarerStatus({openStatusDialog, setOpenStatusDialog,se
               sx={{
                 backgroundColor: "#259BC1",
                 textTransform: "none",
-                fontSize: "12px",
+                fontSize: "13px",
+                fontFamily:"Poppins , sans-serif",
                 "& .MuiButton-startIcon": {
                   marginRight: "4px",
                   "& > *:nth-of-type(1)": {
-                    fontSize: "13px",
+                    fontSize: "18px",
                   },
                 },
               }}
